@@ -241,3 +241,45 @@
 - Final suite passes 76 tests in 2.19 s and repository diff whitespace checks pass.
 - Rechecked all 51 Stage-2A/2B hashes, frozen checkpoint `31e4...b2cc`, and protected channel/receiver/waveform/research-plan files.
 - Final classification remains qualified Outcome C; no commit, push, merge, P-variation, formula fitting, or Stage 3 action occurred.
+
+### 2026-08-18 13:32 EDT — Stage 2D preservation baseline
+
+- Continued in the clean `moroni` worktree at `origin/main`; the brief's `cambridge` reference was a stale workspace name.
+- Recovered only ignored Stage-1A/1A.2 and Stage-2A/2B/2C artifacts from the sibling worktree for frozen evaluation.
+- Authoritative Stage-1A.2 SHA-256 matches `31e42c4...b2cc`; all nine Stage-2C best checkpoints plus three training payloads are present.
+- Pre-change complete suite passes 76 tests in 2.71 s; no training, commit, push, or protected-module change occurred.
+
+### 2026-08-18 13:43 EDT — Stage 2D diagnostic core
+
+- Added frozen empirical `C`, Sobol single-path `Q`, spectral `S`, continuous-locality, and fixed-support primitives.
+- Added deterministic Q/S/centroid/prior masks that use actual coefficients only after positions are fixed.
+- Added off-diagonal and row-wise agreement metrics plus paired QPSK/16-QAM support-receiver evaluation.
+- Four focused checks pass; complete suite passes 80 tests in 1.96 s.
+
+### 2026-08-18 14:02 EDT — Stage 2D production runner
+
+- Added three disjoint banks, 2,048-point Sobol ambiguity integration, and full checkpoint/preserved-artifact gates.
+- Added oracle/Q/S/centroid/prior structural, analytic, QPSK, and 16-QAM comparisons plus all-checkpoint exploration.
+- Added eleven publication figures and tracked report generation; legacy communication curves reuse frozen Stage-2A tables.
+- Focused Stage-2D checks and Python compilation pass; diff whitespace check passes before production launch.
+
+### 2026-08-18 14:17 EDT — Stage 2D production result
+
+- Completed 2,048-point QMC ambiguity, 512-channel structural/prior/test banks, and million-bit paired BER in 97.5 s; Outcome A.
+- Learned Q-to-C off-diagonal Spearman is 0.9998; fixed-Q support retains 99.809% energy with 96.35% oracle-support recall.
+- At 18 dB, Learned fixed-Q QPSK BER is 0.001120 versus 0.001045 oracle and 0.005167 for the best classical fixed-Q baseline.
+- Learned fixed-Q 16-QAM BER is 0.02485 versus 0.02426 oracle; all nine checkpoints confirm Q-to-C structure, while weak Haar runs have diffuse support and large BER penalties.
+
+### 2026-08-18 14:27 EDT — Stage 2D notebook and visual QA
+
+- Added the frozen evaluation notebook and executed all 10 cells with zero error outputs.
+- Inspected all eleven required figures; corrected only axes/title/legend spacing and CSV-reload typing in plotting code.
+- Final figures connect frozen K=24 communication, continuous DD locality, fixed-support removal, and checkpoint-level communication evidence.
+- No numerical table, checkpoint, prior artifact, or scientific classification changed during layout corrections.
+
+### 2026-08-18 14:31 EDT — Stage 2D final preservation audit
+
+- Final complete suite passes 80 tests in 1.91 s; notebook has 10 cells and zero execution errors; diff whitespace check passes.
+- Authoritative and all nine Stage-2C checkpoint hashes match; maximum learned unitarity residual remains 2.29e-14.
+- All 88 Stage-2A/2B/2C artifacts match the source worktree byte-for-byte; Stage-2D outputs remain ignored.
+- Channel, receiver, waveform, and research-plan files are unchanged from `origin/main`; no commit, push, merge, training, or Stage 3 action occurred.
