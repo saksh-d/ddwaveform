@@ -72,3 +72,40 @@
 - Final deterministic suite passed: 37 tests in 2.09 s.
 - Confirmed all required Stage-0F artifacts exist, render cleanly, and remain ignored with no generated output tracked.
 - Confirmed `researchPlan.MD` remains identical to `origin/main` and the report ends with the locked headroom-confirmed status.
+
+## 2026-08-17 23:05:00 EDT — Stage 1A learning core
+
+- Added complex128 universal projected-Adam learning with seven independent starts sharing fresh paired DD-v1/SNR streams.
+- Added exact hard-K communication loss, frozen-bank validation, best-seen checkpoint retention, and Stage-1A seed/protocol constants.
+- Added eight focused Stage-1A checks covering projection, gradients, reproducibility, checkpointing, immutability, seed separation, and full-information invariance.
+- Initial full suite reached 44 passes; one exact assertion exposed only float32 reconstruction of a float64 trace in the test.
+
+## 2026-08-17 23:16:00 EDT — Stage 1A runner smoke verification
+
+- Added the complete training/evaluation runner with paired analytic MSE, bootstrap, BER, representation, invariance, figures, checkpoints, and report generation.
+- Corrected the checkpoint test to preserve float64 trace precision; the full suite passes 45 tests in 1.77 s.
+- A two-step production-shape smoke completed in 11.9 s with finite objectives and checkpoint output.
+- Fixed validation objectives reproduce the locked K=24 calibration; no protocol reduction or precision change was made.
+
+## 2026-08-17 23:35:00 EDT — Stage 1A production result and evaluation audit
+
+- Completed seven 2,000-step complex128 runs in 571.4 s; all starts improved, no non-finite run occurred, and max unitarity residual was 2.54e-14.
+- Corrected an evaluation-only name collision where learned-from-classical checkpoints shadowed fixed baselines; regenerated all held-out results from saved checkpoints.
+- Learned pooled MSE is 0.071151 versus fixed IDENTITY 0.090189; paired 95% CI is [-0.020130, -0.017967], with 77.94% mean gap closure.
+- Million-bit paired BER improves only at 20 dB and loses to IDENTITY at 12/15/18 dB; classified Outcome B despite strong analytic/reproducibility evidence.
+- Final full-information discrepancy is 1.22e-15; six required figures were visually inspected and the full suite passes 45 tests.
+
+## 2026-08-18 09:12:00 EDT — Stage 1A.1 forensic primitives
+
+- Added exact receiver-MSE decomposition, per-stream reliability quantities, and frozen representation diagnostics.
+- Added generic unit-power constellation handling with existing-compatible QPSK and Gray-coded normalized 16-QAM.
+- Verified the standalone HAAR-2 checkpoint exactly equals the selected tensor in the Stage-1A training payload and remains immutable.
+- Added seven focused forensic test groups; the complete suite passes 52 tests in 2.23 s.
+
+## 2026-08-18 09:28:00 EDT — Stage 1A.1 frozen forensic diagnosis
+
+- Completed the 512-channel paired QPSK/16-QAM audit in 26.2 s; exact MSE decomposition closes to 1.11e-16.
+- Falsified noise enhancement: Learned lowers noise and off-diagonal terms but raises diagonal gain distortion and worsens rare stream tails.
+- QPSK negative decision margins worsen significantly at 12/15 dB despite better bulk margins; 16-QAM BER/SER improve significantly at all SNRs.
+- Diagnosed a QPSK extreme-tail decision-geometry effect with a partial channel-tail contribution; all seven allowed figures exclude IDENTITY.
+- Recommended exact mean MSE plus generic normalized nearest-neighbor margin channel-CVaR for Stage 1A.2; no loss or waveform was trained.
