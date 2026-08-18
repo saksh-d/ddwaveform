@@ -1,10 +1,87 @@
-"""QPSK, BER, and empirical normalized-MSE utilities."""
+"""Constellation, BER, and empirical normalized-MSE utilities."""
 
+from dataclasses import dataclass
 import math
 
 import torch
 
 from .channel import COMPLEX_DTYPE, REAL_DTYPE
+
+
+@dataclass(frozen=True)
+class Constellation:
+    name: str
+    points: torch.Tensor
+    bit_labels: torch.Tensor
+
+    @property
+    def bits_per_symbol(self) -> int:
+        return self.bit_labels.shape[-1]
+
+
+def _binary_indices(bits: torch.Tensor) -> torch.Tensor:
+    width = bits.shape[-1]
+    weights = 2 ** torch.arange(width - 1, -1, -1, dtype=torch.int64)
+    return torch.sum(bits.to(torch.int64) * weights, dim=-1)
+
+
+def qpsk_constellation() -> Constellation:
+    labels = torch.tensor(
+        [[0, 0], [0, 1], [1, 0], [1, 1]], dtype=torch.int64
+    )
+    return Constellation("QPSK", qpsk_encode(labels), labels)
+
+
+def qam16_constellation() -> Constellation:
+    labels = torch.tensor(
+        [
+            [(index >> 3) & 1, (index >> 2) & 1, (index >> 1) & 1, index & 1]
+            for index in range(16)
+        ],
+        dtype=torch.int64,
+    )
+    gray_levels = {(0, 0): -3.0, (0, 1): -1.0, (1, 1): 1.0, (1, 0): 3.0}
+    points = torch.tensor(
+        [
+            complex(
+                gray_levels[(int(bits[0]), int(bits[1]))],
+                gray_levels[(int(bits[2]), int(bits[3]))],
+            )
+            for bits in labels
+        ],
+        dtype=COMPLEX_DTYPE,
+    ) / math.sqrt(10.0)
+    return Constellation("16QAM", points, labels)
+
+
+def constellation_encode(bits: torch.Tensor, constellation: Constellation) -> tuple[torch.Tensor, torch.Tensor]:
+    if bits.shape[-1] != constellation.bits_per_symbol:
+        raise ValueError(
+            f"{constellation.name} requires {constellation.bits_per_symbol} bits per symbol"
+        )
+    indices = _binary_indices(bits)
+    return constellation.points[indices], indices
+
+
+def nearest_neighbor_decode(
+    symbols: torch.Tensor, constellation: Constellation
+) -> tuple[torch.Tensor, torch.Tensor]:
+    distances = torch.abs(symbols[..., None] - constellation.points)
+    indices = torch.argmin(distances, dim=-1)
+    return constellation.bit_labels[indices], indices
+
+
+def nearest_neighbor_margin(
+    symbols: torch.Tensor,
+    true_indices: torch.Tensor,
+    constellation: Constellation,
+) -> torch.Tensor:
+    distances = torch.abs(symbols[..., None] - constellation.points)
+    correct = torch.gather(distances, -1, true_indices[..., None]).squeeze(-1)
+    competitor_distances = distances.clone()
+    competitor_distances.scatter_(-1, true_indices[..., None], torch.inf)
+    competitor = torch.min(competitor_distances, dim=-1).values
+    return competitor - correct
 
 
 def random_bits(shape: tuple[int, ...], generator: torch.Generator) -> torch.Tensor:
