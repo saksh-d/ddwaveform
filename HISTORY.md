@@ -109,3 +109,32 @@
 - QPSK negative decision margins worsen significantly at 12/15 dB despite better bulk margins; 16-QAM BER/SER improve significantly at all SNRs.
 - Diagnosed a QPSK extreme-tail decision-geometry effect with a partial channel-tail contribution; all seven allowed figures exclude IDENTITY.
 - Recommended exact mean MSE plus generic normalized nearest-neighbor margin channel-CVaR for Stage 1A.2; no loss or waveform was trained.
+
+## 2026-08-18 09:17:00 EDT — Stage 1A.2 workspace recovery and baseline
+
+- Recovered only the four required ignored Stage-1A checkpoint artifacts from the sibling Conductor worktree.
+- Verified all copied SHA-256 hashes; HAAR-2 matches the documented `3e55…baad` checkpoint and exact training-payload tensor.
+- Locked the brief interpretation to eight positive-tail candidates plus a separate lambda-zero continuation control.
+- Pre-change deterministic suite passes: 52 tests in 2.27 s.
+
+## 2026-08-18 09:20:00 EDT — Stage 1A.2 tail-learning core
+
+- Added exact per-stream communication MSE and deterministic upper-stream CVaR with 7/4-stream tails.
+- Added modulation-independent mean-plus-tail objective, paired projected Adam, and 2% feasibility-aware validation checkpointing.
+- Added independent Stage-1A.2 seeds and locked calibration/production protocol constants.
+- Expanded deterministic suite to 62 passing tests in 2.15 s, including objective identity, finite gradients, unitarity, gate selection, and constellation independence.
+
+## 2026-08-18 09:24:00 EDT — Stage 1A.2 validation-only calibration
+
+- Completed the full eight-candidate positive-tail grid plus matched lambda-zero control from the exact HAAR-2 checkpoint.
+- Selected beta 0.95 and lambda 0.40 at step 50 using only frozen-bank mean MSE and stream CVaR 0.95.
+- Selected mean MSE increased 1.973% (inside the 2% gate); CVaR 0.95 fell to 0.196725 versus 0.205838 for mean-only continuation.
+- All candidates stayed finite and unitary to at most 2.53e-14; the preregistered production stop gate did not trigger.
+
+## 2026-08-18 09:34:00 EDT — Stage 1A.2 production result and verification
+
+- Selected the OFDM-start tail refinement at step 50; pooled held-out mean MSE rose 1.79% while stream CVaR 0.95 fell 21–23% versus frozen Stage 1A.
+- QPSK BER improved significantly at all four SNRs, including 19.6%/27.5% reductions at 12/15 dB and a 47.0% reduction at 20 dB.
+- Matched HAAR-2 tail refinement significantly beat matched mean-only continuation in QPSK at every SNR; all three starts improved their validation tail.
+- 16-QAM remains materially better than IDENTITY but loses some frozen Stage-1A performance; full-information discrepancy is 1.44e-15.
+- Final suite passes 62 tests in 1.92 s; seven figures inspected, outputs ignored/untracked, research plan unchanged, and final test bank untouched.
