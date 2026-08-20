@@ -1,5 +1,40 @@
 # Project History
 
+## 2026-08-20 16:35 EDT — Stage 3B provenance baseline
+
+- Confirmed isolated `palembang` worktree exactly at `origin/main` merge `114140f`, with merged Stage 3A present and no tracked Stage 2E dependency.
+- Restored ignored Stage-1A through Stage-3A prerequisites from their producing worktrees; every restored artifact is byte-identical to its source.
+- Verified authoritative Learned SHA-256 `31e42c4...b2cc`, all nine Stage-2C checkpoint hashes, and Stage-3A preservation metadata.
+- Pre-change complete suite passes 85 tests in 2.35 s after prerequisite restoration; protected scientific definitions remain untouched.
+
+## 2026-08-20 16:47 EDT — Stage 3B differentiable intervention core
+
+- Added fixed-bank differentiable atomic-Q construction with exact unitary row/column mass checks.
+- Added detached hard top-24 support, mean-only and fixed robust lower-row-tail objectives, and validation-only checkpointing.
+- Added projected-unitary OFDM/HAAR-1/HAAR-2 training with gradient, support-churn, stability, and unitarity traces.
+- Added exact phase/permutation-invariant basis alignment; six focused checks and all 91 tests pass.
+
+## 2026-08-20 17:08 EDT — Stage 3B production intervention
+
+- Completed both three-start, 1,000-step fixed-bank Q-only arms in 363.7 s; all runs stayed finite and unitary below 2.53e-14.
+- Held-out eta-24 reached 0.99949-0.99988 from initial OFDM/Haar values 0.99095/0.53758/0.53706; realized fixed-Q energy reached 0.99947-0.99987.
+- Every intervention improved matched-start analytic MSE and QPSK/16-QAM BER; raw Haar fixed-Q BER reductions were 98.9-99.0% and 93.7-93.9% at 18 dB.
+- Classified qualified Outcome A: Q-only solutions remain worse than authoritative Learned for QPSK but slightly better for 16-QAM, so concentration is causal/useful but not communication-complete.
+
+## 2026-08-20 17:15 EDT — Stage 3B interpretation and visual QA
+
+- Robust protection consistently raised held-out row-p05 by 0.00029-0.00143 versus mean-only matched starts; the effect is modest after concentration saturation.
+- Exact aligned overlap shows no tested-basis collapse: OFDM is closest at only 0.2176-0.4817, while pairwise Stage-3B overlap is 0.2570-0.4798.
+- Inspected all four figures and replaced the crowded concentration/retained-energy labels with full-range and zoomed panels.
+- Added and executed the frozen-output notebook with zero error outputs, then cleared outputs per repository convention.
+
+## 2026-08-20 17:18 EDT — Stage 3B final preservation audit
+
+- Final complete suite passes 91 tests in 2.05 s; Python compilation, notebook JSON, and diff whitespace checks pass.
+- All six selected checkpoint files exactly equal their validation-selected payload tensors and remain unitary below 2.24e-14.
+- All 128 Stage-2A/2B/2C/2D and Stage-3A artifacts remain byte-identical; authoritative Learned hash remains `31e42c4...b2cc`.
+- Outputs remain ignored, protected channel/config/receiver/waveform/research-plan files are unchanged, and no commit, push, merge, or Stage 3C work occurred.
+
 ## 2026-08-19 22:11:37 EDT — Stage 3A provenance baseline
 
 - Confirmed isolated `gwangju` worktree exactly at `origin/main` merge `9b78e6b`, with Stage 2D present and no tracked Stage 2E dependency.
