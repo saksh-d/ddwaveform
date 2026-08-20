@@ -1,5 +1,27 @@
 # Project History
 
+## 2026-08-19 22:11:37 EDT — Stage 3A provenance baseline
+
+- Confirmed isolated `gwangju` worktree exactly at `origin/main` merge `9b78e6b`, with Stage 2D present and no tracked Stage 2E dependency.
+- Restored the frozen ignored prerequisite snapshot from the Stage-2D worktree; all Stage-2A/2B/2C/2D artifact hashes match byte-for-byte.
+- Verified authoritative Learned SHA-256 `31e4...b2cc` and recorded all nine Stage-2C checkpoint hashes without modifying any checkpoint.
+- Pre-change complete suite passes 80 tests in 2.59 s; Stage 3A remains evaluation-only with no training or baseline changes.
+
+## 2026-08-19 22:18:00 EDT — Stage 3A formal-analysis core
+
+- Added raw DD sampling with explicit path variances and exact per-realization project normalization; no channel convention or training path changed.
+- Added row/aggregate top-K Q concentration, effective support, normalized entropy, capture-threshold, and exact fixed-mask expectation utilities.
+- Added controlled checks for equal/unequal-power raw coupling laws and the normalized masked-C retained-energy identity.
+- Focused Stage-3A checks pass 5/5; complete suite passes 85 tests in 1.96 s.
+
+## 2026-08-19 22:22:21 EDT — Stage 3A production result and final audit
+
+- Verified raw Q-to-C law on required P=1, P=3, normalized, and unequal-power cases using independent 4,096-channel banks; every raw case fell inside the predetermined Monte Carlo tolerance.
+- Project normalization preserved principal Q-to-C rank correlation at 0.9940 or higher; authoritative Learned eta-24 was 0.998136 versus 0.998090 realized fixed-Q retained energy.
+- Matched-budget Q concentration cleanly separated authoritative/OFDM-start checkpoints (at least 0.98698) from all Haar checkpoints (at most 0.85802); exploratory BER correlations remain small-sample evidence only.
+- Classified Outcome A without training or Stage-2E dependence; generated ten figures and machine-readable outputs, and executed the ten-cell notebook with zero errors.
+- Final complete suite passes 85 tests; all 110 Stage-2A/2B/2C/2D artifacts and ten learned checkpoints remain byte-identical/unitary.
+
 ## 2026-08-17 19:45:35 EDT — Initial Stage 0 harness
 
 - Added DD-v1 channel, classical waveform, finite-budget receiver, and QPSK metric modules in CPU double precision.
