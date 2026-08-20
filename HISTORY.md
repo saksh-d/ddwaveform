@@ -1,5 +1,33 @@
 # Project History
 
+## 2026-08-20 18:28 EDT — Stage 3D provenance baseline
+
+- Confirmed isolated `yangon` branch exactly at `origin/main` merge `1153c3f`, with reviewed Stage 3C present and no tracked Stage 2E dependency.
+- Restored 221 ignored Stage-1A through Stage-3C artifacts byte-for-byte from their producing worktree and recorded a source SHA-256 manifest.
+- Verified authoritative Learned SHA-256 `31e42c4...b2cc` and all six frozen Stage-3B selected checkpoint hashes without modifying them.
+- Pre-change complete suite passes 97 tests in 2.47 s; Stage 3D remains constrained to saturated-Q geometry intervention.
+
+## 2026-08-20 18:36 EDT — Stage 3D constrained-geometry core
+
+- Added exact differentiable fixed-Q mean error and the Stage-3C two-level 95% stream/channel error tail at the frozen 18 dB design point.
+- Added per-start Q floors with predeclared `2.5e-4` tolerance, projected-unitary optimization, fixed reference scaling, and mean/tail analytic arms.
+- Added validation-only Arm-A minimum and Arm-B Pareto selection with Q feasibility; no communication quantity enters training or selection.
+- Four focused checks and all 101 tests pass; exact gradients remain finite through the mismatched LMMSE covariance.
+
+## 2026-08-20 18:57 EDT — Stage 3D production intervention
+
+- Completed all 18 fixed-bank, 1,000-step mean/tail paths in 1,604.8 s with no nonfinite values and unitarity residuals below `2.26e-14`.
+- Froze 14 validation-feasible analytic checkpoints across all six Stage-3B starts; held-out Q concentration remained `0.99926-0.99976`.
+- Completed paired 512-channel full/oracle/fixed-Q evaluation at 12/15/18/20 dB for QPSK and 16-QAM without BER reselection.
+- Held-out aggregate error worsened 0.38-0.74%; the best tail reduction was 0.58%, QPSK changed at most 1.4%, and every 16-QAM intervention worsened.
+
+## 2026-08-20 19:02 EDT — Stage 3D interpretation and final audit
+
+- Classified Outcome C: the tested Stage-3C adverse tail remains descriptive but is insufficient as a causal design objective under the saturated-Q constraint.
+- Visually inspected four compact figures; IDENTITY remains numerical-only, and the four-cell frozen-output notebook executes with zero errors.
+- Final complete suite passes 101 tests; compilation, notebook JSON, and diff whitespace checks pass.
+- All 221 prior artifacts remain byte-identical; authoritative Learned and all six Stage-3B hashes are unchanged. STOP before Stage 3E.
+
 ## 2026-08-20 17:47 EDT — Stage 3C provenance and Stage 3B completion gate
 
 - Confirmed isolated `chicago` worktree exactly at `origin/main` merge `441b3a3`, with merged Stage 3B and no tracked Stage 2E dependency.
