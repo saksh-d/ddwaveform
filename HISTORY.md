@@ -1,5 +1,47 @@
 # Project History
 
+## 2026-08-20 17:47 EDT — Stage 3C provenance and Stage 3B completion gate
+
+- Confirmed isolated `chicago` worktree exactly at `origin/main` merge `441b3a3`, with merged Stage 3B and no tracked Stage 2E dependency.
+- Restored the ignored Stage-1A through Stage-3B snapshot byte-for-byte from its producing worktree and recorded a pre-Stage-3C SHA-256 manifest.
+- Verified authoritative Learned SHA-256 `31e42c4...b2cc` and all six frozen Stage-3B selected hashes; no checkpoint was modified.
+- Pre-change complete suite passes 91 tests; audit found five explicitly mandatory Stage-3B completion analyses absent from the merged record, so Stage 3C remains gated.
+
+## 2026-08-20 17:52 EDT — Exact finite-receiver geometry primitives
+
+- Added shared frozen diagnostics for fixed or channel-wise support without changing the receiver implementation.
+- Defined the exact mismatched-receiver error covariance from `F A-I` plus filtered noise, preserving representation mismatch in stream MSE and post-equalization SINR.
+- Added retained energy, Gram spectrum, effective rank, equalizer noise enhancement, reliability tails, error anisotropy/correlation, and Stage-2B support-locality summaries.
+- Three focused checks and all 94 tests pass; no experiment output or checkpoint changed.
+
+## 2026-08-20 17:56 EDT — Stage 3B mandatory completion audit
+
+- Completed both 1,000-step Q-only learned-warm arms on the original frozen banks; validation eta reached 0.999897/0.999846 with no nonfinite values or unitarity loss.
+- Both continuations improved paired 18 dB 16-QAM BER but worsened QPSK BER, independently reproducing the modulation reversal without BER selection.
+- Closed conditioning/noise, Q-bank saturation, final-quarter support-flip, generic-permutation, and Stage-2B locality evidence with machine-readable outputs.
+- Q eta is stable within `5.91e-6` from 128 to 2,048 atoms; prior artifacts remain byte-identical and all 94 tests pass.
+
+## 2026-08-20 18:01 EDT — Stage 3C communication decomposition core
+
+- Added exact Full, channel-wise Oracle top-24, and fixed-Q receiver construction on one paired channel/symbol/noise bank.
+- Added channel-level BER/SER, normalized nearest-decision margin, constellation-scaled variance, and real/imag residual-anisotropy diagnostics for QPSK and 16-QAM.
+- Added paired-delta and support-overlap primitives without training, receiver changes, or modulation-specific objectives.
+- Six focused geometry checks and all 97 tests pass.
+
+## 2026-08-20 18:06 EDT — Stage 3C production result and interpretation
+
+- Completed the 512-channel paired Full/Oracle/fixed-Q campaign for QPSK and 16-QAM at 12/15/18/20 dB in 112.9 s, with no training or Stage 2E use.
+- QPSK favors Learned already under full reception and continues through both finite supports; at 18 dB fixed-Q BER is 0.00121 versus 0.00249 averaged across Stage-3B.
+- Stage-3B has lower aggregate error but worse reliability/margin tails; 16-QAM ranking changes with SNR and truncation, so one scalar cannot explain both modulations.
+- Classified Outcome B: retain aggregate and robust-tail LMMSE geometry as a two-statistic modulation-robust formulation; STOP before optimization or Stage 3D.
+
+## 2026-08-20 18:10 EDT — Stage 3C deliverable and preservation audit
+
+- Added full singular-value distributions and Stage-2B community/centroid plus support-graph invariants; Stage-3B pairwise mask overlap spans 0.384-0.761.
+- Visually inspected all four compact figures; labels are readable and IDENTITY is absent from figures but retained in numerical outputs.
+- Executed the three-cell frozen-output notebook with zero errors; source notebook remains output-free.
+- Final complete suite passes 97 tests; compilation, notebook JSON, diff whitespace, ignored-output, and protected-source checks pass, with all 206 prior artifacts byte-identical.
+
 ## 2026-08-20 16:35 EDT — Stage 3B provenance baseline
 
 - Confirmed isolated `palembang` worktree exactly at `origin/main` merge `114140f`, with merged Stage 3A present and no tracked Stage 2E dependency.

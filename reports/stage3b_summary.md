@@ -47,3 +47,12 @@ Both Q-only arms rescued both Haar starts through representation, analytic-MSE, 
 - All 128 Stage-2/3A artifacts remained byte-identical: `True`.
 - IDENTITY is retained in numerical outputs and excluded from figures.
 - Stage 2E was not imported or used. No push, merge, receiver change, or Stage 3C work was performed.
+
+## Mandatory completion audit before Stage 3C
+
+- Learned warm-start mean/robust Q-only arms raised validation eta from 0.998135 to 0.999897/0.999846, selected at steps 575/975, with no nonfinite values and unitarity residuals below `2.38e-14`.
+- On the paired 18 dB bank, both warm starts improved 16-QAM BER from 0.023248 to 0.021026/0.021190 but worsened QPSK BER from 0.001046 to 0.001144/0.001196. This independently reproduces the modulation reversal without BER selection.
+- Every primary selected waveform has explicit finite-Q conditioning, Gram lower-tail, equalizer-noise-enhancement, and post-LMMSE reliability distributions. Median condition numbers are 10.65-10.84 and median noise enhancement is 2.03-2.04, so neither aggregate quantity separates the solutions; lower-tail reliability does.
+- Q-bank-size saturation is stable: eta changes by at most `5.91e-6` from 128 to 2,048 held-out Sobol atoms. Final-quarter support flip fractions are at most `1.46e-4` on average and `4.88e-4` at any recorded step.
+- Generic-permutation aligned similarity is only 0.057-0.108 for the six primary solutions. Their fixed-Q masks are not one common Stage-2B block structure: within-Learned-community support spans 0.339-0.627 versus 0.842 for Learned, with OFDM-start solutions more local than Haar-start solutions.
+- Machine-readable completion evidence is isolated in `outputs/stage3b_completion/`; all pre-existing Stage-1 through Stage-3B artifacts remained byte-identical.
