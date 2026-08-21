@@ -1,5 +1,33 @@
 # Project History
 
+## 2026-08-20 19:40 EDT — Stage 4A provenance baseline
+
+- Confirmed isolated `manila` branch exactly at merged Stage-3D `origin/main` commit `f7a0bbf`; Stage 2E remains absent.
+- Restored all 250 ignored Stage-1A through Stage-3D artifacts byte-for-byte from the reviewed Stage-3D worktree and recorded a SHA-256 manifest.
+- Verified authoritative Learned SHA-256 `31e42c4...b2cc` and all six frozen Stage-3B selected checkpoint hashes without modification.
+- Pre-change complete suite passes 101 tests in 2.40 s; Stage 4A remains structural fitting/evaluation only with no waveform or channel training.
+
+## 2026-08-20 19:48 EDT — Stage 4A structural-analysis core
+
+- Added exact canonical shift/modulation generators and an invertible integer-Weyl expansion in the project's `Delta(nu) Pi(tau)` convention.
+- Added native-order compressed-orbit, DD sparsity/locality, communication-equivalence alignment, and atom phase/spectrum diagnostics.
+- Added a capped A/B/C/D unitary hierarchy: polynomial Fourier, two-parameter chirp Fourier, critical-lattice tight Gabor prototype, and shallow two-IFFT factorization.
+- Five focused convention/control checks and all 106 tests pass; no frozen artifact or communication path changed.
+
+## 2026-08-20 20:02 EDT — Stage 4A end-to-end smoke gate
+
+- Wired the frozen 13-waveform population, A/B/C/D structural fits, all-column atom diagnostics, cross-solution invariants, and independent Q/communication evaluation.
+- A one-step/low-bit smoke completed every output path in 50.9 s, including Full, oracle-K24, and fixed-Q-K24 receiver branches.
+- Classical controls recover exact Fourier/chirp/Gabor structure while raw Haar generators remain diffuse; expanded focused checks pass 7/7.
+- Complete suite passes 108 tests; smoke artifacts are provisional and will be overwritten by the locked production budget.
+
+## 2026-08-20 20:05 EDT — Stage 4A production result and final audit
+
+- Completed the 13-waveform generator/orbit analysis and 78 predeclared A/B/C/D fits; no source waveform, channel, or BER objective entered fitting.
+- Classified Outcome C: successful eta-24 remains `0.998136-0.999885`, but Learned G_S is diffuse, compressed-orbit overlap is only `0.2604`, and no common compact family survives Haar controls.
+- Best 7-parameter Fourier-polynomial fit has aligned NMSE `1.1073`; its 18 dB fixed-Q BER is `0.00548/0.0453` versus Learned `0.00117/0.0250` for QPSK/16-QAM.
+- Final suite passes 109 tests; seven figures and the five-cell notebook pass visual/execution checks, and all 250 prior artifacts plus seven frozen checkpoints remain byte-identical. STOP.
+
 ## 2026-08-20 18:28 EDT — Stage 3D provenance baseline
 
 - Confirmed isolated `yangon` branch exactly at `origin/main` merge `1153c3f`, with reviewed Stage 3C present and no tracked Stage 2E dependency.
