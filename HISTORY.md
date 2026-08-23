@@ -1,5 +1,46 @@
 # Project History
 
+## 2026-08-23 15:10 EDT — Stage 4B provenance baseline
+
+- Confirmed isolated `stage-4b` worktree exactly at Stage-4A `origin/main` commit `156c557`; Stage 2E remains absent.
+- Restored all 273 ignored Stage-1A through Stage-4A artifacts byte-for-byte from the clean reviewed `manila` worktree.
+- Verified authoritative Learned SHA-256 `31e42c4...b2cc` and all six frozen Stage-3B selected checkpoint hashes without modification.
+- Pre-change complete suite passes 109 tests in 2.90 s; Stage 4B changes only predeclared training stochasticity and performs no BER selection.
+
+## 2026-08-23 15:18 EDT — Stage 4B ensemble-analysis core
+
+- Added four exact OFDM-start Stage-1A.2 repetitions with fixed validation and independent predeclared channel/SNR seed pairs.
+- Added aligned matrix, Q/support, complex atomic-operator, repeated generator/native-atom, receiver-geometry, and paired communication population diagnostics.
+- Kept Stage-1A HAAR-2 as the authoritative 2% validation reference while changing no optimizer, schedule, objective, channel, receiver, or selection rule.
+- Focused Stage-1A.2/4A/4B checks pass 22/22; complete suite passes 113 tests in 2.01 s.
+
+## 2026-08-23 15:24 EDT — Stage 4B end-to-end smoke gate
+
+- Exercised training selection, Stage-4A completion extraction, all population comparisons, three receiver branches, reporting, and preservation checks end-to-end.
+- One-step, 8-atom, 4-channel smoke completed in 11.7 s; all four provisional repetitions stayed finite/unitary and every output path completed.
+- Fixed two report-only integration defects exposed by the smoke: NumPy boolean serialization and Stage-4A `Fixed-Q` receiver naming.
+- Smoke checkpoints are provisional and will be overwritten by the locked 1,000-step production protocol.
+
+## 2026-08-23 15:31 EDT — Stage 4B production ensemble
+
+- Completed four independent 1,000-step frozen-recipe repetitions in 353.2 s; validation-only selections occurred at steps 100-175 with no nonfinite values.
+- Evaluated 16 frozen waveforms on 2,048 common DD atoms and 512 paired channels across QPSK/16-QAM, four SNRs, and Full/Oracle/fixed-Q reception.
+- Learned-pair aligned overlap is `0.893-0.995`, median complex-operator discrepancy is `0.0658` versus `1.407` to Stage-3B, and median Q correlation is `0.990`.
+- The G_D/G_S top-24 ratio is reproducible at `9.31-9.80`, separated from Stage-3B's `2.78-5.88`; classified Outcome A.
+
+## 2026-08-23 15:32 EDT — Stage 4B final audit and STOP
+
+- Stage-4A completion check confirms the cubic Fourier fit retains 4.890 times Learned residual Q mass and remains worse under Full reception before larger finite-K gaps.
+- Four new checkpoint hashes match their validation-selected payload tensors; unitarity residuals are `2.10e-14-2.41e-14`.
+- Four production figures pass visual inspection; the five-cell frozen-output notebook executes with zero errors.
+- Final complete suite passes 113 tests; all 273 prior artifacts remain byte-identical, protected tracked files are unchanged, and Stage 2E remains absent. STOP.
+
+## 2026-08-23 16:30 EDT — Stage 4B PR preflight
+
+- Reconfirmed `origin/main` at reviewed Stage-4A commit `156c557` and retained the existing `stage-4b` branch.
+- Final publication suite passes 113 tests in 2.73 s; staged whitespace and protected-file checks pass.
+- Reviewed exactly six tracked files; generated Stage-4B checkpoints and evaluation outputs remain ignored.
+
 ## 2026-08-20 19:40 EDT — Stage 4A provenance baseline
 
 - Confirmed isolated `manila` branch exactly at merged Stage-3D `origin/main` commit `f7a0bbf`; Stage 2E remains absent.
