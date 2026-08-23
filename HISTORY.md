@@ -1,5 +1,35 @@
 # Project History
 
+## 2026-08-23 16:43 EDT — Stage 4C provenance baseline and family freeze
+
+- Confirmed isolated `stage-4c` exactly at merged Stage-4B `origin/main` commit `e3f1490`; Stage 2E remains absent.
+- Restored all 302 ignored Stage-1A through Stage-4B artifacts byte-for-byte from the clean reviewed `madison` worktree.
+- Verified all five Learned and six Stage-3B checkpoint SHA-256 hashes; frozen OFDM/OTFS/AFDM sources are unchanged.
+- Pre-change complete suite passes 113 tests in 2.99 s; no pre-existing cascade definition exists.
+- Froze the sole family as the identifiable cubic-phase cascade `D0 F^H ... F^H DL`, depths 1–4 with 6/9/12/15 real parameters.
+
+## 2026-08-23 16:56 EDT — Stage 4C cascade and fitting primitives
+
+- Added the constant-free cubic-phase cascade with fixed Fourier sign/order and exact native-order alignment round-trip.
+- Added separate matrix-overlap and fixed-bank complex-operator objectives with deterministic restart initialization and validation-only selection.
+- Added held-out complex coherence, per-atom tail diagnostics, and symmetry-fixed parameter-population summaries.
+- Focused Stage-4C checks pass 10/10, including exact depth-1 Stage-4A equivalence and both finite fitting arms.
+
+## 2026-08-23 17:18 EDT — Stage 4C end-to-end smoke gate
+
+- Wired nine frozen targets, 72 target/depth/arm candidates, independent DD banks, three structural levels, and paired three-receiver communication.
+- Added complete restart histories, fitted matrix hashes, parameter/population accounting, depth tables, four compact figures, and the Stage-4C report path.
+- One-step/two-atom/two-channel smoke completed every output path in 6.0 s with prior artifacts unchanged.
+- Smoke classification is provisional and will be overwritten by the locked 400-step, three-restart production protocol.
+
+## 2026-08-23 17:58 EDT — Stage 4C production result and STOP
+
+- Completed 216 fixed-budget fits in 1,303.1 s across nine targets, depths 1–4, two objectives, and three validation-selected restarts; no nonfinite fit was selected.
+- Neither arm shows a depth law: Learned median aligned NMSE oscillates `1.13–1.56`, complex d_B worsens from about `1.31` to `1.81–1.85`, and no candidate enters the Stage-4B basin.
+- Best residual Q mass is `0.00927`, 4.6–5.0 times the Learned basin; operator fitting improves best d_B only 0.11%, while finite-K BER degrades with depth.
+- L4 fits are as poor on Learned and Haar controls, but depth improves neither; classified Outcome E rather than generic-approximator Outcome D.
+- All 302 prior artifacts remain byte-identical; 123 tests pass, four figures pass visual review, and the five-cell frozen-output notebook executes without errors. STOP.
+
 ## 2026-08-23 15:10 EDT — Stage 4B provenance baseline
 
 - Confirmed isolated `stage-4b` worktree exactly at Stage-4A `origin/main` commit `156c557`; Stage 2E remains absent.
