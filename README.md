@@ -12,6 +12,24 @@ conda run -n pytorch python -m scripts.stage2e
 
 Use `--smoke` only to verify the complete output path at reduced statistical resolution; smoke results are not scientific production results. Stage 2E loads the exact Stage-1A.2 checkpoint and performs no Learned-waveform training.
 
+Stage Pub-1A independently qualifies that frozen N=64 waveform. Run the AFDM gate first, then any resumable phase:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1a --phase afdm-audit
+conda run -n pytorch python -m scripts.stage_pub1a --phase communication
+conda run -n pytorch python -m scripts.stage_pub1a --phase k-sweep
+conda run -n pytorch python -m scripts.stage_pub1a --phase stress
+conda run -n pytorch python -m scripts.stage_pub1a --phase operators
+conda run -n pytorch python -m scripts.stage_pub1a --phase waveform-figures
+conda run -n pytorch python -m scripts.stage_pub1a --phase practicality
+conda run -n pytorch python -m scripts.stage_pub1a --phase figure-updates
+conda run -n pytorch python -m scripts.stage_pub1a --phase report
+```
+
+`--phase all` runs every scientific phase. `figure-updates` refreshes publication layouts from saved tables/arrays without Monte Carlo. `--smoke` is path validation only. Pub-1A writes ignored data, PNG/PDF figures, and `report.md` under `outputs/stage_pub1a/`; it has no training interface.
+
+F1/F2 use one 0 dB spectral-peak normalization per waveform, with Learned-only F1L/F2L supplements; absolute dense-DTFT arrays remain saved unchanged.
+
 ## Setup and run
 
 ```bash
