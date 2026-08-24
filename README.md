@@ -4,6 +4,14 @@ This repository studies communication-driven waveform representations for doubly
 
 The identity matrix is labeled `IDENTITY` throughout as an untransformed time-sample control. The principal classical DD comparison is OFDM, OTFS, and AFDM.
 
+Stage 2E recalibrates AFDM for the K=24 DD-v1 objective and runs the complete frozen-waveform communication/physical audit:
+
+```bash
+conda run -n pytorch python -m scripts.stage2e
+```
+
+Use `--smoke` only to verify the complete output path at reduced statistical resolution; smoke results are not scientific production results. Stage 2E loads the exact Stage-1A.2 checkpoint and performs no Learned-waveform training.
+
 ## Setup and run
 
 ```bash

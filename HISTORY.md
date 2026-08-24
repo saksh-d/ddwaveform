@@ -283,3 +283,89 @@
 - Authoritative and all nine Stage-2C checkpoint hashes match; maximum learned unitarity residual remains 2.29e-14.
 - All 88 Stage-2A/2B/2C artifacts match the source worktree byte-for-byte; Stage-2D outputs remain ignored.
 - Channel, receiver, waveform, and research-plan files are unchanged from `origin/main`; no commit, push, merge, training, or Stage 3 action occurred.
+
+## 2026-08-19 19:22 EDT — Stage 2E preservation baseline
+
+- Confirmed merged Stage 2D commit `9b78e6b` is both `HEAD` and `origin/main`; current isolated branch/worktree is clean.
+- Verified Stage 2A–2D tracked code, reports, notebooks, and tests are present; historical outputs are ignored and absent in this fresh worktree.
+- Baseline suite reached 78 passes; two preservation tests failed only because ignored Stage-1A/1A.2 checkpoint prerequisites were not copied into the workspace.
+- Located three byte-identical authoritative checkpoints with expected SHA-256 `31e4...b2cc`; no scientific experiment ran.
+
+## 2026-08-19 19:25 EDT — Stage 2E ignored-artifact recovery
+
+- Recovered prior ignored Stage-1A/1A.2 prerequisites and all available Stage-2A–2D outputs from the merged Stage-2D worktree.
+- Authoritative Learned checkpoint hash is exactly `31e4...b2cc`; HAAR-2 and its training payload match the documented hashes.
+- Complete pre-change suite now passes 80 tests in 2.32 s; generated outputs remain ignored and only HISTORY is tracked as modified.
+- Established a 110-file Stage-2A–2D preservation set for before/after production comparison.
+
+## 2026-08-19 19:39 EDT — Stage 2E forensic-core first iteration
+
+- Derived DD-v1 AFDM integer support from nearest-integer Doppler decomposition: alpha-max 1, integer canonical slope 3, guarded slope 5.
+- Added deterministic stress regimes, constrained AFDM validation sweep, fixed-Q receiver evaluation, path/spectral/time/ambiguity/DD-map/PAPR primitives, and simple explanatory regression.
+- Focused suite reached 6 passes; one sampler assertion failed only from float64-versus-default-float32 expected dtype.
+- Corrected the test tensor dtype without changing sampler normalization or scientific behavior.
+
+## 2026-08-19 20:03 EDT — Stage 2E production runner and test closure
+
+- Added one evaluation-only runner covering AFDM/OTFS audits, nominal full/fixed-Q/oracle receivers, seven frozen stress regimes, and N=256 reference behavior.
+- Added all-atom spectrum/time/STFT, auto/cross-ambiguity, DD concentration, explanatory coupling, PAPR, and consistent operator-regeneration outputs.
+- Focused Stage-2E tests pass 7/7 and the complete suite passes 87/87 in 2.00 s.
+- Pre-smoke inspection found the N=256 reference path inherited global N=64 symbol shapes; made BER dimensions explicit from the supplied channel without changing N=64 behavior.
+
+## 2026-08-19 20:05 EDT — Stage 2E smoke forensic-array correction
+
+- Smoke completed AFDM/OTFS, nominal, N=256, and seven-regime stress phases before stopping during physical-array serialization.
+- Failure was PyTorch's lazy-conjugate NumPy guard on the Learned phase-increment diagnostic; no scientific result or protected artifact changed.
+- Materialized the conjugate before NumPy conversion; waveform values and phase definition remain identical.
+
+## 2026-08-19 20:13 EDT — Stage 2E complete smoke and visual QA
+
+- Complete reduced pipeline passed in 18.2 s after 87/87 tests; all preservation and canonical AFDM/OTFS hard gates passed.
+- Added explicit per-atom PAPR, random-block PSD/99%-occupied bandwidth, AFDM multipath overlap, easy/median/hard, and S/Q/C outputs.
+- Visually inspected all 21 figures in a contact sheet; layouts, axes, orientation, labels, and color scales are readable with no clipping.
+- Smoke selected AFDM slope 1 on only 16 validation channels; this is non-scientific and must be replaced by the 256-channel production calibration.
+
+## 2026-08-19 20:18 EDT — Stage 2E production limiting-floor correction
+
+- Full 256-channel validation selected AFDM slope 1 with mean K=24 analytic MSE 0.106405; canonical guarded slope 5 scored 0.146480.
+- Production reached stress structural evaluation before one ill-conditioned batched pseudoinverse failed SVD convergence.
+- Replaced only the zero-noise floor calculation with an explicitly reported 1e-10 regularized LMMSE limit; BER and support definitions are unchanged.
+- Authoritative checkpoint remains exact and no prior artifact changed.
+
+## 2026-08-19 20:25 EDT — Stage 2E production result and reporting audit
+
+- Production completed in 161.4 s; AFDM K=24 validation retained historical slope 1, while canonical guarded slope 5 remained a support-law reference.
+- At 18 dB fixed-Q K=24, Learned QPSK BER is 0.001260 versus AFDM 0.005190; 16-QAM is 0.02501 versus 0.06474, with paired CIs excluding zero.
+- Frozen stress evaluation shows wider-delay is hardest for Learned; QPSK/16-QAM BER rise about 170%/77% versus the separate stress DD-v1 bank.
+- Found isolated historical-AFDM BER used a different SNR-index seed despite selecting the identical waveform; aligned seeds so the true recalibration change is exactly zero.
+
+## 2026-08-19 20:32 EDT — Stage 2E final production verification
+
+- Final production completed in 164.4 s after 88/88 tests; matched historical/principal AFDM BER is exactly 0.00518990 at 18 dB.
+- Notebook executed all six cells with zero errors; added stable cell IDs to remove the nbformat forward-compatibility warning.
+- Verified all 110 prior Stage-2 artifacts and authoritative checkpoint unchanged, zero Learned training steps, and protected modules byte-identical to main.
+- `git diff --check` passes; only six Stage-2E tracked files plus README/HISTORY are modified or added, and all generated outputs remain ignored.
+
+## 2026-08-19 20:36 EDT — Stage 2E canonical-BER scope correction
+
+- Final scope audit found canonical AFDM had analytic/path audits but was absent from the required full-information BER sanity table.
+- Added guarded canonical slope 5 as a secondary numerical-only nominal baseline with its own Q masks and paired confidence differences.
+- Headline figures and the validation-selected principal AFDM label remain unchanged; no selection or Learned result is affected.
+
+## 2026-08-19 20:41 EDT — Stage 2E canonical-inclusive final run
+
+- Canonical-inclusive production completed in 169.0 s with principal AFDM selection unchanged at slope 1.
+- Canonical AFDM now appears in nominal full/fixed-Q tables and paired diagnostics but remains excluded from headline plots.
+- Restored append-only HISTORY chronology; final notebook, test, preservation, and diff gates follow this run.
+
+## 2026-08-19 20:49 EDT — Stage 2E machine-readable figure export
+
+- Added a deterministic exporter covering all 21 Stage-2E figures with exact axes, records, series, matrices, units, and provenance.
+- Existing CSV/NPZ values are serialized directly; operator galleries are reconstructed from their recorded seeds and unchanged physical conventions.
+- Export supports one self-contained `all_figures.json` plus optional per-figure JSON files and a SHA-256 manifest; no pixel digitization or downsampling.
+
+## 2026-08-19 20:54 EDT — Stage 2E concise semantic export
+
+- Added a compact all-figure JSON that retains every communication point and PAPR summary while replacing dense arrays with declared DSP statistics.
+- Dense reductions include spectral/time centroids and spreads, STFT marginals, ambiguity peaks/spreads, DD concentration, dominant offsets, path overlap, and Q/S/C correlations.
+- The concise file preserves figure-by-figure traceability and explicitly labels every reduction instead of presenting summaries as raw plotted arrays.
