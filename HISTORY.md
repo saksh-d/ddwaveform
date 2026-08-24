@@ -1,5 +1,33 @@
 # Project History
 
+## 2026-08-24 — Pub-1A PR preparation
+
+- Focused Pub-1A regression suite passes: 10 tests in 1.35 s.
+- Reviewed the scoped source, tests, runner, notebook, README, and history changes for publication.
+- Generated outputs and Python caches remain ignored and unstaged.
+
+## 2026-08-24 12:43 EDT — Pub-1A provenance and scope baseline
+
+- Started independent `stage-pub-1a` at `6d99f42`, exactly matching `origin/pub`; branch is 1 commit ahead and 8 behind current `origin/main` by identity.
+- Locked Pub-1A to frozen N=64 evaluation: no Learned training, no Stage 3/4 changes, new outputs only under ignored `outputs/stage_pub1a/`.
+- Authoritative checkpoint was absent locally; verified producing Stage-2E worktree copy has required SHA-256 `31e42c4...b2cc` and 78 reusable Stage-2E files.
+- AFDM candidate remains Stage-2E slope `2Nc1=1`, with existing `c2=sqrt(2)/(100N)`; structural gate and validation-only audit precede BER.
+
+## 2026-08-24 13:06 EDT — Pub-1A core and AFDM smoke gate
+
+- Added frozen Pub-1A core, normalized Gray 64-QAM, centralized regimes, exact fixed statistical supports, paired communication, analytic MSE, and practicality utilities.
+- AFDM smoke gate passed for admissible slopes 3/5; all four predicted grid offsets matched and stayed distinct, with validation-only smoke selecting slope 3.
+- Added resumable phase runner, PNG/PDF publication figures, saved-data report/notebook generation, and nine focused preservation/normalization/pairing gates.
+- Focused suite passes 9 tests; complete suite passes 97 tests after restoring verified ignored Stage-1A prerequisites (`HAAR-2 3e55...baad`, authoritative `31e4...b2cc`).
+
+## 2026-08-24 13:42 EDT — Pub-1A production result and visual QA
+
+- Production AFDM gate selected admissible slope `2Nc1=3` by validation MSE `0.126729` versus `0.143175` for guarded slope 5; all four grid offsets were exact/distinct.
+- At fixed K=24, classical waveforms win GRID-DD, while Learned wins QPSK/16-QAM/64-QAM representative points in fractional-Doppler, fractional-delay, and DD-v1; DD-v1 BER is `0.001260/0.02501/0.03597`.
+- Dense K sweep localizes Learned's advantage to constrained reception; full K=64 returns QPSK/16-QAM leadership to classical waveforms, while 64-QAM remains a finite-test exception.
+- Generated 20 PNG/PDF figure pairs, machine-readable raw counts/manifest, saved-result notebook, and detailed `SUPPORTED` report; inspected communication, operator, waveform, stress, and practicality figures after colorbar repair.
+- Final focused/complete suites pass 9/97; notebook executes, diff check passes, checkpoint hash and all 78 copied Stage-2E artifacts remain byte-identical.
+
 ## 2026-08-17 19:45:35 EDT — Initial Stage 0 harness
 
 - Added DD-v1 channel, classical waveform, finite-budget receiver, and QPSK metric modules in CPU double precision.
@@ -369,3 +397,23 @@
 - Added a compact all-figure JSON that retains every communication point and PAPR summary while replacing dense arrays with declared DSP statistics.
 - Dense reductions include spectral/time centroids and spreads, STFT marginals, ambiguity peaks/spreads, DD concentration, dominant offsets, path overlap, and Q/S/C correlations.
 - The concise file preserves figure-by-figure traceability and explicitly labels every reduction instead of presenting summaries as raw plotted arrays.
+
+## 2026-08-24 13:00 EDT — Pub-1A publication figure refresh
+
+- Added five supplementary C1–C5 BER views using only saved measurements through 20 dB; full-range C1–C5 and C8 remain byte-identical.
+- Reworked F1/F2 into four-row OFDM/OTFS/AFDM/Learned layouts with shared matched axes and unchanged spectral data.
+- Added the `figure-updates` saved-data-only runner phase and documented the capped views in the report/README.
+- Visual QA passed for all seven new/changed PNGs; output set is now 25 PNG/PDF pairs with no simulation, AFDM, or checkpoint change.
+
+## 2026-08-24 13:12 EDT — Pub-1A spectral normalization correction
+
+- Peak-normalized spectra once per waveform for presentation, preserving atom-to-atom peak offsets and the absolute saved DTFT arrays.
+- Re-rendered vertical F1/F2 with a 0 dB ceiling and added Learned-only F1L/F2L supplements from saved spectra.
+- Numerical checks confirm each waveform maximum is 0 dB with no positive values; focused tests and visual QA passed.
+- Output set is now 27 PNG/PDF pairs; communication figures, simulations, AFDM selection, and checkpoint remain untouched.
+
+## 2026-08-24 13:15 EDT — Pub-1A figure-update preservation gate
+
+- Restricted the saved-data figure refresh to spectral figures so communication outputs are never rewritten during layout-only updates.
+- Restored five capped-view PDF metadata timestamps after the preservation check exposed non-deterministic renderer metadata.
+- Re-running `figure-updates` now leaves every C figure byte-identical while regenerating F1/F2/F1L/F2L.

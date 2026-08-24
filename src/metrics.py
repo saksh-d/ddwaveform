@@ -54,6 +54,35 @@ def qam16_constellation() -> Constellation:
     return Constellation("16QAM", points, labels)
 
 
+def qam64_constellation() -> Constellation:
+    """Unit-average-power square 64-QAM with independent 3-bit Gray axes."""
+    labels = torch.tensor(
+        [[(index >> shift) & 1 for shift in range(5, -1, -1)] for index in range(64)],
+        dtype=torch.int64,
+    )
+    gray_levels = {
+        (0, 0, 0): -7.0,
+        (0, 0, 1): -5.0,
+        (0, 1, 1): -3.0,
+        (0, 1, 0): -1.0,
+        (1, 1, 0): 1.0,
+        (1, 1, 1): 3.0,
+        (1, 0, 1): 5.0,
+        (1, 0, 0): 7.0,
+    }
+    points = torch.tensor(
+        [
+            complex(
+                gray_levels[tuple(int(value) for value in bits[:3])],
+                gray_levels[tuple(int(value) for value in bits[3:])],
+            )
+            for bits in labels
+        ],
+        dtype=COMPLEX_DTYPE,
+    ) / math.sqrt(42.0)
+    return Constellation("64QAM", points, labels)
+
+
 def constellation_encode(bits: torch.Tensor, constellation: Constellation) -> tuple[torch.Tensor, torch.Tensor]:
     if bits.shape[-1] != constellation.bits_per_symbol:
         raise ValueError(
