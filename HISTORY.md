@@ -1,5 +1,47 @@
 # Project History
 
+## 2026-08-23 21:19 EDT — Stage 4D PR preflight
+
+- Reconfirmed `stage-4d` at merged Stage-4C `origin/main` commit `e245b322`; retained the existing branch and `main` target.
+- Complete publication suite passes 134 tests in 4.63 s; Python compilation and diff whitespace checks pass.
+- Reviewed exactly six intended tracked files; generated Stage-4D checkpoints, tables, reconstructions, and figures remain ignored.
+
+## 2026-08-23 17:28 EDT — Stage 4D provenance baseline
+
+- Confirmed isolated `stage-4d` exactly at merged Stage-4C `origin/main` commit `e245b322`; Stage 2E remains absent.
+- Restored all 394 ignored Stage-1A through Stage-4C artifacts byte-for-byte from the clean reviewed `charlotte` worktree.
+- Verified all five Learned and six Stage-3B checkpoint hashes; frozen OFDM/OTFS/AFDM and protected channel/receiver definitions match `origin/main`.
+- Pre-change complete suite passes 123 tests in 2.84 s; Stage 4D remains frozen evaluation/decomposition only with no training or BER selection.
+
+## 2026-08-23 17:36 EDT — Stage 4D unitary-geometry core
+
+- Added deterministic column-gauge alignment, intrinsic Karcher centering, and principal-log branch diagnostics with exact exponential reconstruction checks.
+- Added skew-preserving spectral, Weyl, time/subcarrier-entry, circular-band, Toeplitz/circulant, block/Kronecker, and fixed physical-generator projections.
+- Added descriptive five-sample tangent analysis with the centered-rank-at-most-four limitation explicit.
+- Seven focused geometry checks pass, including branch-cut rejection, center recovery, full-complexity reconstruction, and skew/unitarity preservation.
+
+## 2026-08-23 17:38 EDT — Stage 4D end-to-end smoke gate
+
+- Wired native/aligned basin analysis, three exact log branches, Cayley diagnostics, 66 predeclared reconstructions, and matched Learned/Stage-3B/classical/Haar controls.
+- Eight-atom/four-operator/two-channel smoke completed all structural, Q, generator, three-receiver communication, report, and four-figure paths in 4.9 s.
+- The principal branch margin is provisionally `0.00266` rad and Cayley conditioning `752`, exercising the predeclared Outcome-D path; smoke communication values are not scientific results.
+- Ten focused checks and the complete 133-test suite pass; the six-cell frozen-output notebook executes without errors and prior artifacts remain unchanged.
+
+## 2026-08-23 17:48 EDT — Stage 4D production result and Outcome D
+
+- Completed 66 frozen reconstructions across three exact log branches and 79-waveform paired evaluation in 425.6 s; no training or communication-based selection occurred.
+- The aligned basin is tight at 12.43% of the OFDM displacement, and its center reproduces 18 dB fixed-Q communication within 1.08%/0.95% of Learned QPSK/16-QAM medians.
+- The principal branch margin is only `0.002659` rad; Cayley conditioning is `752` versus the tolerance-derived limit `20`, so the relative-log coordinate is unsuitable despite exact reconstruction.
+- Principal spectral rank-95 is 41/64 and rank-64 Weyl residual is `0.8101`; low-complexity reconstructions miss complex-B/Q function, while finite-K behavior worsens nonmonotonically before exact dense recovery.
+- Controls provide no Learned-specific compact law: Stage-3B rank-64 Weyl residuals `0.550-0.676` are lower than Learned `0.817-0.839`; classified Outcome D.
+
+## 2026-08-23 17:48 EDT — Stage 4D final preservation audit and STOP
+
+- All 66 reconstructions are unitary below `7.29e-14`; 15 nested structural curves are monotone and the 4,096-term Weyl endpoint returns the center at `d_B=1.33e-28`.
+- Completed 1,896 aggregate and 970,752 paired per-channel communication rows with at least 1,048,576 bits per point; all four figures pass visual review.
+- Final complete suite passes 134 tests; the six-cell frozen-output notebook executes with zero errors, and JSON/diff whitespace checks pass.
+- All 394 prior artifacts and eleven frozen checkpoints remain byte-identical; Stage 2E remains absent. STOP before multi-N work.
+
 ## 2026-08-23 16:43 EDT — Stage 4C provenance baseline and family freeze
 
 - Confirmed isolated `stage-4c` exactly at merged Stage-4B `origin/main` commit `e3f1490`; Stage 2E remains absent.
