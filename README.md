@@ -30,6 +30,21 @@ conda run -n pytorch python -m scripts.stage_pub1a --phase report
 
 F1/F2 use one 0 dB spectral-peak normalization per waveform, with Learned-only F1L/F2L supplements; absolute dense-DTFT arrays remain saved unchanged.
 
+Stage Pub-1B tests actual sparse receiver compute and N=128/256 scaling on the independent publication lineage. Run the direct-equivalence gate before the compute grid, freeze scaling configuration before training, and respect the N=128 gate before N=256:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1b --phase complexity-validate
+conda run -n pytorch python -m scripts.stage_pub1b --phase complexity-run
+conda run -n pytorch python -m scripts.stage_pub1b --phase complexity-plots
+conda run -n pytorch python -m scripts.stage_pub1b --phase scaling-config
+conda run -n pytorch python -m scripts.stage_pub1b --phase scaling-n128
+conda run -n pytorch python -m scripts.stage_pub1b --phase scaling-n256
+conda run -n pytorch python -m scripts.stage_pub1b --phase scaling-plots
+conda run -n pytorch python -m scripts.stage_pub1b --phase report
+```
+
+`--phase all` runs the same sequence and skips N=256 unless the saved N=128 hard gate passed. `--smoke` validates output paths only. Re-plottable data, checkpoints, provenance, PNG/PDF figures, and `report.md` remain ignored under `outputs/stage_pub1b/`.
+
 ## Setup and run
 
 ```bash

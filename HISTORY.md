@@ -1,5 +1,60 @@
 # Project History
 
+## 2026-08-24 17:31 EDT — Pub-1B final verification
+
+- Compute and scaling claims independently classify `SUPPORTED`; combined report, re-plottable tables, provenance, notebook, and 9 PNG/PDF figure pairs are complete under ignored `outputs/stage_pub1b/`.
+- Visually inspected B1/B3/B4 and S1–S4; layouts are readable, scaling panels remain separated by dimension/modulation, and zero/low-error ratios use the declared fallback.
+- Final focused/complete suites pass 18/116; notebook executes, Python compilation and `git diff --check` pass.
+- N=64 checkpoint and all 71 Pub-1A artifacts retain hashes `31e4...b2cc` and tree `a127...2344`; 50 Pub-1B artifacts pass their manifest, smoke checkpoints were removed, and outputs remain ignored.
+
+## 2026-08-24 17:28 EDT — N256 production result and scaling claim
+
+- Completed the exact 2,000-step mean and 1,000-step tail replica in 2,431.5 s; validation selected mean step 1025 and tail step 1000 with no non-finite state.
+- Learned-N256 is unitary to `6.44e-14`; tail CVaR fell from `0.14726` to `0.12551` with a 0.77% mean-MSE increase inside the fixed gate.
+- AFDM slopes 7/9 passed predicted offsets; AFDM-only validation selected slope 7 (`0.51213` versus `0.55888`).
+- At K=96/18 dB, Learned BER is `0.000687/0.03569` versus best classical `0.05432/0.15995`; all gates pass and scaling claim classifies `SUPPORTED`.
+
+## 2026-08-24 16:44 EDT — N128 production result and hard gate
+
+- Completed the exact OFDM-start 2,000-step mean stage and 1,000-step tail refinement in 542.7 s; validation selected mean step 900 and tail step 1000 with no non-finite state.
+- Learned-N128 is unitary to `3.79e-14`; tail validation CVaR fell from `0.16664` to `0.13403` with mean MSE `0.07832`, inside the frozen 2% gate.
+- AFDM slopes 5/7 passed all predicted offsets; AFDM-only validation selected slope 5 (`0.17087` versus `0.21880`).
+- At K=48/18 dB, Learned BER is `0.000954/0.03259` versus best classical `0.009480/0.08944` for QPSK/16-QAM; every N128 hard gate passed.
+
+## 2026-08-24 16:38 EDT — N128 execution-policy corrections
+
+- Initial launch exposed the one-thread runtime policy unintentionally covering training; interrupted after preserving resumable validation-selected state, before test BER.
+- Scoped single-thread control to runtime benchmarking and resumed exact optimizer state under normal CPU parallelism.
+- Increased exact validation chunks from 4 to 32 channels at N=128 and 8 at N=256 while retaining all channels, SNRs, values, cadence, and selection.
+
+## 2026-08-24 16:34 EDT — Pub-1B production compute result
+
+- Tight numerical gate passed nine Learned/OTFS/AFDM systems: maximum solution error `1.90e-12`, residual `9.64e-13`, exact K=24 nnz `1536`.
+- Completed 792 paired operating points over K=8–64 and 1–64 CG iterations with 262,144 bits per modulation; saved disaggregated MACs, residuals, convergence, direct references, and controlled runtimes.
+- At K=24/16 iterations, Learned BER is `0.000977/0.02271/0.03464` for QPSK/16-QAM/64-QAM versus best classical `0.01123/0.09244/0.18155` at identical `56,896` mean total MACs.
+- Learned has multiple strict common-or-lower-MAC Pareto wins in all three modulations; compute claim classified `SUPPORTED` under the predeclared rule.
+
+## 2026-08-24 16:29 EDT — Pub-1B end-to-end smoke
+
+- Added resumable compute validation/run/plot and scaling config/N128/N256/plot/report phases with a literal persisted N128 gate.
+- Reused exact Pub-1A N=64 banks and support construction; scaling training mirrors OFDM-start mean-MSE then fixed tail-aware projected optimization.
+- Complete reduced-shape `--phase all --smoke` executed both claims, all figures/data/report paths, and N=128/N=256 checkpoint flows without error.
+- Smoke gate outcomes are integration-only and will be overwritten by production results; no scientific claim is taken from them.
+
+## 2026-08-24 16:25 EDT — Pub-1B numerical core smoke
+
+- Added exact-K sparse row storage and matrix-free complex128 CG for the unchanged mismatched LMMSE normal system; measured path forms no dense Gram matrix.
+- Defined explicit sparse, vector/dot, preconditioner, and setup complex-MAC categories with analytic toy-count checks.
+- Froze normalized DD support scaling and deterministic OTFS grids; added N=128/256 channel, AFDM, unitarity, reconstruction, and full-MSE gates.
+- First focused run passed 13 scientific checks; one assertion-only float32/float64 expected-scalar mismatch was corrected without changing implementation math.
+
+## 2026-08-24 16:16 EDT — Pub-1B provenance and preservation gate
+
+- Started dedicated `stage-pub-1b` at Pub-1A parent `737c720`, exactly matching `origin/pub`; worktree was clean and publication lineage remains separate from `origin/main`.
+- Verified the clean Pub-1A producer tree is content-identical to the merged parent and restored its 71-file result package plus its exact Stage-1A/Stage-2E prerequisites.
+- Reconfirmed checkpoint SHA-256 `31e42c4...b2cc`; every restored Pub-1A artifact and prerequisite matches the producer byte-for-byte.
+- Locked scope to common sparse CG compute validation and N=128/N=256 scaling replicas, with the N=128 hard gate and no Stage-3/4 interaction.
+
 ## 2026-08-24 — Pub-1A PR preparation
 
 - Focused Pub-1A regression suite passes: 10 tests in 1.35 s.
