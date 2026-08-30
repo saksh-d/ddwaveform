@@ -472,3 +472,101 @@
 - Restricted the saved-data figure refresh to spectral figures so communication outputs are never rewritten during layout-only updates.
 - Restored five capped-view PDF metadata timestamps after the preservation check exposed non-deterministic renderer metadata.
 - Re-running `figure-updates` now leaves every C figure byte-identical while regenerating F1/F2/F1L/F2L.
+
+## 2026-08-29 21:41 EDT — Pub-1C provenance and reuse baseline
+
+- Scoped Phase 1 to frozen N=64 evaluation: per-waveform oracle row-top-K, controlled fractionality, constellations, and separate threshold/training-K forensics; Phase 2 remains excluded.
+- Restored verified Pub-1A/Pub-1B prerequisites and three validation-selected Stage-2C OFDM-start K=16/24/32 checkpoints from reviewed producer worktrees.
+- Authoritative Learned SHA-256 is `31e42c4...b2cc`; selected K16/K24/K32 hashes agree across three independent worktrees.
+- Pre-change suite passes 116 tests; restored outputs remain ignored and the tracked worktree changed only in HISTORY.
+
+## 2026-08-29 21:44 EDT — Pub-1C controlled-axis and graph core
+
+- Added exact paired epsilon sweeps for delay-only, Doppler-only, and joint fractionality within the existing circular DD operator.
+- Added per-waveform realization-wise oracle retained-energy accounting over K/N and fixed-map threshold graph diagnostics.
+- Added input-hash, exact-offset, monotonic-energy, nested-support, and no-training gates; corrected one test-only ChannelBatch field name.
+- Focused/complete suites pass 5/121 tests; no scientific experiment or checkpoint mutation occurred.
+
+## 2026-08-29 21:50 EDT — Pub-1C end-to-end smoke and visual QA
+
+- Added resumable provenance, fractionality, rho-budget, raw-constellation, two-part structure, report, and manifest phases plus a saved-result notebook.
+- Complete reduced pipeline generated six PNG/PDF figure pairs and 28 manifested artifacts; all layouts were visually inspected and readable.
+- Reused the exact Stage-2B authoritative map: detected groups change 6 to 3 by K=16, then remain 20/21/23 through K=64; no exact K=24-only law was imposed.
+- Notebook initially resolved a copied `.context` path incorrectly; upward git-root discovery corrected it, then all six cells and 121 tests passed.
+
+## 2026-08-29 21:53 EDT — Pub-1C production claim and bootstrap gate
+
+- Production completed in 11.1 s with 64 paired communication channels, 524,288 bits per DD-v1 budget point, and 1,024-channel structural banks.
+- At joint epsilon 0.5, 16-QAM BER is 0.02150 Learned versus 0.11343 AFDM and 0.13406 OTFS; retained energy is 0.99834 versus 0.95285/0.92917.
+- Added 10,000-resample paired channel intervals: Learned-minus-AFDM/OTFS BER upper bounds are -0.08694/-0.10645; energy lower bounds are +0.04212/+0.06410.
+- Claim classifies `SUPPORTED`; on-grid and full-K results favor classical methods, preserving the explicit regime-specific boundary.
+
+## 2026-08-29 21:55 EDT — Pub-1C publication-layout refinement
+
+- Re-rendered retained-energy panels on declared informative ranges, making the joint off-grid concentration loss visible without changing saved values.
+- Relabeled training-K spectra in normalized frequency and time maps by sample index; full untruncated operator maps remain unchanged.
+- Re-ran deterministic production fractionality, budget, and structure phases; numerical results and `SUPPORTED` classification are identical.
+- Final visual recheck passed for controlled fractionality, rho budget, and training-K structure figures.
+
+## 2026-08-29 21:57 EDT — Pub-1C final verification
+
+- Final complete suite passes 122 tests; the six-cell production notebook executes with zero errors.
+- All 30 generated artifacts pass the SHA-256 manifest; six PNG/PDF figure pairs passed visual QA and outputs remain ignored.
+- Authoritative and training-K checkpoints, reused Stage-2B map, protected source modules, and complete Pub-1A/Pub-1B packages remain byte-identical.
+- `git diff --check` passes; tracked scope is the additive Pub-1C core, runner, tests, notebook, summary, README, and concise history only.
+
+## 2026-08-29 22:38 EDT — Pub-1C 15 dB constellation core
+
+- Added waveform-invariant physical-median channel selection and balanced per-symbol display sampling for named GRID-DD, fractional-Doppler, and DD-v1 regimes.
+- Added an additive raw 16-QAM K=24 phase with one shared 8,192-symbol/noise stream, exact support-count gates, and no post-receiver alignment.
+- Saved selected channels, candidate full-information scores, paired inputs, raw estimates, metrics, and channel-law provenance for reproduction.
+- Ten focused tests pass, covering selector determinism, legacy regime laws, balanced classes, shared randomness, and no-alignment source gates.
+
+## 2026-08-29 22:40 EDT — Pub-1C 15 dB constellation smoke
+
+- Reduced named-regime phase completed all channel selection, raw receiver, saved-data, and PNG/PDF paths with exact K=24 rows.
+- The 3x3 layout, transmitted-symbol coloring, ideal markers, decision boundaries, common axes, EVM, and BER annotations render cleanly.
+- Existing P3 data and PNG/PDF hashes remained byte-identical before and after the additive phase.
+- Complete suite passes 126 tests; smoke metrics remain integration-only and will be replaced by 256-channel-selection production output.
+
+## 2026-08-29 22:43 EDT — Pub-1C 15 dB constellation production
+
+- Selected physical-median channels 176/11/32 from independent 256-channel GRID-DD/fractional-Doppler/DD-v1 banks using full-information MSE only.
+- GRID-DD BER is similar across Learned/OTFS/AFDM at 0.0575/0.0555/0.0535; fractional-Doppler is 0.0589/0.0555/0.0771.
+- DD-v1 raw clusters favor Learned: EVM/BER 0.284/0.0500 versus OTFS 0.363/0.0931 and AFDM 0.380/0.0992.
+- Production notebook executes seven cells, complete suite passes 126 tests, and the regenerated manifest covers 35 artifacts.
+
+## 2026-08-29 22:45 EDT — Pub-1C 15 dB constellation final verification
+
+- Recomputed all three physical-median selections from saved seeds and confirmed exact indices 176/11/32 without waveform or finite-K input.
+- Verified 200 displayed observations for each of 16 symbols, zero plotted clipping, exact K=24 support rows, and paired saved bits/noise.
+- All 35 manifest hashes pass; P3 data/figures, four frozen checkpoints, and protected channel/receiver/waveform/learning modules remain unchanged.
+- Final PNG/PDF visual QA, notebook, 126 tests, ignored-output policy, and `git diff --check` pass.
+
+## 2026-08-29 23:29 EDT — Pub-1C constellation styling refinement
+
+- Reordered P7 columns to Learned, AFDM, OTFS and reduced headings to waveform names only.
+- Replaced transmitted-symbol class colors with one established color per waveform; ideal 16-QAM centers now use larger matching-color crosses.
+- Regenerated only P7 from saved production arrays and refreshed the manifest; saved samples and metrics remain byte-identical to the producer workspace.
+- Visual QA passes for constellation readability; complete suite passes 126 tests and `git diff --check` passes.
+
+## 2026-08-29 23:38 EDT — Pub-1C compact constellation variant
+
+- Added a separate 2x3 P8 view containing only Integer DD and Off-Grid DD rows with Learned, AFDM, OTFS columns.
+- Retained one point color per waveform, changed ideal 16-QAM centers to black crosses, and set both axes to `[-1.5, 1.5]`.
+- Regenerated P8 only from byte-identical production samples and metrics; existing P7 PNG/PDF hashes remain unchanged.
+- Visual QA passes after increasing inter-column padding; complete suite passes 126 tests and `git diff --check` passes.
+
+## 2026-08-29 23:50 EDT — Pub-1C controlled contrast constellation
+
+- Added P9 at the existing supported 18 dB operating point using paired integer/joint-half-bin channels and no SNR or waveform-outcome search.
+- Selected channel 2 as the off-grid physical-MSE median from the established 64-channel bank; the paired integer row reuses its anchors, gains, symbols, and noise.
+- Off-grid EVM/BER is 0.208/0.0232 Learned versus 0.392/0.0905 AFDM and 0.369/0.0918 OTFS; the integer control does not favor Learned.
+- Saved raw samples, metrics, and selection provenance; visual QA passes, P7/P8 remain byte-identical, all 42 manifest entries verify, and 127 tests pass.
+
+## 2026-08-30 00:06 EDT — Pub-1C PR validation
+
+- Reviewed the complete additive Pub-1C source, tests, report, notebook, README, and history scope against `origin/pub`.
+- Executed the seven-cell saved-result notebook to a temporary copy with no errors; no tracked notebook outputs changed.
+- Complete suite passes 127 tests, Python compilation passes, and all 42 ignored production artifacts match the saved manifest.
+- Generated outputs and caches remain ignored; PR staging is restricted to the reviewed publication deliverables.
