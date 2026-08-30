@@ -45,6 +45,23 @@ conda run -n pytorch python -m scripts.stage_pub1b --phase report
 
 `--phase all` runs the same sequence and skips N=256 unless the saved N=128 hard gate passed. `--smoke` validates output paths only. Re-plottable data, checkpoints, provenance, PNG/PDF figures, and `report.md` remain ignored under `outputs/stage_pub1b/`.
 
+Stage Pub-1C completes the discrete-time Phase-1 story with a frozen, per-waveform oracle interaction budget:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1c --phase provenance
+conda run -n pytorch python -m scripts.stage_pub1c --phase fractionality
+conda run -n pytorch python -m scripts.stage_pub1c --phase budget
+conda run -n pytorch python -m scripts.stage_pub1c --phase constellations
+conda run -n pytorch python -m scripts.stage_pub1c --phase constellations-15db
+conda run -n pytorch python -m scripts.stage_pub1c --phase structure
+conda run -n pytorch python -m scripts.stage_pub1c --phase report
+conda run -n pytorch python -m scripts.stage_pub1c --phase manifest
+```
+
+`--phase all` runs the ordered evaluation. Each waveform keeps its own realization-wise row-top-K interactions; K=24 means rho=0.375 only at N=64. The controlled sweep separates delay, Doppler, and joint fractional severity. Structural Part A thresholds one unchanged authoritative map; Part B compares full maps from separately trained K=16/24/32 tensors. No training, constellation alignment, pulse shaping, estimator, or Phase-2 physical-front-end change occurs. Outputs remain ignored under `outputs/stage_pub1c/`; the tracked summary is `reports/stage_pub1c_summary.md`.
+
+`constellations-15db` adds the named-regime P7 diagnostic without rewriting P3. It selects one channel nearest the waveform-invariant full-information median from independent 256-channel GRID-DD, FRACTIONAL-DOPPLER, and DD-v1 banks, then compares raw 16-QAM Learned/OTFS/AFDM outputs using identical symbols and physical noise.
+
 ## Setup and run
 
 ```bash
