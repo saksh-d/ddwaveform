@@ -54,11 +54,14 @@ conda run -n pytorch python -m scripts.stage_pub1c --phase budget
 conda run -n pytorch python -m scripts.stage_pub1c --phase constellations
 conda run -n pytorch python -m scripts.stage_pub1c --phase constellations-15db
 conda run -n pytorch python -m scripts.stage_pub1c --phase structure
+conda run -n pytorch python -m scripts.stage_pub1c --phase scaling-structure
 conda run -n pytorch python -m scripts.stage_pub1c --phase report
 conda run -n pytorch python -m scripts.stage_pub1c --phase manifest
 ```
 
 `--phase all` runs the ordered evaluation. Each waveform keeps its own realization-wise row-top-K interactions; K=24 means rho=0.375 only at N=64. The controlled sweep separates delay, Doppler, and joint fractional severity. Structural Part A thresholds one unchanged authoritative map; Part B compares full maps from separately trained K=16/24/32 tensors. No training, constellation alignment, pulse shaping, estimator, or Phase-2 physical-front-end change occurs. Outputs remain ignored under `outputs/stage_pub1c/`; the tracked summary is `reports/stage_pub1c_summary.md`.
+
+`scaling-structure` extends P4 under `outputs/stage_pub1c/` using preserved Pub-1B N=128/N=256 checkpoints. It makes one fixed-waveform, fixed-ensemble-map threshold graph per N over the shared `K/N = 0.125, 0.1875, ..., 1` grid; it does not retrain a waveform or imply matching community counts across dimensions.
 
 `constellations-15db` adds the named-regime P7 diagnostic without rewriting P3. It selects one channel nearest the waveform-invariant full-information median from independent 256-channel GRID-DD, FRACTIONAL-DOPPLER, and DD-v1 banks, then compares raw 16-QAM Learned/OTFS/AFDM outputs using identical symbols and physical noise.
 

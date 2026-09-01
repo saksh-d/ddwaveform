@@ -33,6 +33,7 @@ from src.pub1c.core import (
     paired_bootstrap_difference,
     retained_energy_rows,
 )
+from src.pub1b.core import sample_scaled_dd
 from src.receiver import effective_operator, mismatched_lmmse_equalizer, rowwise_topk
 from src.stage2a import file_sha256, load_frozen_waveform
 from src.stage2b import community_summary, ensemble_operator_statistics, spectral_centroids, spectral_overlap_matrix
@@ -63,6 +64,10 @@ SEEDS = {
 }
 COLORS = {"Learned": "#d97706", "OTFS": "#15803d", "AFDM": "#dc2626"}
 MARKERS = {"Learned": "o", "OTFS": "s", "AFDM": "^"}
+SCALING_DIMENSIONS = (128, 256)
+SCALING_RHO_VALUES = (.125, .1875, .25, .3125, .375, .4375, .5, .625, .75, 1.0)
+SCALING_STRUCTURE_CHANNELS = 1024
+SCALING_STRUCTURE_SEED = 16100
 
 
 def ensure_dirs() -> None:
@@ -721,6 +726,69 @@ def plot_graph_metrics(rows: list[dict[str, object]]) -> None:
     save_figure(fig, "P5_threshold_graph_diagnostics")
 
 
+def scaling_ks(n: int) -> tuple[int, ...]:
+    """Represent the P4 rho grid exactly at a scaled dimension."""
+    values = tuple(round(rho * n) for rho in SCALING_RHO_VALUES)
+    if len(values) != len(set(values)) or any(k < 1 or k > n for k in values):
+        raise ValueError(f"P4 rho grid is not representable at N={n}: {values}")
+    return values
+
+
+def scaled_ensemble_energy(channels: torch.Tensor, waveform: torch.Tensor, *, chunk: int = 16) -> np.ndarray:
+    """Mean untruncated |W^H H W|^2 for one fixed scaled waveform."""
+    n = waveform.shape[-1]
+    total = torch.zeros((n, n), dtype=torch.float64)
+    with torch.no_grad():
+        for start in range(0, len(channels), chunk):
+            effective = effective_operator(channels[start : start + chunk], waveform)
+            total += torch.sum(torch.abs(effective) ** 2, dim=0)
+    return (total / len(channels)).numpy()
+
+
+def plot_scaled_threshold_graphs(n: int, graphs: dict[str, np.ndarray], ks: tuple[int, ...]) -> None:
+    fig, axes = plt.subplots(2, 5, figsize=(13, 5.3), sharex=True, sharey=True)
+    maximum = max(float(value.max()) for value in graphs.values())
+    for axis, k in zip(axes.flat, ks):
+        values = graphs[f"k{k}"]
+        image = np.maximum(10 * np.log10(np.maximum(values / maximum, 1e-12)), -50)
+        axis.imshow(image, origin="upper", cmap="magma", vmin=-50, vmax=0)
+        axis.set_title(f"K={k}, rho={k / n:.3f}", fontsize=9)
+    axes[-1, 0].set_xlabel("input symbol")
+    axes[0, 0].set_ylabel("output symbol")
+    save_figure(fig, f"P4_N{n}_same_waveform_threshold_graphs")
+
+
+def phase_scaling_structure(smoke: bool) -> None:
+    """Extend P4 to preserved N=128/N=256 waveforms without retraining."""
+    count = 64 if smoke else SCALING_STRUCTURE_CHANNELS
+    for n in SCALING_DIMENSIONS:
+        checkpoint = ROOT / "outputs/stage_pub1b/checkpoints" / f"N{n}" / f"learned_n{n}.pt"
+        metadata = json.loads(checkpoint.with_name("metadata.json").read_text())
+        digest = file_sha256(checkpoint)
+        if digest != metadata["checkpoint_sha256"]:
+            raise RuntimeError(f"N={n} checkpoint hash mismatch")
+        waveform = torch.load(checkpoint, weights_only=True)
+        residual = float(torch.linalg.norm(waveform.mH @ waveform - torch.eye(n, dtype=waveform.dtype)))
+        if residual > 1e-10:
+            raise RuntimeError(f"N={n} waveform is not unitary: {residual}")
+        full_energy = scaled_ensemble_energy(sample_scaled_dd(count, SCALING_STRUCTURE_SEED + n, n).matrices, waveform)
+        ks = scaling_ks(n)
+        graphs, rows = graph_diagnostics(full_energy, ks)
+        for row in rows:
+            row.update({"n": n, "channels": count, "checkpoint_sha256": digest})
+        np.savez_compressed(DATA / f"N{n}_threshold_graphs.npz", full_ensemble_energy=full_energy, **graphs)
+        write_csv(DATA / f"N{n}_threshold_graph_metrics.csv", rows)
+        write_json(DATA / f"N{n}_threshold_graph_provenance.json", {
+            "n": n, "channels": count, "seed": SCALING_STRUCTURE_SEED + n,
+            "checkpoint": str(checkpoint.relative_to(ROOT)), "checkpoint_sha256": digest,
+            "unitarity_residual": residual, "rho_values": SCALING_RHO_VALUES,
+            "k_values": ks, "training_steps": 0,
+            "channel_sampler": "sample_scaled_dd under the frozen Pub-1B normalized scaling law",
+            "interpretation": "one fixed waveform and full ensemble map per N; only the P4 threshold changes",
+        })
+        plot_scaled_threshold_graphs(n, graphs, ks)
+
+
 def plot_training_k_structures(arrays: dict[str, np.ndarray]) -> None:
     fig, axes = plt.subplots(3, 3, figsize=(10, 9))
     maximum = max(float(arrays[f"k{k}_energy"].max()) for k in (16, 24, 32))
@@ -749,6 +817,7 @@ def phase_report() -> None:
     energy_intervals = read_csv(DATA / "fractionality_paired_energy_intervals.csv")
     trained = json.loads((DATA / "training_k_community_summaries.json").read_text())
     channel_type = read_csv(DATA / "channel_type_constellation_summary_15db.csv") if (DATA / "channel_type_constellation_summary_15db.csv").exists() else []
+    scaling = {n: read_csv(DATA / f"N{n}_threshold_graph_metrics.csv") for n in SCALING_DIMENSIONS if (DATA / f"N{n}_threshold_graph_metrics.csv").exists()}
 
     def comm(axis: str, epsilon: str, modulation: str, waveform: str) -> dict[str, str]:
         return next(row for row in fractionality if row["fractional_axis"] == axis and row["epsilon"] == epsilon and row["modulation"] == modulation and row["waveform"] == waveform)
@@ -804,6 +873,7 @@ def phase_report() -> None:
         f"- The same authoritative full map at K=24 yields {k24['community_count']} spectral communities, modularity {float(k24['weighted_modularity']):.4f}, and within-community energy {float(k24['within_energy_fraction']):.4f}.",
         "- Counts change across thresholds; the figures test rather than assume an exact three-group law.",
         "- Separately trained K=16/24/32 tensors are compared only through full untruncated maps. Their detected group counts are " + ", ".join(f"K={k}: {trained[k]['group_count']}" for k in ("16", "24", "32")) + ".",
+        *([f"- P4 N={n} extension reuses its preserved scaling checkpoint: at rho=0.375, {next(row for row in scaling[n] if row['rho'] == '0.375')['community_count']} communities retain {float(next(row for row in scaling[n] if row['rho'] == '0.375')['within_energy_fraction']):.4f} within-community energy." for n in SCALING_DIMENSIONS] if len(scaling) == len(SCALING_DIMENSIONS) else []),
         "",
         "## Method boundaries",
         "",
@@ -831,13 +901,14 @@ def phase_all(smoke: bool) -> None:
     phase_constellations_15db(smoke)
     phase_constellations_contrast(smoke)
     phase_structure(smoke)
+    phase_scaling_structure(smoke)
     phase_report()
     phase_manifest()
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--phase", choices=("provenance", "fractionality", "budget", "constellations", "constellations-15db", "constellations-contrast", "structure", "report", "manifest", "all"), default="all")
+    parser.add_argument("--phase", choices=("provenance", "fractionality", "budget", "constellations", "constellations-15db", "constellations-contrast", "structure", "scaling-structure", "report", "manifest", "all"), default="all")
     parser.add_argument("--smoke", action="store_true")
     return parser.parse_args()
 
@@ -849,7 +920,7 @@ def main() -> None:
         phase_all(args.smoke)
     else:
         function = globals()[f"phase_{args.phase.replace('-', '_')}"]
-        function(*( [args.smoke] if args.phase in ("provenance", "fractionality", "budget", "constellations", "constellations-15db", "constellations-contrast", "structure") else []))
+        function(*( [args.smoke] if args.phase in ("provenance", "fractionality", "budget", "constellations", "constellations-15db", "constellations-contrast", "structure", "scaling-structure") else []))
     print(f"PUB-1C {args.phase.upper()} COMPLETE", flush=True)
 
 

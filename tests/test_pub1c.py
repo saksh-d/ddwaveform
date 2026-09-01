@@ -17,6 +17,7 @@ from src.pub1c.core import (
     paired_bootstrap_difference,
     retained_energy_rows,
 )
+from scripts.stage_pub1c import SCALING_RHO_VALUES, scaling_ks
 from src.stage2a import file_sha256, load_frozen_waveform
 from src.stage2e import sample_regime
 
@@ -74,6 +75,14 @@ def test_graph_thresholds_use_one_map_and_nested_supports():
             assert np.all(previous <= current)
         previous = current
     assert len(np.unique(connected_components(np.eye(4)))) == 4
+
+
+def test_p4_rho_grid_scales_to_exact_integer_row_budgets():
+    assert scaling_ks(64) == (8, 12, 16, 20, 24, 28, 32, 40, 48, 64)
+    assert scaling_ks(128) == (16, 24, 32, 40, 48, 56, 64, 80, 96, 128)
+    assert scaling_ks(256) == (32, 48, 64, 80, 96, 112, 128, 160, 192, 256)
+    assert tuple(k / 128 for k in scaling_ks(128)) == SCALING_RHO_VALUES
+    assert tuple(k / 256 for k in scaling_ks(256)) == SCALING_RHO_VALUES
 
 
 def test_pub1c_core_has_no_training_entrypoint():
