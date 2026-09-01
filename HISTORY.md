@@ -1,5 +1,30 @@
 # Project History
 
+## 2026-08-31 23:02 EDT — Pub-1C P4 dual-render preservation
+
+- Preserved both P4 color renderings for N=64/N=128/N=256 under `outputs/stage_pub1c/figures/`: current `viridis` and prior-style `_magma_legacy` PNG/PDF pairs.
+- Legacy copies use the same saved thresholded-energy maps and the former no-colorbar layout; no statistic, checkpoint, or evaluation input changed.
+- Regenerated the Pub-1C manifest and confirmed focused tests pass 13/13; N=128/N=256 checkpoint hashes remain unchanged.
+
+## 2026-08-31 22:54 EDT — Pub-1C P4 colorway alignment
+
+- Re-rendered N=64/N=128/N=256 P4 threshold graphs with the shared purple-to-yellow `viridis` colorway used by the common-scale effective-A figures.
+- Retained P4's thresholded ensemble-energy statistic and common `[-50, 0]` dB scale; added a labeled shared colorbar without altering structural data or checkpoints.
+- Visual inspection passed after dedicated shared-colorbar layout; Pub-1C focused tests pass 13/13.
+
+## 2026-08-31 22:50 EDT — Pub-1C integration and verification
+
+- Integrated the N-scaled threshold graphs as the Pub-1C `scaling-structure` phase; figures, data, provenance, report, and manifest now live under `outputs/stage_pub1c/`.
+- Removed the mistaken Pub-1D-named runner/test; its ten transient ignored artifacts were moved recoverably to `.context/obsolete-stage_pub1d-20260831/`.
+- Regenerated N=128/N=256 1,024-channel outputs and visual figure pairs; Pub-1C focused tests pass 12/12 and protected scaling-checkpoint hashes are unchanged.
+
+## 2026-08-31 22:40 EDT — Pub-1C N-scaled P4 structural extension
+
+- Added Pub-1C evaluation-only N=128/N=256 P4-style threshold-graph phase using preserved Pub-1B Learned checkpoints and the frozen normalized scaling channel law; no training or checkpoint mutation.
+- Matched the N=64 P4 rho grid exactly: `K/N=0.125, 0.1875, ..., 1`, with one unthresholded 1,024-channel ensemble energy map per dimension.
+- N=128 stabilizes at three spectral communities from rho `0.1875` (within energy `0.9612`); N=256 has four across the tested grid (rho `0.375`: within energy `0.9379`).
+- Focused P4 extension plus Pub-1C tests pass 12/12; N=128/N=256 checkpoint SHA-256 values remain `3254...a3a1` and `1338...b2cc`.
+
 ## 2026-08-24 17:31 EDT — Pub-1B final verification
 
 - Compute and scaling claims independently classify `SUPPORTED`; combined report, re-plottable tables, provenance, notebook, and 9 PNG/PDF figure pairs are complete under ignored `outputs/stage_pub1b/`.

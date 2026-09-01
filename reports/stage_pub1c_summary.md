@@ -26,6 +26,8 @@ Frozen claim tested: under fractional/off-grid DD channels, the authoritative Le
 - The same authoritative full map at K=24 yields 3 spectral communities, modularity 0.6162, and within-community energy 0.9646.
 - Counts change across thresholds; the figures test rather than assume an exact three-group law.
 - Separately trained K=16/24/32 tensors are compared only through full untruncated maps. Their detected group counts are K=16: 6, K=24: 5, K=32: 3.
+- P4 N=128 extension reuses its preserved scaling checkpoint: at rho=0.375, 3 communities retain 0.9612 within-community energy.
+- P4 N=256 extension reuses its preserved scaling checkpoint: at rho=0.375, 4 communities retain 0.9379 within-community energy.
 
 ## Method boundaries
 
