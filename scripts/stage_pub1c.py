@@ -107,6 +107,13 @@ def save_figure(fig: plt.Figure, name: str, *, w_pad: float | None = None) -> No
     plt.close(fig)
 
 
+def save_p4_figure(fig: plt.Figure, name: str) -> None:
+    """Save shared-colorbar P4 figures without applying incompatible tight layout."""
+    for suffix in ("png", "pdf"):
+        fig.savefig(FIG / f"{name}.{suffix}", dpi=200, bbox_inches="tight", pad_inches=.08)
+    plt.close(fig)
+
+
 def load_waveforms() -> dict[str, torch.Tensor]:
     learned, _ = load_frozen_waveform(FROZEN)
     audit = json.loads((PUB1A / "data/afdm_audit.json").read_text())
@@ -701,15 +708,17 @@ def phase_structure(smoke: bool) -> None:
 
 
 def plot_threshold_graphs(graphs: dict[str, np.ndarray]) -> None:
-    fig, axes = plt.subplots(2, 5, figsize=(13, 5.3), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 5, figsize=(13.6, 5.8), sharex=True, sharey=True)
     maximum = max(float(value.max()) for value in graphs.values())
     for axis, k in zip(axes.flat, K_VALUES):
         values = graphs[f"k{k}"]
-        axis.imshow(np.maximum(10 * np.log10(np.maximum(values / maximum, 1e-12)), -50), origin="upper", cmap="magma", vmin=-50, vmax=0)
+        image = axis.imshow(np.maximum(10 * np.log10(np.maximum(values / maximum, 1e-12)), -50), origin="upper", cmap="viridis", vmin=-50, vmax=0)
         axis.set_title(f"K={k}, rho={k/config.N:.3f}", fontsize=9)
     axes[-1, 0].set_xlabel("input symbol")
     axes[0, 0].set_ylabel("output symbol")
-    save_figure(fig, "P4_same_waveform_threshold_graphs")
+    fig.subplots_adjust(left=.06, right=.88, bottom=.09, top=.93, wspace=.18, hspace=.16)
+    fig.colorbar(image, ax=axes, label="thresholded energy (dB relative to figure maximum)", fraction=.025, pad=.02)
+    save_p4_figure(fig, "P4_same_waveform_threshold_graphs")
 
 
 def plot_graph_metrics(rows: list[dict[str, object]]) -> None:
@@ -746,16 +755,18 @@ def scaled_ensemble_energy(channels: torch.Tensor, waveform: torch.Tensor, *, ch
 
 
 def plot_scaled_threshold_graphs(n: int, graphs: dict[str, np.ndarray], ks: tuple[int, ...]) -> None:
-    fig, axes = plt.subplots(2, 5, figsize=(13, 5.3), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 5, figsize=(13.6, 5.8), sharex=True, sharey=True)
     maximum = max(float(value.max()) for value in graphs.values())
     for axis, k in zip(axes.flat, ks):
         values = graphs[f"k{k}"]
         image = np.maximum(10 * np.log10(np.maximum(values / maximum, 1e-12)), -50)
-        axis.imshow(image, origin="upper", cmap="magma", vmin=-50, vmax=0)
+        rendered = axis.imshow(image, origin="upper", cmap="viridis", vmin=-50, vmax=0)
         axis.set_title(f"K={k}, rho={k / n:.3f}", fontsize=9)
     axes[-1, 0].set_xlabel("input symbol")
     axes[0, 0].set_ylabel("output symbol")
-    save_figure(fig, f"P4_N{n}_same_waveform_threshold_graphs")
+    fig.subplots_adjust(left=.06, right=.88, bottom=.09, top=.93, wspace=.18, hspace=.16)
+    fig.colorbar(rendered, ax=axes, label="thresholded energy (dB relative to figure maximum)", fraction=.025, pad=.02)
+    save_p4_figure(fig, f"P4_N{n}_same_waveform_threshold_graphs")
 
 
 def phase_scaling_structure(smoke: bool) -> None:

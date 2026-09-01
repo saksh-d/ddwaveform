@@ -1,5 +1,11 @@
 # Project History
 
+## 2026-08-31 22:54 EDT — Pub-1C P4 colorway alignment
+
+- Re-rendered N=64/N=128/N=256 P4 threshold graphs with the shared purple-to-yellow `viridis` colorway used by the common-scale effective-A figures.
+- Retained P4's thresholded ensemble-energy statistic and common `[-50, 0]` dB scale; added a labeled shared colorbar without altering structural data or checkpoints.
+- Visual inspection passed after dedicated shared-colorbar layout; Pub-1C focused tests pass 13/13.
+
 ## 2026-08-31 22:50 EDT — Pub-1C integration and verification
 
 - Integrated the N-scaled threshold graphs as the Pub-1C `scaling-structure` phase; figures, data, provenance, report, and manifest now live under `outputs/stage_pub1c/`.
