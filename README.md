@@ -63,6 +63,8 @@ conda run -n pytorch python -m scripts.stage_pub1c --phase manifest
 
 `scaling-structure` extends P4 under `outputs/stage_pub1c/` using preserved Pub-1B N=128/N=256 checkpoints. It makes one fixed-waveform, fixed-ensemble-map threshold graph per N over the shared `K/N = 0.125, 0.1875, ..., 1` grid; it does not retrain a waveform or imply matching community counts across dimensions.
 
+P4 retains both renderings in `outputs/stage_pub1c/figures/`: current `viridis` figures and `_magma_legacy` copies using the prior colorway.
+
 `constellations-15db` adds the named-regime P7 diagnostic without rewriting P3. It selects one channel nearest the waveform-invariant full-information median from independent 256-channel GRID-DD, FRACTIONAL-DOPPLER, and DD-v1 banks, then compares raw 16-QAM Learned/OTFS/AFDM outputs using identical symbols and physical noise.
 
 ## Setup and run

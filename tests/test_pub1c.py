@@ -17,7 +17,7 @@ from src.pub1c.core import (
     paired_bootstrap_difference,
     retained_energy_rows,
 )
-from scripts.stage_pub1c import SCALING_RHO_VALUES, plot_scaled_threshold_graphs, plot_threshold_graphs, scaling_ks
+from scripts.stage_pub1c import SCALING_RHO_VALUES, plot_legacy_threshold_graphs, plot_scaled_threshold_graphs, plot_threshold_graphs, scaling_ks
 from src.stage2a import file_sha256, load_frozen_waveform
 from src.stage2e import sample_regime
 
@@ -90,6 +90,7 @@ def test_p4_graphs_use_the_common_a_matrix_viridis_colorway():
         source = inspect.getsource(function)
         assert 'cmap="viridis"' in source
         assert "thresholded energy (dB relative to figure maximum)" in source
+    assert 'cmap="magma"' in inspect.getsource(plot_legacy_threshold_graphs)
 
 
 def test_pub1c_core_has_no_training_entrypoint():

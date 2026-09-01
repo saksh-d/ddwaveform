@@ -1,5 +1,11 @@
 # Project History
 
+## 2026-08-31 23:02 EDT — Pub-1C P4 dual-render preservation
+
+- Preserved both P4 color renderings for N=64/N=128/N=256 under `outputs/stage_pub1c/figures/`: current `viridis` and prior-style `_magma_legacy` PNG/PDF pairs.
+- Legacy copies use the same saved thresholded-energy maps and the former no-colorbar layout; no statistic, checkpoint, or evaluation input changed.
+- Regenerated the Pub-1C manifest and confirmed focused tests pass 13/13; N=128/N=256 checkpoint hashes remain unchanged.
+
 ## 2026-08-31 22:54 EDT — Pub-1C P4 colorway alignment
 
 - Re-rendered N=64/N=128/N=256 P4 threshold graphs with the shared purple-to-yellow `viridis` colorway used by the common-scale effective-A figures.
