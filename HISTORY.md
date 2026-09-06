@@ -1,5 +1,62 @@
 # Project History
 
+## 2026-09-05 19:02 EDT — Pub-1E production qualification complete
+
+- Completed frozen production: E1 424.4 s, E2 19.9 s, E3 74.6 s, E4 63.7 s; 512-channel confirmatory and 128-channel exploratory sizes remained unchanged.
+- Corrected E1 shows off-grid gain shrinking across historical, tuned-ridge, and residual-aware receivers; nominal QPSK becomes inconclusive under residual awareness, while joint-fractionality gains survive.
+- E2 localizes gains to joint fractionality; isolated axes retain losses. E3 finds partial support-recalibration recovery under doubled delay/Doppler spread despite high retained energy.
+- Locked E4 confirms favorable/boundary gains and integer/full-information reversals; recommendation is a narrower claim, with Pub-1F not executed.
+- Final figures pass visual QA; authoritative checkpoint hash remains `31e42c4...b2cc`.
+
+## 2026-09-05 18:59 EDT — Protected prerequisite restoration
+
+- Full suite initially reached 133 passes with six failures caused only by absent ignored historical artifacts.
+- Rejected later-augmented Los Angeles Pub package copies recoverably; restored authoritative Pub-1A/Pub-1B trees from clean stage producers.
+- Restored exact Stage-1A, Stage-2C, and Stage-2E prerequisites with verified source/destination hashes.
+- Complete repository suite passes 139/139 after restoration; protected Pub-1A tree hash is `a127...2344`.
+
+## 2026-09-05 18:48 EDT — E1 receiver-label audit correction
+
+- Report audit found the validation-selected ridge map was passed to both historical and tuned E1 calls, making their saved labels identical.
+- Corrected historical evaluation to force the original unit regularization; tuned scaling now applies only to receiver 2.
+- Added a regression gate proving supplied tuning maps cannot affect historical receiver rows.
+- E2–E4 are unaffected; E1 production artifacts are being regenerated before interpretation.
+
+## 2026-09-05 18:15 EDT — Pub-1E protocol and baseline freeze
+
+- Confirmed `HEAD` equals `origin/pub`; Pub-1E remains additive and evaluation-only on the frozen N=64 waveform.
+- Baseline suite: 118 passed, 11 failed only because this fresh worktree lacks ignored historical checkpoints/Pub artifacts.
+- Froze SNR, K, bank separation, pairing, AFDM validation, receiver, mismatch, uncertainty, and confirmatory rules before new test evaluation.
+- Derived residual-aware receiver as a separately banked mean/covariance approximation; explicitly not conditional-optimal because realized support/residual dependence is neglected.
+
+## 2026-09-05 18:23 EDT — Pub-1E evaluation core and resumable runner
+
+- Added frozen 2-D fractionality and one-factor prior-shift banks, waveform-specific oracle/fixed supports, receiver ladder, channel-paired BER counts, and channel-bootstrap utilities.
+- Added phase-selectable provenance, validation, E1–E4, saved-data plotting, report, Pub-1F handoff, and artifact-manifest flow; no optimizer or training interface exists.
+- Scientific gates cover full-A observation semantics, deterministic pairing, exact row budgets, receiver direct references, residual covariance PSD, and K=N collapse.
+- Focused Pub-1E suite passes 9/9; Python compilation and diff whitespace checks pass.
+
+## 2026-09-05 18:29 EDT — Pub-1E end-to-end smoke
+
+- Complete reduced-shape E1–E4 path, saved-data replot, report guard, handoff guard, and manifest completed without error.
+- Measured smoke times: E1 7.6 s, E2 1.1 s, E3 1.0 s, E4 1.0 s; production remains at the frozen bank/bit sizes.
+- Added paired channel-bootstrap tables for receiver and support comparisons; E3 now shares base randomness across mismatch severity.
+- Smoke report is explicitly non-scientific and no Pub-1F machine handoff is emitted until production completes.
+
+## 2026-09-05 18:38 EDT — Pub-1E validation and E1 production
+
+- Production AFDM validation selected canonical `2Nc1=3` over guarded candidates 5/7/9 using 25,600 validation channel-condition scores; no BER/test/Learned result entered selection.
+- E1 completed 512 paired test channels with separate 256-channel receiver tuning and 1,024-channel residual-statistics banks at the frozen K/SNR/modulation grid.
+- Saved 430,080 per-channel rows plus 324 paired channel-bootstrap contrasts; direct complex128 runtime was 401.2 s.
+- Authoritative checkpoint remains byte-identical at SHA-256 `31e42c4...b2cc`.
+
+## 2026-09-05 18:18 EDT — Pub-1E scientific core iteration
+
+- Added deterministic 2-D anchored fractionality and one-factor delay/Doppler/power-prior shift banks with unchanged normalization.
+- Added per-waveform fixed supports, tuned-ridge selection, residual-statistics receiver, full-observation communication, paired channel intervals, and finite zero-error ratios.
+- Restored only the verified authoritative checkpoint from the clean Stage-1A.2 producer; SHA-256 matches `31e42c4...b2cc`.
+- Initial focused run reached 8/9; sole failure was an assertion-only float32/float64 expected-tensor mismatch, now corrected without changing scientific math.
+
 ## 2026-08-31 23:02 EDT — Pub-1C P4 dual-render preservation
 
 - Preserved both P4 color renderings for N=64/N=128/N=256 under `outputs/stage_pub1c/figures/`: current `viridis` and prior-style `_magma_legacy` PNG/PDF pairs.
@@ -595,3 +652,29 @@
 - Executed the seven-cell saved-result notebook to a temporary copy with no errors; no tracked notebook outputs changed.
 - Complete suite passes 127 tests, Python compilation passes, and all 42 ignored production artifacts match the saved manifest.
 - Generated outputs and caches remain ignored; PR staging is restricted to the reviewed publication deliverables.
+
+## 2026-09-05 22:10 EDT — Pub-1E targeted correction implementation
+
+- Preserved the frozen checkpoint, config, raw E1-E4 tables, prior reports/handoff, manifest, protocol snapshot, and original figures before editing.
+- Fixed E1 budget selection to key by waveform; added shared uniqueness-checked selectors across all E1-E4 figures and saved-data-only receiver/AFDM companions.
+- Added protocol addendum, correction log, strengthened Pub-1F handoff content, and explicit receiver/AFDM/seed/pairing limitations; no simulation rerun.
+- Focused Pub-1E suite passes 14 tests, including raw-table hash locks and plot-key regressions; Python compilation passes.
+
+## 2026-09-05 22:16 EDT — Pub-1E saved-data correction verification
+
+- Regenerated only plots, post hoc slope-1 intervals, reports, handoffs, and manifests from frozen production CSVs; no E1-E4 simulation phase ran.
+- Visual QA passes for corrected E1 budget, all-waveform receiver ladder, and named-AFDM companion; superseded E1 PNG/PDF retain original hashes.
+- Checkpoint/config and all four per-channel production tables remain byte-identical; correction manifest records before/after provenance and active inventory.
+- Complete suite passes 143 tests; Python compilation and `git diff --check` pass.
+
+## 2026-09-05 22:18 EDT — Pub-1E correction final audit
+
+- Reverified 48 artifact-manifest entries with zero mismatches; inventory contains 20 active figure files and three clearly superseded files.
+- Confirmed checkpoint/config before-after hashes match and correction metadata records no simulation rerun.
+- Complete suite remains 143 passing; Python compilation and diff whitespace validation pass.
+
+## 2026-09-05 22:41 EDT — Pub-1E PR validation
+
+- Reviewed the complete additive Pub-1E source, frozen protocol/config, tests, reports, README, and history against current `origin/pub`.
+- Confirmed production artifacts remain ignored and PR staging contains only the 12 intended publication files.
+- Complete suite passes 143 tests; Python compilation and cached-diff whitespace validation pass.
