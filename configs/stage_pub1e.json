@@ -1,0 +1,90 @@
+{
+  "stage": "Pub-1E",
+  "status": "frozen_before_production",
+  "frozen_at": "2026-09-05T18:15:00-04:00",
+  "evaluation_only": true,
+  "n": 64,
+  "paths": 3,
+  "reference_k": 24,
+  "k_values": [8, 16, 24, 32, 48, 64],
+  "snr_db": [12, 15, 18, 20, 25],
+  "modulations": ["16QAM", "QPSK"],
+  "waveforms": ["Learned", "OTFS", "AFDM", "OFDM"],
+  "diagnostic_controls": ["IDENTITY"],
+  "checkpoint": {
+    "relative_path": "outputs/stage1a2/checkpoints/tail_from_ofdm_best.pt",
+    "sha256": "31e42c4da541a913c9b738eeb6dc96451981ad91ccd95005f3444fe520d5b2cc",
+    "producer_worktree": "/Users/saksh/conductor/workspaces/delayDopplerWaveform/edinburgh",
+    "producer_commit": "212efa518a6582c745dcba9896577164bdcbe3d4"
+  },
+  "channel_model": {
+    "equations": ["x = W s", "y = H x + n", "z = W^H y = A s + n_prime", "A = W^H H W"],
+    "operator": "H = sum_p h_p Delta(nu_p) Pi(tau_p)",
+    "doppler_sign": "negative",
+    "operator_order": "delay_first",
+    "normalization": "per-realization Frobenius energy ||H||_F^2/N = 1",
+    "observation": "always uses full A; receiver design may use a restricted A_tilde"
+  },
+  "banks": {
+    "afdm_validation": {"seed": 17100, "channels": 256},
+    "receiver_validation": {"seed": 17110, "channels": 256},
+    "nominal_support": {"seed": 17200, "channels": 1024},
+    "residual_statistics": {"seed": 17300, "channels": 1024},
+    "e2_exploratory": {"seed": 17400, "channels": 128},
+    "confirmatory": {"seed": 17500, "channels": 512},
+    "shifted_support_base": {"seed": 17600, "channels": 1024},
+    "shifted_test_base": {"seed": 17700, "channels": 512},
+    "symbols": {"seed": 17800},
+    "noise": {"seed": 17900},
+    "bootstrap": {"seed": 18000, "resamples": 10000}
+  },
+  "bits_per_channel": 2048,
+  "receiver_ladder": {
+    "historical": {"regularization_scale": 1.0},
+    "tuned_regularization_candidates": [0.25, 0.5, 1.0, 2.0, 4.0],
+    "residual_aware": "A_tilde plus waveform/condition/K-specific omitted-term mean and receive covariance from the residual-statistics bank",
+    "full_information": "direct LMMSE from complete A",
+    "solve": "direct complex128"
+  },
+  "afdm": {
+    "historical_multiplier_2Nc1": 1,
+    "canonical_multiplier_2Nc1": 3,
+    "fractional_guard_multiplier_2Nc1": 5,
+    "validation_candidates_2Nc1": [3, 5, 7, 9],
+    "metric": "mean analytic communication MSE across validation channels, K values below N, and SNR grid",
+    "tie_break": "smallest multiplier"
+  },
+  "controlled_fractionality": {
+    "epsilon_tau": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "epsilon_nu": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "map_snr_db": 18,
+    "map_k": 24,
+    "companion_k": [16, 32],
+    "primary_receiver": "historical"
+  },
+  "prior_mismatch": {
+    "delay_spread_factors": [1.0, 1.5, 2.0],
+    "doppler_spread_factors": [1.0, 1.5, 2.0],
+    "delay_correlated_power_exponents": [0.0, 0.75, 1.5],
+    "support_policies": ["nominal_fixed", "recalibrated_fixed", "oracle_row_topk"]
+  },
+  "confirmatory_conditions": {
+    "favorable": {"family": "anchored_joint", "epsilon_tau": 0.5, "epsilon_nu": 0.5},
+    "boundary": {"family": "anchored_joint", "epsilon_tau": 0.2, "epsilon_nu": 0.2},
+    "unfavorable": {"family": "anchored_joint", "epsilon_tau": 0.0, "epsilon_nu": 0.0},
+    "full_information": {"family": "nominal_dd_v1", "k": 64}
+  },
+  "statistics": {
+    "sampling_unit": "independent physical channel",
+    "aggregate_ber": "sum bit errors divided by sum tested bits",
+    "interval": "percentile bootstrap over paired channels",
+    "map_intervals": "pointwise; no familywise significance claim",
+    "zero_error_display": "Jeffreys continuity estimate (errors + 0.5)/(bits + 1) for log-ratio visualization only",
+    "insufficient_precision": "mark any comparison having fewer than 5 observed errors in either waveform"
+  },
+  "selection": {
+    "test_ber_checkpoint_selection": false,
+    "exploratory_followup": "none predeclared; any later selected follow-up requires a new bank and config amendment",
+    "sequential_stopping": false
+  }
+}

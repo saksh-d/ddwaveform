@@ -67,6 +67,22 @@ P4 retains both renderings in `outputs/stage_pub1c/figures/`: current `viridis` 
 
 `constellations-15db` adds the named-regime P7 diagnostic without rewriting P3. It selects one channel nearest the waveform-invariant full-information median from independent 256-channel GRID-DD, FRACTIONAL-DOPPLER, and DD-v1 banks, then compares raw 16-QAM Learned/OTFS/AFDM outputs using identical symbols and physical noise.
 
+Pub-1E maps the frozen waveform's representation-limited operating regime and adds controlled receiver/prior-robustness evaluations:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1e --phase provenance
+conda run -n pytorch python -m scripts.stage_pub1e --phase validate
+conda run -n pytorch python -m scripts.stage_pub1e --phase e1
+conda run -n pytorch python -m scripts.stage_pub1e --phase e2
+conda run -n pytorch python -m scripts.stage_pub1e --phase e3
+conda run -n pytorch python -m scripts.stage_pub1e --phase e4
+conda run -n pytorch python -m scripts.stage_pub1e --phase plots
+conda run -n pytorch python -m scripts.stage_pub1e --phase report
+conda run -n pytorch python -m scripts.stage_pub1e --phase manifest
+```
+
+The frozen human/machine protocols are `reports/stage_pub1e_protocol.md` and `configs/stage_pub1e.json`; the post-production interpretation/provenance corrections are in `reports/stage_pub1e_protocol_addendum.md` and `reports/stage_pub1e_correction_log.md`. `--smoke` checks integration only. Production phases are resumable and write ignored per-channel counts, selections, figures, timing, handoff, and manifests under `outputs/stage_pub1e/`. The residual-aware linear receiver is a disclosed moment approximation, not a conditional-optimal receiver. No training or Pub-1F execution is available in this runner.
+
 ## Setup and run
 
 ```bash
