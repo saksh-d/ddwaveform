@@ -83,6 +83,42 @@ conda run -n pytorch python -m scripts.stage_pub1e --phase manifest
 
 The frozen human/machine protocols are `reports/stage_pub1e_protocol.md` and `configs/stage_pub1e.json`; the post-production interpretation/provenance corrections are in `reports/stage_pub1e_protocol_addendum.md` and `reports/stage_pub1e_correction_log.md`. `--smoke` checks integration only. Production phases are resumable and write ignored per-channel counts, selections, figures, timing, handoff, and manifests under `outputs/stage_pub1e/`. The residual-aware linear receiver is a disclosed moment approximation, not a conditional-optimal receiver. No training or Pub-1F execution is available in this runner.
 
+Pub-1F first qualifies the historical waveform against slope-1-inclusive operational receivers, then obeys a frozen gate before five-seed training:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1f --phase prerequisites
+conda run -n pytorch python -m scripts.stage_pub1f --phase baseline
+conda run -n pytorch python -m scripts.stage_pub1f --phase gate
+conda run -n pytorch python -m scripts.stage_pub1f --phase training
+conda run -n pytorch python -m scripts.stage_pub1f --phase complexity
+conda run -n pytorch python -m scripts.stage_pub1f --phase setup
+conda run -n pytorch python -m scripts.stage_pub1f --phase figures
+conda run -n pytorch python -m scripts.stage_pub1f --phase report
+conda run -n pytorch python -m scripts.stage_pub1f --phase manifest
+```
+
+The protocol is frozen in `configs/stage_pub1f.json` and `reports/stage_pub1f_protocol.md`. Production `training` refuses to run unless the saved production gate authorizes it. `--smoke` exercises the implementation only and never authorizes a scientific conclusion. Receiver timing restores the caller's thread setting and keeps detector, transform, reusable preparation, offline statistics, and channel-estimation exclusions separate.
+
+An explicitly authorized post-gate continuation tests the narrower fractional-channel, retained-interaction claim without changing the failed original gate:
+
+```bash
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase amendment
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase reuse
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase training
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase statistics
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase operating-validation
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase communication
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase intervals
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase matched-confirmation
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase scaling
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase scaling-matched
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase figures
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase report
+conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase manifest
+```
+
+Its frozen amendment is `reports/stage_pub1f_protocol_amendment.md`; machine-readable settings are in `configs/stage_pub1f_continuation.json`. The primary gate is five-seed same-K 16-QAM representation performance under joint fractional propagation. QPSK, integer-grid, and full-information rows remain mandatory controls. Matched-quality detector cost and measured runtime are separate claims. Smoke outputs are integration checks only; production artifacts remain ignored under `outputs/stage_pub1f_continuation/`.
+
 ## Setup and run
 
 ```bash

@@ -1,0 +1,124 @@
+{
+  "stage": "Pub-1F",
+  "status": "frozen_before_production",
+  "frozen_at": "2026-09-06T18:20:00-04:00",
+  "n": 64,
+  "paths": 3,
+  "training_k": 24,
+  "k_values": [8, 16, 24, 32, 48, 64],
+  "snr_db": [12, 15, 18, 20, 25],
+  "modulations": ["16QAM", "QPSK"],
+  "historical_checkpoint": {
+    "path": "outputs/stage1a2/checkpoints/tail_from_ofdm_best.pt",
+    "sha256": "31e42c4da541a913c9b738eeb6dc96451981ad91ccd95005f3444fe520d5b2cc"
+  },
+  "model": {
+    "equations": ["x = W s", "y = H x + n", "z = W^H y = A s + n_prime", "A = W^H H W"],
+    "representation": "receiver retains K effective-channel coefficients per row; all N observations and symbols remain",
+    "full_coefficients": "N^2",
+    "restricted_coefficients": "N*K",
+    "rho": "K/N",
+    "observation": "always generated with complete A"
+  },
+  "hypotheses": {
+    "reproducibility": "the declared OFDM-initialized procedure yields a consistent favorable-regime advantage across five independent seeds",
+    "tail_ablation": "tail continuation improves communication beyond a channel-draw-matched mean-only continuation",
+    "operational": "Learned retains a qualified advantage against validation-selected slope-1-inclusive classical receivers",
+    "complexity": "Learned reaches predeclared BER targets with lower declared detector or receiver-processing cost",
+    "failure": "absence of paired confirmatory support, unfavorable seed dispersion, unattained BER targets, or savings confined to incomplete accounting"
+  },
+  "banks": {
+    "derivation": "SHA-256(namespace='pub1f-v1', role, semantic fields), first 63 bits; list positions excluded",
+    "base_namespace": "pub1f-v1",
+    "training": {"channels_per_step": 16},
+    "checkpoint_validation": {"channels": 256},
+    "classical_receiver_validation": {"channels": 256},
+    "statistical_support": {"channels": 1024},
+    "residual_statistics": {"channels": 1024},
+    "confirmatory": {"channels": 512},
+    "benchmark_channels": {"channels": 32},
+    "bits_per_channel": 2048,
+    "bootstrap_resamples": 10000,
+    "pairing": "common channels, symbols, and physical-domain noise across waveforms, K, receivers, and continuation arms where mathematically applicable"
+  },
+  "training": {
+    "seeds": [0, 1, 2, 3, 4],
+    "initialization": "OFDM",
+    "parent_steps": 2000,
+    "continuation_steps": 1000,
+    "batch_size": 16,
+    "validation_cadence": 25,
+    "snr_distribution_db": "Uniform[12,20]",
+    "channel_distribution": "nominal DD-v1",
+    "optimizer": "Adam",
+    "parent_learning_rate": "1e-2 steps 1-1000; 3e-3 steps 1001-1600; 1e-3 steps 1601-2000",
+    "continuation_learning_rate": "3e-3 steps 1-500; 1e-3 steps 501-800; 3e-4 steps 801-1000",
+    "projection": "SVD polar projection after every update",
+    "precision": "complex128/float64 CPU",
+    "parent_selection": "lowest checkpoint-validation mean MSE",
+    "mean_continuation_selection": "lowest checkpoint-validation mean MSE",
+    "tail_continuation_selection": "lowest checkpoint-validation CVaR_0.95 among checkpoints with mean MSE <= 1.02 times that seed's selected parent mean MSE; tie-break mean MSE then step",
+    "tail_beta": 0.95,
+    "tail_lambda": 0.40,
+    "optimizer_state_policy": "both arms clone the selected parent waveform and fresh Adam state; paired continuation draws",
+    "fixed_endpoint": 1000,
+    "historical_difference": "fresh continuation streams are used instead of Stage-1A.2's historical stream sequence"
+  },
+  "conditions": {
+    "joint_0.5": {"family": "anchored_joint", "epsilon_tau": 0.5, "epsilon_nu": 0.5},
+    "joint_0.2_probe": {"family": "anchored_joint", "epsilon_tau": 0.2, "epsilon_nu": 0.2},
+    "integer": {"family": "anchored_joint", "epsilon_tau": 0.0, "epsilon_nu": 0.0},
+    "nominal_dd_v1": {"family": "nominal_dd_v1"},
+    "full_information_nominal": {"family": "nominal_dd_v1", "k": 64}
+  },
+  "receivers": {
+    "historical": {"regularization_scale": 1.0},
+    "tuned": {"regularization_candidates": [0.25, 0.5, 1.0, 2.0, 4.0]},
+    "residual_aware": "waveform/channel-family/K/support-policy-specific omitted mean and dense receive covariance from independent bank; no conditioning on realized retained values/support",
+    "full": "complete-A direct LMMSE",
+    "scientific_solve": "direct complex128"
+  },
+  "supports": ["oracle_row_topk", "fixed_statistical"],
+  "afdm": {
+    "historical_reference": 1,
+    "canonical": 3,
+    "guard": 5,
+    "historical_guarded_candidates": [3, 5, 7, 9],
+    "operational_candidates": [1, 3, 5, 7, 9],
+    "selection_metric": "validation BER",
+    "selection_granularity": "condition, modulation, SNR, K, receiver family",
+    "adaptation": "labels and channel family known; no realized-channel or test adaptation",
+    "tie_break": "lower BER, then lower analytic MSE, then smaller slope"
+  },
+  "early_gate": {
+    "checkpoint": "historical frozen Learned",
+    "k": 24,
+    "snr_db": 18,
+    "passes_if": "for joint_0.5 QPSK and 16QAM, Learned BER is lower than every validation-selected classical alternative and each paired 95% upper bound is below zero",
+    "failure_action": "stop expensive training; finish independent infrastructure and report"
+  },
+  "ber_targets_18db": {"16QAM": [0.05, 0.03], "QPSK": [0.005, 0.002]},
+  "complexity": {
+    "levels": ["detector_kernel", "receiver_processing", "offline_design_statistics"],
+    "complex_mac_model": "C(N,K,t)=NK+N+t(2NK+6N), audited against executed work",
+    "real_flop_conversion": "one complex MAC = 8 real FLOPs only when explicitly shown; comparisons retain primitive counts",
+    "reuse_blocks": [1, 10, 100, 1000],
+    "iteration_budgets": [1, 2, 4, 8, 16, 24, 32, 48, 64],
+    "relative_residual_tolerances": [1e-6, 1e-8, 1e-10],
+    "benchmark_repetitions": 100,
+    "warmup": 20,
+    "thread_count": 1,
+    "exclusions": ["channel estimation", "RF acquisition", "coding", "transmitter hardware"]
+  },
+  "statistics": {
+    "aggregate_ber": "total errors divided by total tested bits",
+    "sampling_unit": "physical channel",
+    "interval": "paired percentile bootstrap over channels",
+    "training_seed_summary": "median and full five-seed range; seed variability separate from channel interval",
+    "zero_error_display": "Jeffreys display estimate only; raw counts authoritative",
+    "sequential_stopping": false
+  },
+  "mandatory_phases": ["prerequisites", "protocol", "baseline_validation", "baseline_confirmatory", "early_gate", "training", "evaluation", "complexity", "figures", "report", "manifest"],
+  "optional_phases": ["historical_n128_n256_benchmark", "hardware_profile", "energy"],
+  "selection_prohibitions": ["test BER checkpoint selection", "test BER seed selection", "condition-specific seed winners", "replacement of unfavorable seeds"]
+}
