@@ -1,5 +1,48 @@
 # Project History
 
+## 2026-09-06 20:00 EDT — Pub-1F five-seed training complete
+
+- Completed five independent 2,000-step OFDM-start parents plus matched 1,000-step mean/tail continuations in 786 s aggregate recorded training time; no non-finite state occurred.
+- Parent validation selected steps 275-1375; every mean-only continuation selected the cloned parent-equivalent step 0, while tail selected step 975/1000.
+- All five tail arms reduced validation stream CVaR from `0.1713-0.1943` to `0.1392-0.1639` while remaining inside the seed-relative 2% mean-MSE gate.
+- Preserved every selected checkpoint, fixed endpoint, optimizer state, trace, tensor hash, and parent-equality record; communication reproducibility remains unevaluated at this boundary.
+
+## 2026-09-06 19:47 EDT — Pub-1F continuation end-to-end smoke
+
+- Added separate authorization/reuse, resumable training, waveform-specific statistics, receiver/operating validation, fresh communication, matched-target, scaling, figure, report, and manifest phases.
+- Smoke exercised five seeds, both continuation arms, oracle/fixed supports, residual statistics, direct/dense-CG paths, target confirmation, and N=64 scaling without promoting smoke state.
+- Added six continuation figure families with saved-table replotting and analytical N=512/1024 rows; original gate remains byte-preserved and failed.
+- Continuation-focused invariants pass 13/13, including namespace separation, direct/CG equivalence, fixed-support covariance, exact scaling ledgers, and live checkpoint hashes.
+
+## 2026-09-06 19:18 EDT — Pub-1F continuation amendment
+
+- Preserved the original failed gate and froze a distinct user-authorized continuation; primary scope is fractional propagation plus limited interactions, with 16-QAM primary and QPSK/integer/full-A retained as non-universal controls.
+- Authorized five-seed replication, matched objective ablation, matched-quality cost, and N=64/128/256 measured scaling without changing the historical gate record.
+- Verified live N=128/N=256 checkpoint hashes `3254...a3a1` and `1338...c5d`; retained Pub-1B normalized channel law, OTFS grids, and dimension-specific AFDM provenance.
+- Froze fresh continuation banks, target/selection rules, scaling caps/workloads, separate representation/compute claims, and a no-retraining rule for N=128/256.
+
+## 2026-09-06 19:05 EDT — Pub-1F early-gate production result
+
+- Completed fresh 256/1,024/512-channel validation/statistics/test receiver qualification in 128.7 s; slope-1 residual-aware AFDM was the favorable operational choice.
+- Gate failed only favorable QPSK Learned-AFDM: BER `0.001204` versus `0.001461`, paired difference CI `[-5.43e-4, 2.48e-5]`; all favorable 16-QAM and OTFS/OFDM contrasts supported Learned.
+- Stopped five-seed production training per protocol; preserved two-step five-seed smoke solely as integration evidence and reported replication as an explicit follow-up decision.
+- Audited 64-step sparse cost/storage and one-thread latency: K=8 saves 83.6% modeled MACs versus K=64 but only 22.1% sparse latency; sparse CG remained slower than dense direct and had 98/768 nonconvergences.
+- Completed setup/amortization ledgers, three visually checked figure families, comprehensive report, seed/provenance and artifact manifests; all protected hashes remained unchanged.
+
+## 2026-09-06 18:42 EDT — Pub-1F baseline and training smoke
+
+- Added semantic role-keyed banks, slope-1-inclusive receiver validation, paired early-gate evaluation, and resumable five-seed parent/continuation machinery.
+- Added direct receiver, residual-statistics, sparse-CG correctness, operation/storage, timing, plotting, report, and manifest paths; smoke traversed all implemented phases.
+- Pub-1F invariants plus Pub-1B/Pub-1E regressions pass 39/39; smoke sizes were 6-8 channels and 256 bits/channel and carry no scientific interpretation.
+- Corrected a seed-field namespace collision and timing callback return defect found by smoke; historical checkpoint remains protected.
+
+## 2026-09-06 18:20 EDT — Pub-1F prerequisite and protocol freeze
+
+- Verified Denpasar's corrected 48-file Pub-1E package, active/superseded figure split, handoffs, and exact stream derivations; restored only manifest-backed ignored inputs.
+- Reconfirmed protected Learned checkpoint `31e42c4...b2cc`, Pub-1E config `2ab9c3...3488`, and all four protected raw-table hashes before Pub-1F work.
+- Froze five-seed OFDM-start replication, matched fresh-stream continuations, per-waveform support/statistics, slope-1-inclusive receiver validation, and direct-solve authority.
+- Predeclared a paired joint-(0.5,0.5) early gate plus 18 dB BER targets; expensive training remains contingent on the historical-checkpoint gate.
+
 ## 2026-09-05 19:02 EDT — Pub-1E production qualification complete
 
 - Completed frozen production: E1 424.4 s, E2 19.9 s, E3 74.6 s, E4 63.7 s; 512-channel confirmatory and 128-channel exploratory sizes remained unchanged.
@@ -678,3 +721,50 @@
 - Reviewed the complete additive Pub-1E source, frozen protocol/config, tests, reports, README, and history against current `origin/pub`.
 - Confirmed production artifacts remain ignored and PR staging contains only the 12 intended publication files.
 - Complete suite passes 143 tests; Python compilation and cached-diff whitespace validation pass.
+
+## 2026-09-06 20:19 EDT — Pub-1F continuation operating validation
+
+- Completed the frozen production selection grid: 23,920 rows over four channel controls, both modulations, SNR/K sweeps, support policies, receiver variants, and all seed checkpoints.
+- Used 256 validation channels and 512 bits/channel only for configuration selection; confirmatory channels remain untouched.
+- At the primary validation point, the strongest classical candidate is OFDM at BER 0.032608; AFDM selects slope 1 at 0.040886 and OTFS gives 0.092834.
+- Run completed in 2,605.7 s with no non-finite BER rows.
+
+## 2026-09-06 20:39 EDT — Pub-1F continuation confirmation and scaling
+
+- Fresh N=64 confirmation evaluates 910,336 channel/configuration rows; all five tail seeds beat strongest classical OFDM at the frozen joint-fractional 16-QAM point (0.023963–0.024352 versus 0.032200).
+- Matched-quality selection confirms 150/150 validation-attained cases on fresh data; two strict-QPSK OFDM cases fail validation, and equal 4,096-MAC dense applications provide no Learned detector-cost saving.
+- Measured N=64/128/256 scaling completes in 626.2 s with verified historical checkpoints; Learned has the lowest rho=0.375 16-QAM BER at each measured N under the Pub-1B law.
+- Sparse-CG remains 269–718x slower than precomputed dense application at rho=0.375; the fixed-64 nonconvergence rate rises from 115/384 at N=64 to 85/96 at N=256.
+
+## 2026-09-06 21:01 EDT — Pub-1F matched-grid completeness correction
+
+- Corrected the matched-quality search to exercise all frozen convergence tolerances; reran only matched selection/confirmation, with no training or operating-grid change.
+- Added validation-selected target searches at N=64/128/256 across the frozen rho, iteration, tolerance, direct, precomputed, and iterative alternatives.
+- Fresh scaled confirmation attains 46/46 validation-attained targets; two targets are validation failures and remain absent from confirmation.
+- Every selected scaled configuration uses precomputed dense application, so recurring detector costs tie classical alternatives at each N and no Learned computational saving is supported.
+
+## 2026-09-06 21:15 EDT — Pub-1F continuation interpretation and figure QA
+
+- Added 10,000-resample paired channel intervals from saved fresh counts; all five primary 16-QAM tail-versus-OFDM intervals exclude zero in Learned's favor.
+- Separated tail-risk success from BER: all five tails improve validation CVaR, while four significantly worsen BER against matched mean-only continuation.
+- Expanded F2–F6 with fixed endpoints, full-information controls, measured latency, validation failures, storage, convergence, profiling, and reuse amortization; inspected all seven PNGs.
+- Corrected full-run phase ordering and documented the separate amended runner; report classifies representation as supported and computational saving as unsupported.
+
+## 2026-09-06 21:19 EDT — Pub-1F continuation final validation
+
+- Complete repository suite passes 157 tests; targeted Python compilation and diff whitespace checks pass.
+- Standalone saved-data replot completes, producing seven PNG/PDF figure pairs without simulation.
+- Original failed gate and N=64/128/256 protected checkpoints retain their recorded SHA-256 hashes.
+- Production phases, tracked report/protocol/config/code/tests, and ignored artifacts are ready for manifest verification; no commit, push, or PR performed.
+
+## 2026-09-06 21:21 EDT — Pub-1F continuation preservation closeout
+
+- Final production manifest contains 469 entries; independent rehash verifies all 469 with zero mismatches.
+- Rechecked 31 inherited Pub-1E/Pub-1B/Stage protected artifacts and directory trees against the original Pub-1F prerequisite ledger; zero mismatches.
+- Manifest records the unchanged failed-gate hash and all three unchanged scaling-checkpoint hashes.
+
+## 2026-09-06 21:22 EDT — Pub-1F PR validation
+
+- Reviewed and explicitly staged the complete 16-file Pub-1F package against current `origin/pub`; generated outputs and caches remain ignored.
+- Complete suite passes 157 tests; Python compilation and cached-diff whitespace checks pass.
+- Reconfirmed the scoped representation conclusion, negative compute result, protected hashes, and 469-entry artifact manifest before publication.

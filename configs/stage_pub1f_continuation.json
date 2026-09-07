@@ -1,0 +1,113 @@
+{
+  "stage": "Pub-1F continuation",
+  "status": "amendment_frozen_before_continuation_production",
+  "frozen_at": "2026-09-06T19:18:00-04:00",
+  "authorization": {
+    "kind": "explicit_user_protocol_amendment",
+    "attachment_sha256": "52f883fffffff49ab3807cfa4516132690f16aa13d7df8488117de58c1b58c61",
+    "preserve_original_gate": true,
+    "original_gate_path": "outputs/stage_pub1f/data/early_gate.json",
+    "original_gate_outcome": "FAIL",
+    "continuation_rule": "authorized independent of original resource gate; never mark original gate passed"
+  },
+  "claim_boundary": {
+    "primary": "representation advantage under fractional delay-Doppler propagation and restricted effective-channel interactions",
+    "primary_modulation": "16QAM",
+    "secondary_modulation": "QPSK",
+    "controls_not_gates": ["integer", "full_information_nominal"],
+    "separate_claims": ["same-K representation", "matched-quality computation/runtime/storage"],
+    "no_universal_superiority_requirement": true
+  },
+  "decision_rules": {
+    "representation_reproduces": "at least four of five selected tail checkpoints have lower joint_0.5 16QAM BER than the strongest operational classical baseline at K=24 and 18 dB, with negative median seed difference; report every seed and channel intervals separately",
+    "tail_contributes": "at least four of five tail continuations satisfy the mean gate and improve validation CVaR_0.95 over their matched mean continuation; BER effects are reported and may be mixed",
+    "computational_saving": "validation-selected configuration confirms target on fresh test data with lower declared cost than each compared classical alternative under the same accounting level",
+    "runtime_crossover": "measured sparse receiver-processing latency is lower than the equivalent dense/precomputed comparator with numerical validity at a measured dimension/budget"
+  },
+  "training": {
+    "n": 64,
+    "k": 24,
+    "seeds": [0, 1, 2, 3, 4],
+    "initialization": "OFDM",
+    "parent_steps": 2000,
+    "continuation_steps": 1000,
+    "batch_size": 16,
+    "validation_channels": 256,
+    "validation_cadence": 25,
+    "optimizer_state_policy": "selected parent waveform cloned; fresh Adam state in both arms",
+    "parent_selection": "minimum validation mean MSE",
+    "mean_selection": "minimum validation mean MSE",
+    "tail_selection": "minimum validation stream CVaR_0.95 subject to mean <= 1.02 times selected parent mean",
+    "tail_beta": 0.95,
+    "tail_lambda": 0.40,
+    "selected_and_fixed_endpoints": true
+  },
+  "evaluation": {
+    "namespace": "pub1f-cont-v1",
+    "conditions": ["joint_0.5", "joint_0.2_probe", "integer", "nominal_dd_v1", "full_information_nominal"],
+    "snr_db": [12, 15, 18, 20, 25],
+    "k_values": [8, 16, 24, 32, 48, 64],
+    "modulations": ["16QAM", "QPSK"],
+    "checkpoint_validation_channels": 256,
+    "configuration_validation_channels": 256,
+    "statistics_channels": 1024,
+    "confirmatory_channels": 512,
+    "validation_bits_per_channel": 512,
+    "confirmatory_bits_per_channel": 2048,
+    "bootstrap_resamples": 10000,
+    "fresh_confirmation_required": true,
+    "primary_grid": "all selected parent/mean/tail checkpoints at K=24 across SNR and at 18 dB across K/conditions",
+    "fixed_step_grid": "paired parent/mean/tail endpoints at K=24, 18 dB, joint_0.5 and nominal_dd_v1",
+    "receivers": ["historical", "tuned", "residual_aware", "full"],
+    "support_policies": ["oracle_row_topk", "fixed_statistical"],
+    "afdm_operational_candidates_by_n": {
+      "64": [1, 3, 5, 7, 9],
+      "128": [1, 3, 5, 7, 9],
+      "256": [1, 3, 5, 7, 9, 11]
+    },
+    "adaptation": "condition, dimension, modulation, SNR, K, receiver and support policy known; never realized-test-channel adaptive"
+  },
+  "matched_quality": {
+    "snr_db": 18,
+    "targets": {"16QAM": [0.05, 0.03], "QPSK": [0.005, 0.002]},
+    "iteration_budgets": [1, 2, 4, 8, 16, 24, 32, 48, 64],
+    "tolerances": [1e-6, 1e-8, 1e-10],
+    "validation_selects": ["waveform", "K", "receiver", "support", "AFDM slope", "iteration budget"],
+    "confirmation": "fresh locked channels/bits/noise; failure retained; no test reselection",
+    "reuse_blocks": [1, 10, 100, 1000]
+  },
+  "scaling": {
+    "dimensions": [64, 128, 256],
+    "rho_values": [0.125, 0.25, 0.375, 0.5, 0.75, 1.0],
+    "reference_k": {"64": 24, "128": 48, "256": 96},
+    "channel_law": "Pub-1B normalized scaling: delay_max=4N/64, doppler_max=.75N/64, P=3",
+    "otfs_grids": {"64": [8, 8], "128": [16, 8], "256": [16, 16]},
+    "historical_afdm_selected": {"64": 3, "128": 5, "256": 7},
+    "checkpoints": {
+      "64": {"path": "outputs/stage1a2/checkpoints/tail_from_ofdm_best.pt", "sha256": "31e42c4da541a913c9b738eeb6dc96451981ad91ccd95005f3444fe520d5b2cc"},
+      "128": {"path": "outputs/stage_pub1b/checkpoints/N128/learned_n128.pt", "sha256": "325471617f810ed157d4d10d203b347f4338a7f5cbd9470b8849786c173ea3a1"},
+      "256": {"path": "outputs/stage_pub1b/checkpoints/N256/learned_n256.pt", "sha256": "13384b17361d570a9581d22c3bab992799eb0637e7130fbc69c009b70e019c5d"}
+    },
+    "benchmark_channels": {"64": 32, "128": 16, "256": 8},
+    "communication_validation_channels": {"64": 64, "128": 64, "256": 32},
+    "communication_confirmatory_channels": {"64": 128, "128": 128, "256": 64},
+    "communication_bits_per_channel": 2048,
+    "timing_repetitions": {"64": 50, "128": 30, "256": 20},
+    "warmup": 10,
+    "thread_count": 1,
+    "fixed_iteration_budget": 64,
+    "tolerance": 1e-10,
+    "maximum_iterations": {"64": 256, "128": 512, "256": 1024},
+    "analytical_dimensions": [512, 1024],
+    "profile_channels": 1
+  },
+  "reuse_policy": {
+    "historical_results_remain_labeled": true,
+    "smoke_training_is_never_production": true,
+    "historical_checkpoint_is_not_a_replication_seed": true,
+    "old_test_data_is_not_fresh_confirmation": true,
+    "supports_and_statistics_are_waveform_specific": true
+  },
+  "optional": ["reduced_precision", "accelerator", "energy", "measured_N512_N1024"],
+  "prohibited": ["N128_or_N256_retraining", "new_learning_objective", "test_BER_selection", "seed_replacement", "unlabeled_cross_protocol_pooling"]
+}
