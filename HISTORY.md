@@ -1,5 +1,47 @@
 # Project History
 
+## 2026-09-16 12:00 EDT — ICC result summary audit
+
+- Consolidated production nominal, unchanged-support stress, and five-checkpoint reproducibility CSVs into exact BER/count/energy/MSE summaries.
+- Confirmed 12,288 nominal, 8,192 stress, and 5,120 reproducibility rows; per-channel error range, mean, median, and zero-error counts were independently recomputed.
+- Preserved the interpretation boundary: Learned leads fractional stress conditions at fixed nominal support, while integer/full-information controls favor classical waveforms; no confidence intervals inferred.
+
+## 2026-09-16 11:47 EDT — ICC N=64 production confirmation complete
+
+- Completed the fresh campaign in 9.29 s: 12,288 nominal, 8,192 stress, and 5,120 reproducibility rows; all 25,600 rows retain raw counts, energy, and analytic MSE.
+- Nominal Learned fixed/realized BER is `0.001163/0.001113` QPSK and `0.024457/0.023884` 16-QAM; full-information controls favor classical OTFS/AFDM and reject universal superiority.
+- Unchanged nominal Learned support is descriptively best across wider-delay, wider-Doppler, and five-path conditions; classical waveforms lead the exact integer-grid control.
+- Five fixed-support tail checkpoints span `0.000839-0.001148` QPSK and `0.025213-0.025780` 16-QAM on the identical 512-channel bank.
+- Independent aggregation, exact schemas, source/artifact hashes, K semantics, full-MSE invariance, compilation, and focused tests pass; no confidence intervals were inferred.
+
+## 2026-09-16 11:46 EDT — ICC smoke provenance completion
+
+- Added tensor hashes for Learned, OFDM, OTFS, and slope-3 AFDM to the generated runtime config.
+- Re-ran the focused suite and complete reduced campaign; 6/6 tests and every evaluation path pass.
+- Reconfirmed exact CSV schemas and checkpoint provenance; code whitespace validation passes.
+- Production is authorized only against the now-frozen config/runner/core hashes captured at launch.
+
+## 2026-09-16 11:44 EDT — ICC confirmation end-to-end smoke
+
+- Exercised authoritative, four-waveform, four-stress, and five-seed paths through direct complex128 LMMSE without retraining.
+- Generated all seven requested smoke data/config files plus a hash manifest: 96 nominal, 96 stress, and 40 reproducibility per-channel rows.
+- Verified exact requested per-channel headers, raw count aggregation, seed ledger, and six live checkpoint hashes.
+- Smoke completed in 0.10 s at reduced channel counts; values are integration-only and carry no scientific interpretation.
+
+## 2026-09-16 11:42 EDT — ICC input and focused-test gate
+
+- Restored only the authoritative N=64 checkpoint and five selected Pub-1F tail checkpoints from the preserved producer workspace.
+- Verified all six file hashes exactly, including authoritative `31e42c...b2cc`; no checkpoint was modified.
+- Focused channel, support, receiver, summary, and frozen-config tests pass 6/6 in the `pytorch` environment.
+- Scientific production remains unstarted pending end-to-end smoke validation.
+
+## 2026-09-16 11:40 EDT — ICC N=64 confirmation implementation
+
+- Froze a fresh `icc27-final-v1` evaluation-only campaign at N=64, K=24, 18 dB, QPSK/16-QAM; no training or test-BER receiver selection is exposed.
+- Added nominal fixed/realized/full receivers, unchanged-support delay/Doppler/path/integer stress controls, and common-bank five-checkpoint reproducibility.
+- Added exact per-channel and aggregate CSV contracts with raw bit counts, retained energy, analytic MSE, provenance, seeds, and hashes.
+- Python compilation and whitespace validation pass; production inputs remain hash-gated before smoke or scientific execution.
+
 ## 2026-09-06 20:00 EDT — Pub-1F five-seed training complete
 
 - Completed five independent 2,000-step OFDM-start parents plus matched 1,000-step mean/tail continuations in 786 s aggregate recorded training time; no non-finite state occurred.

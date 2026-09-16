@@ -119,6 +119,15 @@ conda run -n pytorch python -m scripts.stage_pub1f_continuation --phase manifest
 
 Its frozen amendment is `reports/stage_pub1f_protocol_amendment.md`; machine-readable settings are in `configs/stage_pub1f_continuation.json`. The primary gate is five-seed same-K 16-QAM representation performance under joint fractional propagation. QPSK, integer-grid, and full-information rows remain mandatory controls. Matched-quality detector cost and measured runtime are separate claims. Smoke outputs are integration checks only; production artifacts remain ignored under `outputs/stage_pub1f_continuation/`.
 
+The final ICC N=64 confirmation is an evaluation-only, fresh-bank run. It compares fixed support, realized Top-K, and full information; applies unchanged nominal fixed supports under four stress conditions; and evaluates the five selected Pub-1F continuation checkpoints with one common receiver protocol:
+
+```bash
+conda run -n pytorch python -m scripts.icc27_final_n64_confirm --smoke
+conda run -n pytorch python -m scripts.icc27_final_n64_confirm
+```
+
+The frozen inputs are in `configs/icc27_final_n64_confirm.json`. Machine-readable production outputs are written under `outputs/icc27_final_n64_confirm/`; no waveform is retrained and no receiver choice uses test BER.
+
 ## Setup and run
 
 ```bash

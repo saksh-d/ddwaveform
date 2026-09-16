@@ -1,0 +1,82 @@
+{
+  "experiment": "ICC27_FINAL_N64_CONFIRM",
+  "status": "frozen_before_production",
+  "namespace": "icc27-final-v1",
+  "n": 64,
+  "k": 24,
+  "snr_db": 18,
+  "dtype": "complex128/float64 CPU",
+  "modulations": ["QPSK", "16QAM"],
+  "bits_per_channel": 2048,
+  "banks": {
+    "nominal_channels": 512,
+    "stress_channels_per_condition": 256,
+    "support_channels": 1024,
+    "seed_derivation": "SHA-256(namespace, role, sorted semantic fields), first 63 bits",
+    "pairing": "common channels, symbols, and physical-domain noise across waveforms and receiver modes"
+  },
+  "channel_conditions": {
+    "nominal": {
+      "delay": "Uniform[0,4]",
+      "doppler": "Uniform[-0.75,0.75]",
+      "paths": 3
+    },
+    "wider_delay": {
+      "delay": "Uniform[0,8]",
+      "doppler": "Uniform[-0.75,0.75]",
+      "paths": 3
+    },
+    "wider_doppler": {
+      "delay": "Uniform[0,4]",
+      "doppler": "Uniform[-1.5,1.5]",
+      "paths": 3
+    },
+    "more_paths": {
+      "delay": "Uniform[0,4]",
+      "doppler": "Uniform[-0.75,0.75]",
+      "paths": 5
+    },
+    "integer_grid": {
+      "delay": "DiscreteUniform{0,1,2,3,4}",
+      "doppler": "DiscreteUniform{-1,0,1}",
+      "paths": 3,
+      "note": "Established exact-grid control; restricting to nominal Doppler bounds would leave only zero Doppler."
+    }
+  },
+  "receiver": {
+    "solve": "direct LMMSE",
+    "regularization_scale": 1.0,
+    "nominal_modes": ["fixed_statistical_k24", "realized_topk_k24", "full_k64"],
+    "stress_mode": "nominal_fixed_statistical_k24",
+    "support_rule": "row-wise top-K ensemble mean effective-channel energy",
+    "support_recalibration": false,
+    "test_ber_tuning": false
+  },
+  "waveforms": {
+    "Learned": {
+      "path": "outputs/stage1a2/checkpoints/tail_from_ofdm_best.pt",
+      "sha256": "31e42c4da541a913c9b738eeb6dc96451981ad91ccd95005f3444fe520d5b2cc"
+    },
+    "OFDM": {"definition": "unitary 64-point IDFT"},
+    "OTFS": {"definition": "8x8 OTFS"},
+    "AFDM": {
+      "slope": 3,
+      "c1": 0.0234375,
+      "c2": 0.0002209708691207961
+    }
+  },
+  "reproducibility": {
+    "seed_ids": [0, 1, 2, 3, 4],
+    "checkpoint_kind": "selected tail continuation",
+    "checkpoint_template": "outputs/stage_pub1f_continuation/checkpoints/production/seed_{seed_id}/tail_continuation_selected.pt",
+    "checkpoint_sha256": {
+      "0": "1de690c24d4fcfd9b101fddf8efdecf34f4d81a56d45318a42e0420f5fb5d254",
+      "1": "4c061c1fba52d80352d1b922054835441ef0dcd329123cf0d736e8dedff9bd25",
+      "2": "8af234d18c8fb47247ddf3a3e7dacbf01ca3aa1bb3e07009c0090b5323b2d625",
+      "3": "4f83e0bfc0ccbdd6f03995491ba8a64a1d2664d78e55ed9fd59e902a5131e86b",
+      "4": "c907f829f36959660db547776f49d8c58a788fc2d1414c7a6a075645efe9cd38"
+    },
+    "receiver_mode": "own fixed statistical K=24 support from common nominal support bank",
+    "test_channels": "same nominal ICC confirmation bank as the four-waveform experiment"
+  }
+}
