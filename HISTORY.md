@@ -551,3 +551,27 @@
 - Authoritative and all nine Stage-2C checkpoint hashes match; maximum learned unitarity residual remains 2.29e-14.
 - All 88 Stage-2A/2B/2C artifacts match the source worktree byte-for-byte; Stage-2D outputs remain ignored.
 - Channel, receiver, waveform, and research-plan files are unchanged from `origin/main`; no commit, push, merge, training, or Stage 3 action occurred.
+
+### 2026-10-31 14:43 EDT — Stage 5A provenance and algebra qualification
+
+- Clean baseline `e6406f6` on `phoenix/pasted-text`; isolated Stage-5A protocol, native multiscale actions, exact QR/Givens reference added.
+- Recovered original Learned N64 array from sealed prior bundle; array SHA-256 `11bb15d3...514b0f` matches its manifest. Four Stage-4B repeats and Stage-3B tensors unavailable; no substitute retraining.
+- Prior audit qualifies Stage-4B independence and Stage-4D branch claims; prior direct butterfly/adjoint and 43.28% constant-modulus obstruction inspected.
+- Initial checks: eight algebra checks pass; synthetic N8 relative error 1.49e-5 meets declared 1e-4 gate but failed an overly strict 1e-6 test assertion, now aligned. Baseline suite also has two missing-historical-checkpoint failures.
+- N64 profiling pilot: 48 evaluations in 0.55 s, relative error 1.001; provisional only. Final selection remains native complex fidelity, independent of BER.
+
+### 2026-10-31 14:48 EDT — Stage 5A bounded factorization and optimizer diagnosis
+
+- Completed 72 equal-budget target/topology/depth/restart fits plus 12 known-family controls; all 24 nested sequences preserve prior incumbents.
+- Best Learned relative errors descend approximately 0.988/0.711/0.383 at 448/832/1,600 real parameters; native phase/order retained.
+- Cold synthetic recovery misses the 1e-4 relative-error gate in 12/12 cases; 1e-3 planted-neighborhood probes qualify only 2/6 shallow cases. No capacity-impossibility claim or architecture expansion.
+- Independent review prompted strict fit-grid completion guards and actual compilation/complete-chain timing. Its nesting concern was disproved by step-zero retention and all-sequence checks.
+- Froze six attained candidates before fresh operator/communication banks; primary BER and scalar-gain diagnostic use complete LMMSE. Archive search confirms missing historical population tensors.
+
+### 2026-10-31 14:53 EDT — Stage 5A final evaluation and independent review
+
+- Completed 512-atom/512-multipath fidelity and 1,024-channel paired QPSK/16-QAM evaluation at 12/15/18/20 dB; all six candidates frozen before final banks.
+- Best four-pass error 0.3831; DD/multipath squared discrepancies 0.2436/0.2430. At 18 dB QPSK, teacher/fitted BER 0.001017/0.001104; 10% noninferiority unresolved. OTFS/AFDM beat teacher at 18 dB in both modulations.
+- Native four-pass B1 forward 424.1 µs versus dense 4.5 µs; deployed numeric cache 44,032 B versus dense 65,536 B. No useful compact representation established; recommend optimizer qualification for Stage 5B.
+- Verified 196,608 raw rows, 192 summaries, 512 exact receiver-replay counts and 42 protected historical files. Final independent review found no material issue; historical population coverage remains incomplete.
+- Four 300-DPI figures QA complete. Stage-5A tests 9/9; full suite 141 pass, two failures solely from missing historical checkpoint files. Stage 5B, push and merge not performed.

@@ -1,0 +1,23 @@
+{
+  "protocol": "stage5a-v1",
+  "scope": "bounded exploratory representation study; no Stage 5B implementation",
+  "precision": "CPU float64/complex128, one PyTorch thread",
+  "population_requested": "five historical Learned, Stage3B Q-only, classical and Haar",
+  "population_available": "archived native LEARNED_0; two deterministic Haar controls; OFDM/OTFS/AFDM/IDENTITY; missing targets remain missing",
+  "primary_family": "F^H D times independent complex two-angle Givens multiscale layers",
+  "passes": [1, 2, 4],
+  "topologies": ["ascending", "descending"],
+  "restarts": 2,
+  "adam_steps": 250,
+  "lbfgs_steps": 200,
+  "fit_selection": "minimum native complex squared Frobenius/N, including step zero; nested per restart; no BER selection",
+  "synthetic_gates": "N8 algebra; N64 known-family targets at every pass/topology with identical optimizer budget; relative error <1e-4 qualifies that tested fitter",
+  "operator_arm": "omit redundant optimization if exact labeled DD family identifies W up to global phase; evaluate held-out discrepancies regardless",
+  "conditional_alternative": "one free-diagonal phase FFT cascade, only if primary residual diagnostics justify; freeze separate amendment before execution",
+  "atoms": {"count": 512, "law": "independent continuous uniform tau[0,4], nu[-0.75,0.75]", "role": "final-atoms"},
+  "multipath": {"count": 512, "law": "repository normalized DD-v1 N64 P3", "role": "final-operator-channels"},
+  "communication": {"count": 1024, "role": "final-communication", "blocks_per_channel": 16, "snrs_db": [12,15,18,20], "modulations": ["QPSK","16QAM"], "receivers": ["legacy-full-LMMSE", "gain-aware-full-LMMSE"], "paired": "physical H, transmitted bits, physical noise shared across waveforms", "bootstrap_resamples": 5000, "noninferiority": "candidate BER - 1.10*teacher BER; channel-paired one-sided 95% upper bound <0", "multiplicity": "pointwise intervals, no simultaneous family-wide preservation claim"},
+  "frozen_communication_candidates": "all Learned_0 primary fits selected by representation objective at each pass/topology, exact-Givens equivalence, teacher and all classical controls; conditional alternative if frozen before final-bank use",
+  "timing": {"batch_sizes": [1,32], "repeats": 41, "warmups": 5, "actions": ["forward","adjoint"], "setup": "compile measured separately; native cached factor actions versus dense BLAS; one CPU thread"},
+  "stop": "no blind depth scaling beyond four passes, no new waveform training, no remote jobs; failed positive controls imply optimization uncertainty"
+}
