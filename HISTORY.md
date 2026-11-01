@@ -575,3 +575,57 @@
 - Native four-pass B1 forward 424.1 µs versus dense 4.5 µs; deployed numeric cache 44,032 B versus dense 65,536 B. No useful compact representation established; recommend optimizer qualification for Stage 5B.
 - Verified 196,608 raw rows, 192 summaries, 512 exact receiver-replay counts and 42 protected historical files. Final independent review found no material issue; historical population coverage remains incomplete.
 - Four 300-DPI figures QA complete. Stage-5A tests 9/9; full suite 141 pass, two failures solely from missing historical checkpoint files. Stage 5B, push and merge not performed.
+
+### 2026-10-31 — Stage 5B-A frozen qualification design
+- Verified clean `a12d24f`, branch `t3/qualify-factor-optimization`; prior Stage-5A outputs recovered read-only from phoenix, teacher hash matches.
+- Added Cartesian two-coordinate mixer with analytic zero limit; original fitter/source unchanged.
+- Froze 18 N64 targets, 54 paired starts, 108 A/B fits; unchanged solver schedule with actual evaluation accounting and common-prefix comparison.
+- Strict local/practical gates retain all failures; Learned pilot conditional on both. Independent review started.
+
+### 2026-10-31 — Stage 5B-A algebra checks and paired campaign
+- Independent dense/exponential checks and central finite differences pass; 23 focused tests pass in 2.07 s.
+- Confirmed original column-gate convention; Cartesian mapping preserves all initial matrices and the two-real-coordinate gate family.
+- Launched frozen 108-fit A/B campaign; retained all traces/checkpoints. Identified polar identity-phase degeneracy without claiming it explains cold fitting.
+
+### 2026-10-31 — Stage 5B-A conditional pilot freeze
+- Frozen optional 12-fit pilot before synthetic suite completion: four passes, original topologies/restart seeds, Learned/Haar/OFDM.
+- Activation requires every declared B local and cold case below 1e-4; otherwise skip. No extra training or BER.
+- Full tests: 155 pass, same two absent-historical-checkpoint failures as Stage 5A; no test disabled.
+
+### 2026-10-31 — Stage 5B-A paired results and solver amendment
+- Completed all 108 A/B fits: polar local 12/36, cold 0/18; Cartesian local 36/36, cold 12/18, all four-pass cold cases fail.
+- 126 finite-difference checks passed (maximum absolute discrepancy 1.78e-10); N64 directional checks confirm identity-phase degeneracy removed locally.
+- Froze one 54-fit Cartesian L-BFGS-only intervention, 500 hard closure cap, same targets/starts; no claim of equal runtime or isolated tolerance effect.
+- Conditional Learned pilot blocked by practical gate. No capacity or Learned-versus-Haar conclusion drawn.
+
+### 2026-10-31T18:50:02-04:00 — Stage 5B-A reviewed completion
+- Completed162fits: A local12/36,cold0/18; Cartesian B36/36,12/18; direct-LBFGS C36/36,14/18. Four deep cold failures remain; Learned pilot skipped.
+- Total59474 objective/backward evaluations, 176.5s fitting;144finite-difference checks pass, maximum absolute error1.78e-10. All selected errors/counts independently verified.
+- Separate reviewer validates NumPy/SciPy gate/order/gradient and deep checkpoint checks; no unresolved disagreement. Focused23pass; full155pass/two historical missing-checkpoint failures.
+- OutcomeB: local recovery qualified for frozen law, practical fitting unqualified. Recommend bounded target-derived initialization; no Stage5B-B implementation, push or merge.
+
+### 2026-10-31T20:38:19-04:00 — Stage 5B-A explanatory figures
+- Added three saved-data plots: all162recovery fits, prespecified four-pass convergence traces, N8 one-pass Jacobian spectra. No new fits or scientific result changes.
+- Exported300DPI PNGs with approved typography; visually checked clipping/legends and verified input hashes.
+- Added inline HTML explainer with success counts and plot captions; preview verified at728px, no console errors. Original run manifest preserved; figures carry a separate manifest.
+
+### 2026-10-31 — Research council diagnostic freeze
+- Convened five-role council in batches with clean member briefs; no new fitting or Stage5B-B implementation authorized.
+- Rechecked deep C traces: both successes cross threshold after400evaluations; remaining failures still improve, so initialization is not isolated.
+- Froze read-only six-checkpoint diagnostic:144fixed-layer conditional improvement calculations plus6output-phase checks; no gate or checkpoint updates.
+
+### 2026-10-31T21:06:06-04:00 — Research council reviewed recommendation
+- Five actual members completed independent openings, reciprocal critique and final synthesis audits; preserved First-Principles preference for coupled diagnostics first.
+- Read-only144layer/6phase audit independently reproduced: failed best-layer opportunities0.00334–0.294% of squaredloss; no checkpoint updates. Derived identity rank448/1600, not genericN64rank.
+- Revised initializer-first recommendation to proposed2000-evaluation persistence versus4x500starts on all6deep targets;24000new-evaluation ceiling,30s pertarget/policy. Not executed.
+- GN/trust-region remains conditional fallback; exactblocks mathematically solved but no global recovery guarantee. Verified all473original run-manifest hashes unchanged; no Stage5B-B implementation or remote jobs.
+
+### 2026-10-31T21:06:57-04:00 — Council delivery and visual verification
+- Allfivefinalaudits completed; clarified trace replay, originalstartdistribution, cumulative restarttime and all-sixpolicygate. Orderingdissent preserved.
+- Saved council report, roster, evidence/decision records and hashed read-only diagnostic; rendered comparison visual with no console errors.
+- Original473run-artifacthashes verified; only proposedfuturepolicycomparison, no newfits or Stage5B-B solver implementation.
+
+### 2026-10-31T21:13:00-04:00 — Stage 5B-A publication preparation
+- User authorized lowercase stage-5b-a branch, GitHub push and merge into main; retaining feature branch and ignored scientific outputs.
+- Added pytest testpaths=tests to prevent collection of archived output snapshots; full suite155pass/two unchanged missing-historical-checkpoint failures, no tests disabled.
+- Refreshed origin/main at a12d24f; no upstream divergence or branch-name collision. Publication includes code, protocols, complete result ledger and reviewed council recommendation; Stage5B-B remains proposed.
