@@ -1,0 +1,15 @@
+{
+  "version": "stage5b-a-v1",
+  "precision": "CPU float64/complex128, one thread",
+  "targets": "N64, passes 1/2/4, ascending/descending, three independent role seeds per configuration; original polar generation law theta=.15 Normal, phi=Uniform[0,2pi), phase=0",
+  "cases": "18 planted references; each target near truth polar perturbations 0.001 and 0.03 in all coordinates, plus original cold start; 54 starts, 108 A/B fits",
+  "initialization": "B converts the entire A initial matrix exactly; perturbations declared in polar coordinates, actual initial matrix error recorded; fit seed namespace independent of generation",
+  "arms": {"A": "unchanged Stage5A fit_matrix, 250 Adam + 200 LBFGS", "B": "Cartesian coordinates, identical Stage5A solver"},
+  "accounting": "A/B share nominal solver schedule, NOT a hard identical evaluation cap; actual closure/gradient counts recorded. Paired traces also compared at minimum common evaluation count; runtimes measured. Each closure includes one dense materialization, objective and backward.",
+  "threshold": 0.0001,
+  "selection": "minimum native complex squared Frobenius/N, step zero included; no alignment, BER, Q or receiver selection",
+  "gates": "A: all 36 near-truth cases below threshold. B: all 18 cold cases below threshold, descriptive reliability limited to this suite. Pilot only if both pass.",
+  "conditional_method": "If A and B fail, diagnose Adam excursion and stopping. At most one additional solver, frozen amendment before execution, no additional targets/restarts.",
+  "diagnostics": "central FD h=1e-6 selected parameters N8/N64 shallow/deep/identity/near-identity/complex/representative checkpoints; abs 2e-8 or relative 2e-4 for |g|>1e-7. independent explicit dense gates; N8 SVD only; N64 directional JVP norms, no dense N64 Jacobian",
+  "stop": "No training, BER, remote jobs, architecture/topology expansion or Stage5B-B. Every failed run retained. Numerical exceptions recorded. No unplanned budget extensions."
+}
