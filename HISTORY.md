@@ -42,3 +42,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Pretrained inputs also blocked:20step DD training and checkpoint reload succeed,26figures/23.36s. Installed wheel independently loads all3DD sizes and exact CFO checkpoint.
 - Ten retained reference runs compare114PNG bytes/785array fields exactly; all CSV values except seconds and training selection/trace unchanged. Rendered DD64/DD256/train/CFO inspected.
 - Public runtime payload3,482,643bytes; source notebook output-free, ignored archives intact. Safe integration pending final branch preflight.
+
+## 2026-11-16 18:50 EST — self-contained exploration integration
+- Fast-forwarded qualified delivery into waveform-exploration; target120tests pass16.56s and default DD replay/train/CFO complete13/13/5figures.
+- Target31PNG bytes/211array fields equal retained references; source/input/archive audits pass. All10862pre-existing local files preserve size/mtime and sealed archive hashes match.
+- Both worktrees clean before final record; main/pub/remotes/default untouched, no push or external communication. Ready for local branch review; expensive production sweeps remain unrun.

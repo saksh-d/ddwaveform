@@ -6,6 +6,7 @@ The default notebook now uses tracked waveforms/data/; no bundle/download is
 required. Full archived data remain optional for the older audit-only tests.
 
 - Full suite with optional audit inputs: **120passed,16.41s**, all102prior cases retained.
+  Integrated target repeats **120passed,16.56s**; replay/train/CFO13/13/5figures exact.
 - Actual shallow Git clone under /private/tmp, with OS-denied reads to original
   worktrees/Documents/conductor roots: **85passed,35optional archive checks skipped**.
 - From that clone: **12successful notebooks +1expected CFO-training rejection**,
