@@ -60,6 +60,11 @@ def load_qualified(root):
     path = root / "residual_cfo/stage1_checkpoint.pt"
     manifest = json.loads((root / "LOCAL_MANIFEST.json").read_text())
     expected = manifest["files"]["residual_cfo/stage1_checkpoint.pt"]["sha256"]
+    return load_qualified_checkpoint(path, expected)
+
+
+def load_qualified_checkpoint(path, expected):
+    """Same payload/acceptance gates for the original bytes in either distribution."""
     if sha(path) != expected:
         raise ValueError("CFO checkpoint file hash differs")
     # This known local payload uses NumPy config arrays and a Path; no source import.

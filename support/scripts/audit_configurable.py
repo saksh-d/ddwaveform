@@ -52,9 +52,12 @@ def main():
             with np.load(p) as a, np.load(runs['reload64']/p.name) as b:
                 for key in a.files: np.testing.assert_array_equal(a[key],b[key])
         checkpoint_exact = True
-    verified={}
+    from waveforms.runtime_inputs import verify_runtime
+    runtime=verify_runtime()
+    verified={"delivered_runtime":runtime["files"]}
     for name,config in [('artifacts','artifacts.json'),('scaling-artifacts','scaling_artifacts.json')]:
-        verified[name]=verify(ROOT/'local'/name,json.loads((ROOT/'support/configs'/config).read_text()))
+        if (ROOT/'local'/name).exists():
+            verified[name]=verify(ROOT/'local'/name,json.loads((ROOT/'support/configs'/config).read_text()))
     notebook=json.loads((ROOT/'Waveform_Exploration.ipynb').read_text())
     assert all(c.get('outputs',[])==[] and c.get('execution_count') is None for c in notebook['cells'] if c['cell_type']=='code')
     summary=dict(results=results,total_notebook_seconds=sum(x['seconds'] for x in ledger),inline_pngs=sum(x['inline_pngs'] for x in ledger),

@@ -1,34 +1,42 @@
 # Waveform Exploration
 
-One research notebook for delay–Doppler waveforms and residual CFO.
+Explore learned delay–Doppler waveforms and residual CFO in one research notebook.
+**Pretrained inputs are included** — no separate bundle or download.
 
 ```bash
 python -m pip install -r requirements.lock.txt
-# Optional frontend: python -m pip install jupyterlab
+# Optional notebook frontend: python -m pip install jupyterlab
 ```
 
-Open **[Waveform_Exploration.ipynb](Waveform_Exploration.ipynb)**, edit its one
-configuration cell, restart, **Run All**. Figures appear inline; full results and
-metadata stay under ignored `local/`.
+Open **[Waveform_Exploration.ipynb](Waveform_Exploration.ipynb)**, edit the single
+configuration cell, restart, **Run All**. Figures appear inline; complete results
+and metadata are saved under ignored `local/`.
 
-A **bundle** is a supplied archive of previously learned matrices and saved results.
-The notebook verifies/unpacks it automatically; you do not assemble individual files.
-
-| Run | Input needed in a clean clone |
+| Choose | What runs |
 |---|---|
-| Saved DD N64/128/256, or fresh tests of archived Learned | `local/advisor-scaling-artifacts.tar.gz` — one archive for all N |
-| New DD training + fresh tests | **None**: `MODE="train_new"`, `EVIDENCE_MODE="fresh"` |
-| Fresh tests of your newly trained checkpoint | Its matching local `.npz` + `.json` pair |
-| Frozen CFO + fresh tests | `local/advisor-n64-artifacts.tar.gz` only |
+| Default: `load_existing` + `saved_replay` | Exact archived DD basis and saved BER, N64/128/256 |
+| `load_existing` + `fresh` | New channels and BER for the frozen DD basis, or supported CFO |
+| `train_new` + `fresh` | New DD basis, held-out selection and fresh tests; no input assets needed |
 
-An already provisioned input directory needs no archive at runtime. Both archives
-are needed only for **both** archived-DD and CFO workflows. [Exact input details](support/docs/ARTIFACTS.md).
-Fresh work requires **MPS/FP32**, without CPU fallback; replay keeps reference arithmetic.
+Python 3.10 / Apple Silicon is the qualified environment. Fresh evaluation and
+training require **MPS/FP32**, without CPU fallback; saved replay keeps reference
+arithmetic. One Learned per N/run, each N has its own W. Changed channels/supports
+require fresh BER. Training fits a surrogate; bounded trials make no performance
+guarantee. **CFO training is unsupported**; CFO retains its distinct rectangular W/R.
 
-Evaluation tests a frozen W; training creates W. One Learned per N/run, no resizing
-or reuse of old BER after model changes. Surrogate fits and limited trials make no
-performance guarantee. **CFO training is unsupported.**
+```text
+Waveform_Exploration.ipynb   ← start here
+README.md
+HISTORY.md
+pyproject.toml
+requirements.lock.txt
+waveforms/                 # implementation + 3.48 MB verified data/
+support/                   # tests, utilities, technical notes, preserved history
+```
 
-`waveforms/` is the implementation; `support/` holds checks, notes and preserved history.
-Bundles, outputs, checkpoints, executed notebooks, caches and build products are
-**gitignored**; the source notebook stays output-free.
+The six small tracked files in `waveforms/data/` supply all public pretrained runs.
+[Input provenance and exact contents](support/docs/ARTIFACTS.md) ·
+[Scientific controls and limits](support/docs/CONFIGURABLE.md).
+Full historical audit archives are optional. They, generated figures/arrays,
+checkpoints, executed notebooks, caches and build products are **gitignored**.
+The source notebook stays output-free.

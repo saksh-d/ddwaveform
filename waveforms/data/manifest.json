@@ -1,0 +1,557 @@
+{
+  "format": "waveforms-runtime-v1",
+  "files": {
+    "cfo_stage1.pt": {
+      "bytes": 55141,
+      "sha256": "8f0bf24d6b593d2c186a50b03c10a8bf1c781514c3add52c5ce9ca91859afb07"
+    },
+    "dd_N128.npz": {
+      "bytes": 632511,
+      "sha256": "3a1b5a57e261d1adc4f0973c2da16985c229838ce141d425ea91aa6babec1326"
+    },
+    "dd_N256.npz": {
+      "bytes": 2521290,
+      "sha256": "5614d9160ff4f4852d83ffefe964b3f6602533fa0dc5a9534a9c09c013f0f402"
+    },
+    "dd_N64.npz": {
+      "bytes": 160178,
+      "sha256": "58870cd1cf823393206373bce115145c085c038e17d4aa53b4e079b60e67b89a"
+    },
+    "dd_replay.csv": {
+      "bytes": 92292,
+      "sha256": "6168190847a407b3206aae24cf68aaa37a6b3ea9ef06ab57625de7973055c228"
+    }
+  },
+  "dd": {
+    "64": {
+      "N": 64,
+      "K": 24,
+      "file": "dd_N64.npz",
+      "identity": {
+        "N": 64,
+        "K": 24,
+        "file": "matrices/learned_N64.npy",
+        "file_sha256": "11bb15d39bb7e685b074e2ec7ed6f27bd87370e141aa6f62b67c338c21514b0f",
+        "dtype": "complex128",
+        "shape": [
+          64,
+          64
+        ],
+        "provenance": "verified historical export"
+      },
+      "arrays": {
+        "w": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "w",
+          "array_sha256": "c965b0b0c610d856a7c4c045536564e014ed3c74f9ffd731cb68109279e66cd9"
+        },
+        "q_nominal": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "q_nominal",
+          "array_sha256": "4ded177d6cf97b3627bce8cd478486842029aa764a9fd33b3df9f573804a67b6"
+        },
+        "q_test": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "q_test",
+          "array_sha256": "fbd67a0db92a579bc58b4e4b33728c561c94a23a3540270efc58631c867219c1"
+        },
+        "ensemble_power": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "ensemble_power",
+          "array_sha256": "e6d2199f6e511eae51b6a3395a5871e0f68829665b966491b5d2026a5701962a"
+        },
+        "labels": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "labels",
+          "array_sha256": "eda86a76c015d98a6ebc4b58c1c466c43501cb937d7f046c4c69db1c5a6fd6cc"
+        },
+        "permutation": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "permutation",
+          "array_sha256": "1e098e3d724cbc3437983f64c9b1d67ce853e51ed082cf9543bdf65ed6628fcd"
+        },
+        "example_tau": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "example_tau",
+          "array_sha256": "80e7bb96696cc3070eec27a14b9c6638ac0ed753f524b51c0335545f01677d92"
+        },
+        "example_nu": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "example_nu",
+          "array_sha256": "f4d88da8358e3ab03c90fb858b2d8b7c861c3eab35038a085fcc57c10b57556b"
+        },
+        "example_gains": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "example_gains",
+          "array_sha256": "6f0480dda883b18015b20b4e555d27b0bae4b64c655c46f3fa9f4c872ab30396"
+        },
+        "Learned_mask": {
+          "file": "structure/N64_nominal_Learned.npz",
+          "file_sha256": "5fe2c87a9292c178a9ae48ff854149f32073b0003f8b89f1f710a9773fcb0e05",
+          "key": "mask_nominal",
+          "array_sha256": "af6204d208d815539a8937084c2be285db929ca25b363066da74cd07d8bcbce9"
+        },
+        "OTFS_mask": {
+          "file": "structure/N64_nominal_OTFS.npz",
+          "file_sha256": "bb744c963d5fe09947ee65cad1104527a77f8e162380b9bc784015428a03ce27",
+          "key": "mask_nominal",
+          "array_sha256": "6ac72e4efcc402614ac3a9d42461ef7a7ca1035988978f4a4c3cc3046b47e94d"
+        },
+        "AFDM_mask": {
+          "file": "structure/N64_nominal_AFDM.npz",
+          "file_sha256": "ab10ce1538f17653e2b998ce75d97b2cca340f7bac5d79d2321ed3bbf548dd27",
+          "key": "mask_nominal",
+          "array_sha256": "0daef735ae79b42077f0eb45c3bdfd93205cbb1160b4d82cc2bc70932f9db503"
+        }
+      },
+      "example": "Original structural-channel index0 paths/gains; effective A regenerated, never outcome-selected",
+      "statistics": "q_test:2048 nominal unitary DD atoms; ensemble_power:512 nominal normalized multipath channels",
+      "selection": "Historical verified export N64; one nominal validation-selected trial per higher N; no BER selection"
+    },
+    "128": {
+      "N": 128,
+      "K": 48,
+      "file": "dd_N128.npz",
+      "identity": {
+        "N": 128,
+        "K": 48,
+        "file": "matrices/learned_N128.npy",
+        "file_sha256": "cf19e5eb5d02607a68f412c164e979a79654099f33a6f7ac741d55e9b0ca1bdf",
+        "dtype": "complex128",
+        "shape": [
+          128,
+          128
+        ],
+        "provenance": "fresh nominal single trial, selected tail checkpoint"
+      },
+      "arrays": {
+        "w": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "w",
+          "array_sha256": "0590db88b68234f04fa344aabd0e7cc952538a37bc5f1ce5f90243d2b87c39e6"
+        },
+        "q_nominal": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "q_nominal",
+          "array_sha256": "5a7607df421c9d63367992f4f186c22cd7d87935254967d40fd1611ec401d1d1"
+        },
+        "q_test": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "q_test",
+          "array_sha256": "4cf278d2775604dcb8a3f49e893d104988f3bfb5bbfcf20e850730515cedf4cc"
+        },
+        "ensemble_power": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "ensemble_power",
+          "array_sha256": "972149e141e0531d8f1c50b3f72d19824e72aff310647077e4c154f0e59bac44"
+        },
+        "labels": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "labels",
+          "array_sha256": "42865c87135cb796939c44fffe230485291b577caea64d684f71bea019527aa4"
+        },
+        "permutation": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "permutation",
+          "array_sha256": "3004c87f0c397e7d6031cdd74ae9901243073aeeb864358f524d820d7c6cabcf"
+        },
+        "example_tau": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "example_tau",
+          "array_sha256": "80e7bb96696cc3070eec27a14b9c6638ac0ed753f524b51c0335545f01677d92"
+        },
+        "example_nu": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "example_nu",
+          "array_sha256": "f4d88da8358e3ab03c90fb858b2d8b7c861c3eab35038a085fcc57c10b57556b"
+        },
+        "example_gains": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "example_gains",
+          "array_sha256": "6f0480dda883b18015b20b4e555d27b0bae4b64c655c46f3fa9f4c872ab30396"
+        },
+        "Learned_mask": {
+          "file": "structure/N128_nominal_Learned.npz",
+          "file_sha256": "c6faba53a43df9c74f9805e8c8872b9482bae8abd51b3583974efb433901a96d",
+          "key": "mask_nominal",
+          "array_sha256": "a0def87406ed1b4bc46fa5a3cf6eca46caf1c0100f3a6d673de5cc8b5d724d96"
+        },
+        "OTFS_mask": {
+          "file": "structure/N128_nominal_OTFS.npz",
+          "file_sha256": "568038b7907ba7216acc5ce04cebf40ebaf0728f9ca3613bf3e8f0f0116cd837",
+          "key": "mask_nominal",
+          "array_sha256": "8574e9924a11891eccd5058fd91adb191c8dad07457abf965723fe483a179a43"
+        },
+        "AFDM_mask": {
+          "file": "structure/N128_nominal_AFDM.npz",
+          "file_sha256": "0d6fdc4f035bfba764c10ee546b8110b16e4aa3f2f98abae26c043fd02b6ee42",
+          "key": "mask_nominal",
+          "array_sha256": "57b30ecbc5130baa920e665ec12dd69b632900a0da56577de74e6285158d7b60"
+        }
+      },
+      "example": "Original structural-channel index0 paths/gains; effective A regenerated, never outcome-selected",
+      "statistics": "q_test:2048 nominal unitary DD atoms; ensemble_power:512 nominal normalized multipath channels",
+      "selection": "Historical verified export N64; one nominal validation-selected trial per higher N; no BER selection"
+    },
+    "256": {
+      "N": 256,
+      "K": 96,
+      "file": "dd_N256.npz",
+      "identity": {
+        "N": 256,
+        "K": 96,
+        "file": "matrices/learned_N256.npy",
+        "file_sha256": "52de3ac3fca6c34716cd1f7ea9b0c515d34cb1199cee1cd9e5d077c650cf6b6c",
+        "dtype": "complex128",
+        "shape": [
+          256,
+          256
+        ],
+        "provenance": "fresh nominal single trial, selected tail checkpoint"
+      },
+      "arrays": {
+        "w": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "w",
+          "array_sha256": "858b063c0bb16a2b9cf70c116f6293fb0406c67870f662d676336f74101fb4b2"
+        },
+        "q_nominal": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "q_nominal",
+          "array_sha256": "814017d540d137b997f6f0431e1261fe3ae59f0819002a36b4229c2f04b0fce9"
+        },
+        "q_test": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "q_test",
+          "array_sha256": "a6942cf8a10df08ff498eb29a1a00a79768c916430ed91dd4fe1f569cc91ae01"
+        },
+        "ensemble_power": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "ensemble_power",
+          "array_sha256": "af315d2680823eebfbfad84881b358b089f986e1e04b33b9e500553cfac3c2d1"
+        },
+        "labels": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "labels",
+          "array_sha256": "65b877201b87ef485d1ccce59013d9ee5839eec9403e560795dc77f22a99e683"
+        },
+        "permutation": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "permutation",
+          "array_sha256": "57e0fcde6747890e73c9a9e9b8d52821e68885ef0e000945b8064327c0bc9aa3"
+        },
+        "example_tau": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "example_tau",
+          "array_sha256": "80e7bb96696cc3070eec27a14b9c6638ac0ed753f524b51c0335545f01677d92"
+        },
+        "example_nu": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "example_nu",
+          "array_sha256": "f4d88da8358e3ab03c90fb858b2d8b7c861c3eab35038a085fcc57c10b57556b"
+        },
+        "example_gains": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "example_gains",
+          "array_sha256": "6f0480dda883b18015b20b4e555d27b0bae4b64c655c46f3fa9f4c872ab30396"
+        },
+        "Learned_mask": {
+          "file": "structure/N256_nominal_Learned.npz",
+          "file_sha256": "a65236d0577c35f3a0a38fd5395225bbf809adccb23da24b998e22f9bcfc6faa",
+          "key": "mask_nominal",
+          "array_sha256": "7f312d45b55c13132f4aecf6733a8f186b03b975e496f1d15e604c094b9272f3"
+        },
+        "OTFS_mask": {
+          "file": "structure/N256_nominal_OTFS.npz",
+          "file_sha256": "62adc1da7ff772f07c4ca1646c224c4757b2dfe155065e0f25061d58ef60f502",
+          "key": "mask_nominal",
+          "array_sha256": "2e98041b4445c98e4079f1bef20fb10f647b5bbbe304c9faa3b24c64ef3780d8"
+        },
+        "AFDM_mask": {
+          "file": "structure/N256_nominal_AFDM.npz",
+          "file_sha256": "4b6ed0083c8cb93397f9fae3620fa00dcc50319935e1ddab3289939c318cfb5d",
+          "key": "mask_nominal",
+          "array_sha256": "bc4855294eba89ee55462dda2c6ca9b0633347750c3f497e2931e5ea44e8fa74"
+        }
+      },
+      "example": "Original structural-channel index0 paths/gains; effective A regenerated, never outcome-selected",
+      "statistics": "q_test:2048 nominal unitary DD atoms; ensemble_power:512 nominal normalized multipath channels",
+      "selection": "Historical verified export N64; one nominal validation-selected trial per higher N; no BER selection"
+    }
+  },
+  "source_bundles": {
+    "scaling": "71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5",
+    "legacy": "693bbb6cca27d8b0f83dcebbe33e37ef9e51e14ddb2f47bda01374d97d09e535"
+  },
+  "scope": "Exact archived Learned/support/statistic/replay subset; no new fit or BER simulation",
+  "exclusions": "Raw per-channel campaigns, optimizer histories, source snapshots and internal studies remain optional audit archives",
+  "dd_protocol": {
+    "version": "scaling-dd-transfer-v1",
+    "Ns": [
+      64,
+      128,
+      256
+    ],
+    "K": {
+      "64": 24,
+      "128": 48,
+      "256": 96
+    },
+    "fresh_training_Ns": [
+      128,
+      256
+    ],
+    "trials_per_new_dimension": 1,
+    "initialization": "OFDM",
+    "device": "cpu",
+    "real_dtype": "float64",
+    "complex_dtype": "complex128",
+    "threads": 4,
+    "physical_model": "DD-v1 circular finite block; negative DFT/Doppler signs; delay first; iidCN(0,1/3) gains before Fro normalization",
+    "scenarios": {
+      "nominal": [
+        4.0,
+        0.75
+      ],
+      "dd2x": [
+        8.0,
+        1.5
+      ],
+      "dd4x": [
+        16.0,
+        3.0
+      ]
+    },
+    "training_scenario": "nominal",
+    "training_EsN0_uniform": [
+      12,
+      20
+    ],
+    "training_steps": {
+      "mean": 2000,
+      "tail": 1000
+    },
+    "batch_size": 16,
+    "validation_channels": 256,
+    "validation_cadence": 25,
+    "validation_snrs": [
+      12,
+      15,
+      18,
+      20
+    ],
+    "training_objective": "mean, then0.6mean+0.4 per-example largestceil(.05N) stream-MSE tail",
+    "selection": "mean minimum for parent; tail minimum within pooled mean<=1.02*sameN parent validation mean; step0 eligible, tail ties mean then earliest",
+    "Adam": "reset at tail fork; reference projected-Adam schedules; polar projection every step",
+    "mean_schedule": [
+      [
+        1000,
+        0.01
+      ],
+      [
+        1600,
+        0.003
+      ],
+      [
+        2000,
+        0.001
+      ]
+    ],
+    "tail_schedule": [
+      [
+        500,
+        0.003
+      ],
+      [
+        800,
+        0.001
+      ],
+      [
+        1000,
+        0.0003
+      ]
+    ],
+    "OTFS_grids_tau_nu": {
+      "64": [
+        8,
+        8
+      ],
+      "128": [
+        8,
+        16
+      ],
+      "256": [
+        16,
+        16
+      ]
+    },
+    "OTFS_order": "kron(F_nu^H,I_tau), tau varies fastest",
+    "AFDM": "historical multiplier-one rule extended with c1=1/(2N),c2=sqrt2/(100N); no retuning",
+    "snrs_db": [
+      0,
+      5,
+      10,
+      12,
+      15,
+      18,
+      20,
+      25
+    ],
+    "modulations": [
+      "QPSK",
+      "16QAM"
+    ],
+    "receivers": [
+      "fixed_nominal",
+      "realized",
+      "full",
+      "fixed_stress"
+    ],
+    "slicers": [
+      "raw",
+      "gain"
+    ],
+    "bits_per_channel": 1024,
+    "BER_batch_channels": 32,
+    "minimum_channels": 2048,
+    "max_channels": 19531,
+    "stopping": "Complete minimum coverage for ALL N/range/SNR/modulations first. Then round-robin matched32-channel extensions over N/range until every compared arm/SNR has>=300errors, max19531channels, or remaining budget reserve reached. Shared volume across all SNRs within eachN/range. Budget-censored points labeled, not passed off as target-complete.",
+    "adaptive_order": [
+      [
+        64,
+        "nominal"
+      ],
+      [
+        64,
+        "dd2x"
+      ],
+      [
+        64,
+        "dd4x"
+      ],
+      [
+        128,
+        "nominal"
+      ],
+      [
+        128,
+        "dd2x"
+      ],
+      [
+        128,
+        "dd4x"
+      ],
+      [
+        256,
+        "nominal"
+      ],
+      [
+        256,
+        "dd2x"
+      ],
+      [
+        256,
+        "dd4x"
+      ]
+    ],
+    "compute_budget_seconds": 10800,
+    "release_reserve_seconds": 900,
+    "Q_definition": "E |W^HT(tau,nu)W|^2, single normalized unitary atoms; not equal to normalized multipath second moment",
+    "discovery_atoms": 1024,
+    "structural_atoms": 2048,
+    "structural_channels": 512,
+    "fixed_nominal": "own rowTopK nominal discoveryQ, held fixed under DD stress, realized complex coefficients",
+    "fixed_stress": "secondary receiver-statistics recalibration, separate1024-atom discovery perstress; frozenW unchanged",
+    "grouping": "corrected grouping_v2 nominal only; independent structural-test rank; no forced groups; freeze order acrossstress",
+    "RNG": "sha256namespaces; training N excluded to pair path/SNR draws across newdimensions; eval shared normalized primitive paths acrossN andscale, bits/noise common acrosswaveforms andranges atsameN/SNR",
+    "DD_units": "tau samples; nu DFT bins. FixedFs:delayseconds=tau/Fs, DopplerHz=nu*Fs/N. Not identical physical channels acrossN; joint2x/4xstress does not isolate delay from Doppler.",
+    "historical_comparison_limit": "N64 historical export vs freshlarger matrices is descriptive, not dimension-only causality or historical reproduction",
+    "historical_training_confirmation": "pinned configuration and callers document nominalranges; original checkpoint/traininglog remains absent",
+    "runtime_estimate": {
+      "training_seconds": 2339.1206640141318,
+      "validation_benchmark_seconds": {
+        "128": 1.19149329100037,
+        "256": 6.164579791016877
+      },
+      "minimum_all_cells_BER_seconds": 3844.380288004875,
+      "structural_and_render_reserve_seconds": 900,
+      "projected_total_minimum_seconds": 7083.500952019007
+    }
+  },
+  "replay": {
+    "file": "dd_replay.csv",
+    "original_file": "communication_summary.csv",
+    "original_sha256": "fc2068ec4d3f7638b9cd88f84fe08a6a17da8593f4323ec5ab40eac62446e0d8",
+    "dtypes": {
+      "N": "int64",
+      "K": "int64",
+      "scenario": "object",
+      "snr_db": "int64",
+      "waveform": "object",
+      "receiver": "object",
+      "slicer": "object",
+      "modulation": "object",
+      "channels": "int64",
+      "bits": "int64",
+      "errors": "int64",
+      "ber": "float64",
+      "error_bearing_channels": "int64",
+      "ci_low": "float64",
+      "ci_high": "float64",
+      "detection_limit": "float64",
+      "zero_cluster_upper95": "float64",
+      "stop": "object",
+      "precision_target_met_for_curve": "bool",
+      "ser": "float64",
+      "analytic_mse": "float64",
+      "tail_mse": "float64",
+      "distortion": "float64",
+      "noise_enhancement": "float64",
+      "empirical_mse": "float64"
+    },
+    "selection": "nominal; raw slicer; fixed_nominal/full receivers; original rows, counts, intervals and stopping flags",
+    "rows": 288
+  },
+  "cfo": {
+    "file": "cfo_stage1.pt",
+    "original_file": "residual_cfo/stage1_checkpoint.pt",
+    "original_sha256": "8f0bf24d6b593d2c186a50b03c10a8bf1c781514c3add52c5ce9ca91859afb07",
+    "W_shape": [
+      64,
+      45
+    ],
+    "R_shape": [
+      45,
+      64
+    ],
+    "physical": "positive residual CFO, A=RHW; distinct R; no DD unitary substitution",
+    "scope": "Frozen genuine stage1 checkpoint; original acceptance/payload checks retained; no CFO training or saved BER reuse"
+  }
+}

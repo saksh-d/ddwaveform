@@ -12,6 +12,15 @@ SIZES = {64:24, 128:48, 256:96}
 GRIDS = {64:(8,8), 128:(8,16), 256:(16,16)}
 
 
+def load_scaling(workspace, root, bundle, n):
+    """Explicit delivered inputs or an explicitly selected optional audit archive."""
+    from .runtime_inputs import delivered_root, is_runtime_root, RuntimeEvidence
+    root=Path(root) if root is not None else delivered_root()
+    if is_runtime_root(root):
+        return RuntimeEvidence(root,n)
+    return ScalingEvidence(prepare_scaling(workspace,root,bundle),n)
+
+
 def prepare_scaling(workspace, root, bundle):
     workspace, root = Path(workspace).resolve(), Path(root).resolve()
     manifest=json.loads((workspace/'support/configs/scaling_artifacts.json').read_text())
@@ -63,6 +72,11 @@ class ScalingEvidence:
 
     def matches(self,basis):
         return torch.equal(basis.matrix,self.selected.matrix) and torch.equal(basis.fixed_q_mask,self.selected.fixed_q_mask)
+
+    def input_hashes(self):
+        paths=[self.root/self.identity['file'],self.root/'communication_summary.csv',
+               *[self.root/f'structure/N{self.n}_nominal_{name}.npz' for name in self.records]]
+        return {str(path.relative_to(self.root)):sha(path) for path in paths}
 
     def ber(self):
         a=pd.read_csv(self.root/'communication_summary.csv')

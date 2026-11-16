@@ -97,18 +97,13 @@ time and complex spectral bases, coupling/group view, grouped member energy/magn
 propagation, QPSK/16QAM BER. No intervention/transfer campaign figures return.
 Internal histories, variants, stress results and original sources are preserved.
 
-Existing DD results require local/advisor-scaling-artifacts.tar.gz;
-CFO uses local/advisor-n64-artifacts.tar.gz. New DD training requires neither bundle.
-The scaling bundle is90,150,353bytes, SHA256
-71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5.
-Run All provisions it under local/ and checks every manifest entry. No ignored
-input is assumed to appear in a clean checkout. See ARTIFACTS.md. Unavailable N,
-missing bundle, altered basis/support or unsupported replay settings fail clearly.
-Only numerical/provenance inputs, selected phase metadata and exact source snapshots
-are copied, not unrelated galleries or optimizer checkpoint histories. Original
-checkpoints remain untouched in the source directory; exported W is sufficient
-for archived-basis evaluation. New DD training uses its own independent recipe
-and requires neither historical bundle; it does not replay the source training.
+The public notebook uses the six tracked, hash-verified files in waveforms/data/.
+DD includes an exact size-specific W/support/statistic subset and saved nominal
+BER; CFO includes the byte-identical genuine checkpoint. No external bundle is
+required. Full historical archives remain optional ignored audit evidence; see
+[exact input contents](ARTIFACTS.md). Unavailable N, altered inputs and unsupported
+replay settings fail clearly. New DD training requires no pretrained assets and
+uses an independent recipe; it does not replay the source training.
 
 
 ## Grouped member energy / normalized magnitude

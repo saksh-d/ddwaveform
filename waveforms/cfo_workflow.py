@@ -168,7 +168,12 @@ def start_cfo(*,mode,evidence_mode,model,display,evaluation,workspace,artifacts,
     config,_,out=validate(mode='load_existing',evidence_mode='fresh',scenario='dd_v1',model=nominal,display=display,evaluation={**evaluation,'diagnostic_atoms':2,'diagnostic_channels':2},training=None,k=24,support_policy='frozen',discovery=None,checkpoint=None,workspace=workspace,output_root=output_root,review=None)
     if any(j>=45 for j in config['display']['basis_columns']): raise ValueError('CFO basis column must be a stream in [0,44]')
     if type(save_run) is not bool: raise ValueError('SAVE_RUN must be boolean')
-    m.environment(); artifacts=local_path(artifacts,workspace)
+    m.environment()
+    from .runtime_inputs import is_runtime_root,load_cfo
+    if is_runtime_root(artifacts):
+        w,r,checks=load_cfo(artifacts)
+        return CFOWorkflow(model,config['display'],evaluation,w,r,checks,workspace,out,save_run)
+    artifacts=local_path(artifacts,workspace)
     manifest=json.loads((Path(workspace)/'support/configs/artifacts.json').read_text())
     if not artifacts.exists():
         if bundle is None or not Path(bundle).is_file(): raise FileNotFoundError('CFO requires local legacy bundle')

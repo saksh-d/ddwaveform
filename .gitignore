@@ -21,3 +21,8 @@ dist/
 venv/
 .DS_Store
 .ipynb_checkpoints/
+# Public runtime inputs only; generated numerical files remain ignored elsewhere.
+!/waveforms/data/dd_N64.npz
+!/waveforms/data/dd_N128.npz
+!/waveforms/data/dd_N256.npz
+!/waveforms/data/cfo_stage1.pt

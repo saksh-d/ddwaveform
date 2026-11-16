@@ -26,3 +26,13 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Fast-forward integration into clean waveform-exploration succeeded; actual target102tests pass12.73s and DD replay/train/CFO13/13/5figures execute without errors.
 - Target31PNG bytes and211array fields equal pre-cleanup references; full source/archive/input audit passes. All10586pre-existing local files retain size/mtime;53old cache files preserved under local/.
 - main/pub/default and all other branches/remotes unchanged; no push or external message. Input guide now states the exact current requirements and distinguishes the unimplemented lean-format recommendation.
+
+## 2026-11-16 — self-contained runtime inputs
+- Added3,482,643bytes of exact DD64/128/256 matrices/supports/statistics/replay evidence and the genuine55,141byte CFO checkpoint; full archives remain optional/ignored.
+- Narrow verified runtime loader preserves original field/file hashes and physical models; default notebook uses tracked data, training remains independent.
+- All3N W/support/statistic arrays and288replay rows exactly equal full archives; CFO W/R and acceptance checks exact. Clean-clone qualification pending.
+
+## 2026-11-16 — runtime-input regression qualification
+- Full120tests pass16.41s, preserving all102prior cases;18added checks cover delivered DD/CFO physics, source equivalence, corruption/missing inputs and archive-independent training.
+- DD64/128/256 replay retains13figures each, exact arrays/CSV/PNG bytes against prior release; fresh64, default20step training/reload and CFO also exact so far.
+- Built3,460,486byte wheel with runtime inputs; actual sandboxed Git-clone execution next before integration.

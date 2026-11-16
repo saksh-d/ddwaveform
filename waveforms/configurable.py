@@ -18,7 +18,7 @@ from . import mps_numerics as m
 from .artifacts import write_json,sha
 from .basis_source import SelectedBasis
 from .delay_doppler import Channels
-from .scaling_evidence import ScalingEvidence,prepare_scaling,GRIDS,SIZES
+from .scaling_evidence import ScalingEvidence,prepare_scaling,load_scaling,GRIDS,SIZES
 from .notebook_workflow import NotebookWorkflow,validate_config,NOMINAL
 from .overlays import validate_review
 from .training import DEFAULT_TRAINING,train,load_checkpoint,save_checkpoint,groups,coupling
@@ -275,7 +275,7 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
         selected,basis_record=load_checkpoint(checkpoint,n,k)
     else:
         if scaling_artifacts is None: raise FileNotFoundError('Provide local scaling artifacts for archived Learned; no source fallback')
-        evidence=ScalingEvidence(prepare_scaling(workspace,scaling_artifacts,scaling_bundle),n)
+        evidence=load_scaling(workspace,scaling_artifacts,scaling_bundle,n)
         selected=evidence.selected
         basis_record=dict(labels=evidence.records['Learned']['labels'].copy(),permutation=evidence.records['Learned']['permutation'].copy(),q_train=evidence.records['Learned']['q_nominal'].copy())
     bases={'Learned':m.pair(selected.matrix.numpy()),**{name:w for name,w in m.classical(n,GRIDS[n]).items() if name in ('OTFS','AFDM')}}
@@ -300,7 +300,7 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
     result.provenance['evaluation_matrix_content_sha256']={name:hashlib.sha256(m.array(w).tobytes()).hexdigest() for name,w in result.mps_ws.items()}
     result.provenance['precision_conversion']='Archived complex128 arrays, when used, explicitly converted to FP32 real pairs for fresh computation; plotting retains source array precision'
     if mode=='load_existing' and checkpoint is None:
-        result.provenance['inputs_sha256']={str(path.relative_to(evidence.root)):sha(path) for path in [evidence.root/evidence.identity['file'],*[evidence.root/f'structure/N{n}_nominal_{name}.npz' for name in bases]]}
+        result.provenance['inputs_sha256']=evidence.input_hashes()
     if mode=='train_new':
         target=checkpoint or (result.run_dir/'selected_basis.npz' if result.run_dir else None)
         if target:

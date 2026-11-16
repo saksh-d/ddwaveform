@@ -18,3 +18,6 @@ include = ["waveforms*"]
 [tool.pytest.ini_options]
 testpaths = ["support/tests"]
 markers = ["artifacts: needs the explicitly provisioned local evidence bundle"]
+
+[tool.setuptools.package-data]
+waveforms = ["data/manifest.json", "data/dd_*.npz", "data/dd_replay.csv", "data/cfo_stage1.pt"]

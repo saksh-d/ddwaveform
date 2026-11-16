@@ -15,7 +15,7 @@ from .experiments import ber_point, numpy, save_npz
 from .figures import plot_basis, plot_ber, plot_channels, style
 from .selection import WAVEFORMS, selected_frame
 from .basis_source import SelectedBasis, require_available_mode, select_basis
-from .scaling_evidence import ScalingEvidence, prepare_scaling, GRIDS, SIZES
+from .scaling_evidence import ScalingEvidence, prepare_scaling, load_scaling, GRIDS, SIZES
 from .coupling import analyze, plot_groups, plot_propagation, grouped_spectral_data, plot_grouped_spectra, example_indices, plot_basis_examples
 
 from .overlays import OVERLAY_VARIANTS, validate_review, overlay_mapping, plot_overlay
@@ -141,7 +141,7 @@ class NotebookWorkflow:
             "reference_group_views_applicable": self.saved_reference,
             "BER_status": "Not yet evaluated", "evidence_mode": config["evidence_mode"]}
         self.provenance["inputs_sha256"] = {name: sha(self.artifacts / name) for name in
-            ("reference/learned_w.npy", "focused/data/bases.npz", "focused/data/channels.npz", "focused/data/supports.npz", "focused/ber_summary.csv")} if not scaling else {str(path.relative_to(scaling.root)):sha(path) for path in [scaling.root/scaling.identity["file"],scaling.root/"communication_summary.csv",*[scaling.root/f"structure/N{self.n}_nominal_{name}.npz" for name in WAVEFORMS]]}
+            ("reference/learned_w.npy", "focused/data/bases.npz", "focused/data/channels.npz", "focused/data/supports.npz", "focused/ber_summary.csv")} if not scaling else scaling.input_hashes()
 
     def summary(self):
         description = "Saved-evidence replay: reconstruct saved H/A; load completed BER counts. NO BER simulation." if self.config["evidence_mode"] == "saved_replay" else "Fresh bounded check: new H/A and paired uncoded BER simulation. NOT a production campaign."
@@ -161,7 +161,8 @@ class NotebookWorkflow:
             self.channels=Channels(raw/scale[:,None,None],raw,tau,nu,gains,scale)
             self.provenance["matrix_generation"]={"method":"Reconstruct frozen structural channel index0; same H for all waveforms", "bank_count":512, "namespace":["scaling-dd-transfer-v1","structural-channel",0], "seed":seed("scaling-dd-transfer-v1","structural-channel",0), "source_batch_count":32, "source":"saved paths/gains; original index0, no outcome selection"}
             for name,w in self.ws.items():
-                torch.testing.assert_close((w.mH@self.channels.h@w)[0],torch.from_numpy(self.scaling.records[name]["example"]),atol=2e-12,rtol=1e-12)
+                if "example" in self.scaling.records[name]:
+                    torch.testing.assert_close((w.mH@self.channels.h@w)[0],torch.from_numpy(self.scaling.records[name]["example"]),atol=2e-12,rtol=1e-12)
         elif self.config["evidence_mode"] == "saved_replay":
             with np.load(self.artifacts / "focused/data/channels.npz", allow_pickle=False) as saved:
                 tau, nu, gains = (torch.from_numpy(saved[k].copy())[None] for k in ("tau", "nu", "gains"))
@@ -386,7 +387,7 @@ def start_workflow(*, mode, evidence_mode, model, display, fresh, artifacts=None
         raise ValueError("SAVE_RUN must be True or False")
     workspace = Path(workspace).resolve()
     if scaling_artifacts is not None:
-        scaling=ScalingEvidence(prepare_scaling(workspace,scaling_artifacts,scaling_bundle),model["n"])
+        scaling=load_scaling(workspace,scaling_artifacts,scaling_bundle,model["n"])
         return NotebookWorkflow(config, scaling.root, workspace, save_run,
                                 selected_basis=scaling.selected,scaling=scaling)
     if model["n"] != 64:

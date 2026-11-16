@@ -1,69 +1,73 @@
-# Inputs: exactly what is needed
+# Included inputs
 
-An input bundle is one `.tar.gz` file containing **previously learned matrices and
-saved numerical evidence**. It is not another Python dependency. The notebook verifies
-and unpacks it automatically; no individual-file scavenging or manual extraction.
+**A normal Git clone contains every input needed by the public notebook.**
+No separate bundle, hidden Mac directory, manual extraction or download is required.
+Install the dependencies, open the root notebook and Run All.
 
-## Current notebook requirements
-
-| What you run | Minimum external input with the current loader |
+| Workflow | Numerical inputs used, all included unless stated |
 |---|---|
-| Saved DD replay, N64 / N128 / N256 | `local/advisor-scaling-artifacts.tar.gz` — one archive covers all three sizes |
-| Fresh evaluation of an archived DD Learned, any supported N | The same scaling archive; new channels/BER are computed, W stays frozen |
-| New DD training + fresh evaluation | **None**; the code creates W, support, groups and new test results |
-| Fresh evaluation of your newly trained DD checkpoint | Its `.npz` **and matching `.json`**, matching N/K; no historical archive |
-| CFO frozen W[64,45], R[45,64], fresh direct-R evaluation | `local/advisor-n64-artifacts.tar.gz` only; no scaling archive |
+| Saved DD N64 / N128 / N256 | `dd_N64.npz` / `dd_N128.npz` / `dd_N256.npz`, plus `dd_replay.csv` and manifest |
+| Fresh DD with archived frozen Learned | Same size-specific NPZ and manifest; BER is recomputed, never read from replay |
+| Newly trained DD + fresh tests | **None**; training generates W, supports, groups and new test results |
+| Fresh DD with your trained checkpoint | Your matching `.npz` + `.json` pair under `local/`, matching N/K |
+| Supported frozen CFO + fresh tests | `cfo_stage1.pt` and manifest: original W[64,45], R[45,64], A=RHW |
 
-If the complete verified `local/scaling-artifacts/` or `local/artifacts/` directory
-is already provisioned, its archive is no longer required at runtime. **Both archives
-are needed only when you want both archived DD and CFO workflows** (or the full
-historical artifact test suite). CFO training and configurable CFO saved replay remain
-unsupported. The current DD notebook does not use the legacy focused-N64 data path.
+The integrity check verifies all six files together even when a mode uses only a
+subset. The manifest binds the complete small runtime dataset; restore the entire
+`waveforms/data/` directory from Git if any file is missing or altered. All N are
+packaged together, including in installed wheels. No learned matrix is resized or
+substituted. CFO training and CFO saved replay remain unsupported. Fresh numerical
+work requires MPS/FP32; saved DD replay preserves the original reference arithmetic.
 
-## How to run
+## Actual tracked payload
 
-1. Install the requirements and open the root notebook.
-2. For an existing-result mode, copy the required **provided archive**, intact, into
-   the checkout's `local/` folder. The person distributing the saved results supplies
-   this file once; Git alone does not contain or download it.
-3. Edit the one configuration cell and Run All. Existing verified inputs are checked;
-   missing inputs are provisioned locally without modifying the archive.
+| File under `waveforms/data/` | Bytes |
+|---|---:|
+| `dd_N64.npz` | 160,178 |
+| `dd_N128.npz` | 632,511 |
+| `dd_N256.npz` | 2,521,290 |
+| `dd_replay.csv` | 92,292 |
+| `cfo_stage1.pt` | 55,141 |
+| `manifest.json` | 21,231 |
+| **Total** | **3,482,643** |
 
-To run from code alone, select `MODE="train_new"`, `EVIDENCE_MODE="fresh"`, DD.
-For your own checkpoint, use `load_existing` + `fresh`, set CHECKPOINT to its local
-`.npz`, TRAINING=None, and matching N/K. Fresh work requires MPS/FP32; no CPU fallback.
-A newly trained basis does not reproduce the historical Learned or its saved BER.
+Each DD NPZ preserves the exact original Learned W, fixed supports for Learned/OTFS/
+AFDM, native group mapping, train/test Q and mean channel-power statistics, and
+original example paths/gains. Classical bases and redundant example H/A/spectra
+are reconstructed by the unchanged numerical routines. The CSV retains all 288
+nominal/raw/fixed-or-full replay rows: original counts, intervals, budgets, stopping
+and uncertainty flags. It makes no new empirical claim. Fresh mode never uses
+these BER values; channel/support/checkpoint changes cannot reuse saved BER.
 
-## Integrity and storage
+`manifest.json` records file sizes/SHA256, per-array content hashes, original source
+file/key/hash, learned checkpoint identity and selection, channel protocol and
+source bundle hashes. CFO is the **byte-identical original checkpoint**, with its
+original payload hash and clean-operator acceptance checks. Neither DD nor CFO was
+retrained, selected on BER, phase-adjusted or replaced for this packaging change.
+See [basis provenance](COUPLING.md) and [scientific limits](CONFIGURABLE.md).
 
-- Scaling archive:90,150,353bytes;64files,91,830,414uncompressed bytes.
-  SHA256 `71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5`.
-- Legacy N64/CFO archive:176,447,435bytes;645files,182,919,587uncompressed bytes.
-  SHA256 `693bbb6cca27d8b0f83dcebbe33e37ef9e51e14ddb2f47bda01374d97d09e535`.
+## Optional historical audit evidence
 
-Tracked manifests in support/configs/ bind every file. Current provisioning verifies
-these **complete** snapshots, even when a mode consumes only a subset. Merely copying
-a W array out of an archive is not a supported replacement. Historical bundle names
-and sealed bytes are retained. Sources in the bundles are inspection-only, never
-imported. [Size/basis provenance](COUPLING.md) · [Scientific contract](CONFIGURABLE.md).
+The full archives retain per-channel campaigns, internal investigations, training
+histories and source snapshots. They are **not required for the public notebook**
+and are deliberately not added to Git:
 
-All bundles, provisioned inputs, generated arrays/figures/checkpoints, executed
-notebooks and caches remain gitignored. The source notebook is output-free.
+- `advisor-scaling-artifacts.tar.gz`: 90,150,353 bytes; SHA256
+  `71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5`.
+- `advisor-n64-artifacts.tar.gz`: 176,447,435 bytes; SHA256
+  `693bbb6cca27d8b0f83dcebbe33e37ef9e51e14ddb2f47bda01374d97d09e535`.
 
-## Lean distribution recommendation — assessed, not implemented
+Existing holders may keep these intact under ignored `local/` and provision them
+with `support/scripts/bootstrap.py`, choosing the matching manifest in support/configs/.
+The full legacy tests take explicit `--artifacts` and `--scaling-artifacts` paths;
+those optional tests skip without the audit archives. The delivered-input tests
+run without them. Sources inside archives are never imported.
 
-For a share-and-run repo, ship a **small checked-in, hash-verified runtime dataset**
-instead of requiring the full historical evidence archives. Keep those archives as
-the audit record outside Git. Do not add the large `.tar.gz` files to Git.
+Maintainer extraction is reproducible from the sealed, verified snapshots using
+`support/scripts/build_runtime_inputs.py --scaling local/scaling-artifacts
+--legacy local/artifacts --out <new-directory>`. This only copies/subsets exact
+evidence; it does not simulate BER or train a model. Per-array hashes bind content
+independently of ZIP compression metadata. Full archives remain untouched.
 
-The three DD W arrays total1,376,640bytes, but weights alone cannot replay BER or
-reproduce coupling-statistic figures. A proposed all-N subset retaining Learned W,
-fixed supports for all baselines, group/native mappings, Q/mean-power statistics,
-example paths and the complete saved BER summary contains4,794,361bytes of existing
-array/CSV payload, before future metadata/packaging. The genuine CFO checkpoint is
-55,141bytes; preserve its distinct W/R and acceptance/provenance checks.
-
-This is an inventory-based estimate, not a qualified new input format. It requires
-a narrow loader/manifest and exact replay/evaluation/figure-equivalence tests before
-being called self-contained. Current validated loaders still require the inputs in
-the table above. No new dataset/archive was added to Git in this cleanup.
+Generated results/checkpoints, provisioned audit directories, archives, executed
+notebooks and caches stay gitignored. Only the six named runtime files are tracked.
