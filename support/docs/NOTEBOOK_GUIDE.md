@@ -1,8 +1,9 @@
 # Using the research notebook
 
 Open [Waveform_Exploration.ipynb](../../Waveform_Exploration.ipynb), edit its single
-configuration cell, restart and Run All. Select a Python environment with the
-[required packages](../../requirements.lock.txt); no particular environment name is assumed.
+configuration cell, restart and Run All. Follow the root [fresh-machine setup](../../README.md)
+and select that project environment as the kernel. Notebook metadata uses generic Python 3;
+no pre-existing environment or machine path is required.
 
 1. **Configure:** scenario, basis source, evaluation mode, dimensions, local paths,
    display IDs, test budgets, and optional training/discovery settings are grouped together.

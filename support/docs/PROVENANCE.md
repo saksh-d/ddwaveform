@@ -9,14 +9,14 @@ Base historical repository: `https://github.com/saksh-d/ddwaveform`, commit
 `a12d24f07c03a1319ee5fa8773efcf3e84086747`. No default-branch changes, external
 sharing, other-thread messages, interruption, push or PR.
 
-Read-only sources on this Mac:
+Read-only historical sources (provenance identifiers, not runtime locations):
 
-- Historical checkout `/Users/saksh/Documents/Local Documents/IBM/delayDopplerWaveform`;
+- Historical `delayDopplerWaveform` repository;
   pinned code inspected from this worktree's base. Original checkout not reset.
-- Standalone `/Users/saksh/Documents/Local Documents/IBM/waveform-mechanism-study`;
+- Standalone `waveform-mechanism-study` project;
   inspected actual README/PROTOCOL/PROVENANCE/REPORT/HISTORY, relevant modules/tests,
   focused saved inputs/counts,25dB exports, bridge and completed main status.
-- `/Users/saksh/Documents/Local Documents/IBM/ofdm/residualCFO`;
+- `ofdm/residualCFO` project;
   bounded stage1_fullframe/stage2_awgn/stage3_multipath source/artifact inspection.
   Read stage2_awgn/AGENTS.md. **TECHNICAL.md never read.** No source writes/runs.
 - Research record README and `projects/delay-doppler-research.md` consulted as

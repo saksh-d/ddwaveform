@@ -1,4 +1,4 @@
-# Exact installed dependency closure: Python3.10.17, macOS arm64, conda pytorch.
+# Qualified dependency closure: Python 3.10.17, macOS arm64; install in a project venv.
 # Platform-specific; do not substitute device/precision silently on another host.
 appnope==0.1.4
 asttokens==3.0.0

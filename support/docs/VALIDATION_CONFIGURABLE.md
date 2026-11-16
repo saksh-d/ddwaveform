@@ -7,7 +7,7 @@ required. Full archived data remain optional for the older audit-only tests.
 
 - Full suite with optional audit inputs: **120passed,16.41s**, all102prior cases retained.
   Integrated target repeats **120passed,16.56s**; replay/train/CFO13/13/5figures exact.
-- Actual shallow Git clone under /private/tmp, with OS-denied reads to original
+- Actual shallow Git clone in a temporary directory, with OS-denied reads to original
   worktrees/Documents/conductor roots: **85passed,35optional archive checks skipped**.
 - From that clone: **12successful notebooks +1expected CFO-training rejection**,
   **140inline figures**,146.32s driver wall time. Default saved DD and fresh frozen
@@ -35,15 +35,16 @@ python support/scripts/audit_configurable.py --qualification local/qualification
 
 ## Earlier configurable-workflow qualification
 
-Exact commands/results and executed notebooks are retained under ignored local/.
+Exact historical commands/results and executed notebooks are retained under ignored local/.
+The equivalents below use the project environment created in the root README.
 Local command ledger: `local/COMMANDS.md`; release evidence: `local/qualification-release/`.
 
 ```bash
-conda run -n pytorch python support/scripts/bootstrap.py --bundle local/advisor-n64-artifacts.tar.gz
-conda run -n pytorch python -c "from waveforms.scaling_evidence import prepare_scaling; prepare_scaling('.', 'local/scaling-artifacts', 'local/advisor-scaling-artifacts.tar.gz')"
-conda run --no-capture-output -n pytorch python -m pytest support/tests -q --basetemp local/pytest-release-final --artifacts local/artifacts --scaling-artifacts local/scaling-artifacts
-conda run --no-capture-output -n pytorch python support/scripts/qualify_notebook.py --out local/qualification-release
-conda run --no-capture-output -n pytorch python support/scripts/audit_configurable.py --qualification local/qualification-release
+python support/scripts/bootstrap.py --bundle local/advisor-n64-artifacts.tar.gz
+python -c "from waveforms.scaling_evidence import prepare_scaling; prepare_scaling('.', 'local/scaling-artifacts', 'local/advisor-scaling-artifacts.tar.gz')"
+python -m pytest support/tests -q --basetemp local/pytest-release-final --artifacts local/artifacts --scaling-artifacts local/scaling-artifacts
+python support/scripts/qualify_notebook.py --out local/qualification-release
+python support/scripts/audit_configurable.py --qualification local/qualification-release
 ```
 
 Notebook qualifier copies the source notebook into local/, changes only its single
@@ -89,6 +90,6 @@ Evidence: `local/full-tests-release-final.txt`, `local/notebook-release.txt`,
 executed notebooks and their referenced unique `local/notebook_runs/` archives.
 The command ledger retains failed/provisional iterations as well as final checks.
 
-Ready for Saksham's separate branch/code/notebook review. This qualifies the
+Ready for local branch/code/notebook review. This qualifies the
 configurable workflow, not production BER precision, historical training replay,
 physical validation or a Learned performance advantage.

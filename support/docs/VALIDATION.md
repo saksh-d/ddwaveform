@@ -65,7 +65,7 @@ Tracked source has no outputs; executed review copies remain local/ignored.
 ## Executed end to end
 
 Both copies of the same source notebook executed in the isolated source copy,
-using a local pytorch kernel and no original projects. Each completed12cells,
+using an isolated project kernel and no original projects. Each completed12cells,
 6code cells,0errors, exactly5inline image/png outputs. Image bytes extracted
 from notebook outputs match their optional300DPI archives; all10outputs visually
 inspected for labels, clipping and readability. Kernels shut down afterward.

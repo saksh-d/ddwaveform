@@ -47,3 +47,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Fast-forwarded qualified delivery into waveform-exploration; target120tests pass16.56s and default DD replay/train/CFO complete13/13/5figures.
 - Target31PNG bytes/211array fields equal retained references; source/input/archive audits pass. All10862pre-existing local files preserve size/mtime and sealed archive hashes match.
 - Both worktrees clean before final record; main/pub/remotes/default untouched, no push or external communication. Ready for local branch review; expensive production sweeps remain unrun.
+
+## 2026-11-16 — fresh-machine setup clarification
+- README now provides Python3.10/macOS-arm64 prerequisites, generic venv/dependency setup, VSCode/Jupyter kernel selection and one-config/RunAll flow.
+- Notebook kernelspec uses generic Python3; removed named local environments and absolute source paths from current public setup/provenance docs. Scientific code/data unchanged.
+- Fresh work explicitly MPS/FP32-only; other platforms unqualified, saved DD replay retains CPU reference arithmetic. Fresh-environment/clean-clone checks pending.
