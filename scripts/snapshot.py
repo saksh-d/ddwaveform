@@ -11,7 +11,7 @@ import tarfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from advisor.artifacts import sha, verify, write_json
+from waveforms.artifacts import sha, verify, write_json
 
 
 def selected(wms, cfo):

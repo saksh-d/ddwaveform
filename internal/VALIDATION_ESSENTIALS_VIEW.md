@@ -24,7 +24,7 @@ research campaign.
 | Command | Result |
 |---|---|
 | `python -m pytest tests -q --basetemp=local/test-essentials --artifacts local/artifacts` |26passed in1.92s |
-| `python -m advisor.cli figures --artifacts local/artifacts --out local/review_essentials/figures` |Exactly5essential PNGs,300DPI |
+| `python -m waveforms.cli figures --artifacts local/artifacts --out local/review_essentials/figures` |Exactly5essential PNGs,300DPI |
 | same with `--full-range --out local/review_essentials/figures_full` |Same5figure types; raw BER PNGs unchanged from prior full-range views |
 
 Regression tests enforce the exact five-name output whitelist, reject matrix
@@ -53,7 +53,7 @@ point to the essentials-only view. Previous plots remain intact and marked inter
 
 ## Internal work preserved
 
-Previous full plotting source retained in `advisor/internal_figures.py`.
+Previous full plotting source retained in `waveforms/internal_figures.py`.
 `internal-supplementary` and `internal-studies` retain the selected-reference and
 multi-variant studies. Prior notebook, plotting outputs, all variants and working
 data remain internal; original directories remain read-only and unchanged.

@@ -1,5 +1,8 @@
 # Configurable workflow contract
 
+Entry point: [Waveform_Exploration.ipynb](../Waveform_Exploration.ipynb), with the
+neutral waveforms/ package. Short captions link to the [figure guide](FIGURE_GUIDE.md).
+
 Base: `c6bc03b720a97948d28036579f673eee98bdb95b`, completed waveform-exploration.
 Implementation is confined to this isolated worktree. The stopped wrong-base task
 is not a source. Archived internal/source snapshots remain inspection-only.

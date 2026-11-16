@@ -31,11 +31,11 @@ Historical CFO keeps float32/complex64 in its separate workflow.
 | `python scripts/review_selection.py --artifacts local/artifacts --out local/internal/selection_review` |43candidate count totals reconciled; no simulation/bootstrap; full condition table retained internally |
 | `python -m pytest tests -q --basetemp=local/test-presentation --artifacts local/artifacts` |24passed in2.03s |
 | `python -m pytest tests -q --basetemp=local/test-presentation-code-only` |16passed,8explicit artifact skips in0.47s |
-| `python -m advisor.cli figures --artifacts local/artifacts --out local/review_single/figures` |9core PNGs, Learned/OTFS/AFDM only |
+| `python -m waveforms.cli figures --artifacts local/artifacts --out local/review_single/figures` |9core PNGs, Learned/OTFS/AFDM only |
 | same with `--full-range --out local/review_single/figures_full` |9core PNGs, full30/40dB grids retained |
-| `python -m advisor.cli supplementary --artifacts local/artifacts --out local/review_single/supplementary` |2advisor PNGs: exact selected transfer and frequency groups |
-| `python -m advisor.cli internal-studies --artifacts local/artifacts --out local/internal/studies` |All4original multi-variant plots regenerate internally |
-| `python -m advisor.cli verify-artifacts --artifacts local/artifacts` |645files/182,919,587bytes, all hashes unchanged |
+| `python -m waveforms.cli supplementary --artifacts local/artifacts --out local/review_single/supplementary` |2advisor PNGs: exact selected transfer and frequency groups |
+| `python -m waveforms.cli internal-studies --artifacts local/artifacts --out local/internal/studies` |All4original multi-variant plots regenerate internally |
+| `python -m waveforms.cli verify-artifacts --artifacts local/artifacts` |645files/182,919,587bytes, all hashes unchanged |
 
 Regression tests reject matrix substitution and missing/ambiguous source labels;
 inspect every advisor plot's text for exactly the selected Learned and baselines;

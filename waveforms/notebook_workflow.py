@@ -1,4 +1,4 @@
-"""Sequential advisor notebook workflow; saved replay and bounded fresh checks."""
+"""Sequential research notebook workflow; saved replay and bounded fresh checks."""
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
@@ -13,7 +13,7 @@ from .core import COMPLEX, configure, seed
 from .delay_doppler import Channels, assemble, classical, dft, sample
 from .experiments import ber_point, numpy, save_npz
 from .figures import plot_basis, plot_ber, plot_channels, style
-from .selection import WAVEFORMS, advisor_frame
+from .selection import WAVEFORMS, selected_frame
 from .basis_source import SelectedBasis, require_available_mode, select_basis
 from .scaling_evidence import ScalingEvidence, prepare_scaling, GRIDS, SIZES
 from .coupling import analyze, plot_groups, plot_propagation, grouped_spectral_data, plot_grouped_spectra, example_indices, plot_basis_examples
@@ -218,7 +218,7 @@ class NotebookWorkflow:
         if self.ber_table is not None:
             return self.ber_table
         if self.config["evidence_mode"] == "saved_replay":
-            frame = self.scaling.ber() if self.scaling else advisor_frame(pd.read_csv(self.artifacts / "focused/ber_summary.csv"))
+            frame = self.scaling.ber() if self.scaling else selected_frame(pd.read_csv(self.artifacts / "focused/ber_summary.csv"))
             self.ber_table = frame[(frame.slicer == "raw") & frame.receiver.isin(["fixed", "full"])].copy()
             self.provenance["BER_status"] = "LOADED completed saved counts; no BER simulation/retraining. Channel-bootstrap intervals approximate under adaptive/budget stopping; flags retained."
             return self.ber_table

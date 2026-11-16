@@ -16,13 +16,13 @@ Environment prefix for all numerical commands:
 | `python scripts/bootstrap.py --bundle local/advisor-n64-artifacts.tar.gz` (fresh destination) |645files,182,919,587bytes validated |
 | `python -m pytest tests -q --basetemp=local/test-code-only` |14passed,5artifact checks explicitly skipped,0.57s |
 | `python -m pytest tests -q --basetemp=local/test-final --artifacts local/artifacts` |19passed,0.95s |
-| `python -m advisor.cli smoke --artifacts local/artifacts` |Learned unitarity2.23303e-14, max3fresh-channel bridge relative1.44e-14 |
-| `python -m advisor.cli export-dd --artifacts local/artifacts --channels 2 --out local/review/dd_export` |complex H/Hraw/W/A/C/H_f/Grams, paths/scales/seeds and frozen support/order exported |
-| `python -m advisor.cli export-cfo --artifacts local/artifacts --out local/review/cfo_export` |file/payload match, W64x45/R45x64, clean identity7.8946375e-4, all41stored leakage diagnostics tested |
-| `python -m advisor.cli ber --artifacts local/artifacts --channels 8 --blocks 2 --snrs 0 18 --out local/review/ber_smoke` |36points; QPSK2048bits/point,16QAM4096bits/point; qualification only |
-| `python -m advisor.cli figures --artifacts local/artifacts --out local/review/figures` |9PNG,300DPI, saved counts only,25dB display |
+| `python -m waveforms.cli smoke --artifacts local/artifacts` |Learned unitarity2.23303e-14, max3fresh-channel bridge relative1.44e-14 |
+| `python -m waveforms.cli export-dd --artifacts local/artifacts --channels 2 --out local/review/dd_export` |complex H/Hraw/W/A/C/H_f/Grams, paths/scales/seeds and frozen support/order exported |
+| `python -m waveforms.cli export-cfo --artifacts local/artifacts --out local/review/cfo_export` |file/payload match, W64x45/R45x64, clean identity7.8946375e-4, all41stored leakage diagnostics tested |
+| `python -m waveforms.cli ber --artifacts local/artifacts --channels 8 --blocks 2 --snrs 0 18 --out local/review/ber_smoke` |36points; QPSK2048bits/point,16QAM4096bits/point; qualification only |
+| `python -m waveforms.cli figures --artifacts local/artifacts --out local/review/figures` |9PNG,300DPI, saved counts only,25dB display |
 | same with `--full-range --out local/review/figures_full` |9PNG, entire30/40dB saved grids |
-| `python -m advisor.cli supplementary --artifacts local/artifacts --out local/review/supplementary_figures` |4PNG: training, interventions, structural transfer, frequency groups |
+| `python -m waveforms.cli supplementary --artifacts local/artifacts --out local/review/supplementary_figures` |4PNG: training, interventions, structural transfer, frequency groups |
 
 Tests independently cover negative DD sign, delay-first order, integer-delay
 action, normalized path sums, finite-sum frequency kernel, exact OTFS/AFDM,
@@ -69,7 +69,7 @@ local venv with existing dependencies and `PIP_NO_INDEX=1`, then ran Python with
  compressed176,447,435bytes; SHA256
  `693bbb6cca27d8b0f83dcebbe33e37ef9e51e14ddb2f47bda01374d97d09e535`.
 
-`python -m compileall -q advisor scripts tests` and `git diff --cached --check`
+`python -m compileall -q waveforms scripts tests` and `git diff --cached --check`
 passed. Final cache-boundary suite19passed in12.24s, including first local
 font-cache initialization; all22release PNGs remained byte-identical. Root runtime source has no absolute source-project paths or imports from
 the retired `src`/WMS packages. Original main remains a12d24f, remote default

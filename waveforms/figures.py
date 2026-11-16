@@ -1,4 +1,4 @@
-"""Advisor essentials only: H/A, basis samples/spectra and raw BER versus SNR."""
+"""Research figures: H/A, basis samples/spectra and raw BER versus SNR."""
 from pathlib import Path
 import os
 import numpy as np
@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from .artifacts import sha, write_json
 from .experiments import output_dir
-from .selection import WAVEFORMS, advisor_frame, focused_inputs, identity
+from .selection import WAVEFORMS, selected_frame, focused_inputs, identity
 from matplotlib.lines import Line2D
 
 COLORS = {"Learned": "#2166ac", "OTFS": "#d6604d", "AFDM": "#25804b"}
@@ -36,7 +36,7 @@ def db(power):
 
 
 def plot_ber(frame, mod, snr_max, slicer="raw", provenance=None, k=24, support_label="Fixed discovery Q"):
-    frame = advisor_frame(frame)
+    frame = selected_frame(frame)
     shown = frame[(frame.modulation == mod) & (frame.slicer == slicer)].copy()
     if snr_max is not None:
         shown = shown[shown.snr_db <= snr_max]
@@ -65,7 +65,7 @@ def plot_ber(frame, mod, snr_max, slicer="raw", provenance=None, k=24, support_l
 
 
 def ber_figure(frame, mod, out, snr_max, slicer="raw"):
-    shown = advisor_frame(frame)
+    shown = selected_frame(frame)
     shown = shown[(shown.modulation == mod) & (shown.slicer == slicer)]
     if snr_max is not None:
         shown = shown[shown.snr_db <= snr_max]
@@ -135,13 +135,13 @@ def figures(root, out, snr_max=25.):
         exports.append(save(plot_basis(bases, columns, frequency), out,
                             "basis_frequency" if frequency else "basis_time"))
     exports.append(save(plot_channels(channels), out, "channel_matrices_native"))
-    frame = advisor_frame(pd.read_csv(root / "focused/ber_summary.csv"))
+    frame = selected_frame(pd.read_csv(root / "focused/ber_summary.csv"))
     for mod in ["QPSK", "16QAM"]:
         exports.append(ber_figure(frame, mod, out, snr_max, "raw"))
     inputs = ["focused/data/bases.npz", "focused/data/channels.npz", "focused/ber_summary.csv"]
     write_json(out / "figure_manifest.json", {"inputs": {p: sha(root / p) for p in inputs},
         "plot_source_sha256": sha(__file__),
-        "audience": "advisor", "figure_scope": "essentials_only", "selected_learned": identity(), "waveforms": list(WAVEFORMS),
+        "audience": "research", "figure_scope": "essentials_only", "selected_learned": identity(), "waveforms": list(WAVEFORMS),
         "exports": exports, "snr_display_max": snr_max,
         "typography": {"font": "DejaVu Sans", "axes": 18, "panel": 17, "ticks": 15, "legend": 16, "dpi": 300},
         "BER": "Saved counts only, approximate channel-bootstrap intervals; downward triangles mark 1/bits for zero errors",

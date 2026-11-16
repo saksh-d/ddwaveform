@@ -1,7 +1,7 @@
 import io
 import tarfile
 import pytest
-from advisor.artifacts import provision, sha, verify
+from waveforms.artifacts import provision, sha, verify
 
 
 def bundle(tmp_path, name="input.txt", value=b"verified evidence"):
@@ -37,7 +37,7 @@ def test_corrupt_and_traversal_rejected(tmp_path):
 
 
 def test_classical_smoke_without_local_arrays(tmp_path, monkeypatch):
-    from advisor.experiments import check, export_dd
+    from waveforms.experiments import check, export_dd
     monkeypatch.chdir(tmp_path)
     assert "Learned" not in check()["bases"]
     result = export_dd("local/dd", count=1)

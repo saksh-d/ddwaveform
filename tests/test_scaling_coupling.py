@@ -4,11 +4,11 @@ import json
 import numpy as np
 import pytest
 import torch
-from advisor.coupling import analyze, spectrum
-from advisor.core import configure
-from advisor.scaling_evidence import ScalingEvidence, prepare_scaling
-from advisor.notebook_workflow import NotebookWorkflow, validate_config
-from advisor.artifacts import EXPECTED_W, sha, provision, verify
+from waveforms.coupling import analyze, spectrum
+from waveforms.core import configure
+from waveforms.scaling_evidence import ScalingEvidence, prepare_scaling
+from waveforms.notebook_workflow import NotebookWorkflow, validate_config
+from waveforms.artifacts import EXPECTED_W, sha, provision, verify
 
 
 @pytest.mark.parametrize('n',[64,128,256])
@@ -95,7 +95,7 @@ def test_fresh_ber_shape_support_and_budget_propagation(n,scaling_artifacts,arti
 
 
 def test_unsupported_or_missing_size_never_substitutes_n64(tmp_path):
-    from advisor.notebook_workflow import start_workflow
+    from waveforms.notebook_workflow import start_workflow
     display=dict(basis_columns=(0,),snr_max_db=25.)
     model=dict(n=512,paths=3,delay_range=(0.,4.),doppler_range=(-.75,.75))
     with pytest.raises(ValueError,match="own verified learned basis required"):
@@ -107,7 +107,7 @@ def test_unsupported_or_missing_size_never_substitutes_n64(tmp_path):
 
 
 def test_grouped_view_preserves_absolute_energy_and_separate_amplitude_normalization():
-    from advisor.coupling import grouped_spectral_data, plot_grouped_spectra
+    from waveforms.coupling import grouped_spectral_data, plot_grouped_spectra
     import matplotlib.pyplot as plt
     n=16; k=np.arange(n)
     w=np.exp(2j*np.pi*np.outer(k,k)/n)/np.sqrt(n)
@@ -143,7 +143,7 @@ def test_grouped_view_preserves_absolute_energy_and_separate_amplitude_normaliza
 @pytest.mark.artifacts
 @pytest.mark.parametrize('n,counts',[(64,[23,21,20]),(128,[25,44,24,35]),(256,[63,62,79,52])])
 def test_grouped_view_uses_all_actual_size_members(n,counts,scaling_artifacts):
-    from advisor.coupling import grouped_spectral_data
+    from waveforms.coupling import grouped_spectral_data
     evidence=ScalingEvidence(scaling_artifacts,n);record=evidence.records['Learned']
     data=grouped_spectral_data(record['w'],record['labels'],record['permutation'])
     assert np.bincount(data['labels']).tolist()==counts
@@ -155,7 +155,7 @@ def test_grouped_view_uses_all_actual_size_members(n,counts,scaling_artifacts):
 
 
 def test_example_indices_validate_native_ids_and_freeze_display_order():
-    from advisor.coupling import example_indices
+    from waveforms.coupling import example_indices
     labels=np.array([1,0,1,0,1,0]);order=np.argsort(labels,kind='stable')
     np.testing.assert_array_equal(example_indices(labels,order,(4,1,0)),[1,0,4])
     with pytest.raises(ValueError,match='two examples per coupling group'):
@@ -169,7 +169,7 @@ def test_example_indices_validate_native_ids_and_freeze_display_order():
 @pytest.mark.artifacts
 @pytest.mark.parametrize('n',[64,128,256])
 def test_selected_examples_keep_group_native_rank_and_same_channel(n,scaling_artifacts,tmp_path):
-    from advisor.coupling import plot_basis_examples,plot_grouped_spectra
+    from waveforms.coupling import plot_basis_examples,plot_grouped_spectra
     import matplotlib.pyplot as plt
     evidence=ScalingEvidence(scaling_artifacts,n);record=evidence.records['Learned']
     labels,order=record['labels'],record['permutation']

@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 import torch
-import advisor.notebook_workflow as workflow
+import waveforms.notebook_workflow as workflow
 
 def make_workflow(config, artifacts, workspace, save_run):
     return workflow.NotebookWorkflow(config, artifacts, workspace, save_run,
@@ -55,7 +55,7 @@ def test_train_new_fails_before_loading_or_work(tmp_path, monkeypatch):
 
 
 def test_notebook_training_failure_clears_previous_workflow(tmp_path):
-    notebook = json.loads((Path(__file__).resolve().parents[1] / "notebooks/results.ipynb").read_text())
+    notebook = json.loads((Path(__file__).resolve().parents[1] / "Waveform_Exploration.ipynb").read_text())
     prepare = next(cell for cell in notebook["cells"] if cell.get("id") == "prepare")
     configuration = next(cell for cell in notebook["cells"] if "configuration" in cell.get("metadata", {}).get("tags", []))
     namespace = {}
@@ -69,8 +69,8 @@ def test_notebook_training_failure_clears_previous_workflow(tmp_path):
 
 @pytest.mark.artifacts
 def test_provider_contract_feeds_shared_downstream_and_blocks_saved_curve_reuse(artifacts, tmp_path):
-    from advisor.basis_source import SelectedBasis
-    from advisor.delay_doppler import classical
+    from waveforms.basis_source import SelectedBasis
+    from waveforms.delay_doppler import classical
     # Explicit matrix fixture only: no trainer is called or claimed.
     existing = workflow.select_basis("load_existing", artifacts)
     with np.load(artifacts / "focused/data/supports.npz") as data:

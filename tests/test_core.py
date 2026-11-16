@@ -1,11 +1,11 @@
 import math
 import torch
-from advisor.core import REAL, COMPLEX, rng, seed
-from advisor.delay_doppler import atoms, bridge, classical, dft, frequency_paths, sample
-from advisor.experiments import ber_point
-from advisor.receivers import constellation, decode, encode, receiver, stream_mse, support
-from advisor.residual_cfo import apply_residual_cfo, effective, operator
-from advisor.supplementary import block_energy, rotate
+from waveforms.core import REAL, COMPLEX, rng, seed
+from waveforms.delay_doppler import atoms, bridge, classical, dft, frequency_paths, sample
+from waveforms.experiments import ber_point
+from waveforms.receivers import constellation, decode, encode, receiver, stream_mse, support
+from waveforms.residual_cfo import apply_residual_cfo, effective, operator
+from waveforms.supplementary import block_energy, rotate
 
 
 def test_integer_delay_and_fractional_sign_order():

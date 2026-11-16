@@ -5,7 +5,7 @@ Local command ledger: `local/COMMANDS.md`; release evidence: `local/qualificatio
 
 ```bash
 conda run -n pytorch python scripts/bootstrap.py --bundle local/advisor-n64-artifacts.tar.gz
-conda run -n pytorch python -c "from advisor.scaling_evidence import prepare_scaling; prepare_scaling('.', 'local/scaling-artifacts', 'local/advisor-scaling-artifacts.tar.gz')"
+conda run -n pytorch python -c "from waveforms.scaling_evidence import prepare_scaling; prepare_scaling('.', 'local/scaling-artifacts', 'local/advisor-scaling-artifacts.tar.gz')"
 conda run --no-capture-output -n pytorch python -m pytest tests -q --basetemp local/pytest-release-final --artifacts local/artifacts --scaling-artifacts local/scaling-artifacts
 conda run --no-capture-output -n pytorch python scripts/qualify_notebook.py --out local/qualification-release
 conda run --no-capture-output -n pytorch python scripts/audit_configurable.py --qualification local/qualification-release
@@ -13,7 +13,7 @@ conda run --no-capture-output -n pytorch python scripts/audit_configurable.py --
 
 Notebook qualifier copies the source notebook into local/, changes only its single
 configuration cell, executes every cell, saves executed notebooks/inline PNGs and
-an execution ledger. It never writes outputs into notebooks/results.ipynb.
+an execution ledger. It never writes outputs into Waveform_Exploration.ipynb.
 Use a new --out path each time; checkpoint overwrite is deliberately rejected.
 Default N64 training/evaluation settings are executed as presented. N128/N256
 training qualification is bounded to3steps/3train and3validation channels, with

@@ -11,7 +11,7 @@ in the advisor command or notebook. All working data remain unchanged.
 | `frequency_groups.png` | `focused/data/bases.npz`, frozen labels/permutation; `supplementary/block_frequency` | Learned's approximate/leaky spectral groups, with baseline DFT-coefficient heatmaps. Group labels/order apply only to Learned, not baseline streams. No analytical uniqueness or hard frequency-band claim. |
 | `structural_transfer.png` | exact selected reference rows in `supplementary/main/impairment_transfer.csv` | Same Learned under identity, delay, Doppler, one DD path and normalized multipath. OTFS/AFDM kept. Display strength1; CSV retains all .25/.5/1 values. Structural statistics only, not transfer BER or genuine CFO W/R. |
 
-`python -m advisor.cli internal-supplementary --artifacts local/artifacts --out
+`python -m waveforms.cli internal-supplementary --artifacts local/artifacts --out
 local/supplementary_figures` writes only these two supplementary PNGs, a filtered
 CSV and an internal audience/selection/input-hash manifest. It rejects missing selected
 reference data rather than relabeling another candidate.

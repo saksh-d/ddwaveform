@@ -2,9 +2,9 @@ from pathlib import Path
 import numpy as np
 import pytest
 import torch
-from advisor import mps_numerics as m
-from advisor.cfo_workflow import start_cfo,operator
-from advisor.configurable import DEFAULT_EVALUATION
+from waveforms import mps_numerics as m
+from waveforms.cfo_workflow import start_cfo,operator
+from waveforms.configurable import DEFAULT_EVALUATION
 
 MODEL=dict(n=64,streams=45,cfo_range=(-.1,.1))
 DISPLAY=dict(basis_columns=(0,22,44),snr_max_db=25.)

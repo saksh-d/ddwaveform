@@ -3,17 +3,17 @@ requires = ["setuptools==80.8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "advisor-waveforms"
+name = "waveform-exploration"
 version = "0.1.0"
-description = "Portable N64 delay-Doppler and separate residual-CFO operators"
+description = "Configurable delay-Doppler waveform exploration and distinct residual-CFO evaluation"
 requires-python = ">=3.10"
 dependencies = ["torch==2.7.0", "numpy==2.2.6", "matplotlib==3.10.3", "pandas==2.2.3"]
 
 [project.scripts]
-advisor = "advisor.cli:main"
+waveforms = "waveforms.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["advisor*"]
+include = ["waveforms*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -227,3 +227,15 @@ Historical stage history remains in Git at `9aae23ed6f9ac6e2a2e3e057f38693a14888
 - N64default20updates selects20,0.845s trainer/11.35s notebook; bounded N128/N2563updates select3/2; trained unitary/bridge errors≤1.32e-6.
 - Checkpoint reload matrices/masks/counts/BER exact;709input/source-file hashes and all run source/archive hashes verify, original bundle hashes unchanged.
 - Final figures inspected/corrected; source notebook output-free, outputs ignored. Ready separate branch review; long/multi-seed campaigns and CFO training unrun, no merge/push/sharing.
+
+## 2026-11-16 — neutral research presentation cleanup
+- Preserved user README setup edits; before-cleanup97tests pass13.34s, representative DD replay/train13figures and CFO5figures execute without errors.
+- Renamed Python package waveforms/ and moved sole entry notebook to root Waveform_Exploration.ipynb; imports, discovery, scripts and docs updated, sealed names/RNG namespaces retained.
+- Split figure reading flow into numbered sections; compact summaries, collapsed metadata/tables, long theory in docs; every plot/control retained.
+- Numerical/training/model code changes limited to naming; before/after artifact comparison and final reading-flow verification pending.
+
+## 2026-11-16 17:53:56 EST — presentation cleanup verified
+- Full102tests pass11.63s, original97retained; code-only71pass/31explicit artifact skips. Checkout/wheel import23submodules, CLI and package build/install verified.
+- Before/after DD replay/train13figures each and CFO5; all31PNG bytes and211array fields exact, CSV values/selection/trace exact except runtime seconds.
+- Existing23module ASTs equivalent after naming/docstring/label normalization,15byte-identical; config expressions unchanged. Seven sections,26cells,395character maximum markdown; full metadata collapsed and archived.
+- Rendered reading flow inspected; initial viewer-size issue resolved with display-only thumbnails. All input/source/archive hashes verify, outputs ignored/notebook output-free; local commit pending, no external changes.

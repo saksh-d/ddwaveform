@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import pytest
 import torch
-from advisor import mps_numerics as m
-from advisor.configurable import start,validate,DEFAULT_EVALUATION
-from advisor.training import DEFAULT_TRAINING,train,save_checkpoint,load_checkpoint,synthesis,coupling,leakage,groups
+from waveforms import mps_numerics as m
+from waveforms.configurable import start,validate,DEFAULT_EVALUATION
+from waveforms.training import DEFAULT_TRAINING,train,save_checkpoint,load_checkpoint,synthesis,coupling,leakage,groups
 
 MODEL=dict(n=64,paths=3,delay_range=(0.,4.),doppler_range=(-.75,.75))
 DISPLAY=dict(basis_columns=(0,1),example_columns=(0,),snr_max_db=25.)
@@ -58,7 +58,7 @@ def test_dd_deterministic_reference_and_classical_unitarity(n):
     delay=ref.conj().T@(np.exp(-2j*np.pi*1.25*index/n)[:,None]*ref)
     expected=np.exp(2j*np.pi*.3*index/n)[:,None]*delay
     np.testing.assert_allclose(a,expected,atol=1e-5,rtol=0)
-    from advisor.scaling_evidence import GRIDS
+    from waveforms.scaling_evidence import GRIDS
     for w in m.classical(n,GRIDS[n]).values(): assert m.unitarity(w)<1e-4
     model={**MODEL,'n':n}; h,info=m.sample(2,model,('test','normalized',n))
     np.testing.assert_allclose(m.power(h).sum((-2,-1)).cpu(),n,rtol=3e-6)
@@ -79,7 +79,7 @@ def test_receiver_reference_noise_mse_and_roundtrip():
         assert torch.equal(m.decode(m.symbols(bits,mod),mod),bits)
     # Full receiver average MSE invariant under unitary change of coordinates.
     h,_=m.sample(2,MODEL,('full-MSE-invariance',))
-    from advisor.scaling_evidence import GRIDS
+    from waveforms.scaling_evidence import GRIDS
     metrics=[]
     for w in m.classical(64,GRIDS[64]).values():
         a=m.effective(w,h); g=m.receiver(a,variance); ga=m.mm(g,a)
@@ -154,7 +154,7 @@ def test_error_time_channel_budgets_and_zero_bounds(tmp_path):
 @pytest.mark.artifacts
 def test_archived_fresh_recalibration_and_replay_guard(tmp_path,scaling_artifacts,monkeypatch):
     # Fresh may never call the saved BER loader, including changed channel/K.
-    from advisor.scaling_evidence import ScalingEvidence
+    from waveforms.scaling_evidence import ScalingEvidence
     monkeypatch.setattr(ScalingEvidence,'ber',lambda self:pytest.fail('stale saved BER used'))
     args=settings(Path(__file__).resolve().parents[1],mode='load_existing',training=None,scaling_artifacts=scaling_artifacts)
     a=start(**args,save_run=False); a.evaluate_ber()
@@ -194,7 +194,7 @@ def test_training_time_budget_retains_selected_state(tmp_path):
 
 
 def test_fresh_group_plot_does_not_magnify_unitary_roundoff(tmp_path):
-    from advisor.coupling import plot_groups
+    from waveforms.coupling import plot_groups
     import matplotlib.pyplot as plt
     run=start(**settings(tmp_path),save_run=False)
     data=run.coupling_data(); fig=plot_groups(data)
@@ -206,7 +206,7 @@ def test_fresh_group_plot_does_not_magnify_unitary_roundoff(tmp_path):
 
 
 def test_single_row_complex_basis_labels_fit_canvas(tmp_path):
-    from advisor.figures import plot_basis,style
+    from waveforms.figures import plot_basis,style
     import matplotlib.pyplot as plt
     run=start(**settings(tmp_path),save_run=False);style()
     fig=plot_basis(run.bases,(0,1),True);fig.canvas.draw();renderer=fig.canvas.get_renderer()

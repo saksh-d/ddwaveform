@@ -1,8 +1,8 @@
 """Review selections/layouts stay faithful to frozen complex basis columns."""
 import numpy as np
 import pytest
-from advisor.coupling import grouped_spectral_data
-from advisor.overlays import validate_review,overlay_values,plot_overlay,OVERLAY_VARIANTS
+from waveforms.coupling import grouped_spectral_data
+from waveforms.overlays import validate_review,overlay_values,plot_overlay,OVERLAY_VARIANTS
 
 
 def review(n):
@@ -57,8 +57,8 @@ def test_overlays_plot_all_selected_original_curves_with_complete_key(representa
 @pytest.mark.artifacts
 @pytest.mark.parametrize('n',[64,128,256])
 def test_actual_half_overlay_count_mapping_and_config_selection(n,scaling_artifacts,tmp_path):
-    from advisor.scaling_evidence import ScalingEvidence
-    from advisor.notebook_workflow import NotebookWorkflow,validate_config
+    from waveforms.scaling_evidence import ScalingEvidence
+    from waveforms.notebook_workflow import NotebookWorkflow,validate_config
     import matplotlib.pyplot as plt
     e=ScalingEvidence(scaling_artifacts,n);cfg=review(n)
     model=dict(n=n,paths=3,delay_range=(0.,4.),doppler_range=(-.75,.75))

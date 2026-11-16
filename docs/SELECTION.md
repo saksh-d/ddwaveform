@@ -1,3 +1,6 @@
+> Historical N64 selection record, not the new training-selection rule.
+> Current modes: [configurable contract](CONFIGURABLE.md).
+
 # One selected Learned waveform
 
 All advisor-facing DD outputs use the same verified N64 synthesis matrix,

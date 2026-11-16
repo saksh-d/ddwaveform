@@ -11,7 +11,7 @@ from .selection import identity
 def require_available_mode(mode):
     if mode == "train_new":
         raise NotImplementedError(
-            "train_new is unavailable in the legacy replay API: use advisor.entry with explicit training/evaluation configuration. "
+            "train_new is unavailable in the legacy replay API: use waveforms.entry with explicit training/evaluation configuration. "
             "No training started and no existing basis was silently loaded.")
     if mode != "load_existing":
         raise ValueError("MODE must be load_existing or train_new (currently unavailable)")

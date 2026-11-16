@@ -97,8 +97,8 @@ time and complex spectral bases, coupling/group view, grouped member energy/magn
 propagation, QPSK/16QAM BER. No intervention/transfer campaign figures return.
 Internal histories, variants, stress results and original sources are preserved.
 
-Only local/advisor-scaling-artifacts.tar.gz is needed by the current notebook;
-legacy local/advisor-n64-artifacts.tar.gz remains for earlier internal/CFO tools.
+Existing DD results require local/advisor-scaling-artifacts.tar.gz;
+CFO uses local/advisor-n64-artifacts.tar.gz. New DD training requires neither bundle.
 The scaling bundle is90,150,353bytes, SHA256
 71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5.
 Run All provisions it under local/ and checks every manifest entry. No ignored

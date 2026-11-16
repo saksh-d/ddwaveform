@@ -1,6 +1,6 @@
 """Execute local notebook review matrix; never write outputs to tracked notebook.
 
-Run from project root with conda pytorch. Cases use only this checkout's local/.
+Run from project root with the project dependencies installed. Cases use only this checkout's local/.
 """
 import argparse
 import base64
@@ -18,7 +18,7 @@ def main():
     args=parser.parse_args(); root=Path.cwd().resolve(); out=(root/args.out).resolve()
     if not out.is_relative_to(root/'local'): raise ValueError('Qualification output must stay in this worktree local/')
     out.mkdir(parents=True,exist_ok=True)
-    template=nbformat.read(root/'notebooks/results.ipynb',as_version=4); results=[]
+    template=nbformat.read(root/'Waveform_Exploration.ipynb',as_version=4); results=[]
     for case in args.cases:
         nb=nbformat.from_dict(json.loads(json.dumps(template)))
         cell=next(c for c in nb.cells if 'configuration' in c.metadata.get('tags',[]))

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "role": "Frozen documentation of implemented defaults, not a tuning interface",
+  "role": "Historical reference defaults; active runs are configured in the root notebook",
   "delay_doppler": {
     "N": 64,
     "P": 3,
@@ -35,31 +35,39 @@
     "historical_BER_axis": "Eb/N0, 16QAM, sigma2=1/(4*10^(EbN0/10))",
     "scope": "qualified stored operator only; saved BER not rerun"
   },
-  "advisor_presentation": {
+  "notebook": {
     "label": "Learned",
     "matrix_sha256": "11bb15d39bb7e685b074e2ec7ed6f27bd87370e141aa6f62b67c338c21514b0f",
     "baselines": [
       "OTFS",
       "AFDM"
     ],
-    "rule": "One fixed N64 matrix for every plot/SNR/modulation/receiver; descriptive post-hoc retention, no universal winner",
-    "internal_workflow": "Only internal-* commands generate studies/diagnostics; never invoked by advisor figures/notebook",
+    "rule": "One selected Learned per N/run across all figures/SNRs; no universal winner or resizing",
+    "internal_workflow": "Only internal-* commands generate studies/diagnostics; never invoked by research notebook",
     "figures": [
       "channel_matrices_native",
       "basis_time",
       "basis_frequency",
       "ber_QPSK_raw",
-      "ber_16QAM_raw"
+      "ber_16QAM_raw",
+      "coupling_groups",
+      "coupling_propagation",
+      "grouped_spectra",
+      "basis_examples",
+      "overlay8_complex",
+      "overlay_half_complex",
+      "overlay8_energy_magnitude",
+      "overlay_half_energy_magnitude"
     ],
-    "primary_entry": "notebooks/results.ipynb",
+    "primary_entry": "Waveform_Exploration.ipynb",
     "notebook_modes": [
       "load_existing",
       "train_new"
     ],
-    "training": "Not implemented; later separately authorized workflow",
+    "training": "DD multipath concentration surrogate; independent held-out selection and fresh test evaluation",
     "basis_modes": {
       "load_existing": "implemented",
-      "train_new": "unavailable pending separately authorized follow-on"
+      "train_new": "implemented for DD only; unsupported for residual CFO"
     },
     "evidence_modes": [
       "saved_replay",

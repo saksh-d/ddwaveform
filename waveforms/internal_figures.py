@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from .artifacts import sha, write_json
 from .experiments import output_dir
-from .selection import WAVEFORMS, advisor_frame, focused_inputs, identity
+from .selection import WAVEFORMS, selected_frame, focused_inputs, identity
 from matplotlib.lines import Line2D
 
 COLORS = {"Learned": "#2166ac", "OTFS": "#d6604d", "AFDM": "#25804b"}
@@ -36,7 +36,7 @@ def db(power):
 
 
 def ber_figure(frame, mod, out, snr_max, slicer="raw"):
-    frame = advisor_frame(frame)
+    frame = selected_frame(frame)
     shown = frame[(frame.modulation == mod) & (frame.slicer == slicer)].copy()
     if snr_max is not None:
         shown = shown[shown.snr_db <= snr_max]
@@ -110,7 +110,7 @@ def figures(root, out, snr_max=25.):
         cb = fig.colorbar(image, ax=axes, shrink=.8)
         cb.set_label("Entry power (dB, reference 1)", fontsize=18)
         exports.append(save(fig, out, "channel_matrices_group_view" if reordered else "channel_matrices_native"))
-    frame = advisor_frame(pd.read_csv(root / "focused/ber_summary.csv"))
+    frame = selected_frame(pd.read_csv(root / "focused/ber_summary.csv"))
     for mod in ["QPSK", "16QAM"]:
         for slicer in ["raw", "gain"]:
             exports.append(ber_figure(frame, mod, out, snr_max, slicer))

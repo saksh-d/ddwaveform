@@ -4,44 +4,44 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
-from advisor.selection import INTERNAL_ID, WAVEFORMS, advisor_frame, focused_inputs, identity
+from waveforms.selection import INTERNAL_ID, WAVEFORMS, selected_frame, focused_inputs, identity
 
 
 def test_explicit_identity_filter_never_relabels_other_candidates():
     source = pd.DataFrame({"waveform": ["HISTORICAL", "T0_tail", "T0_q", "OTFS", "AFDM"],
                            "value": [1., 2., 3., 4., 5.]})
-    selected = advisor_frame(source, source_label=INTERNAL_ID)
+    selected = selected_frame(source, source_label=INTERNAL_ID)
     assert selected.set_index("waveform").value.to_dict() == {"Learned": 1., "OTFS": 4., "AFDM": 5.}
     with pytest.raises(ValueError, match="missing"):
-        advisor_frame(source[source.waveform != INTERNAL_ID], source_label=INTERNAL_ID)
+        selected_frame(source[source.waveform != INTERNAL_ID], source_label=INTERNAL_ID)
     with pytest.raises(ValueError, match="Ambiguous"):
-        advisor_frame(pd.concat([source, pd.DataFrame({"waveform": ["Learned"], "value": [9.]})]), source_label=INTERNAL_ID)
+        selected_frame(pd.concat([source, pd.DataFrame({"waveform": ["Learned"], "value": [9.]})]), source_label=INTERNAL_ID)
 
 
-def test_advisor_notebook_separates_internal_candidates():
+def test_research_notebook_separates_internal_candidates():
     root = Path(__file__).resolve().parents[1]
-    advisor = json.loads((root / "notebooks/results.ipynb").read_text())
-    text = "\n".join("".join(cell["source"]) for cell in advisor["cells"])
-    for forbidden in ["T0_tail", "T0_q", "HISTORICAL", "training_selected_summary", "load_qualified", "selected_transfer", "advisor.supplementary", "internal_figures", "internal_studies"]:
+    notebook = json.loads((root / "Waveform_Exploration.ipynb").read_text())
+    text = "\n".join("".join(cell["source"]) for cell in notebook["cells"])
+    for forbidden in ["T0_tail", "T0_q", "HISTORICAL", "training_selected_summary", "load_qualified", "selected_transfer", "waveforms.supplementary", "internal_figures", "internal_studies"]:
         assert forbidden not in text
     internal = (root / "internal/notebooks/variants.ipynb").read_text()
     assert "T0_tail" in internal and "training_selected_summary" in internal
-    config_cells = [cell for cell in advisor["cells"] if "configuration" in cell.get("metadata", {}).get("tags", [])]
+    config_cells = [cell for cell in notebook["cells"] if "configuration" in cell.get("metadata", {}).get("tags", [])]
     assert len(config_cells) == 1
     assert "MODE =" in "".join(config_cells[0]["source"])
     assert 'MODE = "load_existing"' in "".join(config_cells[0]["source"])
     assert "EVIDENCE_MODE =" in "".join(config_cells[0]["source"])
-    assert "train_new" in text and "UNAVAILABLE" in text
+    assert "train_new" in text and "unsupported" in text
     import ast
-    for cell in advisor["cells"]:
+    for cell in notebook["cells"]:
         if cell["cell_type"] == "code" and cell is not config_cells[0]:
             assert not any(isinstance(node, ast.If) for node in ast.walk(ast.parse("".join(cell["source"]))))
     assert "workflow = None" in text
     assert "start_workflow" in text and "workflow.generate_channels()" in text
-    assert "workflow.evaluate_ber()" in text and "workflow.show_basis_analysis()" in text and "workflow.show_ber_figures()" in text
+    assert "show_ber_summary(workflow)" in text and "show_coupling(workflow)" in text and "show_overlay_key(workflow)" in text
     assert "Image(filename=" not in text and "Generate first:" not in text
     assert "saved_replay" in text and "fresh" in text
-    assert all(cell.get("outputs", []) == [] for cell in advisor["cells"])
+    assert all(cell.get("outputs", []) == [] for cell in notebook["cells"])
 
 
 @pytest.mark.artifacts
@@ -60,10 +60,10 @@ def test_selected_matrix_substitution_rejected(artifacts, tmp_path):
 
 
 @pytest.mark.artifacts
-def test_advisor_figures_are_essentials_only(artifacts, tmp_path, monkeypatch):
+def test_research_figures_are_essentials_only(artifacts, tmp_path, monkeypatch):
     import matplotlib.pyplot as plt
     from matplotlib.text import Text
-    import advisor.figures as core
+    import waveforms.figures as core
     captured = {}
     def capture(fig, out, name):
         captured[name] = [item.get_text() for item in fig.findobj(Text)]
@@ -92,7 +92,7 @@ def test_advisor_figures_are_essentials_only(artifacts, tmp_path, monkeypatch):
 def test_original_multi_variant_renderer_remains_internal(artifacts, tmp_path, monkeypatch):
     import matplotlib.pyplot as plt
     from matplotlib.text import Text
-    import advisor.internal_studies as internal
+    import waveforms.internal_studies as internal
     labels = []
     def capture(fig, out, name):
         labels.extend(item.get_text() for item in fig.findobj(Text))
@@ -104,20 +104,20 @@ def test_original_multi_variant_renderer_remains_internal(artifacts, tmp_path, m
     assert {"HISTORICAL", "T0_tail", "T0_q"} <= set(labels)
 
 
-def test_cli_has_no_advisor_supplementary_route(tmp_path, monkeypatch):
+def test_cli_has_no_public_supplementary_route(tmp_path, monkeypatch):
     import sys
-    import advisor.cli as cli
-    import advisor.figures as core
-    import advisor.supplementary as studies
-    import advisor.internal_figures as diagnostics
+    import waveforms.cli as cli
+    import waveforms.figures as core
+    import waveforms.supplementary as studies
+    import waveforms.internal_figures as diagnostics
     def forbidden(*args, **kwargs):
-        raise AssertionError("Internal generation called by advisor command")
+        raise AssertionError("Internal generation called by public command")
     monkeypatch.setattr(studies, "figures", forbidden)
     monkeypatch.setattr(diagnostics, "figures", forbidden)
     monkeypatch.setattr(core, "figures", lambda *args: {"figure_scope": "essentials_only"})
-    monkeypatch.setattr(sys, "argv", ["advisor", "figures", "--artifacts", str(tmp_path)])
+    monkeypatch.setattr(sys, "argv", ["waveforms", "figures", "--artifacts", str(tmp_path)])
     cli.main()
-    monkeypatch.setattr(sys, "argv", ["advisor", "supplementary", "--artifacts", str(tmp_path)])
+    monkeypatch.setattr(sys, "argv", ["waveforms", "supplementary", "--artifacts", str(tmp_path)])
     with pytest.raises(SystemExit) as stopped:
         cli.main()
     assert stopped.value.code == 2
@@ -126,8 +126,8 @@ def test_cli_has_no_advisor_supplementary_route(tmp_path, monkeypatch):
 @pytest.mark.artifacts
 def test_selected_studies_and_diagnostics_remain_internal(artifacts, tmp_path, monkeypatch):
     import matplotlib.pyplot as plt
-    import advisor.supplementary as studies
-    import advisor.internal_figures as diagnostics
+    import waveforms.supplementary as studies
+    import waveforms.internal_figures as diagnostics
     captured = []
     def capture(fig, out, name):
         captured.append(name)

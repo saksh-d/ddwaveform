@@ -4,10 +4,10 @@ import json
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from advisor.core import configure
-from advisor.artifacts import sha, write_json
-from advisor.experiments import output_dir
-from advisor.selection import INTERNAL_ID, identity
+from waveforms.core import configure
+from waveforms.artifacts import sha, write_json
+from waveforms.experiments import output_dir
+from waveforms.selection import INTERNAL_ID, identity
 
 
 def review(root, out):

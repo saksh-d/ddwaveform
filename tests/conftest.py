@@ -1,6 +1,6 @@
 from pathlib import Path
 import pytest
-from advisor.core import configure
+from waveforms.core import configure
 
 
 def pytest_addoption(parser):

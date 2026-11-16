@@ -53,7 +53,7 @@ executed copies are local/ignored. Main/origin default remain unchanged.
 
 # Primary notebook workflow validation
 
-The single advisor entry point is `notebooks/results.ipynb`: configure, Run All,
+The single advisor entry point is `Waveform_Exploration.ipynb`: configure, Run All,
 inspect H/W/A and five inline figures. No pre-rendered PNG reads, plot-folder
 hunting or generation CLI needed. Supporting modules stay behind notebook cells.
 Tracked source has no outputs; executed review copies remain local/ignored.

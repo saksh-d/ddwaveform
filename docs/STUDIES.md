@@ -1,14 +1,11 @@
-# Internal studies are separate
+# Research views and historical studies
 
-The single advisor notebook generates exactly five essential figures: physical and
-effective-channel matrices, time/frequency bases and QPSK/16QAM BER. All use the
-same selected Learned; comparison baselines OTFS and AFDM.
+The root [research notebook](../Waveform_Exploration.ipynb) presents the selected
+basis, physical/effective channel, complex time/frequency bases, coupling groups,
+member spectra, individual examples, eight/N/2 overlays and BER. Default DD13figures;
+CFO5physically applicable figures. [Figure definitions](FIGURE_GUIDE.md).
 
-The complete [internal study index](../internal/STUDIES.md),
-[selected-reference study notes](../internal/SELECTED_STUDIES.md), renderers,
-notebooks and working data remain intact. They are not invoked or displayed by
-the advisor command/walkthrough. This includes interventions, structural
-transfer, frequency-group, bridge and gain-diagnostic analyses.
-
-Use the explicit commands in [internal/README.md](../internal/README.md) for
-internal research. No study, candidate or numerical data was deleted.
+Intervention, structural-transfer and multi-candidate studies remain in internal/,
+with their numerical inputs retained in ignored sealed artifacts. They are excluded
+from the main reading flow; no data or historical result is deleted.
+See [internal study index](../internal/README.md).

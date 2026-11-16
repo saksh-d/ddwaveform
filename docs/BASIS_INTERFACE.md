@@ -1,37 +1,21 @@
-> Historical completed-exploration API notes. Current notebook uses the configurable
-> workflow: [current controls and support](CONFIGURABLE.md). Training limitations and
-> CPU-only fresh descriptions below apply to the preserved legacy API, not the new entry point.
-
 # Shared basis-source contract
 
-One notebook configuration cell selects MODE=load_existing or train_new.
-load_existing currently returns the selected, verified matrix for N64/128/256.
-train_new is unavailable: it raises before provisioning/loading/run creation,
-with no fallback or campaign. A future separate training branch should implement
-that provider boundary, not a second downstream plotting/evaluation workflow.
+[Waveform_Exploration.ipynb](../Waveform_Exploration.ipynb) uses
+`waveforms.entry.start_workflow`. Load and train modes feed the same downstream
+plotting/evaluation methods; `waveforms.presentation` only formats their outputs.
 
-SelectedBasis supplies:
+DD SelectedBasis supplies its own square W, boolean fixed-K support and selection
+provenance. Archived exports retain their verified complex128 representation;
+new training exports complex64 from MPS FP32 real pairs. Each N has its own W;
+no resizing, transposition, per-SNR selection or borrowed support/groups.
 
-- CPU complex128 synthesis W[N,N], finite/unitary, N=64/128/256.
-- Its own boolean fixed-K support[N,N], K=3N/8 entries per row.
-- Source/selection/training provenance, with content digest calculated at use.
+Replay requires exact archived W/support/model identity. Fresh evaluation generates
+new evidence without retraining W. Training uses separate fit/validation/test banks,
+selects one W with train-derived support, and requires fresh evaluation. Its
+concentration surrogate and limited trials imply no BER guarantee.
 
-Shared downstream cells consume that result for H/A, matched time/complex-frequency
-basis figures, coupling views and paired BER. Configured N must match W exactly;
-no resizing, transposition, substituted size or hidden checkpoint choice. See
-[qualified size identities](COUPLING.md). New providers cannot reuse another W's
-saved curves, support or group labels. Group views require qualified statistics
-belonging to the exact selected W/support; future training must additionally
-supply or explicitly qualify its own discovery statistics/groups.
+CFO is a separate rectangular W[64,45]/R[45,64] contract with A=RHW, not a DD
+SelectedBasis. CFO training and DD sparse/unitary substitutions remain unsupported.
 
-EVIDENCE_MODE controls replay/fresh evaluation independently of basis source.
-Replay verifies exact W/support identity against size-specific saved evidence.
-Fresh draws physical channels/bits/noise using declared settings and retains
-nominal support/groups, without training/recalibration. Saved nominal Q/mean powers
-remain identified as archived nominal statistics even when fresh channels change.
-Future training objective/seed/schedule/initialization changes produce a new basis;
-channel/evaluation/display controls only evaluate the frozen selected basis.
-
-After a mode/config change, clear outputs/restart/Run All. The notebook clears
-its workflow variable before selection, so unavailable training cannot leave a
-stale basis available for downstream execution. Source notebook stays output-free.
+The legacy replay API and historical notebooks remain recoverable under internal/
+and Git history. [Full scientific contract](CONFIGURABLE.md).

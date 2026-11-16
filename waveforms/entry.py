@@ -1,4 +1,4 @@
-"""One advisor entry point, with distinct physical-model validation and workflows."""
+"""One research notebook entry point, with distinct physical-model validation and workflows."""
 
 def start_workflow(*,scenario,**settings):
     if scenario=='residual_cfo':

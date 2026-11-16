@@ -1,6 +1,6 @@
 """INTERNAL ONLY: preserved selected-reference transfer/frequency-group studies.
 
-Multi-variant training/intervention comparisons live in advisor.internal_studies.
+Multi-variant training/intervention comparisons live in waveforms.internal_studies.
 """
 from pathlib import Path
 import numpy as np
@@ -9,7 +9,7 @@ import torch
 from .artifacts import sha, write_json
 from .experiments import output_dir
 from .figures import COLORS, db, save, style
-from .selection import INTERNAL_ID, WAVEFORMS, advisor_frame, focused_inputs, identity
+from .selection import INTERNAL_ID, WAVEFORMS, selected_frame, focused_inputs, identity
 import matplotlib.pyplot as plt
 
 
@@ -28,7 +28,7 @@ def block_energy(a, labels):
 def selected_transfer(root):
     """Use only the exact selected source ID; never alias a fresh replication."""
     path = Path(root) / "supplementary/main/impairment_transfer.csv"
-    return advisor_frame(pd.read_csv(path), source_label=INTERNAL_ID)
+    return selected_frame(pd.read_csv(path), source_label=INTERNAL_ID)
 
 
 def figures(root, out):

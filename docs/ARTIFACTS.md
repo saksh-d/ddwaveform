@@ -1,6 +1,6 @@
-# Current notebook inputs
+# Local inputs for existing results
 
-The primary notebook now needs only `local/advisor-scaling-artifacts.tar.gz`:
+DD archived-result modes in [Waveform_Exploration.ipynb](../Waveform_Exploration.ipynb) need `local/advisor-scaling-artifacts.tar.gz`:
 64 verified nominal numerical/provenance files,90,150,353 compressed bytes,
 SHA256 `71a342c505ddfbafefc2d2bc368dc9071ebc1996cfb9414130f62bf0f3d9edd5`.
 Tracked `configs/scaling_artifacts.json` binds bundle/file hashes. Set its path
@@ -22,13 +22,14 @@ All generated numerical arrays, plots and archives stay ignored. Test code-only
 behavior with `python -m pytest tests -q`; local full checks add
 `--artifacts local/artifacts --scaling-artifacts local/scaling-artifacts`.
 Each marker skip explicitly distinguishes missing local evidence from success.
-The legacy bundle below is only needed for its corresponding internal/CFO checks.
+CFO requires the legacy bundle below. New DD training is independent of both bundles.
+The sealed historical bundle filenames are retained to preserve input identity.
 
 ---
 
 # Local artifact contract
 
-Primary use: open notebooks/results.ipynb. Its configuration cell supplies the
+Primary use: open Waveform_Exploration.ipynb. Its configuration cell supplies the
 local bundle/destination; Run All calls the same hash-checked provisioning code
 automatically when inputs are absent, then regenerates all figures inline.
 The script commands below are optional technical/internal utilities.

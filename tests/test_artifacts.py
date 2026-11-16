@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import pytest
 import torch
-from advisor.artifacts import load_reference, sha, verify, EXPECTED_W
-from advisor.delay_doppler import assemble, bridge, classical, dft, frequency_paths
-from advisor.receivers import support
-from advisor.residual_cfo import effective, load_qualified
+from waveforms.artifacts import load_reference, sha, verify, EXPECTED_W
+from waveforms.delay_doppler import assemble, bridge, classical, dft, frequency_paths
+from waveforms.receivers import support
+from waveforms.residual_cfo import effective, load_qualified
 
 pytestmark = pytest.mark.artifacts
 
