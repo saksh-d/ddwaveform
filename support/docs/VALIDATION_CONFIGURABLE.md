@@ -1,5 +1,20 @@
 # Configurable-workflow validation
 
+## Fresh-machine setup recheck — 2026-11-16
+
+- Actual Git clone with a new Python3.10 venv installed dependencies and optional
+  JupyterLab4.6.6; constraints preserved every locked version. Generic Python3 and
+  registered Waveform Exploration kernels both execute inside that venv.
+- Original artifact roots and previous environment packages OS-blocked:85tests
+  pass,35optional archive checks skip. Full local-artifact suite:120pass/16.04s.
+- DD64/128/256 replay,20step training/reload and CFO:6notebooks/70figures/69.47s;
+  70PNG bytes and434array fields match retained references, CSV exact except timing.
+- Runtime code/data and every notebook cell unchanged; only generic kernel display
+  metadata and setup/provenance documentation changed. Public readable runtime,
+  manifests and current docs contain no absolute machine paths.
+- Exact install/probe/test commands and logs retained under ignored local/fresh-setup/.
+  This verifies a clean environment on the qualified Mac platform, not another OS.
+
 ## Current self-contained delivery — 2026-11-16
 
 The default notebook now uses tracked waveforms/data/; no bundle/download is

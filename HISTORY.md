@@ -52,3 +52,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - README now provides Python3.10/macOS-arm64 prerequisites, generic venv/dependency setup, VSCode/Jupyter kernel selection and one-config/RunAll flow.
 - Notebook kernelspec uses generic Python3; removed named local environments and absolute source paths from current public setup/provenance docs. Scientific code/data unchanged.
 - Fresh work explicitly MPS/FP32-only; other platforms unqualified, saved DD replay retains CPU reference arithmetic. Fresh-environment/clean-clone checks pending.
+
+## 2026-11-16 18:57 — generic environment verified
+- Fresh venv in actual Git clone installs locked dependencies plus optional JupyterLab4.6.6; all pinned versions unchanged, both generic/registered kernels execute in that venv.
+- Original artifact roots and previous environment packages OS-blocked:85tests pass/35optional audit skips; DD64/128/256 replay,20step train/reload and CFO succeed,70figures/69.47s.
+- Full120tests pass16.04s;70PNG bytes/434array fields equal prior references. All runtime code/data and notebook cells unchanged; generic kernel metadata only.
