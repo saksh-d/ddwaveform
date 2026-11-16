@@ -1,175 +1,138 @@
 import math
-
-import pytest
 import torch
-
-from src import config
-from src.channel import (
-    COMPLEX_DTYPE,
-    assemble_dd_channel,
-    complex_awgn,
-    dft_matrix,
-    doppler_operator,
-    fractional_delay_operator,
-    make_generator,
-    noise_variance,
-    sample_dd_v1,
-)
-from src.metrics import qpsk_decode, qpsk_encode, random_bits
-from src.receiver import effective_operator, finite_budget_receiver, full_information_mse, rowwise_topk
-from src.waveforms import diagnostic_waveforms, random_unitary
+from advisor.core import REAL, COMPLEX, rng, seed
+from advisor.delay_doppler import atoms, bridge, classical, dft, frequency_paths, sample
+from advisor.experiments import ber_point
+from advisor.receivers import constellation, decode, encode, receiver, stream_mse, support
+from advisor.residual_cfo import apply_residual_cfo, effective, operator
+from advisor.supplementary import block_energy, rotate
 
 
-ATOL = 1e-10
-RTOL = 1e-9
+def test_integer_delay_and_fractional_sign_order():
+    n = 8
+    x = torch.randn(n, generator=rng("test", "x"), dtype=REAL).to(COMPLEX)
+    torch.testing.assert_close(atoms(2., 0., n) @ x, torch.roll(x, 2), atol=3e-15, rtol=1e-12)
+    tau, nu = .73, -.41
+    k = torch.arange(n, dtype=REAL)
+    explicit = torch.diag(torch.exp(-2j * math.pi * nu * k / n)) @ dft(n).mH @ torch.diag(torch.exp(-2j * math.pi * tau * k / n)) @ dft(n)
+    torch.testing.assert_close(atoms(tau, nu, n), explicit, atol=3e-15, rtol=1e-12)
+    assert torch.linalg.matrix_norm(atoms(tau, nu, n) - atoms(tau, 0, n) @ atoms(0, nu, n)) > .1
 
 
-def test_dft_unitarity() -> None:
-    f = dft_matrix()
-    assert torch.allclose(f.mH @ f, torch.eye(config.N, dtype=COMPLEX_DTYPE), atol=ATOL, rtol=RTOL)
+def test_path_normalization_and_independent_frequency_sum():
+    channels = sample(3, ("test", "paths"), n=8)
+    torch.testing.assert_close(channels.h.abs().square().sum((-2, -1)), torch.full((3,), 8.), atol=1e-13, rtol=0)
+    expected = dft(8) @ channels.h @ dft(8).mH
+    actual = frequency_paths(channels.tau, channels.nu, channels.gains, channels.scale, n=8)
+    torch.testing.assert_close(actual, expected, atol=5e-15, rtol=1e-12)
 
 
-@pytest.mark.parametrize("delay", [0, 1, 4, config.N - 1])
-def test_integer_delay_matches_circular_shift(delay: int) -> None:
-    generator = make_generator(1)
-    x = torch.randn(config.N, dtype=torch.float64, generator=generator).to(COMPLEX_DTYPE)
-    assert torch.allclose(fractional_delay_operator(delay) @ x, torch.roll(x, delay), atol=ATOL, rtol=RTOL)
+def test_classical_reference_order_and_afdm_parameters():
+    ws = classical()
+    f = dft()
+    torch.testing.assert_close(ws["OTFS"], torch.kron(dft(8).mH.contiguous(), torch.eye(8, dtype=COMPLEX)))
+    k = torch.arange(64, dtype=REAL)
+    expected = torch.diag(torch.exp(2j * math.pi / 128 * k.square())) @ f.mH @ torch.diag(torch.exp(2j * math.pi * math.sqrt(2) / 6400 * k.square()))
+    torch.testing.assert_close(ws["AFDM"], expected)
+    for w in ws.values():
+        assert torch.linalg.matrix_norm(w.mH @ w - torch.eye(64, dtype=COMPLEX)) < 1e-12
 
 
-def test_fractional_delay_unitarity_and_composition() -> None:
-    identity = torch.eye(config.N, dtype=COMPLEX_DTYPE)
-    for tau in (0.25, 1.4, 3.75):
-        pi = fractional_delay_operator(tau)
-        assert torch.allclose(pi.mH @ pi, identity, atol=ATOL, rtol=RTOL)
-    lhs = fractional_delay_operator(0.25) @ fractional_delay_operator(1.4)
-    assert torch.allclose(lhs, fractional_delay_operator(1.65), atol=ATOL, rtol=RTOL)
+def test_full_mse_invariance_is_separate_from_stream_geometry():
+    h = sample(3, ("test", "mse")).h
+    means, streams = [], []
+    for w in classical().values():
+        a = w.mH @ h @ w
+        values = stream_mse(a, receiver(a, .03), .03)
+        means.append(values.mean(-1))
+        streams.append(values)
+        b = bridge(w, h)
+        torch.testing.assert_close(b["A_spectral"], a, atol=8e-14, rtol=1e-12)
+        torch.testing.assert_close(b["distorted_gram"], a.mH @ a, atol=8e-14, rtol=1e-12)
+    torch.testing.assert_close(means[0], means[1], atol=2e-15, rtol=0)
+    assert (streams[0] - streams[1]).abs().max() > .01
 
 
-def test_doppler_unitarity_and_composition() -> None:
-    identity = torch.eye(config.N, dtype=COMPLEX_DTYPE)
-    delta = doppler_operator(-0.37)
-    assert torch.allclose(delta.mH @ delta, identity, atol=ATOL, rtol=RTOL)
-    assert torch.allclose(
-        doppler_operator(0.2) @ doppler_operator(-0.7),
-        doppler_operator(-0.5),
-        atol=ATOL,
-        rtol=RTOL,
-    )
+def test_support_stable_ties_and_realized_complex_coefficients():
+    scores = torch.ones(4, 4)
+    mask = support(scores, 2)
+    assert torch.equal(mask, torch.tensor([[True, True, False, False]]).expand(4, 4))
+    a = torch.randn(4, 4, dtype=COMPLEX, generator=rng("test", "receiver"))
+    g = receiver(a, .1, "fixed", mask, 2)
+    model = a * mask
+    expected = torch.linalg.solve(model.mH @ model + .1 * torch.eye(4, dtype=COMPLEX), model.mH)
+    torch.testing.assert_close(g, expected)
+    # True full-A error must retain mismatch; substituting the model is wrong.
+    assert (stream_mse(a, g, .1) - stream_mse(model, g, .1)).abs().max() > .01
 
 
-def test_dd_ordering_and_sign_convention() -> None:
-    # With circular delay, the global scalar Weyl relation is exact for integer
-    # Doppler bins. Fractional nu has a wrap-boundary phase discontinuity.
-    nu, ell = 3.0, 4
-    delta = doppler_operator(nu)
-    pi = fractional_delay_operator(ell)
-    phase = torch.exp(torch.tensor(-2j * math.pi * nu * ell / config.N, dtype=COMPLEX_DTYPE))
-    assert torch.allclose(delta @ pi, phase * (pi @ delta), atol=ATOL, rtol=RTOL)
+def test_gray_constellations_unit_energy_and_exact_slicing():
+    for mod in ["QPSK", "16QAM"]:
+        points, labels = constellation(mod)
+        torch.testing.assert_close(points.abs().square().mean(), torch.tensor(1.))
+        assert torch.equal(decode(encode(labels, mod), mod), labels)
 
 
-def test_multipath_assembly_is_constituent_sum() -> None:
-    delays = torch.tensor([0.25, 2.0], dtype=torch.float64)
-    dopplers = torch.tensor([-0.4, 0.6], dtype=torch.float64)
-    gains = torch.tensor([0.3 + 0.2j, -0.1 + 0.7j], dtype=COMPLEX_DTYPE)
-    expected = sum(
-        gains[p] * doppler_operator(dopplers[p]) @ fractional_delay_operator(delays[p])
-        for p in range(2)
-    )
-    assert torch.allclose(assemble_dd_channel(delays, dopplers, gains), expected, atol=ATOL, rtol=RTOL)
+def test_rng_disjoint_and_replay():
+    assert seed("advisor", "ber-smoke", "channel") != seed("global", "structural-channel")
+    torch.testing.assert_close(sample(2, ("test", "seed")).h, sample(2, ("test", "seed")).h, atol=0, rtol=0)
 
 
-def test_dd_v1_support_fractionality_and_normalization() -> None:
-    batch = sample_dd_v1(32, config.GLOBAL_SEED)
-    assert torch.all((batch.delays >= 0.0) & (batch.delays <= 4.0))
-    assert torch.all((batch.dopplers >= -0.75) & (batch.dopplers <= 0.75))
-    assert torch.any(batch.delays != torch.round(batch.delays))
-    assert torch.any(batch.dopplers != torch.round(batch.dopplers))
-    energies = torch.sum(torch.abs(batch.matrices) ** 2, dim=(-2, -1)) / config.N
-    assert torch.allclose(energies, torch.ones_like(energies), atol=ATOL, rtol=RTOL)
+def test_physical_pipeline_and_approximate_receiver_counts():
+    ws = {"OFDM": classical()["OFDM"]}
+    namespace = ("test", "physical")
+    errors, _, kinds, ch = ber_point(ws, {}, "QPSK", 12., 2, 2, namespace)
+    w = ws["OFDM"]
+    bits = torch.randint(0, 2, (2, 2, 64, 2), generator=rng(*namespace, "bits", "QPSK", 12.))
+    x = encode(bits, "QPSK")
+    gen = rng(*namespace, "noise", "QPSK", 12.)
+    variance = 10**(-1.2)
+    noise = math.sqrt(variance / 2) * (torch.randn(x.shape, generator=gen) + 1j * torch.randn(x.shape, generator=gen))
+    a = w.mH @ ch.h @ w
+    z = x @ a.transpose(-1, -2) + noise @ w.conj()
+    for ri, kind in enumerate(kinds):
+        g = receiver(a, variance, kind)
+        expected = (decode(z @ g.transpose(-1, -2), "QPSK") != bits).sum((1, 2, 3))
+        assert torch.equal(expected, errors[0, ri])
 
 
-def test_dd_v1_reproducibility() -> None:
-    first = sample_dd_v1(3, 41)
-    second = sample_dd_v1(3, 41)
-    different = sample_dd_v1(3, 42)
-    assert torch.equal(first.delays, second.delays)
-    assert torch.equal(first.dopplers, second.dopplers)
-    assert torch.equal(first.pre_normalization_gains, second.pre_normalization_gains)
-    assert torch.equal(first.matrices, second.matrices)
-    assert not torch.equal(first.matrices, different.matrices)
+def test_cfo_sign_orientation_and_colored_analysis_noise():
+    w = torch.randn(8, 5, dtype=torch.complex64, generator=rng("test", "cfo-w"))
+    r = torch.randn(5, 8, dtype=torch.complex64, generator=rng("test", "cfo-r"))
+    eps = torch.tensor([-.1, 0., .1], dtype=torch.float32)
+    a = effective(w, r, eps)
+    phase = torch.exp(2j * math.pi * eps[:, None] * torch.arange(8, dtype=torch.float32) / 8)
+    legacy = torch.einsum("mk,bm,nm->bkn", w, phase, r)
+    torch.testing.assert_close(a.transpose(-1, -2), legacy, atol=2e-6, rtol=2e-6)
+    symbols = torch.randn(3, 5, dtype=torch.complex64)
+    direct = apply_residual_cfo(symbols @ w.T, eps) @ r.T
+    predicted = torch.einsum("bi,bji->bj", symbols, a)
+    torch.testing.assert_close(direct, predicted, atol=1e-5, rtol=2e-6)
+    assert operator(.1)[1, 1].imag > 0
+    assert torch.linalg.matrix_norm(r @ r.mH - torch.eye(5)) > 1
 
 
-def test_awgn_scaling() -> None:
-    sigma2 = noise_variance(15.0)
-    noise = complex_awgn((200_000,), sigma2, make_generator(10))
-    empirical = torch.mean(torch.abs(noise) ** 2)
-    assert torch.allclose(empirical, sigma2, rtol=0.01, atol=0.0)
+def test_within_group_algebra_does_not_fix_topk():
+    labels = torch.tensor([0, 0, 0, 0, 1, 1, 1, 1])
+    w = dft(8).mH
+    z = torch.randn(8, 8, dtype=COMPLEX, generator=rng("test", "rotation"))
+    s = (z - z.mH) * (labels[:, None] == labels[None, :])
+    s = s / torch.linalg.matrix_norm(s)
+    wp = rotate(w, s, .5)
+    h = sample(2, ("test", "rotation-channel"), n=8).h
+    a, ap = w.mH @ h @ w, wp.mH @ h @ wp
+    torch.testing.assert_close(block_energy(a, labels), block_energy(ap, labels), atol=1e-13, rtol=1e-12)
+    assert (a.abs().square() - ap.abs().square()).abs().max() > .01
 
 
-def test_qpsk_round_trip_and_energy() -> None:
-    bits = torch.tensor([[0, 0], [0, 1], [1, 0], [1, 1]])
-    symbols = qpsk_encode(bits)
-    assert torch.equal(qpsk_decode(symbols), bits)
-    assert torch.allclose(torch.abs(symbols).square(), torch.ones(4, dtype=torch.float64))
-
-
-@pytest.mark.parametrize("name", ["IDENTITY", "OFDM", "OTFS", "AFDM", "RANDOM"])
-def test_waveform_unitarity_power_and_identity_channel(name: str) -> None:
-    waveform = diagnostic_waveforms()[name]
-    identity = torch.eye(config.N, dtype=COMPLEX_DTYPE)
-    generator = make_generator(54)
-    vector = torch.randn(config.N, dtype=torch.float64, generator=generator).to(COMPLEX_DTYPE)
-    assert torch.allclose(waveform.mH @ waveform, identity, atol=ATOL, rtol=RTOL)
-    assert torch.allclose(torch.linalg.vector_norm(waveform @ vector), torch.linalg.vector_norm(vector), atol=ATOL, rtol=RTOL)
-    assert torch.allclose(effective_operator(identity, waveform), identity, atol=ATOL, rtol=RTOL)
-
-
-def test_random_unitary_is_seed_deterministic() -> None:
-    assert torch.equal(random_unitary(seed=88), random_unitary(seed=88))
-    assert not torch.equal(random_unitary(seed=88), random_unitary(seed=89))
-
-
-def test_rowwise_topk_count_ties_and_full_identity() -> None:
-    matrix = torch.tensor([[1 + 0j, -1 + 0j, 0.5 + 0j], [0 + 0j, 2 + 0j, 3 + 0j]], dtype=COMPLEX_DTYPE)
-    truncated = rowwise_topk(matrix, 1)
-    assert torch.count_nonzero(truncated, dim=-1).tolist() == [1, 1]
-    assert truncated[0, 0] == matrix[0, 0]
-    assert torch.equal(rowwise_topk(matrix, matrix.shape[-1]), matrix)
-
-
-def test_physical_chain_matches_effective_operator() -> None:
-    channel = sample_dd_v1(1, 72).matrices[0]
-    waveform = diagnostic_waveforms()["OTFS"]
-    symbols = qpsk_encode(random_bits((config.N, 2), make_generator(73)))
-    physical = waveform.mH @ (channel @ (waveform @ symbols))
-    equivalent = effective_operator(channel, waveform) @ symbols
-    assert torch.allclose(physical, equivalent, atol=ATOL, rtol=RTOL)
-
-
-def test_analytic_receiver_mse_matches_small_monte_carlo() -> None:
-    channel = sample_dd_v1(1, 81).matrices[0]
-    waveform = diagnostic_waveforms()["OFDM"]
-    a = effective_operator(channel, waveform)
-    sigma2 = noise_variance(15.0)
-    _, equalizer, analytic = finite_budget_receiver(a, sigma2, 3)
-    generator = make_generator(82)
-    bits = random_bits((2048, config.N, 2), generator)
-    symbols = qpsk_encode(bits)
-    noise = complex_awgn((2048, config.N), sigma2, generator)
-    observations = symbols @ a.T + noise
-    estimates = observations @ equalizer.T
-    empirical = torch.mean(torch.abs(estimates - symbols) ** 2)
-    assert torch.allclose(empirical, analytic, rtol=0.04, atol=0.0)
-
-
-def test_full_lmmse_cross_waveform_mse_invariance() -> None:
-    channel = sample_dd_v1(1, 91).matrices[0]
-    sigma2 = noise_variance(18.0)
-    bound = full_information_mse(channel, sigma2)
-    values = []
-    for waveform in diagnostic_waveforms().values():
-        a = effective_operator(channel, waveform)
-        _, _, mse = finite_budget_receiver(a, sigma2, config.N)
-        values.append(mse)
-        assert torch.allclose(mse, bound, atol=1e-10, rtol=1e-9)
-    assert torch.max(torch.abs(torch.stack(values) - values[0])) <= 1e-10
+def test_equal_dft_power_needs_complex_phases():
+    f = dft(8)
+    w = torch.eye(8, dtype=COMPLEX)
+    c = f @ w
+    cp = torch.exp(1j * torch.linspace(-2., 1., 8))[:, None] * c
+    wp = f.mH @ cp
+    torch.testing.assert_close(c.abs().square(), cp.abs().square(), atol=1e-15, rtol=1e-12)
+    delay = atoms(1.2, 0., 8)
+    torch.testing.assert_close(w.mH @ delay @ w, wp.mH @ delay @ wp, atol=5e-15, rtol=1e-12)
+    joint = atoms(1.2, .43, 8)
+    assert torch.linalg.matrix_norm(w.mH @ joint @ w - wp.mH @ joint @ wp) > .1

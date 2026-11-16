@@ -1,0 +1,3233 @@
+{
+  "version": 1,
+  "pinned_ddwaveform_commit": "9aae23ed6f9ac6e2a2e3e057f38693a148886400",
+  "scope": "Completed N64 only; no active scaling files",
+  "files": {
+    "reference/learned_w.npy": {
+      "sha256": "11bb15d39bb7e685b074e2ec7ed6f27bd87370e141aa6f62b67c338c21514b0f",
+      "bytes": 65664,
+      "source": "wms/reference/artifacts/learned_w.npy"
+    },
+    "focused/data/bases.npz": {
+      "sha256": "4797400d42094b60e9ba1a5fe40a557514ee25066bec99d0c7a04333a634f38c",
+      "bytes": 107014,
+      "source": "wms/results/focused_figures/data/bases.npz"
+    },
+    "focused/data/channels.npz": {
+      "sha256": "b11f0be39a577342611b4f1c40a3d86fd263388db89535004733e5d946376663",
+      "bytes": 362486,
+      "source": "wms/results/focused_figures/data/channels.npz"
+    },
+    "focused/data/supports.npz": {
+      "sha256": "32e56778d13f2210bbe8151b48c469b230dd1a683f1ee1e572acd1724afc5dd2",
+      "bytes": 74644,
+      "source": "wms/results/focused_figures/data/supports.npz"
+    },
+    "focused/ber_near_target.csv": {
+      "sha256": "29e853b61e37c64b654edef275e6b10469285c7d8489b25698c6c4a31ab3e476",
+      "bytes": 12953,
+      "source": "wms/results/focused_figures/ber_near_target.csv"
+    },
+    "focused/ber_summary.csv": {
+      "sha256": "9c8d04f31032d8636a7b061cca9844553d3e562d3877669624b625ad2d2f23a2",
+      "bytes": 90453,
+      "source": "wms/results/focused_figures/ber_summary.csv"
+    },
+    "focused/paired_differences.csv": {
+      "sha256": "b382a7dc183c8d1f3bf49111fac82d538661cfde876c860c49ca1886214d2f32",
+      "bytes": 35943,
+      "source": "wms/results/focused_figures/paired_differences.csv"
+    },
+    "focused/threshold_estimates.csv": {
+      "sha256": "0d65bb7002d627a470d82840e1b091f9aa8b015208315351a8437a7bdeccdbc3",
+      "bytes": 2108,
+      "source": "wms/results/focused_figures/threshold_estimates.csv"
+    },
+    "focused/artifact_and_selection.json": {
+      "sha256": "217d96f20fd95a573567995dc3cefacc0f44d8fd1fda1df29580b8fe8189b7df",
+      "bytes": 6009,
+      "source": "wms/results/focused_figures/artifact_and_selection.json"
+    },
+    "focused/budget.json": {
+      "sha256": "0c85c08dad876b9674f992564e9f1ec8b2fc1e4194419acb60f195fa8f76dc86",
+      "bytes": 926,
+      "source": "wms/results/focused_figures/budget.json"
+    },
+    "focused/figure_export_runtime.json": {
+      "sha256": "ad29f1ca0a608507962f8da79cc13b06bef74da58040a19661304d99574dc7ef",
+      "bytes": 174,
+      "source": "wms/results/focused_figures/figure_export_runtime.json"
+    },
+    "focused/final_run_manifest.json": {
+      "sha256": "ca40b765aec3cce3716eeb213958ab17c70bb17dd17a86ccef0e41684a9f729a",
+      "bytes": 1253,
+      "source": "wms/results/focused_figures/final_run_manifest.json"
+    },
+    "focused/production_source_manifest.json": {
+      "sha256": "31c683ee689183eaf12714bb2dfe3a429a996c87e173a45b830e5436158f4cee",
+      "bytes": 2303,
+      "source": "wms/results/focused_figures/production_source_manifest.json"
+    },
+    "focused/protocol_pre_pilot.json": {
+      "sha256": "b83ff9720751a0e5961e1f61e88110cd8c3dc36759f1adca2e319ae76fe89382",
+      "bytes": 4073,
+      "source": "wms/results/focused_figures/protocol_pre_pilot.json"
+    },
+    "focused/release_source_manifest.json": {
+      "sha256": "7bce8a5e057565d2b8b1656a701176d823ffa7b15e60aaf199c64b2820dd4d54",
+      "bytes": 2958,
+      "source": "wms/results/focused_figures/release_source_manifest.json"
+    },
+    "focused/runtime_estimate.json": {
+      "sha256": "387a951aa0440cd375622d4020e654e208f59bdeaa2fc94f5dff04cb2bb0db1b",
+      "bytes": 231,
+      "source": "wms/results/focused_figures/runtime_estimate.json"
+    },
+    "focused/visual_inspection.json": {
+      "sha256": "ba91b35be5fc69ff785936c5eea0a586d182299e2697ba4792248adfd1a56428",
+      "bytes": 6890,
+      "source": "wms/results/focused_figures/visual_inspection.json"
+    },
+    "focused/CAPTIONS.md": {
+      "sha256": "deb42a764c199d715de8f5d26b252d8ecb8bfdbe3110adcc3566f623c823db29",
+      "bytes": 6699,
+      "source": "wms/results/focused_figures/CAPTIONS.md"
+    },
+    "focused/FIGURE_INDEX.md": {
+      "sha256": "c5bb52920bd1708f1743ca20114343b99e3dd4dffa3fd31a5f3fb821902e2876",
+      "bytes": 2487,
+      "source": "wms/results/focused_figures/FIGURE_INDEX.md"
+    },
+    "focused/NOFS_SOURCE_CHECK.md": {
+      "sha256": "b23a7ae541f7b8d100cf9d804e3b50c65f6c73d4e7f7801fd8ca5591315dfe9a",
+      "bytes": 3376,
+      "source": "wms/results/focused_figures/NOFS_SOURCE_CHECK.md"
+    },
+    "focused/README.md": {
+      "sha256": "a820f21185ade6203a3991c23a004b4e2eb99d04f239318bed59d226ee026ec8",
+      "bytes": 4132,
+      "source": "wms/results/focused_figures/README.md"
+    },
+    "focused/REPORT.md": {
+      "sha256": "ed33a34120df1d20f1521ad648e51be92022d0b58e642c55a8cc6e1a3406d935",
+      "bytes": 11141,
+      "source": "wms/results/focused_figures/REPORT.md"
+    },
+    "focused/communication/16QAM_10dB/batch000.npz": {
+      "sha256": "0a0463c2544f8683845f116347a026923bf53e2a25c315c7450bb8fcc7acc9b5",
+      "bytes": 172845,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/batch000.npz"
+    },
+    "focused/communication/16QAM_10dB/batch001.npz": {
+      "sha256": "23eb2928ff92b614db760d7e6a39770211f00f612421c77e58dedc7618346194",
+      "bytes": 172802,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/batch001.npz"
+    },
+    "focused/communication/16QAM_10dB/batch002.npz": {
+      "sha256": "66213595665cdcad329643b78c871cd4702ad9fee1549bdaec19642dd75027a9",
+      "bytes": 172793,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/batch002.npz"
+    },
+    "focused/communication/16QAM_10dB/batch003.npz": {
+      "sha256": "2d598cabf4e19efdfdcbd94109b9356ac03e4ee07290c5e6bd695d2b66a057b8",
+      "bytes": 172760,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/batch003.npz"
+    },
+    "focused/communication/16QAM_15dB/batch000.npz": {
+      "sha256": "d7c4a369f4d186fd02cdabab2757846ed313b433009fa6b5028bdcf38b51ea46",
+      "bytes": 173882,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/batch000.npz"
+    },
+    "focused/communication/16QAM_15dB/batch001.npz": {
+      "sha256": "26f8b1d69b48198746f775b9c8c8af98117ab5168f76eb107a3e8d504c915957",
+      "bytes": 173897,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/batch001.npz"
+    },
+    "focused/communication/16QAM_15dB/batch002.npz": {
+      "sha256": "97481938f0f836ae1f30dc6c94e4e06dce8de5fc60793eff02b1b8039f7289de",
+      "bytes": 173864,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/batch002.npz"
+    },
+    "focused/communication/16QAM_15dB/batch003.npz": {
+      "sha256": "a92ffc41e49b0cbc817d9a64c2636e7c779a9d7d1aaf0588d4e69d1f6fc6beed",
+      "bytes": 173815,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/batch003.npz"
+    },
+    "focused/communication/16QAM_18dB/batch000.npz": {
+      "sha256": "5d7495391e372ced797a2949b40d792cd27734bd5e0375e3eed505476447548f",
+      "bytes": 173114,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/batch000.npz"
+    },
+    "focused/communication/16QAM_18dB/batch001.npz": {
+      "sha256": "79c3b555dcedfdfac0f1971def5bcbd0958a932415c93798b89e4ce280f56bbf",
+      "bytes": 172993,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/batch001.npz"
+    },
+    "focused/communication/16QAM_18dB/batch002.npz": {
+      "sha256": "0e2f084bcce0e1b59f9e15bf0be945af64bb1cc294a7f7e51c6328aa0bbca9ed",
+      "bytes": 172882,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/batch002.npz"
+    },
+    "focused/communication/16QAM_18dB/batch003.npz": {
+      "sha256": "8178258f611577d916ee4f715050e279e56de3b6169f289969820de721fdd2de",
+      "bytes": 172909,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/batch003.npz"
+    },
+    "focused/communication/16QAM_20dB/batch000.npz": {
+      "sha256": "8fb12a6c43b818f7638f6f5c7f784f29dc21a0c8d1c3ad0b036f6046be20390d",
+      "bytes": 172231,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/batch000.npz"
+    },
+    "focused/communication/16QAM_20dB/batch001.npz": {
+      "sha256": "a60c89bdee0232cef72a1ef738814ad3c2d5beedf83a80d16035dbddb0a3faac",
+      "bytes": 172146,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/batch001.npz"
+    },
+    "focused/communication/16QAM_20dB/batch002.npz": {
+      "sha256": "67b075ad9c8a8b6b87c9762013eb12940d17ab8cf3e18410ac169a23b2e20863",
+      "bytes": 172085,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/batch002.npz"
+    },
+    "focused/communication/16QAM_20dB/batch003.npz": {
+      "sha256": "13011ed52b873b7f32aa333ca546b67e0737af83bf042730ac7c641bd52b8a17",
+      "bytes": 172072,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/batch003.npz"
+    },
+    "focused/communication/16QAM_22dB/batch000.npz": {
+      "sha256": "3a42c58ae73bd2ef9efa2bfd23567474cf5b3e4426f038e77089b324b2220320",
+      "bytes": 171204,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/batch000.npz"
+    },
+    "focused/communication/16QAM_22dB/batch001.npz": {
+      "sha256": "1696709c784329e0b32990bdf8fbc7d471b2a6c760a2409a529c52c65269cf4f",
+      "bytes": 171285,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/batch001.npz"
+    },
+    "focused/communication/16QAM_22dB/batch002.npz": {
+      "sha256": "8547b8ed10234296f9a427571d03034454fd5fa1f70ae0aa005da5340e84708a",
+      "bytes": 171214,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/batch002.npz"
+    },
+    "focused/communication/16QAM_22dB/batch003.npz": {
+      "sha256": "80e9c27f9a3b9700528f1138948b55d18d27c74ca7ffcd6ab2af8c4e7bf703d0",
+      "bytes": 171190,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/batch003.npz"
+    },
+    "focused/communication/16QAM_25dB/batch000.npz": {
+      "sha256": "08d1b12087ab0eb8da3883304b036004b496281d2c0d8c61d45691f8cc26de0d",
+      "bytes": 170289,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/batch000.npz"
+    },
+    "focused/communication/16QAM_25dB/batch001.npz": {
+      "sha256": "91179e22887ae12f17256f7bfd6fd06bdf1564a8d1d587b2e25b5f5ee8ddf020",
+      "bytes": 170205,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/batch001.npz"
+    },
+    "focused/communication/16QAM_25dB/batch002.npz": {
+      "sha256": "e975cfda5d2e2c9da1c66f83c3041fb56a2dea6af9a1c6b465b54efb035c23ce",
+      "bytes": 170218,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/batch002.npz"
+    },
+    "focused/communication/16QAM_25dB/batch003.npz": {
+      "sha256": "326aed48bb8fedd5631154c430746a82117c490e3dbab077b1e1a284b2611086",
+      "bytes": 170104,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/batch003.npz"
+    },
+    "focused/communication/16QAM_28dB/batch000.npz": {
+      "sha256": "451995e777ac102b09ad18844710575d6b065aacc58b7facc744731e4837091d",
+      "bytes": 169534,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/batch000.npz"
+    },
+    "focused/communication/16QAM_28dB/batch001.npz": {
+      "sha256": "92cf938f5de8fb5453462e707695f0bc76151e625ba19c5d78ea2fed1b43f577",
+      "bytes": 169801,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/batch001.npz"
+    },
+    "focused/communication/16QAM_28dB/batch002.npz": {
+      "sha256": "0b29387b30ae72c645dd1c37831dad68ba0db9ccb2de4f0f85fb6e29feff7541",
+      "bytes": 169980,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/batch002.npz"
+    },
+    "focused/communication/16QAM_28dB/batch003.npz": {
+      "sha256": "5fe97416de59a6f50f5d6d6089741348e8695c7f07ef8a93090a0975d6dd358e",
+      "bytes": 169646,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/batch003.npz"
+    },
+    "focused/communication/16QAM_30dB/batch000.npz": {
+      "sha256": "8ce68e8c639a453f9b57fce3e65129e0d9a628b4e908bc1a5413f4faaae10a05",
+      "bytes": 169456,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/batch000.npz"
+    },
+    "focused/communication/16QAM_30dB/batch001.npz": {
+      "sha256": "854541c216c9548c2128736709407044564b2c467db31a365a56290d7a8c94ca",
+      "bytes": 169671,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/batch001.npz"
+    },
+    "focused/communication/16QAM_30dB/batch002.npz": {
+      "sha256": "29e77ead45d41be591b05df554c1614fb6581c00cd86cc48829b4786102000e8",
+      "bytes": 169823,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/batch002.npz"
+    },
+    "focused/communication/16QAM_30dB/batch003.npz": {
+      "sha256": "541fe74b45da4fa6b374155fc889fe5dc11030d9fc28160959e12115a6de65a8",
+      "bytes": 169701,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/batch003.npz"
+    },
+    "focused/communication/16QAM_31.5dB/batch000.npz": {
+      "sha256": "be963c34bd5fab7fbabfbf03fdb80b0f02900fb0bc5649ee816de704a30543b7",
+      "bytes": 169458,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/batch000.npz"
+    },
+    "focused/communication/16QAM_31.5dB/batch001.npz": {
+      "sha256": "a469215e20769fe7f927295c03dcadd35cb5ed63cc18aee16bbca161436dc9ef",
+      "bytes": 169623,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/batch001.npz"
+    },
+    "focused/communication/16QAM_31.5dB/batch002.npz": {
+      "sha256": "b007ad1f6f39e6763f02f2739c8ad131ab933b09b0f04bfb9f3be5763a20f7de",
+      "bytes": 169806,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/batch002.npz"
+    },
+    "focused/communication/16QAM_31.5dB/batch003.npz": {
+      "sha256": "82ed7b3e52bd59f46954fd2314c41d5cd9c7a2b5ff0c211295832a4580d50040",
+      "bytes": 169621,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/batch003.npz"
+    },
+    "focused/communication/16QAM_33dB/batch000.npz": {
+      "sha256": "5e5fdc70531b99d2d4c8805acdb4b98fff859984494dfa4852ad32be289108e5",
+      "bytes": 169432,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/batch000.npz"
+    },
+    "focused/communication/16QAM_33dB/batch001.npz": {
+      "sha256": "1c2ded4ce861c2bad7950df0cab9ef48b8115fc80ae4655c2462455821e48ef9",
+      "bytes": 169667,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/batch001.npz"
+    },
+    "focused/communication/16QAM_33dB/batch002.npz": {
+      "sha256": "5443465289ca46f10bd582cb2c5fd92eb4967220d1c3051783a619f3d7b87d54",
+      "bytes": 169766,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/batch002.npz"
+    },
+    "focused/communication/16QAM_33dB/batch003.npz": {
+      "sha256": "7e248b1bdf57c49a6acf82de6a238910c47f3de3f01a2c0a0067c28ca5f272e3",
+      "bytes": 169730,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/batch003.npz"
+    },
+    "focused/communication/16QAM_36dB/batch000.npz": {
+      "sha256": "943433a45b720c17fa8313f6a8112c96a30c1608770cb205190ba54138119c9e",
+      "bytes": 169349,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/batch000.npz"
+    },
+    "focused/communication/16QAM_36dB/batch001.npz": {
+      "sha256": "7003e4933f8422bc2460a6478d2f4b7a646e7861177669307b9bf306b6ca0c9d",
+      "bytes": 169786,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/batch001.npz"
+    },
+    "focused/communication/16QAM_36dB/batch002.npz": {
+      "sha256": "d45c37d25ff8d1cf964b77638c2c96f2a28961193facd89c248beb5052c6c596",
+      "bytes": 169790,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/batch002.npz"
+    },
+    "focused/communication/16QAM_36dB/batch003.npz": {
+      "sha256": "ebab0ec3c1a74c8677cc8b525ee13b3a57c79dcb634744f909bc728a0e8ce5ce",
+      "bytes": 169603,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/batch003.npz"
+    },
+    "focused/communication/16QAM_38dB/batch000.npz": {
+      "sha256": "6585213dcd7a51df2f0b9b9bc2792aae17fa756190966c954c4cdc03ea874a5a",
+      "bytes": 169623,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/batch000.npz"
+    },
+    "focused/communication/16QAM_38dB/batch001.npz": {
+      "sha256": "e9e214f7a5a6de2c169797aa201884b80ae8ae5303bf1c4a27290f266e366994",
+      "bytes": 169882,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/batch001.npz"
+    },
+    "focused/communication/16QAM_38dB/batch002.npz": {
+      "sha256": "ee365740723e0f2033a0f441ad3dc77e1a5c26be32cb0948b5e4a74933dec19a",
+      "bytes": 169921,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/batch002.npz"
+    },
+    "focused/communication/16QAM_38dB/batch003.npz": {
+      "sha256": "077475fe33e0814eba4d327cb23988e086e58df342284063b835a6632fadde5e",
+      "bytes": 169647,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/batch003.npz"
+    },
+    "focused/communication/16QAM_40dB/batch000.npz": {
+      "sha256": "e4d43eda1153b0668089bd0e475e9a5c68433296372c27b049363860b2da891e",
+      "bytes": 169525,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/batch000.npz"
+    },
+    "focused/communication/16QAM_40dB/batch001.npz": {
+      "sha256": "a909722653708b24fefa98e7ada114c13b1a6acf8ee43445ba1af7650ef6253d",
+      "bytes": 169803,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/batch001.npz"
+    },
+    "focused/communication/16QAM_40dB/batch002.npz": {
+      "sha256": "8984c1cb76594dbdda9426b692be1d5d68ecfa0ae70b6be1fb30879e850b95a6",
+      "bytes": 170081,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/batch002.npz"
+    },
+    "focused/communication/16QAM_40dB/batch003.npz": {
+      "sha256": "3dac57dfa66de98e75f397c32424602fc607cf109abbda3f76d3fb77009344b1",
+      "bytes": 169668,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/batch003.npz"
+    },
+    "focused/communication/16QAM_5dB/batch000.npz": {
+      "sha256": "42003ef3d2bea77e0af3cf696d695abf90aa9f4fbb193b3ef1656f03e48a76b8",
+      "bytes": 170090,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/batch000.npz"
+    },
+    "focused/communication/16QAM_5dB/batch001.npz": {
+      "sha256": "686cb9623f4ecf0b7eebb260ea9a5d8f57ccabc0c42c41b23f1ea9e223bea158",
+      "bytes": 170073,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/batch001.npz"
+    },
+    "focused/communication/16QAM_5dB/batch002.npz": {
+      "sha256": "dd2314be7226c10d571d3b0f002b4e8a6a3ea55d0c6dcb2a0c1569ff9283915a",
+      "bytes": 170029,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/batch002.npz"
+    },
+    "focused/communication/16QAM_5dB/batch003.npz": {
+      "sha256": "a10678d27f6523171b22c617664f08874dcb554a0ea4b1a56ac35b8690187e49",
+      "bytes": 170151,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/batch003.npz"
+    },
+    "focused/communication/QPSK_0dB/batch000.npz": {
+      "sha256": "ae176d433e942f6d0c867c50ba64e8f8e689386ec47e3ec32702ede0e54ddfda",
+      "bytes": 163287,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/batch000.npz"
+    },
+    "focused/communication/QPSK_0dB/batch001.npz": {
+      "sha256": "50f6789f5c319312c76671a8a7b9ba20b9852c5328e18df58f1b8d782fb19302",
+      "bytes": 163250,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/batch001.npz"
+    },
+    "focused/communication/QPSK_0dB/batch002.npz": {
+      "sha256": "3ba21fef7e821c8b26f7cba78735269dcef4b8426f5fc00cdc8310eade3f5995",
+      "bytes": 163312,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/batch002.npz"
+    },
+    "focused/communication/QPSK_0dB/batch003.npz": {
+      "sha256": "c6fa275c76ed27e1f326d634bffab289ac77e19d4e73bac4ff65af1720230090",
+      "bytes": 163189,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/batch003.npz"
+    },
+    "focused/communication/QPSK_10dB/batch000.npz": {
+      "sha256": "c325d4e388ca70538f0e2f80f249173cb1ce4fc60929d4ad51b59f4c6f57175e",
+      "bytes": 165933,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/batch000.npz"
+    },
+    "focused/communication/QPSK_10dB/batch001.npz": {
+      "sha256": "0f91a27cb875a77256818fa7be48c4e901c55dadfabfed452a63c61f01b66fb2",
+      "bytes": 166021,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/batch001.npz"
+    },
+    "focused/communication/QPSK_10dB/batch002.npz": {
+      "sha256": "788292925da3225168035f78b44f8f7e30459779c31aed36d0922766407b95ac",
+      "bytes": 165738,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/batch002.npz"
+    },
+    "focused/communication/QPSK_10dB/batch003.npz": {
+      "sha256": "6228581f66306eaf451da3e73d24999121406985c8856999dc272e3370c3b6c7",
+      "bytes": 165751,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/batch003.npz"
+    },
+    "focused/communication/QPSK_12dB/batch000.npz": {
+      "sha256": "e57c89c3250c6d3dc59bca871c1e0c4bc4e9e11efdc250ee600ebeab137b14ac",
+      "bytes": 165105,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/batch000.npz"
+    },
+    "focused/communication/QPSK_12dB/batch001.npz": {
+      "sha256": "8054180a58655064073fa1eeae300b895be660522d70ee87cf80a107c17395e0",
+      "bytes": 164953,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/batch001.npz"
+    },
+    "focused/communication/QPSK_12dB/batch002.npz": {
+      "sha256": "70dc099e1ad3724815b0b85c67747482c1516df0c7ab8df996c448188a2f781c",
+      "bytes": 164946,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/batch002.npz"
+    },
+    "focused/communication/QPSK_12dB/batch003.npz": {
+      "sha256": "5525c5c31acc8cd0637acdcd536c9808236a324056852310ba0f19ffe58d0940",
+      "bytes": 164806,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/batch003.npz"
+    },
+    "focused/communication/QPSK_15dB/batch000.npz": {
+      "sha256": "98e2fdb9ee03fce45aafe6467438226e5ba592412ee3c6fdc8abe2d1710f7a95",
+      "bytes": 163604,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/batch000.npz"
+    },
+    "focused/communication/QPSK_15dB/batch001.npz": {
+      "sha256": "e4d3ffd97046e1d8c89438a3ed0e62dbbbd1a1413f0b4727b1ff107c2be9e922",
+      "bytes": 163680,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/batch001.npz"
+    },
+    "focused/communication/QPSK_15dB/batch002.npz": {
+      "sha256": "ef5d49ad0e090b693cab7475a7fcbb9241a9886788b8d0aa8efd9cfa723f696c",
+      "bytes": 163706,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/batch002.npz"
+    },
+    "focused/communication/QPSK_15dB/batch003.npz": {
+      "sha256": "e16ad56d419f81d9c097759673f8d035f243efdf95d72bdbf264a99c7b54abee",
+      "bytes": 163367,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/batch003.npz"
+    },
+    "focused/communication/QPSK_16.5dB/batch000.npz": {
+      "sha256": "c1b9be2e8398a0c826fe5791cfe43b7a4045fd02bf3615d506e8e762e0b8f378",
+      "bytes": 163006,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/batch000.npz"
+    },
+    "focused/communication/QPSK_16.5dB/batch001.npz": {
+      "sha256": "64b459e7bc882d6f5c7439623843b86963fb2270e1c1fe5c2b3c1464634bc567",
+      "bytes": 162929,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/batch001.npz"
+    },
+    "focused/communication/QPSK_16.5dB/batch002.npz": {
+      "sha256": "05996c2f02cb88fd12cceb82ca82707449c51c930bb9f90a001f719f1754d60b",
+      "bytes": 162915,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/batch002.npz"
+    },
+    "focused/communication/QPSK_16.5dB/batch003.npz": {
+      "sha256": "4bfa17ed9e0238fc85b6ae8c3c5e6ebe8ad379f525b430c97c7e372e5987d269",
+      "bytes": 162814,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/batch003.npz"
+    },
+    "focused/communication/QPSK_18dB/batch000.npz": {
+      "sha256": "0f383cd25f1974c9e008bcaed38740dafee30063d23595735b6db5134445ac4f",
+      "bytes": 162499,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/batch000.npz"
+    },
+    "focused/communication/QPSK_18dB/batch001.npz": {
+      "sha256": "62578ac997684e4f776ec9d93b82f419067e889bff16a25ed27eb6615adb422e",
+      "bytes": 162598,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/batch001.npz"
+    },
+    "focused/communication/QPSK_18dB/batch002.npz": {
+      "sha256": "f57f582aef8c40d73e18828aae71eadc2f7f1be5fff88190ab9a1c68d67af687",
+      "bytes": 162474,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/batch002.npz"
+    },
+    "focused/communication/QPSK_18dB/batch003.npz": {
+      "sha256": "c96594e26cfd38f12c95123e80b385c9f2e3ca7fadefaed4b6fbf99351d96c7e",
+      "bytes": 162163,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/batch003.npz"
+    },
+    "focused/communication/QPSK_18dB/batch004.npz": {
+      "sha256": "2a4dcc9b64a1dd14f72af73cc1340adf16021bf72e06e23ad1a171359c413b82",
+      "bytes": 162572,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/batch004.npz"
+    },
+    "focused/communication/QPSK_19dB/batch000.npz": {
+      "sha256": "edf4b5c1b8adfa4732dc604d3cc55ee45da9f013f7f810834e8b9575e7fd08a8",
+      "bytes": 162457,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch000.npz"
+    },
+    "focused/communication/QPSK_19dB/batch001.npz": {
+      "sha256": "0b383eb1ebe33212154907ec6dc8d513020f00909173d91299b514ec4cb4b3ea",
+      "bytes": 162438,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch001.npz"
+    },
+    "focused/communication/QPSK_19dB/batch002.npz": {
+      "sha256": "040796f8610e608e96b691bef382c1eec2228e074d24549fd4ff4de66a76d0ef",
+      "bytes": 162422,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch002.npz"
+    },
+    "focused/communication/QPSK_19dB/batch003.npz": {
+      "sha256": "e4d986c560ce488328ebf96477df1e5823ff711c51821de76d92e6793456d020",
+      "bytes": 162174,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch003.npz"
+    },
+    "focused/communication/QPSK_19dB/batch004.npz": {
+      "sha256": "3a9024b8f6cfc8e3327c216f523a7e66dd52b6fed49aa3a3032556a5d94d4b07",
+      "bytes": 162453,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch004.npz"
+    },
+    "focused/communication/QPSK_19dB/batch005.npz": {
+      "sha256": "d766a52a9dcb48f9bfa727c14a38598af5a68c62ee0588863505df753f5417d1",
+      "bytes": 162665,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch005.npz"
+    },
+    "focused/communication/QPSK_19dB/batch006.npz": {
+      "sha256": "9c1d1039c7f3754a12066c505d01d8cc66aa70b3a9b4735eeed18520d465a945",
+      "bytes": 162171,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch006.npz"
+    },
+    "focused/communication/QPSK_19dB/batch007.npz": {
+      "sha256": "74076d25e27830473d3f46467a620f447c6fee138f49157dfc0f2b0846dcc9cc",
+      "bytes": 162394,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch007.npz"
+    },
+    "focused/communication/QPSK_19dB/batch008.npz": {
+      "sha256": "6fe190b104229ddc319dc0b1ee19dcc093b7c8372cc1725352ba39e53daf4734",
+      "bytes": 162317,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch008.npz"
+    },
+    "focused/communication/QPSK_19dB/batch009.npz": {
+      "sha256": "71ab8a09eabc9e2b72a8e410190b53cd8a9690c139ad18ea421557403aac7b5b",
+      "bytes": 162306,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/batch009.npz"
+    },
+    "focused/communication/QPSK_20dB/batch000.npz": {
+      "sha256": "60927532be5c22d03766735d69ef0baa395ae13a7d29923b638f2ddbb4c43e9d",
+      "bytes": 162291,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch000.npz"
+    },
+    "focused/communication/QPSK_20dB/batch001.npz": {
+      "sha256": "f6b58434f08005b7c19c5f9b17b220eca363f80946ed6ba5a0f4a3df748ad37a",
+      "bytes": 162397,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch001.npz"
+    },
+    "focused/communication/QPSK_20dB/batch002.npz": {
+      "sha256": "3005f3e6f71bc49806786d89c4597e2ccb86684b390306641114182e8a2bf512",
+      "bytes": 162253,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch002.npz"
+    },
+    "focused/communication/QPSK_20dB/batch003.npz": {
+      "sha256": "d7f589d2f4aba035acff48445d145b41cf0f5bb61e889a86664a475f5c8db411",
+      "bytes": 162122,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch003.npz"
+    },
+    "focused/communication/QPSK_20dB/batch004.npz": {
+      "sha256": "8235edeec7a36771c757a2a790a34b98d66793d99004c1195e487a2ec77ce6ed",
+      "bytes": 162384,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch004.npz"
+    },
+    "focused/communication/QPSK_20dB/batch005.npz": {
+      "sha256": "b8a830e1ac5efffe8e4b854edb62f6c81986d652c0df4a9997080715d5df2f7e",
+      "bytes": 162423,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch005.npz"
+    },
+    "focused/communication/QPSK_20dB/batch006.npz": {
+      "sha256": "3b904771d1ce66fa018729ce2ee2c527e16acea63ee95dee5eacb95199d7aaf2",
+      "bytes": 162052,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch006.npz"
+    },
+    "focused/communication/QPSK_20dB/batch007.npz": {
+      "sha256": "a17b4e2475ef59532ed9c06a1f83ec0e1bba6df138bbdf6a5bb04d5c433ddfd8",
+      "bytes": 162058,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch007.npz"
+    },
+    "focused/communication/QPSK_20dB/batch008.npz": {
+      "sha256": "8d36351297a6a087e48923a69f0b33289a4115e898a83e8841611f095d02fd63",
+      "bytes": 162377,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch008.npz"
+    },
+    "focused/communication/QPSK_20dB/batch009.npz": {
+      "sha256": "b45ada03c4e91b9b7066e3f746d4dd43bf9cd61ac07a6be7a2d762ed7fad2aaf",
+      "bytes": 162240,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch009.npz"
+    },
+    "focused/communication/QPSK_20dB/batch010.npz": {
+      "sha256": "e03b30478f998edb3a6f1211775efc7d86b5c950f0eedf16dfff9073dca4438b",
+      "bytes": 162175,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch010.npz"
+    },
+    "focused/communication/QPSK_20dB/batch011.npz": {
+      "sha256": "2f4f5f0045c1874deadad906cc4a2c8bb3b89c61aad9dfc70bceaf91bf8f37a9",
+      "bytes": 162284,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch011.npz"
+    },
+    "focused/communication/QPSK_20dB/batch012.npz": {
+      "sha256": "4208ced303ab60cfdd687313b617ebab44165e84d06ebf3829aa2e7ffc563bb8",
+      "bytes": 162317,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch012.npz"
+    },
+    "focused/communication/QPSK_20dB/batch013.npz": {
+      "sha256": "8654e52795e19230981a0cf1b366d971a4ecd4efb223ff91d90e2d616b8ee3d7",
+      "bytes": 162128,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch013.npz"
+    },
+    "focused/communication/QPSK_20dB/batch014.npz": {
+      "sha256": "ca595c008f0fb1a525d6f2f047aa39588a2c931e138122ba872beda32455ba3d",
+      "bytes": 161994,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch014.npz"
+    },
+    "focused/communication/QPSK_20dB/batch015.npz": {
+      "sha256": "8d0ec059f290916034aad837f6f8513c5a739eb6e0b64ee650ed9c220b1ddbd6",
+      "bytes": 162268,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch015.npz"
+    },
+    "focused/communication/QPSK_20dB/batch016.npz": {
+      "sha256": "a070e22c0c35ab1c963a0b51666c75725d70c56f6d3b395866622bb549b672de",
+      "bytes": 162080,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/batch016.npz"
+    },
+    "focused/communication/QPSK_22dB/batch000.npz": {
+      "sha256": "76515da57aa1e39424032f8bfeae4b2dd535e4f12a289feb791f1258a23078cf",
+      "bytes": 162326,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch000.npz"
+    },
+    "focused/communication/QPSK_22dB/batch001.npz": {
+      "sha256": "d879deb8329f048076aea80904e429e8ecce8a2c5afb5c1ce9e269e0b3efa6cb",
+      "bytes": 162467,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch001.npz"
+    },
+    "focused/communication/QPSK_22dB/batch002.npz": {
+      "sha256": "9da1986e26767b02a14887b99956a5a49bf6dfd592d761096a9bcf6c919a8d45",
+      "bytes": 162331,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch002.npz"
+    },
+    "focused/communication/QPSK_22dB/batch003.npz": {
+      "sha256": "3bf36837a39a2a512aa1635ebabb8a32c4f734e6045a08f5e6257fadc88d8f34",
+      "bytes": 162208,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch003.npz"
+    },
+    "focused/communication/QPSK_22dB/batch004.npz": {
+      "sha256": "1360bb925bc796403b01b418efe41776dde8fec5f4201879590e954fa0c46f0f",
+      "bytes": 162400,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch004.npz"
+    },
+    "focused/communication/QPSK_22dB/batch005.npz": {
+      "sha256": "5ab0f1fead0785e276a8d397f5e665e4ad10d334a1fe32636e2cc4edb2b2efdd",
+      "bytes": 162452,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch005.npz"
+    },
+    "focused/communication/QPSK_22dB/batch006.npz": {
+      "sha256": "8b05371c6319b00c2907879a15f0b62bf532de6b23d1e6c1a340a4ecaf65176c",
+      "bytes": 162203,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch006.npz"
+    },
+    "focused/communication/QPSK_22dB/batch007.npz": {
+      "sha256": "3865bff1ebd704be72a1e9f423c3496b9bd15eae4a3189b7e784777baeabfc7c",
+      "bytes": 162300,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch007.npz"
+    },
+    "focused/communication/QPSK_22dB/batch008.npz": {
+      "sha256": "fed5486bb87b6bdf535206a2da93d595c5e4ae8f8ec4f426573397ad966f91d1",
+      "bytes": 162430,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch008.npz"
+    },
+    "focused/communication/QPSK_22dB/batch009.npz": {
+      "sha256": "47dfbd42bdd4be9159d2dd139455169121379eb27727e78e38efb53595c39707",
+      "bytes": 162209,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch009.npz"
+    },
+    "focused/communication/QPSK_22dB/batch010.npz": {
+      "sha256": "f27c0bc833e41441e72827a6f7096269a29e7186f3526c2fdb67f31af27e3645",
+      "bytes": 162326,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch010.npz"
+    },
+    "focused/communication/QPSK_22dB/batch011.npz": {
+      "sha256": "1549389dc4f6a12c46093e6aa65dd8f322e23637fdcf4edb3514c7c29a2ac300",
+      "bytes": 162303,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch011.npz"
+    },
+    "focused/communication/QPSK_22dB/batch012.npz": {
+      "sha256": "06d565c7bf62d3019a1fa9bea39e19c143ca017b4eaf98179893295a82780a33",
+      "bytes": 162423,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch012.npz"
+    },
+    "focused/communication/QPSK_22dB/batch013.npz": {
+      "sha256": "d032c8552531b1f16c9e7c935cfabb695b43f1eb956a86d99c379b149f14065d",
+      "bytes": 162031,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch013.npz"
+    },
+    "focused/communication/QPSK_22dB/batch014.npz": {
+      "sha256": "9713a5c93b177215675c8cde137c79ff4b7fa27f196a3333d68bee2a71e4ba9b",
+      "bytes": 162249,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch014.npz"
+    },
+    "focused/communication/QPSK_22dB/batch015.npz": {
+      "sha256": "c96db7099fcad9ab28f24a173c3780b8ee1c7d9d5840e09dccfef1b8b0d2bcbb",
+      "bytes": 162300,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch015.npz"
+    },
+    "focused/communication/QPSK_22dB/batch016.npz": {
+      "sha256": "dd033acf1caa39abe76ed6e8f6c84fde1b621b12bf9f7b338bbafe0fd11b058a",
+      "bytes": 162248,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch016.npz"
+    },
+    "focused/communication/QPSK_22dB/batch017.npz": {
+      "sha256": "b06c89be45dd2d34c53c4527cb92968b732bf8313f783a71bed4e0b5ff62238a",
+      "bytes": 162394,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch017.npz"
+    },
+    "focused/communication/QPSK_22dB/batch018.npz": {
+      "sha256": "c22ac1602b2ea41d21e404896616adcc22e1549cd3d4ed98777609a8f515bd55",
+      "bytes": 162496,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch018.npz"
+    },
+    "focused/communication/QPSK_22dB/batch019.npz": {
+      "sha256": "87ed8a3e18aca09b2bcbdcfd032f66788f2223f09d47eaef65eb28ec5ea909f8",
+      "bytes": 162236,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch019.npz"
+    },
+    "focused/communication/QPSK_22dB/batch020.npz": {
+      "sha256": "6ae4e1f6122a52d624b10ba9c9fd5bb2670f71359d068964991d7f5f0dd737a1",
+      "bytes": 162228,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch020.npz"
+    },
+    "focused/communication/QPSK_22dB/batch021.npz": {
+      "sha256": "8a3b717f57b1c12d7906a8572d3122597985d5324d72d1d06c5be0d62bac52e6",
+      "bytes": 162398,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch021.npz"
+    },
+    "focused/communication/QPSK_22dB/batch022.npz": {
+      "sha256": "18b8c3404c453f7f6cfa7d873f97a271ef5c50d7c32564745d779289e8779d06",
+      "bytes": 162151,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch022.npz"
+    },
+    "focused/communication/QPSK_22dB/batch023.npz": {
+      "sha256": "c22e3d0990d7cb4e674006b58217aee272a9e4bdd3dd4d304dbdfc493ae91db1",
+      "bytes": 162377,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch023.npz"
+    },
+    "focused/communication/QPSK_22dB/batch024.npz": {
+      "sha256": "ae7339c300f9c253c50feadccb5829cfbf455d510c5ce6b01d8627295c8cf441",
+      "bytes": 162502,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch024.npz"
+    },
+    "focused/communication/QPSK_22dB/batch025.npz": {
+      "sha256": "789bc0ca96d2b453531bbcaefcfa8eb52f29029361f34377c7cf94d8a02e483f",
+      "bytes": 162579,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch025.npz"
+    },
+    "focused/communication/QPSK_22dB/batch026.npz": {
+      "sha256": "70e3752225375b232830589e83a8068b3df2de1b1a4d581e3d2ff80befb8b039",
+      "bytes": 162549,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch026.npz"
+    },
+    "focused/communication/QPSK_22dB/batch027.npz": {
+      "sha256": "75a60e8078899c06cb15f518a6dca9bbea3f863cf4bbde4539aba9dbfcbc8394",
+      "bytes": 162236,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch027.npz"
+    },
+    "focused/communication/QPSK_22dB/batch028.npz": {
+      "sha256": "42f4de9a1c0e696382d7ea55c394f5fe50afa706ff4ba08c7e669807fcd2782f",
+      "bytes": 162245,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch028.npz"
+    },
+    "focused/communication/QPSK_22dB/batch029.npz": {
+      "sha256": "1ed98b7f34535209e729c03025d3306a4490840aaf51a1d3044ddb885714fec2",
+      "bytes": 162397,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch029.npz"
+    },
+    "focused/communication/QPSK_22dB/batch030.npz": {
+      "sha256": "a2e17af8bb7e8c15a9aaa6d1c36e52cadb7f65d465a6dad8b1c9372c972dbd53",
+      "bytes": 162138,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch030.npz"
+    },
+    "focused/communication/QPSK_22dB/batch031.npz": {
+      "sha256": "960792356961d4a64f8d06c9cae4dac34c2e3a1897442d3fd570ec3263053799",
+      "bytes": 162346,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch031.npz"
+    },
+    "focused/communication/QPSK_22dB/batch032.npz": {
+      "sha256": "6d3616f12bb8a2192af0fd4268961b9aeb89c38cddad8ab9e14cb5992b8aa261",
+      "bytes": 162428,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch032.npz"
+    },
+    "focused/communication/QPSK_22dB/batch033.npz": {
+      "sha256": "b256220a677bde6bc8d55a1006915142ecf10447a2948cc6df23ecfc95eb0498",
+      "bytes": 162349,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch033.npz"
+    },
+    "focused/communication/QPSK_22dB/batch034.npz": {
+      "sha256": "1f1565ddf668e7c1caba9853361c279a9c9e25cf31e4169f8fab2060773a89ba",
+      "bytes": 162497,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch034.npz"
+    },
+    "focused/communication/QPSK_22dB/batch035.npz": {
+      "sha256": "22a89bcdcbc150c21d8836e589f17e0a1058e4df77e8d6aaf8896a62c3fb51b7",
+      "bytes": 162313,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch035.npz"
+    },
+    "focused/communication/QPSK_22dB/batch036.npz": {
+      "sha256": "1ae006c8a1ea0ab37ceac859fa4e4ba72e7dbc4f31ae47d0c1513fb55d2210f7",
+      "bytes": 162284,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch036.npz"
+    },
+    "focused/communication/QPSK_22dB/batch037.npz": {
+      "sha256": "53c32d4ffbfbcada2f3da4d40880e03fb4d97f2b495ac1a58f82e3a46b93c651",
+      "bytes": 162295,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch037.npz"
+    },
+    "focused/communication/QPSK_22dB/batch038.npz": {
+      "sha256": "239ff450c997c2db36ec44d99d2d99c8e2b3fa4075d9af4a54bf01bd705cf78c",
+      "bytes": 26023,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/batch038.npz"
+    },
+    "focused/communication/QPSK_25dB/batch000.npz": {
+      "sha256": "67a7f494b2dc0c8fa8c311563c029507876d80f7cc6a4ac616b1e5614fe40e89",
+      "bytes": 162799,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch000.npz"
+    },
+    "focused/communication/QPSK_25dB/batch001.npz": {
+      "sha256": "0be06cbc7ddb3811b15c5b76f15242021019a4f0b544027288bca63001fdefc7",
+      "bytes": 162847,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch001.npz"
+    },
+    "focused/communication/QPSK_25dB/batch002.npz": {
+      "sha256": "a4fc883ca00cdb2d8e361f7aa9cf76f6c28bb0212f6fe577e6a0c5006492773a",
+      "bytes": 162664,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch002.npz"
+    },
+    "focused/communication/QPSK_25dB/batch003.npz": {
+      "sha256": "f2677dccb480c55d218e137c1a5341b7b2911c034ae50c181f30639c693779c4",
+      "bytes": 162624,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch003.npz"
+    },
+    "focused/communication/QPSK_25dB/batch004.npz": {
+      "sha256": "4fe9bdc8a19c3c57db1f8d6adc4938e89d3c4fb4b9bfc7989176ddda21bfeab3",
+      "bytes": 162968,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch004.npz"
+    },
+    "focused/communication/QPSK_25dB/batch005.npz": {
+      "sha256": "dbf705bd4e5781e4f267a8b85f6dec16c21dcb206f325e90589b077798e96c8f",
+      "bytes": 163058,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch005.npz"
+    },
+    "focused/communication/QPSK_25dB/batch006.npz": {
+      "sha256": "edd86dd01b8c4149ad841bb1e7cc72f9e2809e71c59091c5b266008e66931ad0",
+      "bytes": 162390,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch006.npz"
+    },
+    "focused/communication/QPSK_25dB/batch007.npz": {
+      "sha256": "af0821178d65ddb7e6d0984ef0e4a182c5c12fb5e6b5cd529c84427c3badbeec",
+      "bytes": 162726,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch007.npz"
+    },
+    "focused/communication/QPSK_25dB/batch008.npz": {
+      "sha256": "149498301b13712fddcbe62a2f05f31ad14db9ae36ff789fd6ecd36ee4a6a51d",
+      "bytes": 162794,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch008.npz"
+    },
+    "focused/communication/QPSK_25dB/batch009.npz": {
+      "sha256": "ed251a699b9b274c24bd9f530fb536c97b1c1175c063bd369169f395550136ff",
+      "bytes": 162770,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch009.npz"
+    },
+    "focused/communication/QPSK_25dB/batch010.npz": {
+      "sha256": "e39579f18ef488705b7a9eb2082697c06b6642bd179d6aabb4b39c6dfbe264d6",
+      "bytes": 162629,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch010.npz"
+    },
+    "focused/communication/QPSK_25dB/batch011.npz": {
+      "sha256": "ecf5333bf0632ad0ac5a7f077629101220c5dee8567496746e23188f4e794f7d",
+      "bytes": 162683,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch011.npz"
+    },
+    "focused/communication/QPSK_25dB/batch012.npz": {
+      "sha256": "9731a5831e21bc4e3721503a5f0c6da6d64f1bcd9fe380dbddd5531011e64da5",
+      "bytes": 162877,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch012.npz"
+    },
+    "focused/communication/QPSK_25dB/batch013.npz": {
+      "sha256": "e69532059030886c3eaecaf88d29ad17033136daf42b96f1adec135a1d3e4049",
+      "bytes": 162531,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch013.npz"
+    },
+    "focused/communication/QPSK_25dB/batch014.npz": {
+      "sha256": "2acf113f8893f1e825d9f8fb76c98cc9d015eff7602dcb3cd5af4b793251f91b",
+      "bytes": 162621,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch014.npz"
+    },
+    "focused/communication/QPSK_25dB/batch015.npz": {
+      "sha256": "e645883ed7b3c2404b2dbf3d829d7f6e0f5558f97434a4b731990a5c425a19d8",
+      "bytes": 162824,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch015.npz"
+    },
+    "focused/communication/QPSK_25dB/batch016.npz": {
+      "sha256": "891f1ac5cd4e72d6431f48e2a787f1f2e2da23965605e104353e45a12788de4b",
+      "bytes": 162709,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch016.npz"
+    },
+    "focused/communication/QPSK_25dB/batch017.npz": {
+      "sha256": "2ad480651c67e7ff98559d9c79a1240b970967da9d62ef91c7a6025fb28f8582",
+      "bytes": 163013,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch017.npz"
+    },
+    "focused/communication/QPSK_25dB/batch018.npz": {
+      "sha256": "c417b9e3176a56b1bad59d19db2397e4921f749a33d4e42ae85f425dcfba8264",
+      "bytes": 162938,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch018.npz"
+    },
+    "focused/communication/QPSK_25dB/batch019.npz": {
+      "sha256": "04f331a7a536b6a102bf3ffa75f636a4ff632e838cc9cf0f5e9bddf3edf27a6c",
+      "bytes": 162776,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch019.npz"
+    },
+    "focused/communication/QPSK_25dB/batch020.npz": {
+      "sha256": "dcb1ee2eeeb666a5328fc9e270ea1a65883180c0c5adb6a15f69d071d400e2f3",
+      "bytes": 162799,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch020.npz"
+    },
+    "focused/communication/QPSK_25dB/batch021.npz": {
+      "sha256": "21791d07f8edcdf85b6a01a61dd33b65d59b4a38426475513fa0f06cc0ffb431",
+      "bytes": 162752,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch021.npz"
+    },
+    "focused/communication/QPSK_25dB/batch022.npz": {
+      "sha256": "c1466b976f9f35b09b312ab7691a4c23f1d005b270b081ee18feb963c6ad2282",
+      "bytes": 162801,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch022.npz"
+    },
+    "focused/communication/QPSK_25dB/batch023.npz": {
+      "sha256": "9a2c42d9b73b9f09cb1466e3404464ecabd661e47d7f082e6a20301f336bdccd",
+      "bytes": 162715,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch023.npz"
+    },
+    "focused/communication/QPSK_25dB/batch024.npz": {
+      "sha256": "4783630da9d35c9e038b75d24c8a1a1660363c0ae1239fcc99a555d31385cd8f",
+      "bytes": 162905,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch024.npz"
+    },
+    "focused/communication/QPSK_25dB/batch025.npz": {
+      "sha256": "51c98e4a6218ecbab89f3886f8018f5ffb7b81a5afbc8b9ebf2ba5fda6c170f4",
+      "bytes": 162845,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch025.npz"
+    },
+    "focused/communication/QPSK_25dB/batch026.npz": {
+      "sha256": "aeaa6c7eb53ef5c64ebb33074957e4154687e7050bfdfd6b19d343201055c8d7",
+      "bytes": 162943,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch026.npz"
+    },
+    "focused/communication/QPSK_25dB/batch027.npz": {
+      "sha256": "65100f058d725ef92d21f2a9eeaf405733fb2284e4013c5dea0ac10a69ac33f7",
+      "bytes": 162744,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch027.npz"
+    },
+    "focused/communication/QPSK_25dB/batch028.npz": {
+      "sha256": "2c7156853622f1e60f7335605d7d52669e62144787654573d0b1532865a7fa4f",
+      "bytes": 162686,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch028.npz"
+    },
+    "focused/communication/QPSK_25dB/batch029.npz": {
+      "sha256": "9f9f5a54dbeb8647884e6836661d5e69ffd0e0a478308ff919e4765cdbd7fc17",
+      "bytes": 162702,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch029.npz"
+    },
+    "focused/communication/QPSK_25dB/batch030.npz": {
+      "sha256": "3506bb1c80e3425d9d1c9d72a7a30d5ae39cce88f70d5231c116b6f441820c83",
+      "bytes": 162600,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch030.npz"
+    },
+    "focused/communication/QPSK_25dB/batch031.npz": {
+      "sha256": "660f1a2cd90765aea7a2a422d16450395962539faaced9277a57b7e543ceedf6",
+      "bytes": 162810,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch031.npz"
+    },
+    "focused/communication/QPSK_25dB/batch032.npz": {
+      "sha256": "28a1a813ec589e3c0d78e4d901152516924eb223abc68ff6d76d4224ea37913b",
+      "bytes": 162688,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch032.npz"
+    },
+    "focused/communication/QPSK_25dB/batch033.npz": {
+      "sha256": "483fb6ddfeb1bef38291e85c37ced15bbecdd985c133a487a6613efa62cd5b95",
+      "bytes": 162728,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch033.npz"
+    },
+    "focused/communication/QPSK_25dB/batch034.npz": {
+      "sha256": "b0155a5bf881066af02440999f71ea3c666dee69505dc26ac6ced37d4c9bf520",
+      "bytes": 162879,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch034.npz"
+    },
+    "focused/communication/QPSK_25dB/batch035.npz": {
+      "sha256": "9a4e0d04023b151027f3870a687c92b4763d6f699f561a2645d6623e04d61dbf",
+      "bytes": 162687,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch035.npz"
+    },
+    "focused/communication/QPSK_25dB/batch036.npz": {
+      "sha256": "bfa14b4211db7ed7fa6436197e6dfdb29d7dcb30efc64d367319f6940806de81",
+      "bytes": 162692,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch036.npz"
+    },
+    "focused/communication/QPSK_25dB/batch037.npz": {
+      "sha256": "a00e4fe0094b1fa88286b7c2c969755d372cae9622797a763bd8efcf9396fea5",
+      "bytes": 162600,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch037.npz"
+    },
+    "focused/communication/QPSK_25dB/batch038.npz": {
+      "sha256": "23c6ddfbfcdc0bfaea30b55049279e5ef0e8d5a34f58067314d213e60b2815e6",
+      "bytes": 26067,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/batch038.npz"
+    },
+    "focused/communication/QPSK_28dB/batch000.npz": {
+      "sha256": "2745ba531791336fed95fa445b199e0ca0e2e197dacd94f07095afd7a3ea2f48",
+      "bytes": 163327,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch000.npz"
+    },
+    "focused/communication/QPSK_28dB/batch001.npz": {
+      "sha256": "87cde02dfa1421f5638364a117448cddd0032e25e3a684dd7b9b542dc5f1cc85",
+      "bytes": 163631,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch001.npz"
+    },
+    "focused/communication/QPSK_28dB/batch002.npz": {
+      "sha256": "6618140cc06ed0d92c9e943de5f1cf072bff2cff54d9ffb0287c481caea3998f",
+      "bytes": 163490,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch002.npz"
+    },
+    "focused/communication/QPSK_28dB/batch003.npz": {
+      "sha256": "177c75720af208c317e8c77aec7a60abb82a4ab8e283e1703411fabeed410fed",
+      "bytes": 163136,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch003.npz"
+    },
+    "focused/communication/QPSK_28dB/batch004.npz": {
+      "sha256": "71c28178657e9b2da7352c1b19bd7bb00745606a14d1413212f571ec60b82d4a",
+      "bytes": 163487,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch004.npz"
+    },
+    "focused/communication/QPSK_28dB/batch005.npz": {
+      "sha256": "0f35575c588fb4982d8607b1269980e469dcda2f99578fd0a83fabd330285ddd",
+      "bytes": 163656,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch005.npz"
+    },
+    "focused/communication/QPSK_28dB/batch006.npz": {
+      "sha256": "302776431cc668512e926f3e05d218b2946cb76f5e0aa2ae8fdf892d7d2cb88c",
+      "bytes": 163223,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch006.npz"
+    },
+    "focused/communication/QPSK_28dB/batch007.npz": {
+      "sha256": "8d4b8b2cf1a667ecd953090fb87adffff05908c88a159283cff35f336a670cff",
+      "bytes": 163329,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch007.npz"
+    },
+    "focused/communication/QPSK_28dB/batch008.npz": {
+      "sha256": "fd1f9774728c612416a28ecdf06a96ee1f94db6eb0cc74e803ceab14cd7f2057",
+      "bytes": 163473,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch008.npz"
+    },
+    "focused/communication/QPSK_28dB/batch009.npz": {
+      "sha256": "f9cb475f6e3ef2b052467e182dbd4f9ce5e697e3fa1159bca4a6367267f7f3f6",
+      "bytes": 163367,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch009.npz"
+    },
+    "focused/communication/QPSK_28dB/batch010.npz": {
+      "sha256": "bfe1a1a37aa23edfdbd7d9a87b0b372ea1a91aae15b282833c22daecc4d4ee62",
+      "bytes": 163324,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch010.npz"
+    },
+    "focused/communication/QPSK_28dB/batch011.npz": {
+      "sha256": "0ba05721a8efad99732969ecaaaeb11855410c32be70dec7bc8ae77dbe453ffe",
+      "bytes": 163379,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch011.npz"
+    },
+    "focused/communication/QPSK_28dB/batch012.npz": {
+      "sha256": "591fd3fa1d82707d239d4b6a762c5f2762772c188dfcac59f2b2ac80039f572a",
+      "bytes": 163497,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch012.npz"
+    },
+    "focused/communication/QPSK_28dB/batch013.npz": {
+      "sha256": "ab30a72b5d4baee74c26ed16fc722a679a7faa42cb4793452f74c477d36dd6b3",
+      "bytes": 163166,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch013.npz"
+    },
+    "focused/communication/QPSK_28dB/batch014.npz": {
+      "sha256": "5773559471eeca87cc8f4a638ebdcc145c0bbacdcdf344378e3e91c8305c8cad",
+      "bytes": 163336,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch014.npz"
+    },
+    "focused/communication/QPSK_28dB/batch015.npz": {
+      "sha256": "3969cf3e62106c59788238dc440e0cba8667c918423bd8c515ff374ee4433113",
+      "bytes": 163498,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch015.npz"
+    },
+    "focused/communication/QPSK_28dB/batch016.npz": {
+      "sha256": "bdedad589045285792f310e393caf871f8f7c4b16d024f7414f677b28399a772",
+      "bytes": 163186,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch016.npz"
+    },
+    "focused/communication/QPSK_28dB/batch017.npz": {
+      "sha256": "bd34265588513e0f6c6d540524d2d3a8c80234093c864d6e18f9767747a5becb",
+      "bytes": 163627,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch017.npz"
+    },
+    "focused/communication/QPSK_28dB/batch018.npz": {
+      "sha256": "53d548087b3fe83786799a5c93a2923673f16ecdbf0ee02f566a90757a649da6",
+      "bytes": 163564,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch018.npz"
+    },
+    "focused/communication/QPSK_28dB/batch019.npz": {
+      "sha256": "91270d8c79d21991e61f21995e87a86e30831367a6a26e346aa52595b7dfeb84",
+      "bytes": 163272,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch019.npz"
+    },
+    "focused/communication/QPSK_28dB/batch020.npz": {
+      "sha256": "3ddbb41da70692ce4889805863745ae6b627ff966c405d8f4c400fada5f0da39",
+      "bytes": 163390,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch020.npz"
+    },
+    "focused/communication/QPSK_28dB/batch021.npz": {
+      "sha256": "a781a44973eba1e1589bf90c1b5ace8540b40bef7d4ef33b9a3295bccc04d255",
+      "bytes": 163326,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch021.npz"
+    },
+    "focused/communication/QPSK_28dB/batch022.npz": {
+      "sha256": "38b0ffb9e59e9438eaef29eb57ced7561c494ca8f1b190b34c648d1e73aa5172",
+      "bytes": 163378,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch022.npz"
+    },
+    "focused/communication/QPSK_28dB/batch023.npz": {
+      "sha256": "83a210bccd9450a43f34c82e0ee020676f911a19acda18017a2ae83df2c9ea00",
+      "bytes": 163455,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch023.npz"
+    },
+    "focused/communication/QPSK_28dB/batch024.npz": {
+      "sha256": "4002f23deb9cb80dfd281e9cdfd7e52559ceecf037c842525d75969e48a771d6",
+      "bytes": 163570,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch024.npz"
+    },
+    "focused/communication/QPSK_28dB/batch025.npz": {
+      "sha256": "1f6f71da087e435371e52f7c58c9e203ccdefc4773a119e52db5c0becfcea14f",
+      "bytes": 163504,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch025.npz"
+    },
+    "focused/communication/QPSK_28dB/batch026.npz": {
+      "sha256": "7286fae07686f7327c4d221dbf6b6a0967872886d7ec5e92ed98760b69e6e00c",
+      "bytes": 163786,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch026.npz"
+    },
+    "focused/communication/QPSK_28dB/batch027.npz": {
+      "sha256": "fc891c820da78e5c7a01041bc6fe36505baf77fa784113c64314ea8f820928a2",
+      "bytes": 163372,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch027.npz"
+    },
+    "focused/communication/QPSK_28dB/batch028.npz": {
+      "sha256": "3f8c112f9083e9637bb57e0fccb9cda1a9fa1c00b9f44f11922cfe18752bfc57",
+      "bytes": 163204,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch028.npz"
+    },
+    "focused/communication/QPSK_28dB/batch029.npz": {
+      "sha256": "4fc9a973646890a1ac3d037b99ce21a7bcf5124d54b26040297d1dd333e8678a",
+      "bytes": 163280,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch029.npz"
+    },
+    "focused/communication/QPSK_28dB/batch030.npz": {
+      "sha256": "398a892f2cfd3b91878fcb4d76a72f511db08f16c621fd326cff4a2abe180fee",
+      "bytes": 163159,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch030.npz"
+    },
+    "focused/communication/QPSK_28dB/batch031.npz": {
+      "sha256": "03e5890ad81228faed673a7ed24bbfb833a1296ab40ca25688a0e7705a194f2f",
+      "bytes": 163495,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch031.npz"
+    },
+    "focused/communication/QPSK_28dB/batch032.npz": {
+      "sha256": "9351185395b84ba266815a4ab343a53bf2f026196a700ca390d0ef69db16f442",
+      "bytes": 163477,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch032.npz"
+    },
+    "focused/communication/QPSK_28dB/batch033.npz": {
+      "sha256": "55fe3dd6d8a5c50c5054053b2cf55cd5692d0a5b0b6bfa953faf214b2a5bf837",
+      "bytes": 163500,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch033.npz"
+    },
+    "focused/communication/QPSK_28dB/batch034.npz": {
+      "sha256": "712722c3fcb0e894a2eb262c9c85f88106ed561dddc0d95f336677ae5be8f218",
+      "bytes": 163547,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch034.npz"
+    },
+    "focused/communication/QPSK_28dB/batch035.npz": {
+      "sha256": "c84e7b8d45154be2d221dda451c62f3bf4d8a01f4bcbfd04ebc209cd4a74c32b",
+      "bytes": 163301,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch035.npz"
+    },
+    "focused/communication/QPSK_28dB/batch036.npz": {
+      "sha256": "972856845e863c628d6917e167336812d87f9be6ef95c3a5598d2efb780edb86",
+      "bytes": 163461,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch036.npz"
+    },
+    "focused/communication/QPSK_28dB/batch037.npz": {
+      "sha256": "5a986314213e053f723b0b3c30ad804b38c059061c5d84bc683655892595ba27",
+      "bytes": 163369,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch037.npz"
+    },
+    "focused/communication/QPSK_28dB/batch038.npz": {
+      "sha256": "9ab4062ad2340887392f576e50877938497dbea4be95d1c3aa6e4e8e91efc6de",
+      "bytes": 26149,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/batch038.npz"
+    },
+    "focused/communication/QPSK_30dB/batch000.npz": {
+      "sha256": "4390997eb7983fdcaf7a2636ba0b05618a1051aee7081528277b1d0d25a24b6b",
+      "bytes": 163942,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch000.npz"
+    },
+    "focused/communication/QPSK_30dB/batch001.npz": {
+      "sha256": "e3d11b79f64dba5b1034a5519ae535c194b47571d5cbc1bb4aabf7eb4e69ceaa",
+      "bytes": 164048,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch001.npz"
+    },
+    "focused/communication/QPSK_30dB/batch002.npz": {
+      "sha256": "c06326f1aefb627aead60846465145b9780f5c91959d4d72adfe31ad779dd27a",
+      "bytes": 163837,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch002.npz"
+    },
+    "focused/communication/QPSK_30dB/batch003.npz": {
+      "sha256": "c5264b0ac942c859813b4b2b8db23bd79f2d8dd1f5fab82a6c8f899ff57faa5b",
+      "bytes": 163549,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch003.npz"
+    },
+    "focused/communication/QPSK_30dB/batch004.npz": {
+      "sha256": "0679ab754be199e5e381734d1ab25ec485efe3bbb87dcfa04bb9baf115283c6b",
+      "bytes": 163876,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch004.npz"
+    },
+    "focused/communication/QPSK_30dB/batch005.npz": {
+      "sha256": "d687520f202fcb79de3787c5cd59eee3f784f9a0b198e843f399b2dfc23473f4",
+      "bytes": 164195,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch005.npz"
+    },
+    "focused/communication/QPSK_30dB/batch006.npz": {
+      "sha256": "e462538957fa61acb8b58e3296e949289a8282abae1daaa2fa1baa764a4bfc7d",
+      "bytes": 163720,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch006.npz"
+    },
+    "focused/communication/QPSK_30dB/batch007.npz": {
+      "sha256": "fca55242e79e97f874612c80b6d26c29ef81c7c72320fc79332eafa201329271",
+      "bytes": 163707,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch007.npz"
+    },
+    "focused/communication/QPSK_30dB/batch008.npz": {
+      "sha256": "d301029b32eed6901dca51ccbba2d3efb416f5cf9813ecc84d97258d7650d97f",
+      "bytes": 163872,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch008.npz"
+    },
+    "focused/communication/QPSK_30dB/batch009.npz": {
+      "sha256": "e7c12476eddf91a75f55194d8953b729b1321b4a50003007487849295d0f2a17",
+      "bytes": 163757,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch009.npz"
+    },
+    "focused/communication/QPSK_30dB/batch010.npz": {
+      "sha256": "ab5dca746f8aa7848ea005f067f4706b900e35520becb47c5bfe7dfef1adfce2",
+      "bytes": 163753,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch010.npz"
+    },
+    "focused/communication/QPSK_30dB/batch011.npz": {
+      "sha256": "28f2f55024eae94b5b9f4aedac9d52e387b3175e233f7527b84a969027f54951",
+      "bytes": 163909,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch011.npz"
+    },
+    "focused/communication/QPSK_30dB/batch012.npz": {
+      "sha256": "7b00c73b43390836e12f9778f0a0c51e5360b50f0c153172156bb4397665a9b6",
+      "bytes": 163847,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch012.npz"
+    },
+    "focused/communication/QPSK_30dB/batch013.npz": {
+      "sha256": "bc33c546e10d0582445516b1935ea34b907a13f5e0456638c30e4be7a066f633",
+      "bytes": 163536,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch013.npz"
+    },
+    "focused/communication/QPSK_30dB/batch014.npz": {
+      "sha256": "3065dcba76bd436aa67477ebaedb88621e4d41e9931bc6c792d537546eb6029e",
+      "bytes": 163907,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch014.npz"
+    },
+    "focused/communication/QPSK_30dB/batch015.npz": {
+      "sha256": "f82a3f76929be904d14c570245f7456bc877299fdd615c8c558ada0c2a948745",
+      "bytes": 163925,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch015.npz"
+    },
+    "focused/communication/QPSK_30dB/batch016.npz": {
+      "sha256": "96ae2e5bb7db40c615c0c00a583ceacbc3aaef804fc86d85d1f57041e807c8bb",
+      "bytes": 163856,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch016.npz"
+    },
+    "focused/communication/QPSK_30dB/batch017.npz": {
+      "sha256": "7c7720acd0f42de7709a20b9af87c8e8144b0d813dea0e78d390919f37604403",
+      "bytes": 164023,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch017.npz"
+    },
+    "focused/communication/QPSK_30dB/batch018.npz": {
+      "sha256": "a25f352dabb1abf6179f64c4f8d2df5cf6b603f5adb8d5610d09eae664ff6c98",
+      "bytes": 164040,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch018.npz"
+    },
+    "focused/communication/QPSK_30dB/batch019.npz": {
+      "sha256": "c5a5826a7dbbc651914c90bc7e6533642948ca00f6bc695cc9258bb854a1ebe4",
+      "bytes": 163889,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch019.npz"
+    },
+    "focused/communication/QPSK_30dB/batch020.npz": {
+      "sha256": "e9f6f22f541a4eda8c9ae7a360233fc2d5ffeee96bb199b3dd324cf16db231a0",
+      "bytes": 163780,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch020.npz"
+    },
+    "focused/communication/QPSK_30dB/batch021.npz": {
+      "sha256": "c747be21ab6c35c20f220afad1bc5a3a02fd73f528778a9bc99900ad0f0ee355",
+      "bytes": 163895,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch021.npz"
+    },
+    "focused/communication/QPSK_30dB/batch022.npz": {
+      "sha256": "a7aad363aa3966c2c61ab42a4a7df4edf871bfa9a97061ecc0ab11cb08197af3",
+      "bytes": 163731,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch022.npz"
+    },
+    "focused/communication/QPSK_30dB/batch023.npz": {
+      "sha256": "8f1d2863255e7255e9ec9aa9d28e29fb50663245c9c9f6621d379d645babf73c",
+      "bytes": 163712,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch023.npz"
+    },
+    "focused/communication/QPSK_30dB/batch024.npz": {
+      "sha256": "d6e7998b8a9074129bd0124e527daf3d02918ba7592302c3b8132a7de18d54c2",
+      "bytes": 163903,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch024.npz"
+    },
+    "focused/communication/QPSK_30dB/batch025.npz": {
+      "sha256": "080b75e11618cf9bcd95234201bf9b2fbf5f4cfd118f4c4c6f89131825a0429d",
+      "bytes": 163872,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch025.npz"
+    },
+    "focused/communication/QPSK_30dB/batch026.npz": {
+      "sha256": "299447e995cb1e8485056b850af31e22a92376e0f89c1b2765952a467ada0b7f",
+      "bytes": 164193,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch026.npz"
+    },
+    "focused/communication/QPSK_30dB/batch027.npz": {
+      "sha256": "5d59efc1e2aa101ac65dd5efe4c7d6ad77cbc2c6aa305c8471a384eda969d4cd",
+      "bytes": 163894,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch027.npz"
+    },
+    "focused/communication/QPSK_30dB/batch028.npz": {
+      "sha256": "3a55991d918873fcc3bd3437db734ad23712b83dc6f44e42821965886285db2c",
+      "bytes": 163758,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch028.npz"
+    },
+    "focused/communication/QPSK_30dB/batch029.npz": {
+      "sha256": "eff3e462db366b2e4449ce237e585956d72313a2932572747941e64ef3ff7ffc",
+      "bytes": 163728,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch029.npz"
+    },
+    "focused/communication/QPSK_30dB/batch030.npz": {
+      "sha256": "7f8501cf6bf41de1d80d1a34b9ca082e7e110f98ecd9870c83f744c73f9b89cb",
+      "bytes": 163608,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch030.npz"
+    },
+    "focused/communication/QPSK_30dB/batch031.npz": {
+      "sha256": "9bed03801eb381361cd764c06e367333c6256b61d9c3c1456e25a2bec1c7558e",
+      "bytes": 164008,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch031.npz"
+    },
+    "focused/communication/QPSK_30dB/batch032.npz": {
+      "sha256": "3ce01649c932042bb46db225973b0c8a81ad484022c36481c59d3b389cd81cdb",
+      "bytes": 163909,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch032.npz"
+    },
+    "focused/communication/QPSK_30dB/batch033.npz": {
+      "sha256": "5fd40a76765587a278ffd28cc729f106b62d13c99532b5d83f18e61850c55b0b",
+      "bytes": 163923,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch033.npz"
+    },
+    "focused/communication/QPSK_30dB/batch034.npz": {
+      "sha256": "e7615882d55e3e04799af0a09494da853cbbd030e8df6c7eb2d950757eba87c8",
+      "bytes": 164098,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch034.npz"
+    },
+    "focused/communication/QPSK_30dB/batch035.npz": {
+      "sha256": "3bdaf3cf433adf42a8cc199d6be9fa2d3d2a7a6c4c07c973448fd841c5502e84",
+      "bytes": 163803,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch035.npz"
+    },
+    "focused/communication/QPSK_30dB/batch036.npz": {
+      "sha256": "d2452a2fff863dfc4df0aa1c8f36d3a754b1418aa5b7b6d29dd1c3e86bc70a6b",
+      "bytes": 163902,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch036.npz"
+    },
+    "focused/communication/QPSK_30dB/batch037.npz": {
+      "sha256": "ec757e575f0add71960a5ff867e7846f20aecf2c8b6141b3652c313537347c5a",
+      "bytes": 163854,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch037.npz"
+    },
+    "focused/communication/QPSK_30dB/batch038.npz": {
+      "sha256": "6a421ca8455f3f20b4faa091a6a267580c4437c9288446f8cd89fe0a721964d3",
+      "bytes": 26247,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/batch038.npz"
+    },
+    "focused/communication/QPSK_5dB/batch000.npz": {
+      "sha256": "6cd72a0ff821d0eb16b075c5a2f4b3f303824babbae37914e1f7e9f7e8aeb5c8",
+      "bytes": 165866,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/batch000.npz"
+    },
+    "focused/communication/QPSK_5dB/batch001.npz": {
+      "sha256": "6f11c1b457785bd444d1f9573d28d0cbc01b49934c7c8dc0f015c8fd2e265002",
+      "bytes": 165739,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/batch001.npz"
+    },
+    "focused/communication/QPSK_5dB/batch002.npz": {
+      "sha256": "4b4f186fac948a0aff309bff963c16906d8d382b7864225662199aae2bdf7d8b",
+      "bytes": 165827,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/batch002.npz"
+    },
+    "focused/communication/QPSK_5dB/batch003.npz": {
+      "sha256": "f348ed5cc2b7d121aa0eb888118def6b8f71e2d235e0f67ffb9c39c98c7ff883",
+      "bytes": 165835,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/batch003.npz"
+    },
+    "focused/communication/16QAM_10dB/per_channel.npz": {
+      "sha256": "41397dbdb4c00d37839f7e63c61d804d5d57de3e682db4de636bb772dbbe7bae",
+      "bytes": 531893,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_15dB/per_channel.npz": {
+      "sha256": "8aa3100cdf994aeef4905a798aba623c56ef6f5336b5e1dcd3f17515f1615a0c",
+      "bytes": 535723,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_18dB/per_channel.npz": {
+      "sha256": "c011c2a6198ef5b662c092cc790bd9770e49a8211c70202872f65a82780e4cb8",
+      "bytes": 532119,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_20dB/per_channel.npz": {
+      "sha256": "780f2f6a465a4fd73aca1975b37ecdc0eebd275b9f20f462b77e0059eab774f9",
+      "bytes": 528201,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_22dB/per_channel.npz": {
+      "sha256": "ce2c0db57db3708853e37e95851c48372e1d6dad90214e89b0c729f4950828e3",
+      "bytes": 524050,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_25dB/per_channel.npz": {
+      "sha256": "38a293239b79b582217bdad6aa5e4bee960fd5e679ff4085121bfbcf4b967200",
+      "bytes": 519464,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_28dB/per_channel.npz": {
+      "sha256": "7bde16c4599c46700db51b1a84efe591f6364a9a93cfa4d7a46be94fa41e7a5f",
+      "bytes": 516526,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_30dB/per_channel.npz": {
+      "sha256": "1955c8e972fe68ce86e199738fb9b5f7f734252e248075018523845e3c180bb4",
+      "bytes": 515397,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_31.5dB/per_channel.npz": {
+      "sha256": "202987b49eeec3262dfe5bea002f0f58423dcfd77fb383f7e510dae195017895",
+      "bytes": 514900,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_33dB/per_channel.npz": {
+      "sha256": "c83b1d0b69a6804081499ba2d061f4a0e7f15db0fdd3aea102adec9e6ef2f570",
+      "bytes": 514305,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_36dB/per_channel.npz": {
+      "sha256": "62d65e69ebc06c7d3e79addd36c0ae6d4f338ce2170ad040b60c0557b5dc34a8",
+      "bytes": 513497,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_38dB/per_channel.npz": {
+      "sha256": "bc8ec5f7c4ccd51a8b3dc37598e9e6ac1066ada61aabd5a007a23834dd453dda",
+      "bytes": 513505,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_40dB/per_channel.npz": {
+      "sha256": "2bf954dcc283c1888b777baf1436a4f56316fdd08e8c65555e29c3ded72ff1e2",
+      "bytes": 513170,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_5dB/per_channel.npz": {
+      "sha256": "a572b9f052a5c0ad7a1813f1e54f687c112e60edac1d89ae97ebf580b6591910",
+      "bytes": 521995,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_0dB/per_channel.npz": {
+      "sha256": "edc065eeadd5ecd41f1dbd65b35eba55f8679d4def37c8f3f7f95ef6453b24e6",
+      "bytes": 497758,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_10dB/per_channel.npz": {
+      "sha256": "4ce100f0fb609ae7630d8ab8520aa33fd3f488ef5e6a355574782210f12e461b",
+      "bytes": 504469,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_12dB/per_channel.npz": {
+      "sha256": "65a20bb2235c0030c5279a9d4229b730493bff46162ef5722d556febc17e9969",
+      "bytes": 501394,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_15dB/per_channel.npz": {
+      "sha256": "0a0ea2acba83cf0f1c5a52b0ed17b4caa6607d387873f3d2f32cbd9596beb72e",
+      "bytes": 496653,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_16.5dB/per_channel.npz": {
+      "sha256": "605025c522218807bbef0372754f51dc31563879a883193176b39ca9c22baf95",
+      "bytes": 494351,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_18dB/per_channel.npz": {
+      "sha256": "e96cfa8324ed3308da60704233e14ac58a4abfc9c800b348f9d65ed2a4f8a4ed",
+      "bytes": 615620,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_19dB/per_channel.npz": {
+      "sha256": "d808b0ccd41bade4bbc1f79dd37bbff04d974e3a35447eaad8843d3a9ecc567c",
+      "bytes": 1232504,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_20dB/per_channel.npz": {
+      "sha256": "4eb385e9caa98cb5e2b7191a51c29317adb084f2b6afc6476f09780ff75c63b7",
+      "bytes": 2087429,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_22dB/per_channel.npz": {
+      "sha256": "d3cc896e4755c4de82a5d6c8a11ff053cce54d2ec825a90ec6e7cfb55afe101b",
+      "bytes": 4666925,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_25dB/per_channel.npz": {
+      "sha256": "667edd7401411558f23eee88b9f8250675ed84a3d5782b81ea5a0fcf54235cd9",
+      "bytes": 4667387,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_28dB/per_channel.npz": {
+      "sha256": "cc83e58c83fc82ae6caf7202a7e7e4e84c66c74588cce08bc72027faf6fea53c",
+      "bytes": 4678327,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_30dB/per_channel.npz": {
+      "sha256": "c453e7d42cc1d01581afb743d1bbf2fddb86141588b3b3e072d68c1e8b82c3a5",
+      "bytes": 4686676,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/per_channel.npz"
+    },
+    "focused/communication/QPSK_5dB/per_channel.npz": {
+      "sha256": "cdcb344d58358fca575002412cf905dc2887ca43fe871609d983d6f351add61e",
+      "bytes": 505935,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/per_channel.npz"
+    },
+    "focused/communication/16QAM_10dB/complete.json": {
+      "sha256": "b7f82c08e942795c2652589714a82f38f47a8a166a56218f5f7659271bddca18",
+      "bytes": 526,
+      "source": "wms/results/focused_figures/communication/16QAM_10dB/complete.json"
+    },
+    "focused/communication/16QAM_15dB/complete.json": {
+      "sha256": "aaf744a0e6162662e7e5ffad43a0b4ab5387fb8efdfcd60cdb456cb4e8fbce38",
+      "bytes": 519,
+      "source": "wms/results/focused_figures/communication/16QAM_15dB/complete.json"
+    },
+    "focused/communication/16QAM_18dB/complete.json": {
+      "sha256": "eb40b655821111fdfd874e34a7d184ca84509b64bbc5879ed9bc6b4255995644",
+      "bytes": 518,
+      "source": "wms/results/focused_figures/communication/16QAM_18dB/complete.json"
+    },
+    "focused/communication/16QAM_20dB/complete.json": {
+      "sha256": "b7c3e54fc8f975e701da15ad3b774159048fa88d2a325bc73585970b19c43219",
+      "bytes": 517,
+      "source": "wms/results/focused_figures/communication/16QAM_20dB/complete.json"
+    },
+    "focused/communication/16QAM_22dB/complete.json": {
+      "sha256": "5b77e5105bce12e30259c2b8744b2f502679afb998fae1d4a2fef10d64c8e0d3",
+      "bytes": 518,
+      "source": "wms/results/focused_figures/communication/16QAM_22dB/complete.json"
+    },
+    "focused/communication/16QAM_25dB/complete.json": {
+      "sha256": "023df25067877c71cd143df692d73fbb709e02cfdd7d4224f19cca355ace596d",
+      "bytes": 514,
+      "source": "wms/results/focused_figures/communication/16QAM_25dB/complete.json"
+    },
+    "focused/communication/16QAM_28dB/complete.json": {
+      "sha256": "49536358602a164699ae5c9fab57070cc165b70ea30442d9dd017d029b329dd2",
+      "bytes": 512,
+      "source": "wms/results/focused_figures/communication/16QAM_28dB/complete.json"
+    },
+    "focused/communication/16QAM_30dB/complete.json": {
+      "sha256": "d8fa4d7143c229d9c81a6313e289b056aabbb162de5aa6ae4620f6986c634e4b",
+      "bytes": 512,
+      "source": "wms/results/focused_figures/communication/16QAM_30dB/complete.json"
+    },
+    "focused/communication/16QAM_31.5dB/complete.json": {
+      "sha256": "31a8b4b35a6bae4f7ed3226eb0e3ad36767e2cc4840506cdc1117fa63c44d5b5",
+      "bytes": 514,
+      "source": "wms/results/focused_figures/communication/16QAM_31.5dB/complete.json"
+    },
+    "focused/communication/16QAM_33dB/complete.json": {
+      "sha256": "0a9782a8023ca962fd00b88d9f01e2a7e753c749a70ab5dc45453515a6a33b20",
+      "bytes": 512,
+      "source": "wms/results/focused_figures/communication/16QAM_33dB/complete.json"
+    },
+    "focused/communication/16QAM_36dB/complete.json": {
+      "sha256": "2f475c67ca007ee707b8b7fd6cdb12ee17079d379359424cb38abe04ec846848",
+      "bytes": 512,
+      "source": "wms/results/focused_figures/communication/16QAM_36dB/complete.json"
+    },
+    "focused/communication/16QAM_38dB/complete.json": {
+      "sha256": "513e8985faa09dfdeaaa569d6686ec393a9ef5008a0b99f2a14dff96830ba741",
+      "bytes": 515,
+      "source": "wms/results/focused_figures/communication/16QAM_38dB/complete.json"
+    },
+    "focused/communication/16QAM_40dB/complete.json": {
+      "sha256": "806fa832da52a92bfc1392a0b75653c4ffced10300692c7aee78a029ddf4dde7",
+      "bytes": 511,
+      "source": "wms/results/focused_figures/communication/16QAM_40dB/complete.json"
+    },
+    "focused/communication/16QAM_5dB/complete.json": {
+      "sha256": "dfef36ae10c4417815fbe50149236ab1532d7e4c6a1f814c1d0c7bfd95ef6b97",
+      "bytes": 525,
+      "source": "wms/results/focused_figures/communication/16QAM_5dB/complete.json"
+    },
+    "focused/communication/QPSK_0dB/complete.json": {
+      "sha256": "c8d12c32fd3372033056f1438871a83c3faa802d783a82bc3ebcc2225b7ee4de",
+      "bytes": 524,
+      "source": "wms/results/focused_figures/communication/QPSK_0dB/complete.json"
+    },
+    "focused/communication/QPSK_10dB/complete.json": {
+      "sha256": "84d09fe7b9fea1f49a2865de7df1e4bdc23ecd2ab2faa4bfce7d42d4d5f7b992",
+      "bytes": 512,
+      "source": "wms/results/focused_figures/communication/QPSK_10dB/complete.json"
+    },
+    "focused/communication/QPSK_12dB/complete.json": {
+      "sha256": "1eb06fb5036f083ad17fe4f41a12ead8315079b5f7f2b9484634ca73dd5db1c2",
+      "bytes": 513,
+      "source": "wms/results/focused_figures/communication/QPSK_12dB/complete.json"
+    },
+    "focused/communication/QPSK_15dB/complete.json": {
+      "sha256": "6da67406ffd3f5b6af6426665674f88d72a255b0a05e6dbbec1d7a6de9e2bd48",
+      "bytes": 505,
+      "source": "wms/results/focused_figures/communication/QPSK_15dB/complete.json"
+    },
+    "focused/communication/QPSK_16.5dB/complete.json": {
+      "sha256": "42ccc016c99a0cc32d617d22b209480b890ff628087993b5efcb8f47836806ef",
+      "bytes": 506,
+      "source": "wms/results/focused_figures/communication/QPSK_16.5dB/complete.json"
+    },
+    "focused/communication/QPSK_18dB/complete.json": {
+      "sha256": "5c2e586bdbf0293bed79cc2128264b488df3ce4fc822b9135237301e49775c88",
+      "bytes": 503,
+      "source": "wms/results/focused_figures/communication/QPSK_18dB/complete.json"
+    },
+    "focused/communication/QPSK_19dB/complete.json": {
+      "sha256": "3b535a7720c2b16456fe3519476e259e07388e10e10077ddb5af21561bbdb0b2",
+      "bytes": 509,
+      "source": "wms/results/focused_figures/communication/QPSK_19dB/complete.json"
+    },
+    "focused/communication/QPSK_20dB/complete.json": {
+      "sha256": "a61b854366fe25f2c4b9061c8832ad4962bd1efbd7bd95acd0d97ba318c9d5c7",
+      "bytes": 507,
+      "source": "wms/results/focused_figures/communication/QPSK_20dB/complete.json"
+    },
+    "focused/communication/QPSK_22dB/complete.json": {
+      "sha256": "ea7ad62a60c8bcfa88b6c443ebdcd298a5722e47a3981f744a5a09610e97c2c2",
+      "bytes": 499,
+      "source": "wms/results/focused_figures/communication/QPSK_22dB/complete.json"
+    },
+    "focused/communication/QPSK_25dB/complete.json": {
+      "sha256": "2980b753dff95264898f615126826717370268c0c4df32e6f0d4c5af406da412",
+      "bytes": 497,
+      "source": "wms/results/focused_figures/communication/QPSK_25dB/complete.json"
+    },
+    "focused/communication/QPSK_28dB/complete.json": {
+      "sha256": "ffe0ec9467eda12be6ffeb7758647a06808e6f54881494adcaeaefc6dcfbadce",
+      "bytes": 497,
+      "source": "wms/results/focused_figures/communication/QPSK_28dB/complete.json"
+    },
+    "focused/communication/QPSK_30dB/complete.json": {
+      "sha256": "2d5ba19fd0a70755db9e96bf5771da0df8ee49636939bba6ebd84d03d9edf857",
+      "bytes": 496,
+      "source": "wms/results/focused_figures/communication/QPSK_30dB/complete.json"
+    },
+    "focused/communication/QPSK_5dB/complete.json": {
+      "sha256": "79b0eb08b51e786b1da7c61b1526daeff52abb7bac967efd2abd61fb7f942078",
+      "bytes": 524,
+      "source": "wms/results/focused_figures/communication/QPSK_5dB/complete.json"
+    },
+    "focused/snr25/ber_display_up_to_25db.csv": {
+      "sha256": "a4848dc78ab14dc37ca1c54a4a2aada381f9edbb1c06560e61f81bf6233f871b",
+      "bytes": 57577,
+      "source": "wms/results/focused_figures/snr25/ber_display_up_to_25db.csv"
+    },
+    "focused/snr25/ber_summary.csv": {
+      "sha256": "9c8d04f31032d8636a7b061cca9844553d3e562d3877669624b625ad2d2f23a2",
+      "bytes": 90453,
+      "source": "wms/results/focused_figures/snr25/ber_summary.csv"
+    },
+    "focused/snr25/paired_differences.csv": {
+      "sha256": "b382a7dc183c8d1f3bf49111fac82d538661cfde876c860c49ca1886214d2f32",
+      "bytes": 35943,
+      "source": "wms/results/focused_figures/snr25/paired_differences.csv"
+    },
+    "focused/snr25/threshold_estimates.csv": {
+      "sha256": "0d65bb7002d627a470d82840e1b091f9aa8b015208315351a8437a7bdeccdbc3",
+      "bytes": 2108,
+      "source": "wms/results/focused_figures/snr25/threshold_estimates.csv"
+    },
+    "focused/snr25/README.md": {
+      "sha256": "4439aa32ec9a07e7d996003fa6fcce3ae51ae5b6ed2b93192c27d4835d6da685",
+      "bytes": 803,
+      "source": "wms/results/focused_figures/snr25/README.md"
+    },
+    "supplementary/orthogonality_bridge/diagnostics.npz": {
+      "sha256": "07a8d3450a041522ecf1c7cf9562c192347ea7971aa1dd49ec6b37711ed2bd3d",
+      "bytes": 1642678,
+      "source": "wms/results/focused_figures/orthogonality_bridge/diagnostics.npz"
+    },
+    "supplementary/orthogonality_bridge/plot_data.npz": {
+      "sha256": "21c493ea79580977ffd88c29d7b8a1c91b3577bd4f76634876195a293dd5de53",
+      "bytes": 509204,
+      "source": "wms/results/focused_figures/orthogonality_bridge/plot_data.npz"
+    },
+    "supplementary/orthogonality_bridge/all_2016_basis_pairs.csv": {
+      "sha256": "fa86842eb88553d643430cce4bbe3cf7cbf89a297f6ee682c9e40dc9326ccf1e",
+      "bytes": 372464,
+      "source": "wms/results/focused_figures/orthogonality_bridge/all_2016_basis_pairs.csv"
+    },
+    "supplementary/orthogonality_bridge/per_channel_bridge.csv": {
+      "sha256": "a6415129eb40e75b86ebf3f95c65da0ace12c9acb4848f949a07031aa99f0b22",
+      "bytes": 139764,
+      "source": "wms/results/focused_figures/orthogonality_bridge/per_channel_bridge.csv"
+    },
+    "supplementary/orthogonality_bridge/per_column.csv": {
+      "sha256": "71b2722cb70e52769e4ed8acf77d114d3d502cbff65e38e614eacdbc25e5ba95",
+      "bytes": 7050,
+      "source": "wms/results/focused_figures/orthogonality_bridge/per_column.csv"
+    },
+    "supplementary/orthogonality_bridge/phase_control.csv": {
+      "sha256": "8bc6db87e6f8742dcd892c3286f9686ea862bb3e9f69d95f99a20da377e32a37",
+      "bytes": 557,
+      "source": "wms/results/focused_figures/orthogonality_bridge/phase_control.csv"
+    },
+    "supplementary/orthogonality_bridge/summary.json": {
+      "sha256": "f3fca6952fe8c6f4d09ee63512ac8a5df1dd123efd60cca27de0b12c92b55bb2",
+      "bytes": 5074,
+      "source": "wms/results/focused_figures/orthogonality_bridge/summary.json"
+    },
+    "supplementary/orthogonality_bridge/protocol.json": {
+      "sha256": "fb0b849873c56068d2574b66bf48edb99cae06f5cf295a85d0bce4920986c7ad",
+      "bytes": 1397,
+      "source": "wms/results/focused_figures/orthogonality_bridge/protocol.json"
+    },
+    "supplementary/orthogonality_bridge/release_checks.json": {
+      "sha256": "f40a02360e8a7321252680f63548d23cb603f7de659aeb54e22f3d1d15edd4da",
+      "bytes": 1936,
+      "source": "wms/results/focused_figures/orthogonality_bridge/release_checks.json"
+    },
+    "supplementary/orthogonality_bridge/REPORT.md": {
+      "sha256": "3684738b78d8bf86649996bebfa8b52e89310be7de70f5998ceb5e405d1461c4",
+      "bytes": 13104,
+      "source": "wms/results/focused_figures/orthogonality_bridge/REPORT.md"
+    },
+    "supplementary/block_frequency/spectral_data.npz": {
+      "sha256": "97a2072e894120b1d213679ac26f2d713453504eb98cb3d2bb6cdc63fcd89bef",
+      "bytes": 12142936,
+      "source": "wms/results/focused_figures/block_frequency/spectral_data.npz"
+    },
+    "supplementary/block_frequency/group_profiles.csv": {
+      "sha256": "7c8834a01278fd7f625dc7edbce86be7ff1b2a4d45136445ad1d095be3861a23",
+      "bytes": 8756,
+      "source": "wms/results/focused_figures/block_frequency/group_profiles.csv"
+    },
+    "supplementary/block_frequency/per_column.csv": {
+      "sha256": "da3a9d81601fd925a5471ef7f0b11f4a01c2a1eab11024cdfd554e99863b6fc5",
+      "bytes": 10718,
+      "source": "wms/results/focused_figures/block_frequency/per_column.csv"
+    },
+    "supplementary/block_frequency/association.json": {
+      "sha256": "40eac8639cffdf04f8a58f7c8ac435c816e856faa222bc6d75c7c541ac405a1b",
+      "bytes": 3869,
+      "source": "wms/results/focused_figures/block_frequency/association.json"
+    },
+    "supplementary/block_frequency/protocol.json": {
+      "sha256": "30c8f2f77b8b80920651879fbfa98b7f3c0b26c6ad21e3fb3d3264ee04775f5f",
+      "bytes": 1806,
+      "source": "wms/results/focused_figures/block_frequency/protocol.json"
+    },
+    "supplementary/block_frequency/release_manifest.json": {
+      "sha256": "d978fbb347e1969af58e38a9188fd30dc79493f7992ff9e46e0985412fe8a67d",
+      "bytes": 3216,
+      "source": "wms/results/focused_figures/block_frequency/release_manifest.json"
+    },
+    "supplementary/block_frequency/REPORT.md": {
+      "sha256": "912dae78e0a6940d37bd8bb60b97cd96ff2d79187851c1804bd61dfb80217514",
+      "bytes": 8945,
+      "source": "wms/results/focused_figures/block_frequency/REPORT.md"
+    },
+    "supplementary/main/communication_summary.csv": {
+      "sha256": "e72e9f55a5a38bdc1a2f94728d4c85377d45caa7e6407b4527d3aa354545d85c",
+      "bytes": 1361331,
+      "source": "wms/results/main/communication_summary.csv"
+    },
+    "supplementary/main/frozen_k_receiver_diagnostics.csv": {
+      "sha256": "3b304e720cff6145030fbe9bdb3a1873cde944fba03c596a711f87d188d35439",
+      "bytes": 24210,
+      "source": "wms/results/main/frozen_k_receiver_diagnostics.csv"
+    },
+    "supplementary/main/full_projector_invariants.csv": {
+      "sha256": "d3f708dcdfefd2a83deea338b0aecbf3150b56a687bf066cb9f52be0b36bac62",
+      "bytes": 8779,
+      "source": "wms/results/main/full_projector_invariants.csv"
+    },
+    "supplementary/main/impairment_transfer.csv": {
+      "sha256": "47009d55e1e03b4109ad76a0f064e48eba56453b8e67fc5ed224693444bab060",
+      "bytes": 20268,
+      "source": "wms/results/main/impairment_transfer.csv"
+    },
+    "supplementary/main/interventions.csv": {
+      "sha256": "2d3227c8f4195489bd6ca7d71f93eb6e89fdcbaf641ba738daa45a749e6f336b",
+      "bytes": 78378,
+      "source": "wms/results/main/interventions.csv"
+    },
+    "supplementary/main/paired_analytic_differences.csv": {
+      "sha256": "ab0d113aa20455b00e1f5a11e123e4b220b48e39c4f9e5e54037479ee1d2b86f",
+      "bytes": 42927,
+      "source": "wms/results/main/paired_analytic_differences.csv"
+    },
+    "supplementary/main/paired_differences.csv": {
+      "sha256": "95ab31c1501563088e8928ae3c63bb672647e2becc2b1fa444368ca9d0515e5a",
+      "bytes": 527961,
+      "source": "wms/results/main/paired_differences.csv"
+    },
+    "supplementary/main/structural_summary.csv": {
+      "sha256": "1be4460d5f8801749b1e89e289132c36b34196351ebc8d7c520a982d1808c276",
+      "bytes": 24326,
+      "source": "wms/results/main/structural_summary.csv"
+    },
+    "supplementary/main/training_selected_summary.csv": {
+      "sha256": "3bc0b2b0b108d213598d4c5df929a6e42d285fc2bad1dedaa3555e343855310c",
+      "bytes": 1650,
+      "source": "wms/results/main/training_selected_summary.csv"
+    },
+    "supplementary/main/training_trial_ber_variability.csv": {
+      "sha256": "2a501e571988ef6cf084231b12e73436a8dd6c67de14a4828d7f2e8388be66bd",
+      "bytes": 42643,
+      "source": "wms/results/main/training_trial_ber_variability.csv"
+    },
+    "supplementary/main/trajectory_structure.csv": {
+      "sha256": "bc0200cf873aa4913b01f20d7cb2e60d5ec619458d4200a2b828a3f06b4a953b",
+      "bytes": 9652,
+      "source": "wms/results/main/trajectory_structure.csv"
+    },
+    "supplementary/main/REPORT.md": {
+      "sha256": "2942a8d3c5ec1b2a6845523d46dcb91402d9afbbd383664123ea71610dd8ad25",
+      "bytes": 28430,
+      "source": "wms/results/main/REPORT.md"
+    },
+    "supplementary/main/STATUS.json": {
+      "sha256": "e418b76d9b30e405727774e476623b6cc1983dfdd917d85d9d9061a252001b9f",
+      "bytes": 604,
+      "source": "wms/results/main/STATUS.json"
+    },
+    "supplementary/main/config.json": {
+      "sha256": "becb5cd35f031e2c93e55b9a4ba610576c2c13a9636d84f807d46282081947ce",
+      "bytes": 1069,
+      "source": "wms/results/main/config.json"
+    },
+    "supplementary/main/manifest.json": {
+      "sha256": "a3d8348490bd0834e52c8a66e3127693a46aedb05cef8acce808c65c64ab2b03",
+      "bytes": 2810,
+      "source": "wms/results/main/manifest.json"
+    },
+    "supplementary/main/rng_manifest.json": {
+      "sha256": "ee269c4b17d6f45ed4791d4aaaf5dc7b5174e9ddf69cd4b2f8ff746a47c3d46d",
+      "bytes": 2583008,
+      "source": "wms/results/main/rng_manifest.json"
+    },
+    "supplementary/main/rng_manifest_supplement.json": {
+      "sha256": "7e8774e836492a107a717979a57ea5c8947c3790fa314d6211bf9d2edc61669c",
+      "bytes": 292979,
+      "source": "wms/results/main/rng_manifest_supplement.json"
+    },
+    "supplementary/main/verification.json": {
+      "sha256": "ea0e31ce23381312b28d2bcdcca1c19f70c936a99eb5a771571725c455f70418",
+      "bytes": 1349,
+      "source": "wms/results/main/verification.json"
+    },
+    "supplementary/main/environment.json": {
+      "sha256": "a30128647c3e13661ecff6678e57700bb11da5c3d3f3fc940fa7bf660b931ec5",
+      "bytes": 309,
+      "source": "wms/results/main/environment.json"
+    },
+    "supplementary/main/structural_revision_manifest.json": {
+      "sha256": "bcb8ff3e2e7b75e38165aa13eeb1cba1aeed6e4afacc7000ff522589a81daba2",
+      "bytes": 698,
+      "source": "wms/results/main/structural_revision_manifest.json"
+    },
+    "supplementary/main/structural_revision_qualification.json": {
+      "sha256": "9d64e85a5e79506f83137ba5259f7372b6f1a3bf97ebc2869f5c31735c6af619",
+      "bytes": 277,
+      "source": "wms/results/main/structural_revision_qualification.json"
+    },
+    "supplementary/main/intervention_bases.npz": {
+      "sha256": "9a591b41d27127fe66b907cc7bf2cc6606cfd9999c00d429501db1602fceb78b",
+      "bytes": 1887026,
+      "source": "wms/results/main/intervention_bases.npz"
+    },
+    "supplementary/main/projector_profile_comparison.npz": {
+      "sha256": "2dc5980e89400cf3e6fd61d1087c9d4864881f0823d4af46839177ed0ee757b3",
+      "bytes": 28964,
+      "source": "wms/results/main/projector_profile_comparison.npz"
+    },
+    "supplementary/main/communication/AFDM.npz": {
+      "sha256": "bd5b5cdfbc0f996e01142f31dc00a49712a956467672e21ca1c908838eef8413",
+      "bytes": 1352772,
+      "source": "wms/results/main/communication/AFDM.npz"
+    },
+    "supplementary/main/communication/HAAR0.npz": {
+      "sha256": "69788ea67e1f9b7d01c0707852b86b714f6b4cef9205fc7709a482722d80aa78",
+      "bytes": 1376171,
+      "source": "wms/results/main/communication/HAAR0.npz"
+    },
+    "supplementary/main/communication/HAAR1.npz": {
+      "sha256": "9ef5f505eb72607844b7af4fcb53dc53fb023bce72b315ca17a86c8059e10d1c",
+      "bytes": 1376100,
+      "source": "wms/results/main/communication/HAAR1.npz"
+    },
+    "supplementary/main/communication/HAAR2.npz": {
+      "sha256": "d994303f46f3f390036f0d2495537727769940b7732a920dd44964d0cddabcc5",
+      "bytes": 1376080,
+      "source": "wms/results/main/communication/HAAR2.npz"
+    },
+    "supplementary/main/communication/HISTORICAL.npz": {
+      "sha256": "8e858434afaa1866c0976dbec026620e016a8ee72635c2f0c1ffd351c58befd9",
+      "bytes": 1329449,
+      "source": "wms/results/main/communication/HISTORICAL.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__across_0.npz": {
+      "sha256": "7bdacb2df8a5b9e4220d98f91786daf3e29a206254ed50bd1bb5937b2c2240b7",
+      "bytes": 1780571,
+      "source": "wms/results/main/communication/HISTORICAL__across_0.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__across_1.npz": {
+      "sha256": "bfbe143e7148b7d244b73ecee2f9671ba8f6a4a77f4c8bae46fb8468ff1210c8",
+      "bytes": 1780940,
+      "source": "wms/results/main/communication/HISTORICAL__across_1.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__across_2.npz": {
+      "sha256": "414f7f0c7ccd513be080159b4c81e7cce8e001a3e9396a6a81d82afdd0c91526",
+      "bytes": 1780941,
+      "source": "wms/results/main/communication/HISTORICAL__across_2.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__across_3.npz": {
+      "sha256": "8ac5c274206d62604491757fbcccb8102674d155bfc983c6365d3e281df9e879",
+      "bytes": 1780535,
+      "source": "wms/results/main/communication/HISTORICAL__across_3.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__across_4.npz": {
+      "sha256": "88d765d575401863d31f50c6800cad61724652187186efd9e5ceba8a0e0bfbf2",
+      "bytes": 1780642,
+      "source": "wms/results/main/communication/HISTORICAL__across_4.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__random_0.npz": {
+      "sha256": "cde3724661d28f1a000c55301332443430f737b2b7a773f267563a5b8d173404",
+      "bytes": 1778155,
+      "source": "wms/results/main/communication/HISTORICAL__random_0.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__random_1.npz": {
+      "sha256": "10147ee6bcc52c12ef4047f3c6bbb1470c6ead0e993ef0f9d455e93714134f86",
+      "bytes": 1777697,
+      "source": "wms/results/main/communication/HISTORICAL__random_1.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__random_2.npz": {
+      "sha256": "039c9ab1a00b1441dd2bd0a2386a064dd2d65993419f97ced2b126b2b19bed55",
+      "bytes": 1777518,
+      "source": "wms/results/main/communication/HISTORICAL__random_2.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__random_3.npz": {
+      "sha256": "0860b92b16748f17a0b3d4dd421e77f5cda8b6e1f69493f64ce36bfafe94173c",
+      "bytes": 1777692,
+      "source": "wms/results/main/communication/HISTORICAL__random_3.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__random_4.npz": {
+      "sha256": "b7cb4f0c43c6322dd2708b7c0b79d5565b3f29718f3155f41f51bc74dacdb15b",
+      "bytes": 1777477,
+      "source": "wms/results/main/communication/HISTORICAL__random_4.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__within_0.npz": {
+      "sha256": "6797de976ed3ae0172aa90899ca78c6f95f49f59eae7b121a37fe887507176db",
+      "bytes": 1769538,
+      "source": "wms/results/main/communication/HISTORICAL__within_0.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__within_1.npz": {
+      "sha256": "b0043bb0e2f8550010593d1c64edf8b6007018fdff2bce3898a0873079ea8fcf",
+      "bytes": 1767819,
+      "source": "wms/results/main/communication/HISTORICAL__within_1.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__within_2.npz": {
+      "sha256": "e7f00c35c20e5620b5b2f35bf194504602ecfdee9163d13a1e0854f4993778bc",
+      "bytes": 1768247,
+      "source": "wms/results/main/communication/HISTORICAL__within_2.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__within_3.npz": {
+      "sha256": "151aff64d034eb5eb544897c3e217676835bc4e95bfaf3ed1d04b01bae383855",
+      "bytes": 1769856,
+      "source": "wms/results/main/communication/HISTORICAL__within_3.npz"
+    },
+    "supplementary/main/communication/HISTORICAL__within_4.npz": {
+      "sha256": "df53d9af5d5fbff3ce5dcbaf46560ecb19ecfdcf61f5e5397a336dcdbc686f62",
+      "bytes": 1766768,
+      "source": "wms/results/main/communication/HISTORICAL__within_4.npz"
+    },
+    "supplementary/main/communication/IDENTITY.npz": {
+      "sha256": "37d62bb8897bc627858ea9f5adcfafc723a806f55d6d516330e6734b667c3928",
+      "bytes": 1303610,
+      "source": "wms/results/main/communication/IDENTITY.npz"
+    },
+    "supplementary/main/communication/OFDM.npz": {
+      "sha256": "6990d74c3f6cb60ebc1c3d12cdfc43446519b8724a83fbf783eb50f9c0857cbd",
+      "bytes": 1355398,
+      "source": "wms/results/main/communication/OFDM.npz"
+    },
+    "supplementary/main/communication/OTFS.npz": {
+      "sha256": "1d91382923ac0c4922f6ea87c90ea41d85377a6a137ed4f802c9ce026f305b41",
+      "bytes": 1362214,
+      "source": "wms/results/main/communication/OTFS.npz"
+    },
+    "supplementary/main/communication/T0_mean.npz": {
+      "sha256": "92d4c56a6db2b861820fb9f3cdb31944771d2d039a973935c45757fae4fd493c",
+      "bytes": 1331463,
+      "source": "wms/results/main/communication/T0_mean.npz"
+    },
+    "supplementary/main/communication/T0_mean_cont.npz": {
+      "sha256": "92d4c56a6db2b861820fb9f3cdb31944771d2d039a973935c45757fae4fd493c",
+      "bytes": 1331463,
+      "source": "wms/results/main/communication/T0_mean_cont.npz"
+    },
+    "supplementary/main/communication/T0_q.npz": {
+      "sha256": "1bc2cb6e64aa6a022d0f990a99192b7704f2a152e7efc62ec8299e463ca1b4f1",
+      "bytes": 1319811,
+      "source": "wms/results/main/communication/T0_q.npz"
+    },
+    "supplementary/main/communication/T0_tail.npz": {
+      "sha256": "3a385005d1be759640f9534ef002a41b295c23add7621f7de5afda77cb709862",
+      "bytes": 1328153,
+      "source": "wms/results/main/communication/T0_tail.npz"
+    },
+    "supplementary/main/communication/T0_tail__across_0.npz": {
+      "sha256": "4a9cf07c5eddd0b71a2e9fb8f35a5e961037ac6d3da0eac5a8bfc1ccf86d201d",
+      "bytes": 1778677,
+      "source": "wms/results/main/communication/T0_tail__across_0.npz"
+    },
+    "supplementary/main/communication/T0_tail__across_1.npz": {
+      "sha256": "fe6809200a50f45d066797c2522de490b95bc01a4572b388d1e3a68282b3e09e",
+      "bytes": 1778277,
+      "source": "wms/results/main/communication/T0_tail__across_1.npz"
+    },
+    "supplementary/main/communication/T0_tail__across_2.npz": {
+      "sha256": "67392123e9c2df08a6401ed423a5f8339748ee8525bb9658998cb02aab8ebd60",
+      "bytes": 1778246,
+      "source": "wms/results/main/communication/T0_tail__across_2.npz"
+    },
+    "supplementary/main/communication/T0_tail__across_3.npz": {
+      "sha256": "caa2aafa8d9c0d536ac1a0b409256968d6b88bc23d729bff3178fcec3af043bd",
+      "bytes": 1778754,
+      "source": "wms/results/main/communication/T0_tail__across_3.npz"
+    },
+    "supplementary/main/communication/T0_tail__across_4.npz": {
+      "sha256": "dba79a7aacc43453db3a566988b4d9d7e2d735f95f46bf5c0bcd346195bc6318",
+      "bytes": 1778251,
+      "source": "wms/results/main/communication/T0_tail__across_4.npz"
+    },
+    "supplementary/main/communication/T0_tail__random_0.npz": {
+      "sha256": "85dbf7634ea1036960343f82f8e2d452c3b5a37e7a898d7b3e4bd47a28c6282b",
+      "bytes": 1775452,
+      "source": "wms/results/main/communication/T0_tail__random_0.npz"
+    },
+    "supplementary/main/communication/T0_tail__random_1.npz": {
+      "sha256": "f9890c890967cd0867e452af900f86f9f238a29bda415c948fd911a04ccd52ee",
+      "bytes": 1775597,
+      "source": "wms/results/main/communication/T0_tail__random_1.npz"
+    },
+    "supplementary/main/communication/T0_tail__random_2.npz": {
+      "sha256": "96f8414613ca0fc77f5f25fe232951f4bd91bc38f694284b40da6d8ea4f92f2a",
+      "bytes": 1776354,
+      "source": "wms/results/main/communication/T0_tail__random_2.npz"
+    },
+    "supplementary/main/communication/T0_tail__random_3.npz": {
+      "sha256": "66c645c41081c93ac3196f4405e993091bc4af2160986baa69da7e5d438b4a98",
+      "bytes": 1776371,
+      "source": "wms/results/main/communication/T0_tail__random_3.npz"
+    },
+    "supplementary/main/communication/T0_tail__random_4.npz": {
+      "sha256": "7ecc908c1198acba42e9c99105ad44a3c6ecf516e489a0aef2c5bbcc0d16bf69",
+      "bytes": 1776393,
+      "source": "wms/results/main/communication/T0_tail__random_4.npz"
+    },
+    "supplementary/main/communication/T0_tail__within_0.npz": {
+      "sha256": "03f9dc0ec60a2d291eb6329719e14dbb1edfc4263534512afefa3ca2551f5826",
+      "bytes": 1764028,
+      "source": "wms/results/main/communication/T0_tail__within_0.npz"
+    },
+    "supplementary/main/communication/T0_tail__within_1.npz": {
+      "sha256": "ca3f3adb6ea3d4970636f6931f5167ea3ff3ec0f16f0042818c48a0c79906124",
+      "bytes": 1761977,
+      "source": "wms/results/main/communication/T0_tail__within_1.npz"
+    },
+    "supplementary/main/communication/T0_tail__within_2.npz": {
+      "sha256": "f60aeff979cad948ffb154b7e1a02789b0cf0fce8515b8a740bdbb59adf3a8e1",
+      "bytes": 1759280,
+      "source": "wms/results/main/communication/T0_tail__within_2.npz"
+    },
+    "supplementary/main/communication/T0_tail__within_3.npz": {
+      "sha256": "15b9b6d542e0d92f8380377456b80d203001a0d488ec139d9b4192e6709f7cc0",
+      "bytes": 1764716,
+      "source": "wms/results/main/communication/T0_tail__within_3.npz"
+    },
+    "supplementary/main/communication/T0_tail__within_4.npz": {
+      "sha256": "b37dfcd83c04985a42093c71802f6403952c70e84ae714f12c1b3f45ded0ae75",
+      "bytes": 1765658,
+      "source": "wms/results/main/communication/T0_tail__within_4.npz"
+    },
+    "supplementary/main/communication/T1_mean.npz": {
+      "sha256": "7afdc49c769980af77f4550692b5b502a76e68ce4503da0adaf17bb42b7021d4",
+      "bytes": 1330746,
+      "source": "wms/results/main/communication/T1_mean.npz"
+    },
+    "supplementary/main/communication/T1_mean_cont.npz": {
+      "sha256": "7afdc49c769980af77f4550692b5b502a76e68ce4503da0adaf17bb42b7021d4",
+      "bytes": 1330746,
+      "source": "wms/results/main/communication/T1_mean_cont.npz"
+    },
+    "supplementary/main/communication/T1_q.npz": {
+      "sha256": "488732a3eb0668c51e76c0bb8e62a176c17c8e0f1261953aa5a4e1d6d91f904c",
+      "bytes": 1320230,
+      "source": "wms/results/main/communication/T1_q.npz"
+    },
+    "supplementary/main/communication/T1_tail.npz": {
+      "sha256": "6c35339c7b55a3fc272939544479f806b02d5e8b64933955efd1bd88d0f5ddfb",
+      "bytes": 1326448,
+      "source": "wms/results/main/communication/T1_tail.npz"
+    },
+    "supplementary/main/communication/T2_mean.npz": {
+      "sha256": "9f3abbb00fdb69169cff066a15425e030caebe7a9ceeb5309f58fa23edc27f88",
+      "bytes": 1330667,
+      "source": "wms/results/main/communication/T2_mean.npz"
+    },
+    "supplementary/main/communication/T2_mean_cont.npz": {
+      "sha256": "9f3abbb00fdb69169cff066a15425e030caebe7a9ceeb5309f58fa23edc27f88",
+      "bytes": 1330667,
+      "source": "wms/results/main/communication/T2_mean_cont.npz"
+    },
+    "supplementary/main/communication/T2_q.npz": {
+      "sha256": "799113b0962e6d9140e234345a3a6c5120f2b433d1813dc1b7907d2941ffd676",
+      "bytes": 1320945,
+      "source": "wms/results/main/communication/T2_q.npz"
+    },
+    "supplementary/main/communication/T2_tail.npz": {
+      "sha256": "8bd5133fb938994a42013685d6972d7600b4ab9fafca9a02a1f73b38ce29e841",
+      "bytes": 1326198,
+      "source": "wms/results/main/communication/T2_tail.npz"
+    },
+    "supplementary/main/communication/AFDM.json": {
+      "sha256": "63d7eabfb7d5603bf4a52f8c6e1eb634d76bd5f06d3f3d53d36f6919baf66cc8",
+      "bytes": 140,
+      "source": "wms/results/main/communication/AFDM.json"
+    },
+    "supplementary/main/communication/HAAR0.json": {
+      "sha256": "3f325dca6794b87b6671e84dcccb42ad8c7203e61d3a2f570efe18bc58b28903",
+      "bytes": 141,
+      "source": "wms/results/main/communication/HAAR0.json"
+    },
+    "supplementary/main/communication/HAAR1.json": {
+      "sha256": "358c03455bd0dade6366823ac4167aa226e74de11a288a2942a4ab1e7441afa8",
+      "bytes": 141,
+      "source": "wms/results/main/communication/HAAR1.json"
+    },
+    "supplementary/main/communication/HAAR2.json": {
+      "sha256": "b81a1e25956b742bd0ec3273f20ddb1197360e2dafe74ae3a53336dffbe041d5",
+      "bytes": 140,
+      "source": "wms/results/main/communication/HAAR2.json"
+    },
+    "supplementary/main/communication/HISTORICAL.json": {
+      "sha256": "504001e3bc6b9b6e1c9af91712b171b7a02d7641d29fa69e5eb2439894e36136",
+      "bytes": 146,
+      "source": "wms/results/main/communication/HISTORICAL.json"
+    },
+    "supplementary/main/communication/HISTORICAL__across_0.json": {
+      "sha256": "f44730a7f88160d49a1b61708a518be8f307b81a755c5d73c898bd9fd7d91506",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__across_0.json"
+    },
+    "supplementary/main/communication/HISTORICAL__across_1.json": {
+      "sha256": "6d371fa56af353f3737ab5aa29d8d14049f24af5b366444b756b5ea20f9dbfae",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__across_1.json"
+    },
+    "supplementary/main/communication/HISTORICAL__across_2.json": {
+      "sha256": "d2fa7466ee5c78baa289b8118f47a7d0b2aba3718f7d1923b71e3e6833acd5ba",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__across_2.json"
+    },
+    "supplementary/main/communication/HISTORICAL__across_3.json": {
+      "sha256": "09736f7d9de92e11b19cfea61a9eff788a49aa1d5826233b2a8442322e15fa3e",
+      "bytes": 155,
+      "source": "wms/results/main/communication/HISTORICAL__across_3.json"
+    },
+    "supplementary/main/communication/HISTORICAL__across_4.json": {
+      "sha256": "0dd5e5ff1b1f7f2bf1d8fd619c93c24b1516788663a27b17b1ae6abb6df76fc4",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__across_4.json"
+    },
+    "supplementary/main/communication/HISTORICAL__random_0.json": {
+      "sha256": "16cc905ba95f82e2137237d765c8654b6589ac9fd8185b48d58f559ff5b1f412",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__random_0.json"
+    },
+    "supplementary/main/communication/HISTORICAL__random_1.json": {
+      "sha256": "4b13ee12d2048aa155a6f35c7557464e89e4f504fe8d00570d9e438e662dc450",
+      "bytes": 155,
+      "source": "wms/results/main/communication/HISTORICAL__random_1.json"
+    },
+    "supplementary/main/communication/HISTORICAL__random_2.json": {
+      "sha256": "4536d4b313d7567be2992d00c209759680a2eb3736591ab6b6a60aed853df3f2",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__random_2.json"
+    },
+    "supplementary/main/communication/HISTORICAL__random_3.json": {
+      "sha256": "7bd0aeb45c2663ac3c69714467b4d93381a7879ac383c585f2854b6af62b0390",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__random_3.json"
+    },
+    "supplementary/main/communication/HISTORICAL__random_4.json": {
+      "sha256": "c0da5e6b7f1692d96d963139b8711e483f7d38b2176c2b5dc4c6473846de0fcf",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__random_4.json"
+    },
+    "supplementary/main/communication/HISTORICAL__within_0.json": {
+      "sha256": "a0644c23fce1c15f6444780bf1885c1fb863240e01e1afe03370e717963b7fe6",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__within_0.json"
+    },
+    "supplementary/main/communication/HISTORICAL__within_1.json": {
+      "sha256": "ed85ba80cf5d8a06f8c0ab0a8ebaae093e79a2b85b49965c78bab31c13636f64",
+      "bytes": 155,
+      "source": "wms/results/main/communication/HISTORICAL__within_1.json"
+    },
+    "supplementary/main/communication/HISTORICAL__within_2.json": {
+      "sha256": "6eaea3896fa982d39cd1ac7c0faf839e6f1aefdadba87d732ca68a583093985c",
+      "bytes": 156,
+      "source": "wms/results/main/communication/HISTORICAL__within_2.json"
+    },
+    "supplementary/main/communication/HISTORICAL__within_3.json": {
+      "sha256": "f72ffd00d31a97a39ee75cf59b36052200b7cca0ea82a908899e11a607b13f06",
+      "bytes": 155,
+      "source": "wms/results/main/communication/HISTORICAL__within_3.json"
+    },
+    "supplementary/main/communication/HISTORICAL__within_4.json": {
+      "sha256": "00e6731045e53b0944c25382db227981c124a94848b05c1a14f765b085cadb65",
+      "bytes": 155,
+      "source": "wms/results/main/communication/HISTORICAL__within_4.json"
+    },
+    "supplementary/main/communication/IDENTITY.json": {
+      "sha256": "3081492c4307e47d5d73f440aba18a8db6ef75ac781f9b2c85873f909881fd59",
+      "bytes": 144,
+      "source": "wms/results/main/communication/IDENTITY.json"
+    },
+    "supplementary/main/communication/OFDM.json": {
+      "sha256": "55bdf970b5a499bef279690497fad4ba1c01b4c62a11759be9768b55e7681f85",
+      "bytes": 139,
+      "source": "wms/results/main/communication/OFDM.json"
+    },
+    "supplementary/main/communication/OTFS.json": {
+      "sha256": "0acbb2b5efa0e8acb654affe7229e15fb1d683a84a947d95fa53d1b5d60fa0e2",
+      "bytes": 140,
+      "source": "wms/results/main/communication/OTFS.json"
+    },
+    "supplementary/main/communication/T0_mean.json": {
+      "sha256": "7b087d82083e9ff5afa969c34b5112959eadb290ea059695233015fe66f7e461",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T0_mean.json"
+    },
+    "supplementary/main/communication/T0_mean_cont.json": {
+      "sha256": "5754d9af8b90d7705212a48d8c609309661c8110f5db03c1c6d670b563a56e38",
+      "bytes": 148,
+      "source": "wms/results/main/communication/T0_mean_cont.json"
+    },
+    "supplementary/main/communication/T0_q.json": {
+      "sha256": "e30c6cf2c2e446d2ae20e6643a956a8d4b273fddfaa3f690d41edaec3645de5f",
+      "bytes": 140,
+      "source": "wms/results/main/communication/T0_q.json"
+    },
+    "supplementary/main/communication/T0_tail.json": {
+      "sha256": "4ff8098e43e57901e33c867fe511265943a5fa25146c680690b7a5f357f825dc",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T0_tail.json"
+    },
+    "supplementary/main/communication/T0_tail__across_0.json": {
+      "sha256": "b61b9c9e6b8fe82401a3c2fc32da37c8a9b7995cedc224b75596f29a81535ead",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__across_0.json"
+    },
+    "supplementary/main/communication/T0_tail__across_1.json": {
+      "sha256": "e77d74450cfea5da05fc482b9429b15385a21d8989d368abcf4aaeb1d53366b3",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__across_1.json"
+    },
+    "supplementary/main/communication/T0_tail__across_2.json": {
+      "sha256": "b4bb2639891d48c00d690bdc8bc18ef3bb06cbb2d8f69c76a1d25f568ce0401e",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__across_2.json"
+    },
+    "supplementary/main/communication/T0_tail__across_3.json": {
+      "sha256": "2da1b009aed956a79ca4fc65b001b50c4103a5aaa75459618868dda1b757c128",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__across_3.json"
+    },
+    "supplementary/main/communication/T0_tail__across_4.json": {
+      "sha256": "d36c6e44c996addd1d193317a7ae29769075603a169606aff0e85d615f1985b6",
+      "bytes": 151,
+      "source": "wms/results/main/communication/T0_tail__across_4.json"
+    },
+    "supplementary/main/communication/T0_tail__random_0.json": {
+      "sha256": "7e6e023a0b6ab098a3ec2f7a0c2dbfb099df99d7adaf7941221c53a327d00a5e",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__random_0.json"
+    },
+    "supplementary/main/communication/T0_tail__random_1.json": {
+      "sha256": "71b6652173e5e1daecdc36cad874626fc667afe7c2b2647722361083ee75f1cb",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__random_1.json"
+    },
+    "supplementary/main/communication/T0_tail__random_2.json": {
+      "sha256": "2522a747e8bf42effc9b673e6cdb69b38ac48d7b7b85a243e914caafe073ff70",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__random_2.json"
+    },
+    "supplementary/main/communication/T0_tail__random_3.json": {
+      "sha256": "ba560ffb5c2af8e3db4440fff778670f9ebf338617d28acb96b582da52230624",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__random_3.json"
+    },
+    "supplementary/main/communication/T0_tail__random_4.json": {
+      "sha256": "40f6254d83145bb3aa8edeba2046308a4cd844deac92155a30413b4fb1551060",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__random_4.json"
+    },
+    "supplementary/main/communication/T0_tail__within_0.json": {
+      "sha256": "20344bacd0125c3be440c032298c8095fdc38a7f7b8910dfeebcca8953b01e4e",
+      "bytes": 150,
+      "source": "wms/results/main/communication/T0_tail__within_0.json"
+    },
+    "supplementary/main/communication/T0_tail__within_1.json": {
+      "sha256": "9b5afd7047ecbd5b7ddbac962c01bd7de009f09a13a13fabb755cb186fb7a01f",
+      "bytes": 152,
+      "source": "wms/results/main/communication/T0_tail__within_1.json"
+    },
+    "supplementary/main/communication/T0_tail__within_2.json": {
+      "sha256": "baa83872e40aef2c3c9c6c40b32b2444ef92650ac54a325f5dc2fea99cd17112",
+      "bytes": 153,
+      "source": "wms/results/main/communication/T0_tail__within_2.json"
+    },
+    "supplementary/main/communication/T0_tail__within_3.json": {
+      "sha256": "a787ead468a754031c0fb2f1387a4fc9d29ab968c027e9da3b0fd01214725294",
+      "bytes": 152,
+      "source": "wms/results/main/communication/T0_tail__within_3.json"
+    },
+    "supplementary/main/communication/T0_tail__within_4.json": {
+      "sha256": "6c4479d452e4016a765a643430c8e7b73668b3884718855f9ddceefe7776af60",
+      "bytes": 152,
+      "source": "wms/results/main/communication/T0_tail__within_4.json"
+    },
+    "supplementary/main/communication/T1_mean.json": {
+      "sha256": "896b5ed8df785f0da6816e66b390ea1aeadd0e3a2aa04cdda1a1bddc0e439864",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T1_mean.json"
+    },
+    "supplementary/main/communication/T1_mean_cont.json": {
+      "sha256": "b8f525e4ac5370933a74a662fad4be614d27f345d5f99c39e751779977bfc6ab",
+      "bytes": 148,
+      "source": "wms/results/main/communication/T1_mean_cont.json"
+    },
+    "supplementary/main/communication/T1_q.json": {
+      "sha256": "e566660bb16eea7e9219e05396e8f1ae7c970a5a33ee5d3e7f83423e4a47c095",
+      "bytes": 139,
+      "source": "wms/results/main/communication/T1_q.json"
+    },
+    "supplementary/main/communication/T1_tail.json": {
+      "sha256": "49068fb031b31a4b4e09182e502a6af1d364c560fe0442d42b6e1af1a2403bf6",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T1_tail.json"
+    },
+    "supplementary/main/communication/T2_mean.json": {
+      "sha256": "935440744ed18dadb449e752af4a2e3f50b7edc4ddaf0cda72e042d8c5b4e25b",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T2_mean.json"
+    },
+    "supplementary/main/communication/T2_mean_cont.json": {
+      "sha256": "f8daf8561daaf01f4f583a0f31b964f655b563b03a49caddba28c3b5f8da23f3",
+      "bytes": 148,
+      "source": "wms/results/main/communication/T2_mean_cont.json"
+    },
+    "supplementary/main/communication/T2_q.json": {
+      "sha256": "b7c220f91b7dd243a2cfcad162bc033b18567fc4ee44f7858bf0710e126129e5",
+      "bytes": 140,
+      "source": "wms/results/main/communication/T2_q.json"
+    },
+    "supplementary/main/communication/T2_tail.json": {
+      "sha256": "3092f25c4428c7b67738f9f5df136048d4fe5644c9ca3b8f121a7f561a428c1f",
+      "bytes": 143,
+      "source": "wms/results/main/communication/T2_tail.json"
+    },
+    "supplementary/main/training/trial0/mean/trace.csv": {
+      "sha256": "73f35146994eec03e2db8eea3404bcbba23735687a2d9859e795e0cde1f2f123",
+      "bytes": 13323,
+      "source": "wms/results/main/training/trial0/mean/trace.csv"
+    },
+    "supplementary/main/training/trial0/mean_cont/trace.csv": {
+      "sha256": "eef803750b05238a415cc50bd0d6b3476ae69036e088f2a26c87706f23ce972a",
+      "bytes": 6967,
+      "source": "wms/results/main/training/trial0/mean_cont/trace.csv"
+    },
+    "supplementary/main/training/trial0/q/trace.csv": {
+      "sha256": "9521dfc034c31fd69a12e545e062bc86763ac84b63d3673f0ca161da5d73ab95",
+      "bytes": 13094,
+      "source": "wms/results/main/training/trial0/q/trace.csv"
+    },
+    "supplementary/main/training/trial0/tail/trace.csv": {
+      "sha256": "f2d58c46f0bdc49d078bdd725097bafdf7e99cb3a7c7a548146df8860812a6f1",
+      "bytes": 6758,
+      "source": "wms/results/main/training/trial0/tail/trace.csv"
+    },
+    "supplementary/main/training/trial1/mean/trace.csv": {
+      "sha256": "c0a457fe9617f5248169bb67e7715309f9c9299f044c01dd5c8d21d053e9c01b",
+      "bytes": 13300,
+      "source": "wms/results/main/training/trial1/mean/trace.csv"
+    },
+    "supplementary/main/training/trial1/mean_cont/trace.csv": {
+      "sha256": "e73b4fa0e48d402896035aa4759dea7f4ad0e22cc2d4bdf48b5b6eacc2dd6e5a",
+      "bytes": 6940,
+      "source": "wms/results/main/training/trial1/mean_cont/trace.csv"
+    },
+    "supplementary/main/training/trial1/q/trace.csv": {
+      "sha256": "2a3a79ff899d2715222ed0e554612fb519743200e2170e918c89ffaf0c774dec",
+      "bytes": 13132,
+      "source": "wms/results/main/training/trial1/q/trace.csv"
+    },
+    "supplementary/main/training/trial1/tail/trace.csv": {
+      "sha256": "4531a5b8c3075349947909c2b400fcbbe63e8c85984576a47f041d4173297cf2",
+      "bytes": 6759,
+      "source": "wms/results/main/training/trial1/tail/trace.csv"
+    },
+    "supplementary/main/training/trial2/mean/trace.csv": {
+      "sha256": "02e5f9b15b69f408683b38cef4f465139cf44de440b5c5e7746d26e4b00d2504",
+      "bytes": 13311,
+      "source": "wms/results/main/training/trial2/mean/trace.csv"
+    },
+    "supplementary/main/training/trial2/mean_cont/trace.csv": {
+      "sha256": "5eb66e18ee6a858a76270976b14718f0f81e421c21332b8f1fcfa66344f3096e",
+      "bytes": 6979,
+      "source": "wms/results/main/training/trial2/mean_cont/trace.csv"
+    },
+    "supplementary/main/training/trial2/q/trace.csv": {
+      "sha256": "f15ee8ed0407bc6fb92ce77a0dc5acc3aff8e66252de5ec69cc8b61d2ceaeb49",
+      "bytes": 13156,
+      "source": "wms/results/main/training/trial2/q/trace.csv"
+    },
+    "supplementary/main/training/trial2/tail/trace.csv": {
+      "sha256": "ae9f5d424162fe95f1f37b3c9c349b090dbb703e2d90975d5953ef837ddfc13e",
+      "bytes": 6695,
+      "source": "wms/results/main/training/trial2/tail/trace.csv"
+    },
+    "supplementary/main/training/trial0/mean/selected.json": {
+      "sha256": "e78ec5d6b2979c78a48ff320513d71f6dd0c1e787e34dea99bce86b44eaa6357",
+      "bytes": 692,
+      "source": "wms/results/main/training/trial0/mean/selected.json"
+    },
+    "supplementary/main/training/trial0/mean_cont/selected.json": {
+      "sha256": "fb0943b6513144236fe416042aa8a2f5718bd61867ff4144b68ce2a0979d3d38",
+      "bytes": 694,
+      "source": "wms/results/main/training/trial0/mean_cont/selected.json"
+    },
+    "supplementary/main/training/trial0/q/selected.json": {
+      "sha256": "94ee3c9576cda59a5991736d63ccab72455ff758c162e38009b0c4c38036fc1d",
+      "bytes": 689,
+      "source": "wms/results/main/training/trial0/q/selected.json"
+    },
+    "supplementary/main/training/trial0/tail/selected.json": {
+      "sha256": "e826b4507bd9ff6b924aad2d7f3dbc7fe4bfe7e38a0d29452ee63b822b491c21",
+      "bytes": 745,
+      "source": "wms/results/main/training/trial0/tail/selected.json"
+    },
+    "supplementary/main/training/trial1/mean/selected.json": {
+      "sha256": "3db466714da32a055e7e04dc11b5411b87fb5f62b2ac459b8d8b89f52591e202",
+      "bytes": 691,
+      "source": "wms/results/main/training/trial1/mean/selected.json"
+    },
+    "supplementary/main/training/trial1/mean_cont/selected.json": {
+      "sha256": "ac1bc335c3ed0b56325e12dd27a2a266ad2444700c0bc86b7482c8aff591f6b2",
+      "bytes": 694,
+      "source": "wms/results/main/training/trial1/mean_cont/selected.json"
+    },
+    "supplementary/main/training/trial1/q/selected.json": {
+      "sha256": "0d3161032d3c1181d34338d4dcc771c2b3b17338d58a2fa2c3fc3408d90e2c99",
+      "bytes": 688,
+      "source": "wms/results/main/training/trial1/q/selected.json"
+    },
+    "supplementary/main/training/trial1/tail/selected.json": {
+      "sha256": "89d613f20fb0d0b8d589122d3a413ca2131d88049e04cbe6e9d090521dccd3dd",
+      "bytes": 743,
+      "source": "wms/results/main/training/trial1/tail/selected.json"
+    },
+    "supplementary/main/training/trial2/mean/selected.json": {
+      "sha256": "3ca70b98c3f7f1072aee87f0e9c845d4bc8e23b60ba757086918abf5550bf2ed",
+      "bytes": 691,
+      "source": "wms/results/main/training/trial2/mean/selected.json"
+    },
+    "supplementary/main/training/trial2/mean_cont/selected.json": {
+      "sha256": "ae5a61c55dea2d26246d9ab67acbfb2d42dd4259101ba64210c03a3e5283756b",
+      "bytes": 694,
+      "source": "wms/results/main/training/trial2/mean_cont/selected.json"
+    },
+    "supplementary/main/training/trial2/q/selected.json": {
+      "sha256": "d485103c406f1ed70dec1efd22b4906f859789bfb6bd6881b3c202b44d25a422",
+      "bytes": 686,
+      "source": "wms/results/main/training/trial2/q/selected.json"
+    },
+    "supplementary/main/training/trial2/tail/selected.json": {
+      "sha256": "c45a616a4239e11a01b20cb5f86d765864151af1f0b2ae9bfadae6a8c335eeed",
+      "bytes": 744,
+      "source": "wms/results/main/training/trial2/tail/selected.json"
+    },
+    "supplementary/main/training/trial0/mean/best.pt": {
+      "sha256": "d0f5c5b41caa75dcae4b9b7b461564aaa1ad9d94ea10463f87c1c422aeee5b97",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial0/mean/best.pt"
+    },
+    "supplementary/main/training/trial0/mean_cont/best.pt": {
+      "sha256": "d0f5c5b41caa75dcae4b9b7b461564aaa1ad9d94ea10463f87c1c422aeee5b97",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial0/mean_cont/best.pt"
+    },
+    "supplementary/main/training/trial0/q/best.pt": {
+      "sha256": "3dd9bfedb5ea8ca6208c0014b472b5583c794e14f1207919d8e217f6491defe5",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial0/q/best.pt"
+    },
+    "supplementary/main/training/trial0/tail/best.pt": {
+      "sha256": "8bfe9ed4f2baa364622ec22c27e84a4e34e2578193d4621e078e284683122a10",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial0/tail/best.pt"
+    },
+    "supplementary/main/training/trial1/mean/best.pt": {
+      "sha256": "a01b7931fb5a3bbd6cea319bf5a140e4a5a205875848d0b43a1f66fd3b1f246f",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial1/mean/best.pt"
+    },
+    "supplementary/main/training/trial1/mean_cont/best.pt": {
+      "sha256": "a01b7931fb5a3bbd6cea319bf5a140e4a5a205875848d0b43a1f66fd3b1f246f",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial1/mean_cont/best.pt"
+    },
+    "supplementary/main/training/trial1/q/best.pt": {
+      "sha256": "c478ddaffb7e6de5b65b6e4b6375c4365d1cc81f2642b3682455807e8d40e61d",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial1/q/best.pt"
+    },
+    "supplementary/main/training/trial1/tail/best.pt": {
+      "sha256": "4d12cc67e4a54e4902da9cae643eece7072e220c1249d2e2a6c0115f69418cab",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial1/tail/best.pt"
+    },
+    "supplementary/main/training/trial2/mean/best.pt": {
+      "sha256": "9e8245a92c156a9dce16fc2429a1721806c9dc21fc67c0577a83a8ea755377aa",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial2/mean/best.pt"
+    },
+    "supplementary/main/training/trial2/mean_cont/best.pt": {
+      "sha256": "9e8245a92c156a9dce16fc2429a1721806c9dc21fc67c0577a83a8ea755377aa",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial2/mean_cont/best.pt"
+    },
+    "supplementary/main/training/trial2/q/best.pt": {
+      "sha256": "b7882e476680f127b9096df2ac6f5b0fdf314959908741f9623710d4f09a4ac4",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial2/q/best.pt"
+    },
+    "supplementary/main/training/trial2/tail/best.pt": {
+      "sha256": "d06153aafc072736f3931531071cc0ae23c39a8f70249f64f8f375bc4318ede4",
+      "bytes": 67113,
+      "source": "wms/results/main/training/trial2/tail/best.pt"
+    },
+    "supplementary/main/discovery/AFDM.npz": {
+      "sha256": "1555e7a645afe8fa8a8540ccf29661d45c87ad66dac6d32ec1b8cbd004181f15",
+      "bytes": 36152,
+      "source": "wms/results/main/discovery/AFDM.npz"
+    },
+    "supplementary/main/discovery/HAAR0.npz": {
+      "sha256": "14f343ef74830e272913fc68ff55b8d5c7e761625fb6fb36b7c5d08bdcc112ae",
+      "bytes": 31789,
+      "source": "wms/results/main/discovery/HAAR0.npz"
+    },
+    "supplementary/main/discovery/HAAR1.npz": {
+      "sha256": "271da8ddbb8059100af863bd354d562443222acffb2c7b291d9e07cf044cd5ad",
+      "bytes": 31781,
+      "source": "wms/results/main/discovery/HAAR1.npz"
+    },
+    "supplementary/main/discovery/HAAR2.npz": {
+      "sha256": "398b21202f93e4d53f728a8709c83423d6dca7bd166c5e46e7c4b8d6bf2c3098",
+      "bytes": 31806,
+      "source": "wms/results/main/discovery/HAAR2.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL.npz": {
+      "sha256": "e97de7b273ae116f45a03be9cc561a1b635343cb93713dc9ea988567d9fe41c1",
+      "bytes": 35218,
+      "source": "wms/results/main/discovery/HISTORICAL.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__across_0.npz": {
+      "sha256": "f938d8491f01b42aeca8812f1d418618e74cbc36da2559a96a7efd806b3d5dd7",
+      "bytes": 34739,
+      "source": "wms/results/main/discovery/HISTORICAL__across_0.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__across_1.npz": {
+      "sha256": "09c633860c5a1f576e186b1618ca7b086cb98600884da38703c86b8d20587a8d",
+      "bytes": 34728,
+      "source": "wms/results/main/discovery/HISTORICAL__across_1.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__across_2.npz": {
+      "sha256": "397e19741475099131d77b8532c2753123d9deddf76d773adb14313101b5c82d",
+      "bytes": 34731,
+      "source": "wms/results/main/discovery/HISTORICAL__across_2.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__across_3.npz": {
+      "sha256": "88994b03303ed2cc9a9b5b682d9b1827bfa5e748b562b21d76cf1de0613eee4a",
+      "bytes": 34723,
+      "source": "wms/results/main/discovery/HISTORICAL__across_3.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__across_4.npz": {
+      "sha256": "56cbdbe23e8df6f7d653b0fa57b340ff527f3add6d7d7c86034913cfcf530325",
+      "bytes": 34740,
+      "source": "wms/results/main/discovery/HISTORICAL__across_4.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__random_0.npz": {
+      "sha256": "7bc33611d092dcea6a55db0428a7505e265ad8665452473a4ff776da07a40b3e",
+      "bytes": 34756,
+      "source": "wms/results/main/discovery/HISTORICAL__random_0.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__random_1.npz": {
+      "sha256": "acf8ea2eec3dba9c46accb86fb891f09cb7f12ab29f6aa5345d5f3a10d9e6208",
+      "bytes": 34762,
+      "source": "wms/results/main/discovery/HISTORICAL__random_1.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__random_2.npz": {
+      "sha256": "c3cd05295cedf8148339dc03845b8409aa5f335a471360fa004292396996362b",
+      "bytes": 34763,
+      "source": "wms/results/main/discovery/HISTORICAL__random_2.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__random_3.npz": {
+      "sha256": "200f8c0269bbc6bd39903846bca0ae3f2b372f6124f22cc9f969da2c53b8ca2b",
+      "bytes": 34758,
+      "source": "wms/results/main/discovery/HISTORICAL__random_3.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__random_4.npz": {
+      "sha256": "148aa3ade18ab68c46d76a38d14c0427a3af5dc29b20d9a33ab43323b97d8c4f",
+      "bytes": 34766,
+      "source": "wms/results/main/discovery/HISTORICAL__random_4.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__within_0.npz": {
+      "sha256": "443253c3444217df630824f0a2d633e0fb5a5be5861c6d36810d635716b5e428",
+      "bytes": 35213,
+      "source": "wms/results/main/discovery/HISTORICAL__within_0.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__within_1.npz": {
+      "sha256": "32eedaca1a2a02e445fb482cd87dc81c42402978690c53cf3d03e2322018f6b9",
+      "bytes": 35188,
+      "source": "wms/results/main/discovery/HISTORICAL__within_1.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__within_2.npz": {
+      "sha256": "74bb35887469891607005a3653b826fa7fbab4ecc4f3c10920fc718004b1cceb",
+      "bytes": 35200,
+      "source": "wms/results/main/discovery/HISTORICAL__within_2.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__within_3.npz": {
+      "sha256": "18bc8f4dc9f16bcacd3dc72378d849e28c4b73f8a5a16172f64639a9ee37844a",
+      "bytes": 35197,
+      "source": "wms/results/main/discovery/HISTORICAL__within_3.npz"
+    },
+    "supplementary/main/discovery/HISTORICAL__within_4.npz": {
+      "sha256": "23ade8f99e08256befc6f6956e4376abfb2ea29214c243eb3d430eb18dbb3b4d",
+      "bytes": 35202,
+      "source": "wms/results/main/discovery/HISTORICAL__within_4.npz"
+    },
+    "supplementary/main/discovery/IDENTITY.npz": {
+      "sha256": "4503b7998e0caa428af5cb946de4ecdd09eebfc7b057548358aef0a6570f9a32",
+      "bytes": 16696,
+      "source": "wms/results/main/discovery/IDENTITY.npz"
+    },
+    "supplementary/main/discovery/OFDM.npz": {
+      "sha256": "6747d659e6cb54b1e9f4d998d6729640c7688e15e70b613b5b9a90ac0c3ab487",
+      "bytes": 17333,
+      "source": "wms/results/main/discovery/OFDM.npz"
+    },
+    "supplementary/main/discovery/OTFS.npz": {
+      "sha256": "c0831c0e522451dc7f42a323cf4759b3bf0932971357b5e29dc6f99308cd791a",
+      "bytes": 15956,
+      "source": "wms/results/main/discovery/OTFS.npz"
+    },
+    "supplementary/main/discovery/T0_mean.npz": {
+      "sha256": "5259a8e051af383655d4062383538752240d2aa830c69065c27182ebddf09e08",
+      "bytes": 35690,
+      "source": "wms/results/main/discovery/T0_mean.npz"
+    },
+    "supplementary/main/discovery/T0_mean_cont.npz": {
+      "sha256": "658de02d5aeb515d854e1f78c270a693401935c0fd9311a2ba9a9d094320e55f",
+      "bytes": 35704,
+      "source": "wms/results/main/discovery/T0_mean_cont.npz"
+    },
+    "supplementary/main/discovery/T0_q.npz": {
+      "sha256": "6cf59e0f2b9238940d61d2a185943e8427c2046a5505ae4e6a8b33f2ff27ae68",
+      "bytes": 36446,
+      "source": "wms/results/main/discovery/T0_q.npz"
+    },
+    "supplementary/main/discovery/T0_tail.npz": {
+      "sha256": "0d8d452123915dd5d1a11d321bfabb14c22b96b75317aa2c31152aa0245ecf14",
+      "bytes": 35698,
+      "source": "wms/results/main/discovery/T0_tail.npz"
+    },
+    "supplementary/main/discovery/T0_tail__across_0.npz": {
+      "sha256": "ecd58ebd0ea582980275027c6028be63280ec9de6fefe1098ae5ddf1bc3bb791",
+      "bytes": 35229,
+      "source": "wms/results/main/discovery/T0_tail__across_0.npz"
+    },
+    "supplementary/main/discovery/T0_tail__across_1.npz": {
+      "sha256": "35d724d6226437ffd449a13804757cc9abf8e0a62e54cade77c188536e1ef640",
+      "bytes": 35231,
+      "source": "wms/results/main/discovery/T0_tail__across_1.npz"
+    },
+    "supplementary/main/discovery/T0_tail__across_2.npz": {
+      "sha256": "237b125798554118be55018a8a457e7d1aa735ca7b5762bcbaaacf7286ec5037",
+      "bytes": 35230,
+      "source": "wms/results/main/discovery/T0_tail__across_2.npz"
+    },
+    "supplementary/main/discovery/T0_tail__across_3.npz": {
+      "sha256": "c5cf52956753bd77a99a98115b4c6e4e0ac60c2ef59d64afdb8026430432c5d7",
+      "bytes": 35202,
+      "source": "wms/results/main/discovery/T0_tail__across_3.npz"
+    },
+    "supplementary/main/discovery/T0_tail__across_4.npz": {
+      "sha256": "d83eaeb62eb740e10e2e853d7e93f3f37f7dcf9a0c34fd3d50f11991a5377855",
+      "bytes": 35216,
+      "source": "wms/results/main/discovery/T0_tail__across_4.npz"
+    },
+    "supplementary/main/discovery/T0_tail__random_0.npz": {
+      "sha256": "1574db852cd621f4e1e4cb4e3ba21f6e3a1555a1ef8df59d31b355b294d6cac4",
+      "bytes": 35255,
+      "source": "wms/results/main/discovery/T0_tail__random_0.npz"
+    },
+    "supplementary/main/discovery/T0_tail__random_1.npz": {
+      "sha256": "0a23609700614af6e93383b205c1bbe4b84251e77319e83ae03227188a999faa",
+      "bytes": 35282,
+      "source": "wms/results/main/discovery/T0_tail__random_1.npz"
+    },
+    "supplementary/main/discovery/T0_tail__random_2.npz": {
+      "sha256": "6e0a561897553b68b1de9b19b94c9b96768dce3cc5943397f66b638262c94dd1",
+      "bytes": 35278,
+      "source": "wms/results/main/discovery/T0_tail__random_2.npz"
+    },
+    "supplementary/main/discovery/T0_tail__random_3.npz": {
+      "sha256": "eebb8fb84156adf0d715d6737b4aaa9fddf8ba0960d47b438ff7717e5b10fbe5",
+      "bytes": 35367,
+      "source": "wms/results/main/discovery/T0_tail__random_3.npz"
+    },
+    "supplementary/main/discovery/T0_tail__random_4.npz": {
+      "sha256": "8d858a8bf3363b226afd85f62d21828be87fd62cf6b7d1a6182666493595d7c8",
+      "bytes": 35296,
+      "source": "wms/results/main/discovery/T0_tail__random_4.npz"
+    },
+    "supplementary/main/discovery/T0_tail__within_0.npz": {
+      "sha256": "f79be8cc4136b6af8fabbe86691f4ef620cae99dfafc6766812da69c82a2ffb4",
+      "bytes": 35683,
+      "source": "wms/results/main/discovery/T0_tail__within_0.npz"
+    },
+    "supplementary/main/discovery/T0_tail__within_1.npz": {
+      "sha256": "527f79709b50316671eedf5270282cf3018b33c242dd4dd8f06e2a18db1b841d",
+      "bytes": 35683,
+      "source": "wms/results/main/discovery/T0_tail__within_1.npz"
+    },
+    "supplementary/main/discovery/T0_tail__within_2.npz": {
+      "sha256": "c2a5ca54f0bd63c634c41f8476f0e30de18be1741794066f2fec1b9b166d3a4b",
+      "bytes": 35676,
+      "source": "wms/results/main/discovery/T0_tail__within_2.npz"
+    },
+    "supplementary/main/discovery/T0_tail__within_3.npz": {
+      "sha256": "41ef3ea1eaad60cca047d4cfb91e62e079a4115f3e9234089bf1fde050c56608",
+      "bytes": 35683,
+      "source": "wms/results/main/discovery/T0_tail__within_3.npz"
+    },
+    "supplementary/main/discovery/T0_tail__within_4.npz": {
+      "sha256": "b553d62636e8db9d6be5fcbf6d4efc8ab0bc1b771917ceb2bd0438d84a101723",
+      "bytes": 35670,
+      "source": "wms/results/main/discovery/T0_tail__within_4.npz"
+    },
+    "supplementary/main/discovery/T1_mean.npz": {
+      "sha256": "866cbf6ecd5bb6a71c0116467243afeac533c91d2540eaf0da226208a8c1b022",
+      "bytes": 35153,
+      "source": "wms/results/main/discovery/T1_mean.npz"
+    },
+    "supplementary/main/discovery/T1_mean_cont.npz": {
+      "sha256": "c05dfe52f1b24654249479c11688e8cd9f258497a2301b28dbeb8505f8e6ddb4",
+      "bytes": 35137,
+      "source": "wms/results/main/discovery/T1_mean_cont.npz"
+    },
+    "supplementary/main/discovery/T1_q.npz": {
+      "sha256": "d382cf12715283dc890633a6fe57b941c487d25762345d2268df3ddb47bba9a0",
+      "bytes": 36495,
+      "source": "wms/results/main/discovery/T1_q.npz"
+    },
+    "supplementary/main/discovery/T1_tail.npz": {
+      "sha256": "4f46824b22991d8c85c2ad499e33165180782d7a934430292822bdbd76d1bca3",
+      "bytes": 35201,
+      "source": "wms/results/main/discovery/T1_tail.npz"
+    },
+    "supplementary/main/discovery/T2_mean.npz": {
+      "sha256": "da2430daac7a1fbd0757e85277421b761dfe4369a34e36a86798e936e64523a0",
+      "bytes": 35195,
+      "source": "wms/results/main/discovery/T2_mean.npz"
+    },
+    "supplementary/main/discovery/T2_mean_cont.npz": {
+      "sha256": "e6427675b0f07f401c883fe47618f5e82122870a292c434726983f4926bec941",
+      "bytes": 35193,
+      "source": "wms/results/main/discovery/T2_mean_cont.npz"
+    },
+    "supplementary/main/discovery/T2_q.npz": {
+      "sha256": "b285f053602972187d54246d773583bf48b6fd2e7312fc552021dd709e3baeff",
+      "bytes": 36193,
+      "source": "wms/results/main/discovery/T2_q.npz"
+    },
+    "supplementary/main/discovery/T2_tail.npz": {
+      "sha256": "7a4ed06e5716e9192ca0c7131f4b9dc5aa35064258c6a323e715bd2f2c242fca",
+      "bytes": 35195,
+      "source": "wms/results/main/discovery/T2_tail.npz"
+    },
+    "sources/wms/README.md": {
+      "sha256": "370e35bb71e693adbe5582c8418ae8f258161f1b85b5e83a377a0d527e42f5bc",
+      "bytes": 5837,
+      "source": "wms/README.md"
+    },
+    "sources/wms/REPORT.md": {
+      "sha256": "2942a8d3c5ec1b2a6845523d46dcb91402d9afbbd383664123ea71610dd8ad25",
+      "bytes": 28430,
+      "source": "wms/REPORT.md"
+    },
+    "sources/wms/PROTOCOL.md": {
+      "sha256": "1b7d3e84758171a3783f39cab20809a6c36b2ae6ac6778730c1ff6c0ef1172d4",
+      "bytes": 6870,
+      "source": "wms/PROTOCOL.md"
+    },
+    "sources/wms/PROVENANCE.md": {
+      "sha256": "a83fa1b1e5298c03fd9fce28752aaeaf6565d0ad34897eb2a6c3b050dce50d01",
+      "bytes": 3920,
+      "source": "wms/PROVENANCE.md"
+    },
+    "sources/wms/STRUCTURAL_AMENDMENT.md": {
+      "sha256": "a0d93f8194b29b4f0a566ae10d3b42d621c6212bd07e6183ec3877952bbb0aeb",
+      "bytes": 2235,
+      "source": "wms/STRUCTURAL_AMENDMENT.md"
+    },
+    "sources/wms/requirements.lock.txt": {
+      "sha256": "02723f6aa7e9446825ad9b8d7f8ce94298e14e4042d22ee6557a07eac79c26a3",
+      "bytes": 136,
+      "source": "wms/requirements.lock.txt"
+    },
+    "sources/wms/wms/__init__.py": {
+      "sha256": "186e150794e12a014f372c1d9f877dfee4303ea98a1a046de3cdd18fe9543ef2",
+      "bytes": 71,
+      "source": "wms/wms/__init__.py"
+    },
+    "sources/wms/wms/analysis.py": {
+      "sha256": "486274cba1bdedf1fea9214efa5b2cd717caa3a0e8809fca2ae229185f2d0642",
+      "bytes": 12332,
+      "source": "wms/wms/analysis.py"
+    },
+    "sources/wms/wms/bases.py": {
+      "sha256": "cb75eff23e63e8ccddb18973c2ae49416af49f238d935c3b220cf719b2ea52a7",
+      "bytes": 1129,
+      "source": "wms/wms/bases.py"
+    },
+    "sources/wms/wms/block_frequency.py": {
+      "sha256": "3a1f1dcf754d12633fcf0aac5c54f22c2ac3f7c9e4febe571c949db05e1b7b66",
+      "bytes": 31254,
+      "source": "wms/wms/block_frequency.py"
+    },
+    "sources/wms/wms/channel.py": {
+      "sha256": "460fe52f5bcacf125c556c009a2e57986f45aed6d2ac8e6b0662552f01953a8d",
+      "bytes": 1926,
+      "source": "wms/wms/channel.py"
+    },
+    "sources/wms/wms/cli.py": {
+      "sha256": "4b0764d81774332c8db878f98f7d41c8beb327945008950fb266d6864a2d9b2a",
+      "bytes": 10413,
+      "source": "wms/wms/cli.py"
+    },
+    "sources/wms/wms/core.py": {
+      "sha256": "3a4ddd92d8a4655f23f8f563f9746792c184a2c7ab656ff152b727533b9fc40a",
+      "bytes": 2562,
+      "source": "wms/wms/core.py"
+    },
+    "sources/wms/wms/diagnostics.py": {
+      "sha256": "0b5a7d3ebf5edff0c70cf7189d41ddc492ff0dc622fa03e19d066dcccb9b087e",
+      "bytes": 4041,
+      "source": "wms/wms/diagnostics.py"
+    },
+    "sources/wms/wms/evaluation.py": {
+      "sha256": "fa6639cd0b55c5339aab35611943d3054e7741a45961077be8a971aec547b643",
+      "bytes": 9638,
+      "source": "wms/wms/evaluation.py"
+    },
+    "sources/wms/wms/figures.py": {
+      "sha256": "35f8b4929e972b78f8729959b98408ed626d0e123aabebaadbefa4443f5dc45f",
+      "bytes": 28668,
+      "source": "wms/wms/figures.py"
+    },
+    "sources/wms/wms/focused.py": {
+      "sha256": "626a680f50817fa8f7821b2835702f8996e4385f69072978cc94ca5635f66500",
+      "bytes": 20978,
+      "source": "wms/wms/focused.py"
+    },
+    "sources/wms/wms/focused_plots.py": {
+      "sha256": "c0a0487dbd74d263c6b63a02a91d6b08361384a222cbd5bf27b62bfb9dfb9f82",
+      "bytes": 30728,
+      "source": "wms/wms/focused_plots.py"
+    },
+    "sources/wms/wms/interventions.py": {
+      "sha256": "eb4d0348738c4618bab19013fe84551bbca4f4f8d940f7004fcfa26fa362cdad",
+      "bytes": 1034,
+      "source": "wms/wms/interventions.py"
+    },
+    "sources/wms/wms/modulation.py": {
+      "sha256": "71816825651285aff4f7ba14e726368afda59d63a9ba22aba9a61aba5b06929d",
+      "bytes": 918,
+      "source": "wms/wms/modulation.py"
+    },
+    "sources/wms/wms/orthogonality_bridge.py": {
+      "sha256": "286518938b1bcc3593da28efa7a89143538a043d31af200763c42df20759c173",
+      "bytes": 13848,
+      "source": "wms/wms/orthogonality_bridge.py"
+    },
+    "sources/wms/wms/orthogonality_plots.py": {
+      "sha256": "f634c2d427482c84cc92e4b151c096e720c7f29386cdee60001328f2893aec87",
+      "bytes": 29178,
+      "source": "wms/wms/orthogonality_plots.py"
+    },
+    "sources/wms/wms/provenance.py": {
+      "sha256": "282e3ade1b9eac1208ada68acdd66e7588d7aac540c9cd2ec1a34d195b00b991",
+      "bytes": 5266,
+      "source": "wms/wms/provenance.py"
+    },
+    "sources/wms/wms/receivers.py": {
+      "sha256": "0f1d896108a82875d99bdd4d09fe15284a43b0d04f997e7e6774cc134dd01b40",
+      "bytes": 1718,
+      "source": "wms/wms/receivers.py"
+    },
+    "sources/wms/wms/report.py": {
+      "sha256": "c13c7d1177eab10d8664b2777cc3f79a705fb1c71a76579cb93f0fe7cba9b8b7",
+      "bytes": 26945,
+      "source": "wms/wms/report.py"
+    },
+    "sources/wms/wms/structural_revision.py": {
+      "sha256": "a7887955de23ad69dd5302e3c4119df03663682053b8a3731de8843c19ceb01e",
+      "bytes": 6470,
+      "source": "wms/wms/structural_revision.py"
+    },
+    "sources/wms/wms/training.py": {
+      "sha256": "6ab2eeef3944f66566c846d1a1ba08fb551c6fab248f4c5a6e2b272bba444618",
+      "bytes": 8003,
+      "source": "wms/wms/training.py"
+    },
+    "sources/wms/tests/test_block_frequency.py": {
+      "sha256": "862a732205f8dda36b881dd494d1afa156dd720b7decaf77ca8849560fad6a11",
+      "bytes": 1294,
+      "source": "wms/tests/test_block_frequency.py"
+    },
+    "sources/wms/tests/test_focused.py": {
+      "sha256": "27b6e094cb8584cd3f906dd06e3156a3e0bfffe2578988b59a9f548def61c867",
+      "bytes": 3055,
+      "source": "wms/tests/test_focused.py"
+    },
+    "sources/wms/tests/test_orthogonality_bridge.py": {
+      "sha256": "e49e77d9397a483abce2ab9abefaee69edcc0b877a83627b499f3f2705c9502d",
+      "bytes": 1595,
+      "source": "wms/tests/test_orthogonality_bridge.py"
+    },
+    "sources/wms/tests/test_portability.py": {
+      "sha256": "7b3b39db145193b77461a86208d2ef4bc487d32180029d850985036052365b64",
+      "bytes": 735,
+      "source": "wms/tests/test_portability.py"
+    },
+    "sources/wms/tests/test_qualification.py": {
+      "sha256": "378296a22a28e3439977a831c6ea2887a2d9c36a6f4cea108bd5652e6c4b00a7",
+      "bytes": 7495,
+      "source": "wms/tests/test_qualification.py"
+    },
+    "sources/wms/tests/test_structural_revision.py": {
+      "sha256": "f41a483b01809fe5c0a03771a884971785789f6d8a4f4a72a819d24fa768d418",
+      "bytes": 1191,
+      "source": "wms/tests/test_structural_revision.py"
+    },
+    "sources/wms/executed_source/tests/test_qualification.py": {
+      "sha256": "378296a22a28e3439977a831c6ea2887a2d9c36a6f4cea108bd5652e6c4b00a7",
+      "bytes": 7495,
+      "source": "wms/results/main/executed_source/tests/test_qualification.py"
+    },
+    "sources/wms/executed_source/wms/analysis.py": {
+      "sha256": "486274cba1bdedf1fea9214efa5b2cd717caa3a0e8809fca2ae229185f2d0642",
+      "bytes": 12332,
+      "source": "wms/results/main/executed_source/wms/analysis.py"
+    },
+    "sources/wms/executed_source/wms/bases.py": {
+      "sha256": "cb75eff23e63e8ccddb18973c2ae49416af49f238d935c3b220cf719b2ea52a7",
+      "bytes": 1129,
+      "source": "wms/results/main/executed_source/wms/bases.py"
+    },
+    "sources/wms/executed_source/wms/channel.py": {
+      "sha256": "460fe52f5bcacf125c556c009a2e57986f45aed6d2ac8e6b0662552f01953a8d",
+      "bytes": 1926,
+      "source": "wms/results/main/executed_source/wms/channel.py"
+    },
+    "sources/wms/executed_source/wms/core.py": {
+      "sha256": "3a4ddd92d8a4655f23f8f563f9746792c184a2c7ab656ff152b727533b9fc40a",
+      "bytes": 2562,
+      "source": "wms/results/main/executed_source/wms/core.py"
+    },
+    "sources/wms/executed_source/wms/diagnostics.py": {
+      "sha256": "0b5a7d3ebf5edff0c70cf7189d41ddc492ff0dc622fa03e19d066dcccb9b087e",
+      "bytes": 4041,
+      "source": "wms/results/main/executed_source/wms/diagnostics.py"
+    },
+    "sources/wms/executed_source/wms/evaluation.py": {
+      "sha256": "fa6639cd0b55c5339aab35611943d3054e7741a45961077be8a971aec547b643",
+      "bytes": 9638,
+      "source": "wms/results/main/executed_source/wms/evaluation.py"
+    },
+    "sources/wms/executed_source/wms/interventions.py": {
+      "sha256": "eb4d0348738c4618bab19013fe84551bbca4f4f8d940f7004fcfa26fa362cdad",
+      "bytes": 1034,
+      "source": "wms/results/main/executed_source/wms/interventions.py"
+    },
+    "sources/wms/executed_source/wms/modulation.py": {
+      "sha256": "71816825651285aff4f7ba14e726368afda59d63a9ba22aba9a61aba5b06929d",
+      "bytes": 918,
+      "source": "wms/results/main/executed_source/wms/modulation.py"
+    },
+    "sources/wms/executed_source/wms/receivers.py": {
+      "sha256": "0f1d896108a82875d99bdd4d09fe15284a43b0d04f997e7e6774cc134dd01b40",
+      "bytes": 1718,
+      "source": "wms/results/main/executed_source/wms/receivers.py"
+    },
+    "sources/wms/executed_source/wms/training.py": {
+      "sha256": "6ab2eeef3944f66566c846d1a1ba08fb551c6fab248f4c5a6e2b272bba444618",
+      "bytes": 8003,
+      "source": "wms/results/main/executed_source/wms/training.py"
+    },
+    "sources/wms/executed_source/configs/study.json": {
+      "sha256": "7f25549cd3c5f91087e39bdb44e54708b6a89594d899580346fc1f0736810d48",
+      "bytes": 945,
+      "source": "wms/results/main/executed_source/configs/study.json"
+    },
+    "sources/wms/executed_source/PROTOCOL.md": {
+      "sha256": "1b7d3e84758171a3783f39cab20809a6c36b2ae6ac6778730c1ff6c0ef1172d4",
+      "bytes": 6870,
+      "source": "wms/results/main/executed_source/PROTOCOL.md"
+    },
+    "sources/wms/executed_source_v2/tests/test_structural_revision.py": {
+      "sha256": "f41a483b01809fe5c0a03771a884971785789f6d8a4f4a72a819d24fa768d418",
+      "bytes": 1191,
+      "source": "wms/results/main/executed_source_v2/tests/test_structural_revision.py"
+    },
+    "sources/wms/executed_source_v2/wms/cli.py": {
+      "sha256": "4b0764d81774332c8db878f98f7d41c8beb327945008950fb266d6864a2d9b2a",
+      "bytes": 10413,
+      "source": "wms/results/main/executed_source_v2/wms/cli.py"
+    },
+    "sources/wms/executed_source_v2/wms/structural_revision.py": {
+      "sha256": "a7887955de23ad69dd5302e3c4119df03663682053b8a3731de8843c19ceb01e",
+      "bytes": 6470,
+      "source": "wms/results/main/executed_source_v2/wms/structural_revision.py"
+    },
+    "sources/wms/executed_source_v2/STRUCTURAL_AMENDMENT.md": {
+      "sha256": "a0d93f8194b29b4f0a566ae10d3b42d621c6212bd07e6183ec3877952bbb0aeb",
+      "bytes": 2235,
+      "source": "wms/results/main/executed_source_v2/STRUCTURAL_AMENDMENT.md"
+    },
+    "sources/cfo/stage1_fullframe/channel.py": {
+      "sha256": "9a8bda388429e7d1fa69657048dcaf8599db561f3ac9a14905c4cf722250a7fe",
+      "bytes": 2188,
+      "source": "cfo/stage1_fullframe/channel.py"
+    },
+    "sources/cfo/stage1_fullframe/transmitter.py": {
+      "sha256": "64426bae4f8f20cd8025b535f5d6e1afd25a48d2b3365dda0c4788de676297cc",
+      "bytes": 11147,
+      "source": "cfo/stage1_fullframe/transmitter.py"
+    },
+    "sources/cfo/stage1_fullframe/receiver.py": {
+      "sha256": "1d9365957a919fc8ba46ae2d256112095fe6e71cba963cb95add98134d797794",
+      "bytes": 26400,
+      "source": "cfo/stage1_fullframe/receiver.py"
+    },
+    "sources/cfo/stage1_fullframe/comm_core.py": {
+      "sha256": "aecabdffb83ad74126aa51fa299cc8e2d88d9db62084aef582f0b9748944a4d9",
+      "bytes": 19354,
+      "source": "cfo/stage1_fullframe/comm_core.py"
+    },
+    "sources/cfo/stage2_awgn/residual_cfo/channel.py": {
+      "sha256": "fa555ed01909e2ab38f1fdb57087601680802b11d977b81e551a96ed7c6a89a0",
+      "bytes": 2537,
+      "source": "cfo/stage2_awgn/residual_cfo/channel.py"
+    },
+    "sources/cfo/stage2_awgn/residual_cfo/transmitter.py": {
+      "sha256": "d5ee1026d7d22ffc2061273a0da54c13299e6b6635179c74882d19aebcd82b77",
+      "bytes": 11207,
+      "source": "cfo/stage2_awgn/residual_cfo/transmitter.py"
+    },
+    "sources/cfo/stage2_awgn/residual_cfo/receiver.py": {
+      "sha256": "aeb1fa31a2bf6f6aa5d970e44889e0d1d89bb9a483e3c4ef84b2898d64a4a444",
+      "bytes": 144828,
+      "source": "cfo/stage2_awgn/residual_cfo/receiver.py"
+    },
+    "sources/cfo/stage2_awgn/residual_cfo/comm_core.py": {
+      "sha256": "84c370bcdc1adea8383cafc52101f875061f8a70fd880d674e606a37641a6ed4",
+      "bytes": 51527,
+      "source": "cfo/stage2_awgn/residual_cfo/comm_core.py"
+    },
+    "sources/cfo/stage3_multipath/channel.py": {
+      "sha256": "d99e72e127c7548332f6a5bde16a56ce9784922bfaba19789806b5c5e058c892",
+      "bytes": 2536,
+      "source": "cfo/stage3_multipath/channel.py"
+    },
+    "sources/cfo/stage3_multipath/transmitter.py": {
+      "sha256": "e6dea4867641e7e9454507ff4f86474f56ddc4d1bc25ca8f83e8d354e41c547a",
+      "bytes": 11206,
+      "source": "cfo/stage3_multipath/transmitter.py"
+    },
+    "sources/cfo/stage3_multipath/receiver.py": {
+      "sha256": "0596b54ca5365ae581f6c6285c306e68545ea67faa69bbbaf1171d5292cf5996",
+      "bytes": 92623,
+      "source": "cfo/stage3_multipath/receiver.py"
+    },
+    "sources/cfo/stage3_multipath/comm_core.py": {
+      "sha256": "efc18ab9e543fcc6dc3fa8757151c716791df29e0b3f16ae2f55bf3c4d35b155",
+      "bytes": 46706,
+      "source": "cfo/stage3_multipath/comm_core.py"
+    },
+    "sources/cfo/stage3_multipath/README.md": {
+      "sha256": "f89cfcb0e21669e3bcedc341ee7bb55e1fe7d70fe8ae95cc9b2e7ed85808f2af",
+      "bytes": 1061,
+      "source": "cfo/stage3_multipath/README.md"
+    },
+    "residual_cfo/stage1_checkpoint.pt": {
+      "sha256": "8f0bf24d6b593d2c186a50b03c10a8bf1c781514c3add52c5ce9ca91859afb07",
+      "bytes": 55141,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/stage1_checkpoint.pt"
+    },
+    "residual_cfo/report.md": {
+      "sha256": "b87f987ed9d1ae51e8d18a09caf2e37f26898f3b4c28f546e128eb1d33dcebda",
+      "bytes": 6775,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/report.md"
+    },
+    "residual_cfo/summary_metrics.csv": {
+      "sha256": "78011448c508d11b8af0d826d21d4ce9d1d4feae45fa5bfd5bc36e15b8e1c744",
+      "bytes": 1806,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/summary_metrics.csv"
+    },
+    "residual_cfo/operator_diagnostics.csv": {
+      "sha256": "c21df8b63467b927b74dac535753a0cd1f18bc0afe3093dc318c472eb44f5b18",
+      "bytes": 19778,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/operator_diagnostics.csv"
+    },
+    "residual_cfo/ber_vs_cfo.csv": {
+      "sha256": "f2782086882fe3a58fa6f3d25eb67977be5b076234be9725ed353e5c56d4fd2f",
+      "bytes": 13831,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/ber_vs_cfo.csv"
+    },
+    "residual_cfo/ber_vs_snr_by_cfo.csv": {
+      "sha256": "3f48017c413fe69b5ecd81ed02edf2b1b505b910eac2ef065bb31e20fa937ef5",
+      "bytes": 10984,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/ber_vs_snr_by_cfo.csv"
+    },
+    "residual_cfo/stage_summary.csv": {
+      "sha256": "1f202953dead7ce637cffe6785c22a3d6c5b82de671b574f0923c9699ab550b7",
+      "bytes": 967,
+      "source": "cfo/stage2_awgn/stage1_linear_outputs/16qam_n45_r9/stage_summary.csv"
+    }
+  },
+  "bundle_sha256": "693bbb6cca27d8b0f83dcebbe33e37ef9e51e14ddb2f47bda01374d97d09e535"
+}

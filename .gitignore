@@ -1,14 +1,23 @@
-# Generated experiment artifacts
+# Local artifacts, generated results and scratch (never committed)
+local/
+artifacts/
+results/
 outputs/
-
-# Python
+*.npz
+*.npy
+*.pt
+*.pth
+*.png
+*.pdf
+*.tar
+*.tar.gz
 __pycache__/
 *.py[cod]
 .pytest_cache/
-
-# Virtual environments
+*.egg-info/
+build/
+dist/
 .venv/
 venv/
-
-# OS/editor
 .DS_Store
+.ipynb_checkpoints/

@@ -1,9 +1,0 @@
-{
-  "protocol": "stage5a-diagnosis-v1",
-  "observation": "All 12 cold synthetic fits miss the declared 1e-4 relative-error gate; Learned fits therefore cannot reject the family's capacity.",
-  "hypothesis": "Polar mixer coordinates and initialization can obstruct optimization even for exactly representable targets.",
-  "diagnostic": "For each already-generated N64 synthetic target and topology/pass, compare exact planted initialization and a seeded 1e-3 perturbation of its true parameters, same 250 Adam plus 200 LBFGS budget. One perturbation per case; no added depth or alternative architecture.",
-  "interpretation": "Exact initialization checks factor ordering only; planted-neighborhood success checks local conditioning, never global recoverability. Cold-start failures remain failures.",
-  "additional_checks": "Small-N numerical Jacobian ranks at generic nonzero parameters; N128/256 direct forward/adjoint numerical checks only, no fitted waveform extrapolation.",
-  "stop": "Six neighborhood diagnostics only. No optimizer rescue campaign and no conditional alternative until the cold fitter is qualified. Recommend numerical optimization as Stage5B if unresolved."
-}

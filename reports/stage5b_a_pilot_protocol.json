@@ -1,8 +1,0 @@
-{
-  "version": "stage5b-a-conditional-pilot-v1",
-  "activation": "Only after Cartesian B passes all 36 near-truth and all 18 cold cases in the frozen synthetic suite. Otherwise skip without replacement.",
-  "targets": "Recovered historical teacher (hash 11bb15d39bb7e685b074e2ec7ed6f27bd87370e141aa6f62b67c338c21514b0f), Stage5A HAAR_1 using original role_seed, OFDM=F^H",
-  "budget": "4 passes only; both original topologies, two original Stage5A cold fit restart seeds each; 12 B fits total, original 250 Adam + 200 LBFGS. No nesting warm-start: compare attained fidelity to Stage5A ladder results with this distinction explicit.",
-  "selection": "native relative Frobenius only; report every run, parameters, actual closure counts and time; no BER/DD extension",
-  "stop": "No extra restarts, budgets, topology or training if pilot disappointing; this is not a capacity optimum or population comparison."
-}
