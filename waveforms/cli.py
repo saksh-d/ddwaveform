@@ -23,7 +23,7 @@ def main():
     environment = configure()
     from .experiments import ber, check, export_cfo, export_dd
     if args.command in ["export-cfo", "figures", "verify-artifacts", "internal-supplementary", "internal-figures", "internal-studies"] and not args.artifacts:
-        parser.error("This command requires --artifacts PATH. Run scripts/bootstrap.py first.")
+        parser.error("This command requires --artifacts PATH. Run support/scripts/bootstrap.py first.")
     if args.command == "smoke":
         result = check(args.artifacts)
     elif args.command == "export-dd":

@@ -1,53 +1,29 @@
 # Waveform Exploration
 
-A research notebook for configurable delay–Doppler waveforms and a distinct
-residual-CFO model. Inspect complex bases and channel coupling, then evaluate BER.
-
-## Start
+One research notebook for delay–Doppler waveforms and residual CFO.
 
 ```bash
 python -m pip install -r requirements.lock.txt
-# Optional notebook frontend: python -m pip install jupyterlab
+# Optional frontend: python -m pip install jupyterlab
 ```
 
-Open **[Waveform_Exploration.ipynb](Waveform_Exploration.ipynb)** in your notebook
-frontend. Edit the **one grouped configuration cell**, restart, and **Run All**.
-Numbered sections lead through the run summary, channel, bases, coupling, overlays
-and error rates. Full metadata and tables are collapsed; results are archived locally.
+Open **[Waveform_Exploration.ipynb](Waveform_Exploration.ipynb)**, edit its one
+configuration cell, restart, **Run All**. Figures appear inline; complete results
+and metadata are saved under ignored `local/`.
 
-## Choose a workflow
+- **Existing DD results:** put the provided `advisor-scaling-artifacts.tar.gz` in `local/`.
+- **Existing CFO:** put `advisor-n64-artifacts.tar.gz` in `local/`.
+- **New DD training:** `MODE="train_new"`, `EVIDENCE_MODE="fresh"`; no bundle required.
 
-| Configuration | What runs | Required local inputs |
-|---|---|---|
-| DD `load_existing` + `saved_replay` | Exact archived scenario and BER counts | Scaling bundle |
-| DD `load_existing` + `fresh` | New evaluation of a frozen basis/checkpoint | Scaling bundle or your checkpoint |
-| DD `train_new` + `fresh` | Surrogate fit, held-out selection, independent test | No bundle |
-| CFO `load_existing` + `fresh` | Frozen W[64,45], R[45,64], A=RHW | Legacy N64 bundle |
+Inputs are verified/provisioned automatically. A clean clone contains code, not
+these bundles or checkpoints. Fresh runs require **MPS/FP32**, without CPU fallback;
+archived replay retains its reference arithmetic. [Input details](support/docs/ARTIFACTS.md).
 
-Existing results require the **provided bundles** under ignored `local/`; code alone
-does not contain them. [Input provisioning](docs/ARTIFACTS.md). Fresh computation
-requires **MPS/FP32**, without CPU fallback; archived replay retains reference arithmetic.
+Evaluation tests a frozen W; training creates W. One Learned per N/run, no resizing
+or reuse of old BER after model changes. The surrogate fit and bounded/limited-trial
+results make no performance guarantee. **CFO training is unsupported.**
 
-Evaluation controls test W; training controls create W. DD supports N64/128/256 with
-own matrices, default K/N=3/8 and one Learned per run. Changed W/channel/support cannot
-reuse old BER. Training optimizes a concentration surrogate, not BER; limited trials
-and bounded evaluation establish no performance advantage. **CFO training is unsupported.**
-
-## Repository
-
-```text
-Waveform_Exploration.ipynb   # Single research entry point; output-free in Git
-waveforms/                  # Python models, training, evaluation and presentation
-configs/                    # Defaults and sealed input manifests
-scripts/                    # Provisioning and reproducibility checks
-tests/                      # Numerical and workflow regression tests
-docs/                       # Methods, controls, figure definitions and validation
-internal/                   # Archived notebooks and historical studies
-pyproject.toml              # Package and command-line entry point
-requirements.lock.txt       # Reproducible dependency setup
-HISTORY.md                  # Compressed development record
-local/                      # Ignored bundles, checkpoints and generated results
-```
-
-[Controls & methods](docs/CONFIGURABLE.md) · [Figure guide](docs/FIGURE_GUIDE.md) ·
-[Validation](docs/VALIDATION_CONFIGURABLE.md)
+`waveforms/` contains the implementation. `support/` holds manifests, tests, utilities
+and preserved research/history; [methods](support/docs/CONFIGURABLE.md) are there if needed.
+Bundles, generated figures/arrays, executed notebooks, checkpoints, caches and build
+artifacts stay **gitignored**. The single source notebook stays output-free in Git.

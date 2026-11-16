@@ -14,7 +14,7 @@ GRIDS = {64:(8,8), 128:(8,16), 256:(16,16)}
 
 def prepare_scaling(workspace, root, bundle):
     workspace, root = Path(workspace).resolve(), Path(root).resolve()
-    manifest=json.loads((workspace/'configs/scaling_artifacts.json').read_text())
+    manifest=json.loads((workspace/'support/configs/scaling_artifacts.json').read_text())
     if not root.exists():
         if not root.is_relative_to(workspace/'local'):
             raise ValueError('Provision scaling evidence under this checkout local/')

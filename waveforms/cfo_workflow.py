@@ -169,7 +169,7 @@ def start_cfo(*,mode,evidence_mode,model,display,evaluation,workspace,artifacts,
     if any(j>=45 for j in config['display']['basis_columns']): raise ValueError('CFO basis column must be a stream in [0,44]')
     if type(save_run) is not bool: raise ValueError('SAVE_RUN must be boolean')
     m.environment(); artifacts=local_path(artifacts,workspace)
-    manifest=json.loads((Path(workspace)/'configs/artifacts.json').read_text())
+    manifest=json.loads((Path(workspace)/'support/configs/artifacts.json').read_text())
     if not artifacts.exists():
         if bundle is None or not Path(bundle).is_file(): raise FileNotFoundError('CFO requires local legacy bundle')
         provision(bundle,artifacts,manifest)

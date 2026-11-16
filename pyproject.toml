@@ -16,5 +16,5 @@ waveforms = "waveforms.cli:main"
 include = ["waveforms*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["support/tests"]
 markers = ["artifacts: needs the explicitly provisioned local evidence bundle"]

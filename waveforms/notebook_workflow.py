@@ -394,7 +394,7 @@ def start_workflow(*, mode, evidence_mode, model, display, fresh, artifacts=None
     if artifacts is None:
         raise FileNotFoundError("Provide qualified scaling evidence or legacy N64 artifacts")
     artifacts = Path(artifacts).resolve()
-    manifest = json.loads((workspace / "configs/artifacts.json").read_text())
+    manifest = json.loads((workspace / "support/configs/artifacts.json").read_text())
     if not artifacts.exists():
         if not artifacts.is_relative_to(workspace / "local"):
             raise ValueError("New artifact provisioning must stay under this checkout's local/ directory")
