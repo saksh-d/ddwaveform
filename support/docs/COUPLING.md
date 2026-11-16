@@ -1,9 +1,9 @@
 # Spectra, coupling and sizes
 
-One notebook, one configuration cell. Choose N=64/128/256. MODE=load_existing
-selects that size's own Learned W and fixed nominal row support, K=3N/8.
-train_new stays unavailable. All downstream H/A/basis/BER/bridge figures use
-that same W; no winner changes by plot, modulation, receiver or SNR.
+The archived evidence below supports N64/128/256, each with its own Learned W
+and nominal support, K=3N/8. New DD training is implemented separately; see
+[the current controls](CONFIGURABLE.md). Every run keeps one selected W across
+all downstream figures/SNRs; new fits do not inherit archived BER or groups.
 
 ## Qualified available evidence
 
@@ -92,7 +92,7 @@ AFDM retains c1=1/(2N),c2=sqrt(2)/(100N), without retuning. See SCIENCE.md.
 
 ## Scope and inputs
 
-Notebook generates nine inline figures: common physical/effective matrices,
+The notebook retains nine core DD views plus four optional overlays (13 by default): common physical/effective matrices,
 time and complex spectral bases, coupling/group view, grouped member energy/magnitude, identifiable basis examples, received-basis/spectrum
 propagation, QPSK/16QAM BER. No intervention/transfer campaign figures return.
 Internal histories, variants, stress results and original sources are preserved.
@@ -107,7 +107,8 @@ missing bundle, altered basis/support or unsupported replay settings fail clearl
 Only numerical/provenance inputs, selected phase metadata and exact source snapshots
 are copied, not unrelated galleries or optimizer checkpoint histories. Original
 checkpoints remain untouched in the source directory; exported W is sufficient
-for this inference-only package. Full new training belongs to a future branch.
+for archived-basis evaluation. New DD training uses its own independent recipe
+and requires neither historical bundle; it does not replay the source training.
 
 
 ## Grouped member energy / normalized magnitude
