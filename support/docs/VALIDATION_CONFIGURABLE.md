@@ -1,5 +1,39 @@
 # Configurable-workflow validation
 
+## Current self-contained delivery — 2026-11-16
+
+The default notebook now uses tracked waveforms/data/; no bundle/download is
+required. Full archived data remain optional for the older audit-only tests.
+
+- Full suite with optional audit inputs: **120passed,16.41s**, all102prior cases retained.
+- Actual shallow Git clone under /private/tmp, with OS-denied reads to original
+  worktrees/Documents/conductor roots: **85passed,35optional archive checks skipped**.
+- From that clone: **12successful notebooks +1expected CFO-training rejection**,
+  **140inline figures**,146.32s driver wall time. Default saved DD and fresh frozen
+  DD work at N64/128/256; changed DD/CFO,20step training and reload also execute.
+- A second sandbox additionally denies the clone's waveforms/data/: training and
+  checkpoint reload still execute,26figures,23.36s; no pretrained dependency.
+- Against retained pre-cleanup/full-input runs: **114PNG byte matches,785exact array
+  fields**, CSV values exact except timing, training selection/trace unchanged.
+- Runtime manifest verifies all3,482,643tracked bytes and original field identities.
+  Installed wheel loads all3DD sizes and genuine CFO with repository inputs blocked.
+- Rendered reading flow and DD64/DD256/train/CFO plots inspected;13DD/5CFO views
+  retained, including complex/grouped spectra and8/N/2overlays. Source output-free.
+
+Exact command arrays, sandbox policies, blocked-read probes, logs, execution/audit
+ledgers and equivalence results are retained under ignored local/runtime-handoff/.
+These checks qualify distribution and unchanged computation, not model quality,
+long BER precision, physical validation or unsupported CFO training.
+
+Clean-clone checks (no archives):
+```bash
+python -m pytest support/tests -q
+python support/scripts/qualify_notebook.py --out local/qualification
+python support/scripts/audit_configurable.py --qualification local/qualification
+```
+
+## Earlier configurable-workflow qualification
+
 Exact commands/results and executed notebooks are retained under ignored local/.
 Local command ledger: `local/COMMANDS.md`; release evidence: `local/qualification-release/`.
 

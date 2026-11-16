@@ -21,4 +21,4 @@ views do not render in CFO mode. Source notebook remains output-free in Git.
 Historical notebooks live only under support/internal/notebooks/; they are not entry points.
 
 [Scientific controls and supported modes](CONFIGURABLE.md) ·
-[Reading the figures](FIGURE_GUIDE.md) · [Local inputs](ARTIFACTS.md)
+[Reading the figures](FIGURE_GUIDE.md) · [Included inputs and provenance](ARTIFACTS.md)

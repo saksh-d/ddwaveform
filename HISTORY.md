@@ -36,3 +36,9 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Full120tests pass16.41s, preserving all102prior cases;18added checks cover delivered DD/CFO physics, source equivalence, corruption/missing inputs and archive-independent training.
 - DD64/128/256 replay retains13figures each, exact arrays/CSV/PNG bytes against prior release; fresh64, default20step training/reload and CFO also exact so far.
 - Built3,460,486byte wheel with runtime inputs; actual sandboxed Git-clone execution next before integration.
+
+## 2026-11-16 18:46 EST — isolated public delivery verified
+- Actual Git clone with original artifact roots OS-blocked:85tests pass/35optional audit skips;12notebooks succeed plus expected CFO rejection,140figures,146.32s.
+- Pretrained inputs also blocked:20step DD training and checkpoint reload succeed,26figures/23.36s. Installed wheel independently loads all3DD sizes and exact CFO checkpoint.
+- Ten retained reference runs compare114PNG bytes/785array fields exactly; all CSV values except seconds and training selection/trace unchanged. Rendered DD64/DD256/train/CFO inspected.
+- Public runtime payload3,482,643bytes; source notebook output-free, ignored archives intact. Safe integration pending final branch preflight.

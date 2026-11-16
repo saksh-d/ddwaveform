@@ -1,3 +1,7 @@
+> Historical validation record for earlier notebook revisions. Current training,
+> delivered-input support and qualification are in [VALIDATION_CONFIGURABLE.md](VALIDATION_CONFIGURABLE.md).
+> Earlier disabled-training/input-bundle statements below describe those earlier revisions.
+
 # Current overlay review validation
 
 - `python -m pytest support/tests -q --artifacts local/artifacts --scaling-artifacts local/scaling-artifacts --basetemp local/audit/overlay-review-tests-tmp`: **63passed,5.49s**, CPU float64/complex128, one thread.
