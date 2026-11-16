@@ -77,7 +77,7 @@ def plot_grouped_spectra(data, columns=()):
     energy_limit = float(data['absolute_energy'].max())*1.05
     for row,g in enumerate(groups):
         ranks = np.flatnonzero(labels[order]==g); members = order[ranks]
-        color = GROUP_COLORS[g]
+        color = GROUP_COLORS[int(g) % len(GROUP_COLORS)]
         left,right = axes[row]
         left.plot(data['dft_frequency'],data['absolute_energy'][:,members],color=color,alpha=.3,lw=.75)
         left.plot(data['dft_frequency'],data['absolute_energy'][:,members].mean(axis=1),color='black',lw=2)
@@ -111,7 +111,7 @@ def plot_basis_examples(data, spectral, w, columns):
     chosen = example_indices(labels,order,columns)
     fig,axes = plt.subplots(len(chosen),3,squeeze=False,figsize=(23,3.8*len(chosen)),layout='constrained')
     for row,j in enumerate(chosen):
-        g = int(labels[j]); rank = int(np.flatnonzero(order==j)[0]); color = GROUP_COLORS[g]
+        g = int(labels[j]); rank = int(np.flatnonzero(order==j)[0]); color = GROUP_COLORS[int(g) % len(GROUP_COLORS)]
         time,frequency,coupling = axes[row]
         identity = f'Learned · group {g} · native j={j} · rank {rank}'
         time.plot(np.arange(len(w)),w[:,j].real,color=color,label=f'Re w[:,{j}]')
@@ -124,7 +124,7 @@ def plot_basis_examples(data, spectral, w, columns):
         frequency.set_xlabel('Frequency f/Fs · periodic [0,1)'); frequency.set_ylabel('Relative magnitude (dB)')
         frequency.set_xlim(0,1); frequency.set_ylim(-60,2); frequency.legend(loc='best')
         coupling.bar(np.arange(len(w)),np.abs(data['A'][order,j])**2,
-                     color=[GROUP_COLORS[int(x)] for x in labels[order]],width=1)
+                     color=[GROUP_COLORS[int(x) % len(GROUP_COLORS)] for x in labels[order]],width=1)
         coupling.set_title(identity+'\nSame sample H · transmit j → receive i',color=color)
         coupling.set_xlabel('Receive i (frozen rank; native IDs in table)'); coupling.set_ylabel('|A[i,j]|² (sample power)')
         _strip(coupling,labels[order])
@@ -141,7 +141,7 @@ def _boundaries(ax,labels):
 
 
 def _strip(ax,labels,axis='x'):
-    cm=ListedColormap(GROUP_COLORS[:len(np.unique(labels))])
+    cm=ListedColormap([GROUP_COLORS[g % len(GROUP_COLORS)] for g in range(len(np.unique(labels)))])
     if axis=='x':
         sub=ax.inset_axes([0,1.01,1,.025]); sub.imshow(labels[None,:],aspect='auto',cmap=cm,interpolation='nearest',vmin=0,vmax=len(cm.colors)-1)
     else:
@@ -154,8 +154,8 @@ def plot_groups(data):
     fig,axes=plt.subplots(2,3,figsize=(22,13),layout='constrained')
     panels=[('One sample |A|² · native indices',np.abs(a)**2,False),
             ('Same sample |A|² · frozen permutation',np.abs(a)**2,True),
-            ('Mean multipath |A|² · 512 nominal channels',data['mean_channel_power'],True),
-            ('Q test · 2048 nominal unitary DD atoms',data['Q_test'],True)]
+            (data.get('channel_stat_label','Mean multipath |A|² · 512 nominal channels'),data['mean_channel_power'],True),
+            (data.get('atom_stat_label','Q test · 2048 nominal unitary DD atoms'),data['Q_test'],True)]
     for ax,(title,power,reorder) in zip(axes.flat,panels):
         value=power[np.ix_(order,order)] if reorder else power
         im=ax.imshow(10*np.log10(np.maximum(value,1e-8)),origin='lower',vmin=-60,vmax=0,cmap='viridis')
@@ -173,9 +173,12 @@ def plot_groups(data):
     for g in np.unique(labels):
         # Mean per basis column: each curve sums to one over the N DFT bins.
         profile=power[:,labels==g].mean(-1)
-        ax.plot(np.arange(n)/n,profile,color=GROUP_COLORS[g],label=f'Group {g} · {np.sum(labels==g)} columns')
+        ax.plot(np.arange(n)/n,profile,color=GROUP_COLORS[int(g) % len(GROUP_COLORS)],label=f'Group {g} · {np.sum(labels==g)} columns')
     ax.set_title('Group-mean DFT energy · leaky / possibly split regions')
     ax.set_xlabel('Frequency k/N (periodic)'); ax.set_ylabel('Mean |C[k,j]|² per group column')
+    # A single complete unitary group has flat mean 1/N; don't magnify FP32 noise.
+    ax.set_ylim(0,1.1*max(float(power[:,labels==g].mean(-1).max()) for g in np.unique(labels)))
+    ax.ticklabel_format(axis='y',style='plain',useOffset=False)
     ax.legend(loc='best'); ax.grid(alpha=.2)
     return fig
 
@@ -185,18 +188,18 @@ def plot_propagation(data,w,h,column):
     y=h@w[:,column]; freq,ys=spectrum(y)
     fig,axes=plt.subplots(2,2,figsize=(21,12),layout='constrained')
     ax=axes[0,0]
-    ax.bar(np.arange(n),np.abs(a[order,column])**2,color=[GROUP_COLORS[g] for g in labels[order]],width=1)
+    ax.bar(np.arange(n),np.abs(a[order,column])**2,color=[GROUP_COLORS[int(g) % len(GROUP_COLORS)] for g in labels[order]],width=1)
     ax.set_title(f'Learned transmit j={column}, group {labels[column]} → received bases',pad=22)
     ax.set_xlabel('Receive i (frozen permuted rank; native IDs in table)'); ax.set_ylabel('Sample coupling |A[i,j]|²')
     _strip(ax,labels[order])
     ax=axes[0,1]
     for g in np.unique(labels):
         ix=np.flatnonzero(labels[order]==g)
-        ax.plot(ix,data['mean_channel_power'][order[ix],column],color=GROUP_COLORS[g],ls='-')
-        ax.plot(ix,data['Q_test'][order[ix],column],color=GROUP_COLORS[g],ls='--')
-    ax.set_title(f'Same transmit j={column} · frozen nominal statistics',pad=22)
+        ax.plot(ix,data['mean_channel_power'][order[ix],column],color=GROUP_COLORS[int(g) % len(GROUP_COLORS)],ls='-')
+        ax.plot(ix,data['Q_test'][order[ix],column],color=GROUP_COLORS[int(g) % len(GROUP_COLORS)],ls='--')
+    ax.set_title(f'Same transmit j={column}\n'+data.get('statistic_scope','frozen nominal statistics'),pad=22)
     ax.set_xlabel('Receive i (same permuted rank)'); ax.set_ylabel('Mean squared complex coupling')
-    ax.legend(handles=[Line2D([],[],color='black',label='512-channel mean |A|²'),Line2D([],[],color='black',ls='--',label='2048-atom Q test')])
+    ax.legend(handles=[Line2D([],[],color='black',label=data.get('channel_stat_label','512-channel mean |A|²')),Line2D([],[],color='black',ls='--',label=data.get('atom_stat_label','2048-atom Q test'))])
     _strip(ax,labels[order])
     ax=axes[1,0]
     ax.plot(freq,ys.real,color='black',label='Re DTFT(Hw[j])')
@@ -210,7 +213,7 @@ def plot_propagation(data,w,h,column):
     for g in np.unique(labels):
         mask=labels==g
         _,part=spectrum(w[:,mask]@a[mask,column])
-        ax.plot(freq,np.abs(part)**2,color=GROUP_COLORS[g],label=f'Group {g} contribution')
+        ax.plot(freq,np.abs(part)**2,color=GROUP_COLORS[int(g) % len(GROUP_COLORS)],label=f'Group {g} contribution')
     ax.set_title('Received group spectra · powers are NOT additive')
     ax.set_xlabel('Frequency f/Fs'); ax.set_ylabel('Squared magnitude (power)'); ax.legend(loc='best')
     for ax in axes.flat: ax.grid(alpha=.2)

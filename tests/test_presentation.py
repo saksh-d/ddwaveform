@@ -38,7 +38,7 @@ def test_advisor_notebook_separates_internal_candidates():
             assert not any(isinstance(node, ast.If) for node in ast.walk(ast.parse("".join(cell["source"]))))
     assert "workflow = None" in text
     assert "start_workflow" in text and "workflow.generate_channels()" in text
-    assert "workflow.evaluate_ber()" in text and text.count("workflow.show(") == 8 and "workflow.show_variations()" in text
+    assert "workflow.evaluate_ber()" in text and "workflow.show_basis_analysis()" in text and "workflow.show_ber_figures()" in text
     assert "Image(filename=" not in text and "Generate first:" not in text
     assert "saved_replay" in text and "fresh" in text
     assert all(cell.get("outputs", []) == [] for cell in advisor["cells"])

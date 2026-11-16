@@ -191,3 +191,39 @@ Historical stage history remains in Git at `9aae23ed6f9ac6e2a2e3e057f38693a14888
 - Isolated branch waveform-exploration; safe non-forcing rename after checking local/remote collisions. Main/origin default and other worktrees preserved.
 - Checked scaling/N64 bundle SHA256 against tracked manifests; source notebooks output-free, numerical/plot/bundle outputs ignored/local. All intended source/docs/tests/config prepared for one local commit.
 - Plotting/exploration complete; review alternatives retained, training unavailable pending separate implementation. No push/merge/default change, source-project or other-thread/job modification.
+
+## 2026-11-16 — configurable workflow base and first implementation
+- Verified clean HEAD c6bc03b; all work confined to new isolated worktree, stopped wrong-base task unused.
+- Copied both sealed bundles, verified documented hashes, provisioned 645 legacy/64 scaling files; baseline 63 tests pass 15.61s.
+- Added MPS/FP32 real-pair DD algebra and unitary phase-layer concentration trainer; train-only support, held-out selection, independent test namespaces.
+- Added validated fresh configuration, checkpoint inference/export and shared downstream plotting; numerical/end-to-end qualification in progress.
+
+## 2026-11-16 — first numerical qualification and corrections
+- Actual two-step MPS training + independent paired BER completed; finite gradients/checkpoint selection, bridge error 6.21e-6 before phase correction.
+- Added distinct frozen CFO W64x45/R45x64 direct-analysis workflow; unsupported training/replay/DD receivers reject before work.
+- First new suite:23pass/4fail; deterministic DFT reference exposed FP32 large-angle error, corrected by reducing integer roots before trig; one artifact-test root corrected.
+- New notebook retains sequential inline figures/one config, train/test separation and explicit actual-count diagnostic labels; complete qualification pending.
+
+## 2026-11-16 — end-to-end qualification and model contract refinement
+- Expanded suite93pass10.93s after replacing atomic fitting with normalized multipath concentration; path count now affects train/validation/discovery draws.
+- Preliminary notebook matrix: all DD load/train sizes and changed-channel cases13inline figures each; CFO default/changed5each; unsupported CFO training0figures.
+- Refined one-W selection/checkpoint path, derived off-diagonal grouping and actual-law/count plot labels; numerical reference/gradient/split/seed/budget guards pass.
+- Final notebook reruns and figure inspection required for the refined recipe; provisional outputs retained locally, not promoted as final evidence.
+
+## 2026-11-16 — final numerical suite and visual corrections
+- Full artifacts suite96pass11.46s, retaining63baseline cases; added CFO physical-noise covariance, training time cap and axis guards.
+- Multipath notebook matrix completes with0unexpected errors; default20step N64 and3step scaling fits flow into all13DD figures, CFO5figures; train rejection0.
+- Inspected trained coupling/member/BER figures; corrected flat-group mean autoscaling and labeled new masks train/discovery support rather than archived Q.
+- Final source-frozen notebook matrix will additionally cover frozen fresh default, changed-channel N256 and explicit K16 recalibration; expensive production campaigns unrun.
+
+## 2026-11-16 — advisor layout inspection
+- Inspected actual trained time/frequency, coupling/member/individual/BER and N256128-curve overlays, plus rectangular CFO matrices/complex W/R.
+- Corrected short-view frequency-axis label clipping and long propagation title; CFO legends moved above curves; added canvas-bounds regression.
+- Kept one diffuse newly derived group where observed; no forced historical group count or positive Learned ordering.
+- Prior run evidence retained; release rerun/audit will bind final plotting sources and verify exact checkpoint reload/count equality.
+
+## 2026-11-16 16:42:49 EST — configurable release verified
+- Full local artifacts suite97pass19.31s, retaining63baseline cases;14notebook executions succeed plus1expected CFO-training rejection,166inline300DPI PNGs,172.93s total.
+- N64default20updates selects20,0.845s trainer/11.35s notebook; bounded N128/N2563updates select3/2; trained unitary/bridge errors≤1.32e-6.
+- Checkpoint reload matrices/masks/counts/BER exact;709input/source-file hashes and all run source/archive hashes verify, original bundle hashes unchanged.
+- Final figures inspected/corrected; source notebook output-free, outputs ignored. Ready separate branch review; long/multi-seed campaigns and CFO training unrun, no merge/push/sharing.

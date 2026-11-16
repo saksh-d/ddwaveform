@@ -1,3 +1,7 @@
+> Historical completed-exploration API notes. Current notebook uses the configurable
+> workflow: [current controls and support](CONFIGURABLE.md). Training limitations and
+> CPU-only fresh descriptions below apply to the preserved legacy API, not the new entry point.
+
 # Shared basis-source contract
 
 One notebook configuration cell selects MODE=load_existing or train_new.

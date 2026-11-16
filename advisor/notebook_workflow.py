@@ -134,7 +134,7 @@ class NotebookWorkflow:
         self.run_dir = None
         if save_run:
             name = config["evidence_mode"] + "_" + datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + uuid4().hex[:8]
-            self.run_dir = Path(workspace) / "local/notebook_runs" / name
+            self.run_dir = Path(config.get('output_root',Path(workspace) / "local/notebook_runs")) / name
             self.run_dir.mkdir(parents=True)
         self.provenance = {"selected_learned": selected_basis.describe(), "environment": self.environment,
             "config": config, "fixed_support": "Provider-supplied Learned fixed K=3N/8; frozen nominal baseline masks; realized complex coefficients, no hidden recalibration",
@@ -189,6 +189,30 @@ class NotebookWorkflow:
         values = {"H": self.channels.h, **{name+" A": a for name,a in self.effective_channels.items()}}
         return pd.DataFrame([{"matrix": name, "shape": tuple(a.shape), "dtype": str(a.dtype),
                               "example complex [0,0]": complex(a[self.matrix_index,0,0])} for name,a in values.items()])
+
+    def path_table(self):
+        self.generate_channels(); i=self.matrix_index
+        return pd.DataFrame({'delay':self.channels.tau[i].numpy(), 'Doppler':self.channels.nu[i].numpy(),
+                             'complex gain':self.channels.gains[i].numpy()})
+
+    def show_basis_analysis(self):
+        from IPython.display import display, JSON
+        self.show('basis_time'); self.show('basis_frequency')
+        with pd.option_context('display.max_rows',self.n):
+            display(self.group_table())
+            display(self.overlay_table('overlay8')); display(self.overlay_table('half'))
+        data=self.coupling_data()
+        print('max |WᴴW-I|:',data['unitarity_max'],'max |CᴴH_fC-A|:',data['bridge_max'])
+        display(JSON(self.review_summary(),expanded=True))
+        self.show('coupling_groups'); self.show_variations()
+        display(self.example_table()); self.show('basis_examples'); self.show('coupling_propagation')
+
+    def show_ber_figures(self):
+        from IPython.display import display
+        frame=self.evaluate_ber()
+        print(self.provenance['BER_status'])
+        display(frame)
+        for mod in frame.modulation.unique(): self.show(f'ber_{mod}_raw')
 
     def evaluate_ber(self):
         if self.ber_table is not None:
@@ -306,7 +330,8 @@ class NotebookWorkflow:
         else:
             table = self.evaluate_ber(); mod = "QPSK" if name == "ber_QPSK_raw" else "16QAM"
             label = "Saved BER replay" if self.config["evidence_mode"] == "saved_replay" else "Fresh BER smoke"
-            fig = plot_ber(table, mod, self.config["display"]["snr_max_db"], provenance=label, k=self.k)
+            fig = plot_ber(table, mod, self.config["display"]["snr_max_db"], provenance=label, k=self.k,
+                           support_label=self.config.get('fixed_support_label','Fixed discovery Q'))
         buffer = BytesIO()
         fig.savefig(buffer, format="png", dpi=300)
         plt.close(fig)
@@ -351,10 +376,12 @@ class NotebookWorkflow:
                 "training": self.selected_basis.provenance.get("training_status", "No training performed by downstream evaluation cells")}
 
 
-def start_workflow(*, mode, evidence_mode, model, display, fresh, artifacts=None, bundle=None, workspace, save_run=True, scaling_artifacts=None, scaling_bundle=None, review=None):
+def start_workflow(*, mode, evidence_mode, model, display, fresh, artifacts=None, bundle=None, workspace, save_run=True, scaling_artifacts=None, scaling_bundle=None, review=None, output_root=None):
     # Unavailable training must fail before provisioning, loading or creating a run.
     require_available_mode(mode)
     config = {**validate_config(evidence_mode, model, display, fresh, review=review), "basis_mode": mode}
+    if output_root is not None:
+        config['output_root']=str(output_root)
     if type(save_run) is not bool:
         raise ValueError("SAVE_RUN must be True or False")
     workspace = Path(workspace).resolve()

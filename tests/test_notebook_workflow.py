@@ -57,10 +57,12 @@ def test_train_new_fails_before_loading_or_work(tmp_path, monkeypatch):
 def test_notebook_training_failure_clears_previous_workflow(tmp_path):
     notebook = json.loads((Path(__file__).resolve().parents[1] / "notebooks/results.ipynb").read_text())
     prepare = next(cell for cell in notebook["cells"] if cell.get("id") == "prepare")
-    namespace = {"workflow": object(), "MODE": "train_new", "EVIDENCE_MODE": "saved_replay",
-        "MODEL": MODEL, "DISPLAY": DISPLAY, "FRESH": None, "ARTIFACT_DIR": tmp_path/"missing",
-        "ARTIFACT_BUNDLE": None, "SCALING_ARTIFACT_DIR": None, "SCALING_BUNDLE": None, "REVIEW": None, "ROOT": tmp_path, "SAVE_RUN": False}
-    with pytest.raises(NotImplementedError, match="train_new is unavailable"):
+    configuration = next(cell for cell in notebook["cells"] if "configuration" in cell.get("metadata", {}).get("tags", []))
+    namespace = {}
+    exec("".join(configuration["source"]), namespace)
+    namespace.update(workflow=object(), MODE="train_new", EVIDENCE_MODE="saved_replay",
+                     ROOT=tmp_path, SAVE_RUN=False)
+    with pytest.raises(ValueError, match="requires fresh"):
         exec("".join(prepare["source"]), namespace)
     assert namespace["workflow"] is None and list(tmp_path.iterdir()) == []
 

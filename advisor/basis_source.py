@@ -1,4 +1,4 @@
-"""Basis-selection boundary. Training is deliberately unavailable in this branch."""
+"""Basis-selection boundary shared by archived and newly trained DD bases."""
 from dataclasses import dataclass
 import hashlib
 from pathlib import Path
@@ -11,7 +11,7 @@ from .selection import identity
 def require_available_mode(mode):
     if mode == "train_new":
         raise NotImplementedError(
-            "train_new is unavailable: training belongs in the separately authorized follow-on branch. "
+            "train_new is unavailable in the legacy replay API: use advisor.entry with explicit training/evaluation configuration. "
             "No training started and no existing basis was silently loaded.")
     if mode != "load_existing":
         raise ValueError("MODE must be load_existing or train_new (currently unavailable)")
@@ -21,9 +21,9 @@ def require_available_mode(mode):
 class SelectedBasis:
     """Common provider result: synthesis W, its fixed-K support and provenance.
 
-    A later trainer must return this contract into the same downstream workflow.
+    The configurable DD trainer returns this contract into the same plotting workflow.
     It must supply support belonging to its returned W, not borrow historical
-    Learned support/curves. No trainer or fitting routine is defined here.
+    Learned support/curves. Training itself lives in training.py.
     """
     matrix: torch.Tensor
     fixed_q_mask: torch.Tensor
@@ -32,6 +32,20 @@ class SelectedBasis:
     def validate(self):
         w, mask = self.matrix, self.fixed_q_mask
         n = w.shape[0] if isinstance(w, torch.Tensor) and w.ndim == 2 else 0
+        if self.provenance.get('arithmetic') == 'MPS_FP32':
+            from . import mps_numerics as m
+            m.environment()
+            if n not in (64,128,256) or w.shape != (n,n) or w.dtype != torch.complex64 or w.device.type != 'cpu':
+                raise ValueError('Fresh basis requires exported complex64 W[N,N], N=64/128/256')
+            k = self.provenance.get('K')
+            if type(k) is not int or not 1 <= k <= n:
+                raise ValueError('Invalid fresh fixed support K')
+            if not np.isfinite(w.numpy()).all() or m.unitarity(m.pair(w.numpy())) > 5e-4:
+                raise ValueError('Fresh basis must be finite and unitary within MPS FP32 tolerance')
+            if mask.shape != (n,n) or mask.dtype != torch.bool or mask.device.type != 'cpu' or not np.all(mask.numpy().sum(-1)==k):
+                raise ValueError('Provider must supply its own boolean fixed-K support')
+            if not self.provenance.get('source'): raise ValueError('Basis provider provenance requires a source')
+            return self
         k = 3*n//8
         if not isinstance(w, torch.Tensor) or n not in (64,128,256) or w.shape != (n,n) or w.dtype != torch.complex128 or w.device.type != "cpu":
             raise ValueError("Selected basis must be CPU complex128 square W[N,N], N=64/128/256")

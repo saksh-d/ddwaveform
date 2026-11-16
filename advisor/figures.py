@@ -35,13 +35,13 @@ def db(power):
     return 10 * np.log10(np.maximum(power, 1e-6))
 
 
-def plot_ber(frame, mod, snr_max, slicer="raw", provenance=None, k=24):
+def plot_ber(frame, mod, snr_max, slicer="raw", provenance=None, k=24, support_label="Fixed discovery Q"):
     frame = advisor_frame(frame)
     shown = frame[(frame.modulation == mod) & (frame.slicer == slicer)].copy()
     if snr_max is not None:
         shown = shown[shown.snr_db <= snr_max]
     fig, axes = plt.subplots(1, 2, figsize=(16, 6.4), layout="constrained", sharey=True)
-    for ax, kind, title in zip(axes, ["fixed", "full"], [f"Fixed discovery Q · K={k}", "Full A · LMMSE"]):
+    for ax, kind, title in zip(axes, ["fixed", "full"], [f"{support_label} · K={k}", "Full A · LMMSE"]):
         for name in COLORS:
             rows = shown[(shown.waveform == name) & (shown.receiver == kind)].sort_values("snr_db")
             x, y = rows.snr_db.to_numpy(), rows.ber.to_numpy()
@@ -78,7 +78,7 @@ def plot_basis(bases, columns, frequency=False):
     size = bases["Learned"].shape[0]
     n = np.arange(size)
     rows = (len(columns) + 1) // 2
-    fig, axes = plt.subplots(rows, 2, squeeze=False, figsize=(16, 11.2 if rows == 3 else 3.73 * rows), layout="constrained", sharex=True)
+    fig, axes = plt.subplots(rows, 2, squeeze=False, figsize=(16, 11.2 if rows == 3 else max(4.5,3.73 * rows)), layout="constrained", sharex=True)
     for ax, j in zip(axes.flat, columns):
         for name in WAVEFORMS:
             basis = bases[name]
@@ -99,7 +99,7 @@ def plot_basis(bases, columns, frequency=False):
         group = int(bases["labels"][j]) if "labels" in bases else -1
         if group >= 0:
             from .coupling import GROUP_COLORS
-            ax.set_title(f"Basis column {j} · Learned group {group}", color=GROUP_COLORS[group])
+            ax.set_title(f"Basis column {j} · Learned group {group}", color=GROUP_COLORS[group % len(GROUP_COLORS)])
         else:
             ax.set_title(f"Basis column {j}")
         ax.grid(alpha=.2)
@@ -107,7 +107,7 @@ def plot_basis(bases, columns, frequency=False):
     handles += [Line2D([], [], color="black", label="Real"), Line2D([], [], color="black", ls="--", label="Imaginary")]
     fig.legend(handles=handles, loc="outside upper center", ncol=len(handles))
     fig.supxlabel("Frequency f/Fs (periodic)" if frequency else "Time sample n", fontsize=18)
-    fig.supylabel("Complex DTFT coefficient (1/√N normalization)" if frequency else "Basis coefficient", fontsize=18)
+    fig.supylabel("Complex DTFT coefficient\n(1/√N normalization)" if frequency else "Basis coefficient", fontsize=18)
     for ax in list(axes.flat)[len(columns):]:
         ax.set_visible(False)
     return fig
