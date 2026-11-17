@@ -32,7 +32,7 @@ class SelectedBasis:
     def validate(self):
         w, mask = self.matrix, self.fixed_q_mask
         n = w.shape[0] if isinstance(w, torch.Tensor) and w.ndim == 2 else 0
-        if self.provenance.get('arithmetic') == 'MPS_FP32':
+        if self.provenance.get('arithmetic') in ('MPS_FP32','CPU_FP32'):
             from . import mps_numerics as m
             m.environment()
             if n not in (64,128,256) or w.shape != (n,n) or w.dtype != torch.complex64 or w.device.type != 'cpu':
@@ -41,7 +41,7 @@ class SelectedBasis:
             if type(k) is not int or not 1 <= k <= n:
                 raise ValueError('Invalid fresh fixed support K')
             if not np.isfinite(w.numpy()).all() or m.unitarity(m.pair(w.numpy())) > 5e-4:
-                raise ValueError('Fresh basis must be finite and unitary within MPS FP32 tolerance')
+                raise ValueError('Fresh basis must be finite and unitary within FP32 tolerance')
             if mask.shape != (n,n) or mask.dtype != torch.bool or mask.device.type != 'cpu' or not np.all(mask.numpy().sum(-1)==k):
                 raise ValueError('Provider must supply its own boolean fixed-K support')
             if not self.provenance.get('source'): raise ValueError('Basis provider provenance requires a source')

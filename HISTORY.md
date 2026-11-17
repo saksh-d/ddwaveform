@@ -57,3 +57,13 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Fresh venv in actual Git clone installs locked dependencies plus optional JupyterLab4.6.6; all pinned versions unchanged, both generic/registered kernels execute in that venv.
 - Original artifact roots and previous environment packages OS-blocked:85tests pass/35optional audit skips; DD64/128/256 replay,20step train/reload and CFO succeed,70figures/69.47s.
 - Full120tests pass16.04s;70PNG bytes/434array fields equal prior references. All runtime code/data and notebook cells unchanged; generic kernel metadata only.
+
+## 2026-11-16 — explicit CPU portability option
+- Owner instruction requires MPS by default/no silent fallback, not a permanent MPS-only API. Latest request authorizes explicit CPU FP32; added BACKEND control retaining MPS default and fail-fast device checks.
+- Same DD/CFO/training algebra and plotting pipeline; CPU has local namespace-seeded RNG, device/dtype provenance, synchronization guards and independent checkpoint evaluation. Historical data/replay unchanged.
+- README now distinguishes tested macOS MPS/CPU from untested Linux/Windows setup; dependency platform markers avoid macOS-only extras elsewhere. Qualification pending before authorized push.
+
+## 2026-11-16 — CPU/MPS numerical qualification
+- Full130tests pass17.66s, retaining all120prior checks; CPU DD64/128/256 operators/receivers, explicit device rejection, actual training/splits/reload, distinct CFO/noise and CPU↔MPS checkpoint identity pass.
+- Provisional MPS notebook outputs remain83PNG bytes/572array fields exact against retained historical references; CPU fresh64/128/256, default20step training/reload and changed DD/CFO notebooks execute.
+- Final frozen clean-clone runs next, including forced-unavailable MPS for default replay/explicit CPU and unchanged real MPS verification before integration/push.

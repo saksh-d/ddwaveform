@@ -15,6 +15,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--cases',nargs='+',default=['replay64','fresh64','train64','fresh64_changed','train64_changed','replay128','train128','replay256','train256','fresh256_changed','recalibrate64','reload64','cfo','cfo_changed','cfo_train_rejected'])
     parser.add_argument('--out',default='local/qualification')
+    parser.add_argument('--backend',choices=('mps','cpu'),default='mps')
     args=parser.parse_args(); root=Path.cwd().resolve(); out=(root/args.out).resolve()
     if not out.is_relative_to(root/'local'): raise ValueError('Qualification output must stay in this worktree local/')
     out.mkdir(parents=True,exist_ok=True)
@@ -22,7 +23,7 @@ def main():
     for case in args.cases:
         nb=nbformat.from_dict(json.loads(json.dumps(template)))
         cell=next(c for c in nb.cells if 'configuration' in c.metadata.get('tags',[]))
-        source=cell.source
+        source=cell.source.replace('BACKEND = "mps"',f'BACKEND = "{args.backend}"')
         n=128 if '128' in case else 256 if '256' in case else 64
         source=source.replace('N = 64 ',f'N = {n} ')
         is_train=case.startswith('train'); is_cfo=case.startswith('cfo'); fresh=not case.startswith('replay')

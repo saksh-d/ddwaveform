@@ -97,13 +97,20 @@ minimum/target/stopping flags and1/bits resolution are retained. Zero-error boun
 use independent channels conservatively, not an independent-bit assumption.
 No training-seed uncertainty or universal learned advantage is established.
 
-All fresh simulation/optimization/receiver solves use MPS FP32 real/imaginary pairs
+All fresh simulation/optimization/receiver solves use FP32 real/imaginary pairs,
+with explicit BACKEND="mps" (default) or "cpu". MPS unavailability raises; it never
+switches to CPU automatically. CPU is an explicitly requested backend, not a
+historical-result replacement. Each backend has a namespace-seeded random stream;
+reproducibility is within a backend, not bitwise equality across devices. The run
+summary/manifests record actual device/dtype; CPU uses one numerical thread
 (no native complex requirement). LMMSE uses a2N real block solve, checks relative
 residual ≤3e-3; unitarity max-entry gate5e-4. High-SNR/ill-conditioned cases may fail
 rather than silently changing precision. Archived replay/reference checks keep
 their pre-existing CPU float64/complex128 route. NumPy/Matplotlib postprocess
 exported arrays for figures; files use ordinary CPU I/O. Checkpoint inference
-uses the exact exported complex64 matrix and mask, evaluated via MPS FP32.
+uses the exact exported complex64 matrix and mask, evaluated via the explicitly selected FP32 backend. Original training backend
+and current evaluation backend remain distinct in provenance. Switching backend
+requires restarting/Run All; earlier in-memory workflows reject mixed-device use.
 
 Training checkpoints are safe numeric NPZ plus JSON format/hash/provenance. No
 optimizer resume is implemented. Load via MODE=load_existing, EVIDENCE_MODE=fresh,

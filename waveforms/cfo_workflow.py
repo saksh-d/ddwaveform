@@ -44,6 +44,7 @@ class CFOWorkflow:
     def summary(self): return self.provenance
 
     def generate_channels(self):
+        m.require_backend(self.environment)
         if self.channels is None:
             from types import SimpleNamespace
             lo,hi=self.model['cfo_range']; eps=lo+(hi-lo)*m.draw((self.e['matrix_channels'],),('configurable-cfo-v1','test',self.e['seed'],'matrix'))
@@ -70,6 +71,7 @@ class CFOWorkflow:
         for mod in self.e['modulations']: self.show(f'ber_{mod}_raw')
 
     def evaluate_ber(self):
+        m.require_backend(self.environment)
         if self.ber_table is not None: return self.ber_table
         rows=[]; e=self.e
         for mod in e['modulations']:
@@ -95,7 +97,7 @@ class CFOWorkflow:
                     ci_low=max(0,mean-1.96*se) if total else np.nan,ci_high=min(1,mean+1.96*se) if total else np.nan,
                     zero_cluster_upper95=1-.05**(1/count) if not total else np.nan,detection_limit=1/bits,stop=stop,minimum_channels_met=count>=e['min_channels'],seconds=time.perf_counter()-start))
                 self.counts[f'{mod}_{snr:g}dB']=dict(errors=values,eps=np.concatenate(eps_values),bits_per_channel=np.array(bpc))
-        self.ber_table=pd.DataFrame(rows); self.provenance['BER_status']='NEW MPS FP32 CFO direct-analysis BER; descriptive channel-SE intervals, approximate under stopping; zero errors unresolved'
+        self.ber_table=pd.DataFrame(rows); self.provenance['BER_status']=f'NEW {self.environment["device"].split(":")[0].upper()} FP32 CFO direct-analysis BER; descriptive channel-SE intervals, approximate under stopping; zero errors unresolved'
         return self.ber_table
 
     def show(self,name):
@@ -149,7 +151,7 @@ class CFOWorkflow:
         return dict(basis_mode='load_existing',scenario='residual_cfo',inline_figures=len(self.images),archive=str(self.run_dir),training='Unsupported; not run')
 
 
-def start_cfo(*,mode,evidence_mode,model,display,evaluation,workspace,artifacts,bundle,save_run=True,output_root='local/notebook_runs',training=None,k=None,support_policy=None,discovery=None,checkpoint=None,review=None):
+def start_cfo(*,mode,evidence_mode,model,display,evaluation,workspace,artifacts,bundle,save_run=True,output_root='local/notebook_runs',training=None,k=None,support_policy=None,discovery=None,checkpoint=None,review=None,backend='mps'):
     if mode=='train_new': raise NotImplementedError('Residual CFO train_new unsupported: staged W/R trainer not reconstructed or qualified; no DD trainer substitution')
     if mode!='load_existing': raise ValueError('MODE must be load_existing or train_new')
     if evidence_mode!='fresh': raise ValueError('CFO requires fresh evaluation; archived BER tables are not qualified for configurable replay')
@@ -168,7 +170,7 @@ def start_cfo(*,mode,evidence_mode,model,display,evaluation,workspace,artifacts,
     config,_,out=validate(mode='load_existing',evidence_mode='fresh',scenario='dd_v1',model=nominal,display=display,evaluation={**evaluation,'diagnostic_atoms':2,'diagnostic_channels':2},training=None,k=24,support_policy='frozen',discovery=None,checkpoint=None,workspace=workspace,output_root=output_root,review=None)
     if any(j>=45 for j in config['display']['basis_columns']): raise ValueError('CFO basis column must be a stream in [0,44]')
     if type(save_run) is not bool: raise ValueError('SAVE_RUN must be boolean')
-    m.environment()
+    m.select_backend(backend); m.environment()
     from .runtime_inputs import is_runtime_root,load_cfo
     if is_runtime_root(artifacts):
         w,r,checks=load_cfo(artifacts)

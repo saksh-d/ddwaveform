@@ -215,3 +215,23 @@ def test_single_row_complex_basis_labels_fit_canvas(tmp_path):
         box=artist.get_window_extent(renderer)
         assert box.x0>=0 and box.y0>=0 and box.x1<=fig.bbox.x1 and box.y1<=fig.bbox.y1
     plt.close(fig)
+
+
+def test_explicit_cpu_mps_checkpoint_transfer_keeps_training_identity(tmp_path,monkeypatch):
+    # Devices may draw different banks; compare the checkpoint, never their BER.
+    try:
+        cpu=start(**(settings(tmp_path)|dict(backend='cpu')),save_run=False)
+        cpu_path=tmp_path/'local/cpu.npz';save_checkpoint(cpu_path,cpu.selected_basis,cpu.record)
+        gpu=start(**(settings(tmp_path,mode='load_existing',training=None,checkpoint=cpu_path)|dict(backend='mps')),save_run=False)
+        np.testing.assert_array_equal(cpu.ws['Learned'],gpu.ws['Learned'])
+        assert gpu.selected_basis.provenance['arithmetic']=='CPU_FP32' and gpu.environment['device'].startswith('mps')
+        assert gpu.evaluate_ber().shape[0]==24
+        trained=start(**settings(tmp_path),save_run=False)
+        mps_path=tmp_path/'local/mps.npz';save_checkpoint(mps_path,trained.selected_basis,trained.record)
+        monkeypatch.setattr(torch.backends.mps,'is_available',lambda:False)
+        loaded=start(**(settings(tmp_path,mode='load_existing',training=None,checkpoint=mps_path)|dict(backend='cpu')),save_run=False)
+        np.testing.assert_array_equal(trained.ws['Learned'],loaded.ws['Learned'])
+        assert loaded.selected_basis.provenance['arithmetic']=='MPS_FP32' and loaded.environment['device']=='cpu'
+        assert loaded.evaluate_ber().shape[0]==24
+    finally:
+        m.select_backend('mps')

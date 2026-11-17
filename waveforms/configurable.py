@@ -1,6 +1,6 @@
 """Configurable fresh workflow. Archived replay remains in notebook_workflow.
 
-All simulation/optimization/receiver work is MPS FP32; CPU arrays are exported
+All fresh computation uses explicitly selected MPS or CPU FP32; arrays are exported
 for the existing plotting and archival pipeline only.
 """
 from datetime import datetime
@@ -140,12 +140,13 @@ class FreshWorkflow(NotebookWorkflow):
             uncertainty='Channel SE descriptive; zero-channel bound conservative. Error/time stopping intervals approximate; no training-seed uncertainty.')
 
     def summary(self):
-        return dict(operation='Fresh MPS FP32 evaluation of one selected W; no saved BER counts',active_config=self.config,
+        return dict(operation=f'Fresh {self.environment["device"].split(":")[0].upper()} FP32 evaluation of one selected W; no saved BER counts',active_config=self.config,
                     selected_learned=self.selected_basis.describe(),device_dtype_threads=self.environment,
                     fixed_support=self.provenance['fixed_support'],grouping=self.provenance['grouping'],
                     group_count=int(len(np.unique(self.reference_views['labels']))),bank_roles=self.provenance['bank_roles'])
 
     def generate_channels(self):
+        m.require_backend(self.environment)
         if self.channels is not None: return self.channels,self.effective_channels
         e=self.config['evaluation']; ns=('configurable-dd-v1','test',e['seed'],'matrix')
         h,info=m.sample(e['matrix_channels'],self.config['model'],ns)
@@ -176,13 +177,14 @@ class FreshWorkflow(NotebookWorkflow):
         return self._coupling
 
     def evaluate_ber(self):
+        m.require_backend(self.environment)
         if self.ber_table is not None: return self.ber_table
         e=self.config['evaluation']; rows=[]
         for mod in e['modulations']:
             for snr in e['snrs_db']:
                 rows.extend(self._point(mod,float(snr)))
         self.ber_table=pd.DataFrame(rows)
-        self.provenance['BER_status']='NEW bounded MPS FP32 paired BER; descriptive channel-SE intervals, approximate under stopping. Zero errors unresolved.'
+        self.provenance['BER_status']=f'NEW bounded {self.environment["device"].split(":")[0].upper()} FP32 paired BER; descriptive channel-SE intervals, approximate under stopping. Zero errors unresolved.'
         return self.ber_table
 
     def _point(self,mod,snr):
@@ -221,7 +223,7 @@ class FreshWorkflow(NotebookWorkflow):
                 stop='error_target'; break
             if time.perf_counter()-started>=e['max_seconds_per_point']:
                 stop='time_budget'; break
-        torch.mps.synchronize()
+        m.synchronize()
         errors=np.concatenate(batches,axis=-1); analytic=np.concatenate(mses,axis=-1)
         self.counts[f'{mod}_{snr:g}dB']=dict(errors=errors,analytic_mse=analytic,bits_per_channel=np.array(bits_per),
             waveforms=np.array(list(self.ws)),receivers=np.array(['fixed','full']),
@@ -262,13 +264,14 @@ class FreshWorkflow(NotebookWorkflow):
         return result
 
 
-def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k=None,support_policy='frozen',discovery=None,checkpoint=None,workspace,output_root='local/notebook_runs',save_run=True,scaling_artifacts=None,scaling_bundle=None,review=None):
+def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k=None,support_policy='frozen',discovery=None,checkpoint=None,workspace,output_root='local/notebook_runs',save_run=True,scaling_artifacts=None,scaling_bundle=None,review=None,backend='mps'):
     config,checkpoint,output_root=validate(mode=mode,evidence_mode=evidence_mode,scenario=scenario,model=model,display=display,evaluation=evaluation,training=training,k=k if k is not None else SIZES.get(model.get('n')),support_policy=support_policy,discovery=discovery,checkpoint=checkpoint,workspace=workspace,output_root=output_root,review=review)
     if type(save_run) is not bool: raise ValueError('SAVE_RUN must be boolean')
+    m.select_backend(backend)
     if evidence_mode=='saved_replay':
         from .notebook_workflow import start_workflow
         return start_workflow(mode=mode,evidence_mode=evidence_mode,model=model,display=display,fresh=None,workspace=workspace,save_run=save_run,scaling_artifacts=scaling_artifacts,scaling_bundle=scaling_bundle,review=review,output_root=output_root)
-    m.environment(); n=model['n']; k=config['k']; basis_record=None
+    m.environment(); config['backend']=backend; n=model['n']; k=config['k']; basis_record=None
     if mode=='train_new':
         selected,basis_record=train(config['training']['model'],config['training']['validation_model'],k,config['training'])
     elif checkpoint:
@@ -287,7 +290,7 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
         basis_record=dict(labels=labels,permutation=np.argsort(labels,kind='stable'),q_train=q,
             grouping='Connected components from configured discovery multipath coupling; threshold '+str(d['group_threshold']))
         selected=SelectedBasis(torch.from_numpy(m.array(bases['Learned'])),torch.from_numpy(masks['Learned'].cpu().numpy()),
-            {**selected.provenance,'source':selected.provenance['source'],'arithmetic':'MPS_FP32','K':k,'support_recalibrated':d}).validate()
+            {**selected.provenance,'source':selected.provenance['source'],'arithmetic':m.DEVICE.type.upper()+'_FP32','K':k,'support_recalibrated':d}).validate()
     elif mode=='train_new' or checkpoint:
         provenance=selected.provenance
         cfg=provenance['config']; ops,_=m.sample(cfg['batch_channels'],provenance['train_model'],tuple(provenance['train_namespace']))
@@ -298,7 +301,7 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
         masks={name:m.tensor(evidence.records[name]['mask_nominal']).bool() for name in bases}
     result=FreshWorkflow(config,workspace,save_run,selected,basis_record,masks,output_root)
     result.provenance['evaluation_matrix_content_sha256']={name:hashlib.sha256(m.array(w).tobytes()).hexdigest() for name,w in result.mps_ws.items()}
-    result.provenance['precision_conversion']='Archived complex128 arrays, when used, explicitly converted to FP32 real pairs for fresh computation; plotting retains source array precision'
+    result.provenance['precision_conversion']=f'Archived complex128 arrays, when used, explicitly converted to {backend.upper()} FP32 real pairs for fresh computation; plotting retains source array precision'
     if mode=='load_existing' and checkpoint is None:
         result.provenance['inputs_sha256']=evidence.input_hashes()
     if mode=='train_new':

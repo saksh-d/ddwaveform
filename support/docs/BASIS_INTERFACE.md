@@ -6,7 +6,7 @@ plotting/evaluation methods; `waveforms.presentation` only formats their outputs
 
 DD SelectedBasis supplies its own square W, boolean fixed-K support and selection
 provenance. Archived exports retain their verified complex128 representation;
-new training exports complex64 from MPS FP32 real pairs. Each N has its own W;
+new training exports complex64 from explicitly selected MPS/CPU FP32 real pairs. Each N has its own W;
 no resizing, transposition, per-SNR selection or borrowed support/groups.
 
 Replay requires exact archived W/support/model identity. Fresh evaluation generates

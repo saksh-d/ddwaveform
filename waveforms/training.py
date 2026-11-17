@@ -97,10 +97,10 @@ def train(model, validation_model, k, cfg):
         if step%cfg['validate_every']==0 or step==cfg['iterations']:
             assess(step,float(loss.detach()))
     if trace[-1]['step']!=completed: assess(completed)
-    torch.mps.synchronize()
+    m.synchronize()
     w=m.array(best['w']); mask=best['mask'].cpu().numpy(); q=best['q'].cpu().numpy()
     meta=dict(source='new DD phase-stack unitary concentration training',basis_mode='train_new',
-              arithmetic='MPS_FP32',N=n,K=k,training_status=f'Trained {completed} iterations; selected step {best["step"]}',
+              arithmetic=m.DEVICE.type.upper()+'_FP32',N=n,K=k,training_status=f'Trained {completed} iterations; selected step {best["step"]}',
               objective='1 - captured mean normalized multipath coupling energy in train-only fixed row support',
               parameterization='alternating time/Fourier phase layers; unitary by construction',
               selection='minimum validation multipath leakage with train-only mask; earliest tie; includes step zero; no BER selection',
