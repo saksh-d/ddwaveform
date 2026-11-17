@@ -5,7 +5,8 @@
 - Owner instruction requires MPS by default and no silent CPU fallback; permanent
   MPS-only behavior was an implementation choice. Latest request authorizes explicit
   CPU FP32. BACKEND="mps" remains default; BACKEND="cpu" is an explicit selection.
-- Full130tests pass17.10s; frozen clean clone95pass/35optional archive skips.
+- Full130tests pass17.10s; integrated target repeats130pass/15.98s. Frozen clean
+  clone95pass/35optional archive skips.
 - With original inputs/previous packages blocked and MPS deliberately unavailable:
   default replay at N64/128/256 succeeds,39figures/41.52s. Explicit CPU fresh DD at
   all sizes,20step train/reload, changed DD/CFO and expected CFO-training rejection

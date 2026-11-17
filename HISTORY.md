@@ -72,3 +72,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Full130tests pass17.10s; clean clone95pass/35optional archive skips with original artifacts/previous packages blocked. No-MPS default replay64/128/256 succeeds39figures/41.52s.
 - Explicit CPU9supported notebook runs plus expected CFO-training rejection succeed101figures/88.25s; input-independent N128/N2562step training passes. CPU/MPS checkpoint transfer preserves W/support and records both backends.
 - Real MPS7notebooks/83figures/79.77s retain83PNG bytes/572array fields exactly; source/input/checkpoint audits pass, CPU figures inspected. Linux/Windows untested; no CUDA/CFO training or production claim.
+
+## 2026-11-16 19:25 — portable exploration integration
+- Fast-forwarded verified delivery into waveform-exploration; actual target130tests pass15.98s. Runtime code/data/notebook match frozen clean-clone qualification.
+- MPS remains default, CPU requires explicit selection; historical replay/data unchanged. Generic branch-download/setup instructions include tested platform and untested Windows/Linux limits.
+- Main/pub/default preserved; remote exploration still at c6bc03b before authorized normal nonforce push. Final remote hash/content verification next.
