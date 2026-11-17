@@ -22,7 +22,7 @@ Notebook outputs retain all13DD/5CFO figures, complex/grouped spectra and overla
 
 Current frozen qualification:
 
-- Full130tests pass8.13s with both optional audit archives; clean clone95pass and
+- Full130tests pass8.13s; integrated target130pass9.05s. Clean clone95pass and
   35optional audit checks skip. Generic venv/requirements/Jupyter install succeeds.
 - CPU-only17notebook cases:16successful and expected CFO-training rejection,
   192figures/188.61s. Replay/fresh/train cover N64/128/256; changed laws, support

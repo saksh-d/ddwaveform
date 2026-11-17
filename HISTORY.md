@@ -98,3 +98,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - CPU-only16successful notebook runs plus expected CFO rejection produce192figures/188.61s; default/fresh/train64/128/256, changed laws/support and reload verified.
 - Prior CPU equivalence140PNG bytes/973array fields exact, CSV except seconds and selection/trace exact. Genuine older checkpoint retains original provenance and evaluates on CPU; wheel has no retired module and all six inputs.
 - Active runtime/notebook/current docs have no accelerator path or selector. Safe integration/push next; Linux/Windows remain untested, no production claims.
+
+## 2026-11-16 19:43 — CPU-only integration verified
+- Fast-forwarded CPU-only version into waveform-exploration; actual target130tests pass9.05s. All runtime/input/notebook bytes match frozen qualification.
+- Device selector and retired runtime module absent; current docs CPU-only, prior device evidence explicitly historical. Source notebook output-free and supplied input hashes unchanged.
+- Authorized nonforce push of this corrected version next; main/pub/default remain untouched.
