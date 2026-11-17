@@ -92,3 +92,9 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Full130tests pass8.13s with all historical artifacts; original scientific reference/receiver/budget/split/checkpoint checks now execute CPU-only.
 - Removed retired runtime module and selector; renamed CPU numerical module/tensors. Obsolete compiled caches preserved under ignored local/cpu-only/.
 - Frozen clean-download replay/fresh DD/CFO/training and exact prior-CPU comparison remain before merge/push.
+
+## 2026-11-16 19:40 — CPU-only clean-download qualified
+- Fresh clone/venv/dependency/Jupyter setup passes with original inputs/packages blocked;95tests pass/35optional audit skips. Full suite130pass8.13s.
+- CPU-only16successful notebook runs plus expected CFO rejection produce192figures/188.61s; default/fresh/train64/128/256, changed laws/support and reload verified.
+- Prior CPU equivalence140PNG bytes/973array fields exact, CSV except seconds and selection/trace exact. Genuine older checkpoint retains original provenance and evaluates on CPU; wheel has no retired module and all six inputs.
+- Active runtime/notebook/current docs have no accelerator path or selector. Safe integration/push next; Linux/Windows remain untested, no production claims.
