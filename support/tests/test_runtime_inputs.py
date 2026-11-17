@@ -104,7 +104,7 @@ def test_fresh_delivered_never_reads_replay_and_config_changes_propagate(n,tmp_p
 
 def test_delivered_cfo_rectangular_model_and_fresh_budget(tmp_path):
     from waveforms.cfo_workflow import start_cfo
-    from waveforms import mps_numerics as m
+    from waveforms import numerics as m
     w,r,checks=load_cfo(delivered_root())
     assert w.shape==(64,45) and r.shape==(45,64) and not torch.allclose(r,w.mH,atol=1e-3,rtol=0)
     assert checks['clean_identity_loss']<.001
@@ -116,7 +116,7 @@ def test_delivered_cfo_rectangular_model_and_fresh_budget(tmp_path):
     np.testing.assert_allclose(a['Learned'][0],r.numpy()@expected@w.numpy(),atol=3e-6)
     frame=run.evaluate_ber()
     assert set(frame.receiver)=={'historical_R'} and set(frame[frame.modulation=='QPSK'].bits)=={180}
-    assert run.w[0].device.type=='mps' and run.w[0].dtype==torch.float32
+    assert run.w[0].device.type=='cpu' and run.w[0].dtype==torch.float32
 
 
 def test_delivered_cfo_exact_original_payload(artifacts):

@@ -3,7 +3,7 @@
 Explore learned delay–Doppler waveforms and residual CFO in one research notebook.
 **Pretrained inputs are included** — no separate bundle or download.
 
-Use **64-bit Python 3.10**. Tested on macOS / Apple Silicon with MPS and CPU;
+Use **64-bit Python 3.10**. CPU-only; tested on macOS.
 Linux/Windows instructions are provided but **not tested here**. Install Python 3.10
 first if the command below is unavailable. Choose the **waveform-exploration**
 branch when cloning or downloading ZIP:
@@ -54,12 +54,11 @@ complete results and metadata are saved under ignored `local/`.
 | `load_existing` + `fresh` | New channels and BER for the frozen DD basis, or supported CFO |
 | `train_new` + `fresh` | New DD basis, held-out selection and fresh tests; no input assets needed |
 
-**Default Run All needs no accelerator or external input:** it replays saved DD
-results using CPU float64/complex128 reference arithmetic. Fresh evaluation and
-DD training use FP32: keep `BACKEND="mps"` on an MPS-capable Mac, or explicitly
-set `BACKEND="cpu"`. No automatic device/precision fallback; CUDA is unsupported.
-The run summary records the actual device/dtype. Seeded draws reproduce within a backend;
-CPU and MPS random streams/results need not match. Large CPU runs may be slower.
+**Every mode runs on CPU; no accelerator or device selection is needed.**
+Default Run All replays included DD results using float64/complex128 reference
+arithmetic. Fresh evaluation and DD training use FP32 real/imaginary pairs.
+The run summary records device/dtype and one numerical thread. Seeded draws are
+reproducible; time budgets can change final sample counts. Larger runs may be slow.
 
 One Learned per N/run; each N has its own W. Changed channels/supports require
 fresh BER. Training fits a surrogate; bounded trials make no performance guarantee.

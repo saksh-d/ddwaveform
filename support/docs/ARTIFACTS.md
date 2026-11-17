@@ -17,8 +17,8 @@ subset. The manifest binds the complete small runtime dataset; restore the entir
 `waveforms/data/` directory from Git if any file is missing or altered. All N are
 packaged together, including in installed wheels. No learned matrix is resized or
 substituted. CFO training and CFO saved replay remain unsupported. Fresh numerical
-work uses explicit MPS (default) or CPU FP32; saved DD replay preserves the
-original CPU reference arithmetic. No automatic fallback; see the root README.
+work uses CPU FP32; saved DD replay preserves CPU reference arithmetic.
+No accelerator or device selection is needed; see the root README.
 
 ## Actual tracked payload
 

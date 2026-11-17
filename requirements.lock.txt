@@ -1,4 +1,4 @@
-# Pinned core dependencies, qualified on Python 3.10/macOS arm64 with MPS and CPU.
+# Pinned CPU dependencies, qualified on Python 3.10/macOS.
 # Linux/Windows setup is provided but untested; platform extras resolve via pip.
 appnope==0.1.4; sys_platform == "darwin"
 asttokens==3.0.0

@@ -9,7 +9,7 @@ campaign or training was run for this documentation change.
 
 Host assumptions: this Apple M3 Pro Mac,18GB unified memory; CPU float64/
 complex128, one Torch/BLAS thread. Historical environment records Python3.10.17,
-Torch2.7.0, NumPy2.2.6. No MPS/FP32 speed extrapolation. N64/P3 nominal normalized
+Torch2.7.0, NumPy2.2.6. These historical reference timings do not predict current FP32 speed. N64/P3 nominal normalized
 DD channel, perfect CSI, unit-symbol-energy QPSK/16QAM.
 
 ## Full focused BER

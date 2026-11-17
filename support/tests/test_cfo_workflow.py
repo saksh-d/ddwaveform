@@ -2,7 +2,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 import torch
-from waveforms import mps_numerics as m
+from waveforms import numerics as m
 from waveforms.cfo_workflow import start_cfo,operator
 from waveforms.configurable import DEFAULT_EVALUATION
 

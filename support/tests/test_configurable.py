@@ -1,4 +1,4 @@
-"""MPS numerical qualification plus configuration, splits, checkpoint and failure tests."""
+"""CPU numerical qualification plus configuration, splits, checkpoint and failure tests."""
 from copy import deepcopy
 from pathlib import Path
 import json
@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 import torch
-from waveforms import mps_numerics as m
+from waveforms import numerics as m
 from waveforms.configurable import start,validate,DEFAULT_EVALUATION
 from waveforms.training import DEFAULT_TRAINING,train,save_checkpoint,load_checkpoint,synthesis,coupling,leakage,groups
 
@@ -40,12 +40,10 @@ def test_reject_invalid_before_work(tmp_path,key,value,match):
     assert list(tmp_path.iterdir())==[]
 
 
-def test_no_mps_fallback(monkeypatch):
-    monkeypatch.setenv('PYTORCH_ENABLE_MPS_FALLBACK','1')
-    with pytest.raises(RuntimeError,match='Disable'): m.environment()
-    monkeypatch.delenv('PYTORCH_ENABLE_MPS_FALLBACK')
-    monkeypatch.setattr(torch.backends.mps,'is_available',lambda:False)
-    with pytest.raises(RuntimeError,match='no CPU fallback'): m.environment()
+def test_cpu_environment_fixed_fp32():
+    env=m.environment()
+    assert env['device']=='cpu' and env['real_dtype']=='torch.float32' and not env['fallback']
+    assert m.tensor([1.]).device.type=='cpu' and m.tensor([1.]).dtype==torch.float32
 
 
 @pytest.mark.parametrize('n',[64,128,256])
@@ -62,7 +60,7 @@ def test_dd_deterministic_reference_and_classical_unitarity(n):
     for w in m.classical(n,GRIDS[n]).values(): assert m.unitarity(w)<1e-4
     model={**MODEL,'n':n}; h,info=m.sample(2,model,('test','normalized',n))
     np.testing.assert_allclose(m.power(h).sum((-2,-1)).cpu(),n,rtol=3e-6)
-    assert h[0].device.type=='mps' and h[0].dtype==torch.float32
+    assert h[0].device.type=='cpu' and h[0].dtype==torch.float32
     same,_=m.sample(2,model,('test','normalized',n)); np.testing.assert_array_equal(m.array(h),m.array(same))
 
 
@@ -140,12 +138,18 @@ def test_short_actual_training_scaling(n,tmp_path):
     frame=a.evaluate_ber(); assert frame.shape[0]==24 and set(frame[frame.modulation=='16QAM'].bits)=={2*n*4}
 
 
-def test_error_time_channel_budgets_and_zero_bounds(tmp_path):
+def test_error_time_channel_budgets_and_zero_bounds(tmp_path,monkeypatch):
     a=start(**settings(tmp_path,evaluation={**EVAL,'max_channels':4,'target_errors':1,'snrs_db':(0.,1.)}),save_run=False)
     frame=a.evaluate_ber(); assert set(frame.stop)=={'error_target'} and set(frame.channels)=={2}
     for _,point in frame.groupby(['modulation','snr_db']): assert point.channels.nunique()==point.bits.nunique()==1
     b=start(**settings(tmp_path,evaluation={**EVAL,'max_channels':4,'min_channels':4,'max_seconds_per_point':.01}),save_run=False)
-    assert 'time_budget' in set(b.evaluate_ber().stop)
+    # Exercise time censoring independently of machine speed.
+    import waveforms.configurable as workflow
+    with monkeypatch.context() as clock:
+        ticks=iter(range(100000))
+        clock.setattr(workflow.time,'perf_counter',lambda:next(ticks)*.02)
+        timed=b.evaluate_ber()
+    assert set(timed.stop)=={'time_budget'} and not timed.minimum_channels_met.any()
     c=start(**settings(tmp_path,evaluation={**EVAL,'snrs_db':(30.,40.),'modulations':('QPSK',)},display={**DISPLAY,'snr_max_db':40.}),save_run=False)
     frame=c.evaluate_ber(); zeros=frame[frame.errors==0]
     assert not zeros.empty and zeros.ci_low.isna().all() and (zeros.zero_cluster_upper95>zeros.detection_limit).all()
@@ -217,21 +221,11 @@ def test_single_row_complex_basis_labels_fit_canvas(tmp_path):
     plt.close(fig)
 
 
-def test_explicit_cpu_mps_checkpoint_transfer_keeps_training_identity(tmp_path,monkeypatch):
-    # Devices may draw different banks; compare the checkpoint, never their BER.
-    try:
-        cpu=start(**(settings(tmp_path)|dict(backend='cpu')),save_run=False)
-        cpu_path=tmp_path/'local/cpu.npz';save_checkpoint(cpu_path,cpu.selected_basis,cpu.record)
-        gpu=start(**(settings(tmp_path,mode='load_existing',training=None,checkpoint=cpu_path)|dict(backend='mps')),save_run=False)
-        np.testing.assert_array_equal(cpu.ws['Learned'],gpu.ws['Learned'])
-        assert gpu.selected_basis.provenance['arithmetic']=='CPU_FP32' and gpu.environment['device'].startswith('mps')
-        assert gpu.evaluate_ber().shape[0]==24
-        trained=start(**settings(tmp_path),save_run=False)
-        mps_path=tmp_path/'local/mps.npz';save_checkpoint(mps_path,trained.selected_basis,trained.record)
-        monkeypatch.setattr(torch.backends.mps,'is_available',lambda:False)
-        loaded=start(**(settings(tmp_path,mode='load_existing',training=None,checkpoint=mps_path)|dict(backend='cpu')),save_run=False)
-        np.testing.assert_array_equal(trained.ws['Learned'],loaded.ws['Learned'])
-        assert loaded.selected_basis.provenance['arithmetic']=='MPS_FP32' and loaded.environment['device']=='cpu'
-        assert loaded.evaluate_ber().shape[0]==24
-    finally:
-        m.select_backend('mps')
+def test_checkpoint_preserves_recorded_training_identity(tmp_path):
+    trained=start(**settings(tmp_path),save_run=False)
+    path=tmp_path/'local/cpu.npz';save_checkpoint(path,trained.selected_basis,trained.record)
+    loaded=start(**settings(tmp_path,mode='load_existing',training=None,checkpoint=path),save_run=False)
+    np.testing.assert_array_equal(trained.ws['Learned'],loaded.ws['Learned'])
+    assert loaded.selected_basis.provenance['arithmetic']=='CPU_FP32'
+    assert loaded.selected_basis.provenance['trace']==trained.selected_basis.provenance['trace']
+    assert loaded.environment['device']=='cpu' and loaded.evaluate_ber().shape[0]==24

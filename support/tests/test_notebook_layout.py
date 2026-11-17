@@ -31,7 +31,7 @@ def test_run_summary_is_compact_with_full_collapsed_metadata(monkeypatch):
     info={'selected_learned':{'selected_step':3,'steps_executed':5},'full_trace':['retained']*200}
     workflow=SimpleNamespace(config={'scenario':'dd_v1','basis_mode':'train_new','evidence_mode':'fresh',
         'model':dict(paths=3,delay_range=(0.,4.),doppler_range=(-.75,.75))},
-        summary=lambda:info,n=64,k=24,environment={'device':'mps:0','real_dtype':'torch.float32'})
+        summary=lambda:info,n=64,k=24,environment={'device':'cpu','real_dtype':'torch.float32'})
     view.show_run_summary(workflow)
     assert len(outputs)==2
     assert outputs[0].data.count('<tr')==6  # header plus five setting rows

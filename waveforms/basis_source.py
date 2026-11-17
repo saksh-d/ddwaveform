@@ -32,8 +32,9 @@ class SelectedBasis:
     def validate(self):
         w, mask = self.matrix, self.fixed_q_mask
         n = w.shape[0] if isinstance(w, torch.Tensor) and w.ndim == 2 else 0
-        if self.provenance.get('arithmetic') in ('MPS_FP32','CPU_FP32'):
-            from . import mps_numerics as m
+        # Older checkpoints keep original training metadata; current validation is CPU-only.
+        if isinstance(w, torch.Tensor) and w.dtype == torch.complex64:
+            from . import numerics as m
             m.environment()
             if n not in (64,128,256) or w.shape != (n,n) or w.dtype != torch.complex64 or w.device.type != 'cpu':
                 raise ValueError('Fresh basis requires exported complex64 W[N,N], N=64/128/256')

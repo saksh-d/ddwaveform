@@ -77,3 +77,18 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Fast-forwarded verified delivery into waveform-exploration; actual target130tests pass15.98s. Runtime code/data/notebook match frozen clean-clone qualification.
 - MPS remains default, CPU requires explicit selection; historical replay/data unchanged. Generic branch-download/setup instructions include tested platform and untested Windows/Linux limits.
 - Main/pub/default preserved; remote exploration still at c6bc03b before authorized normal nonforce push. Final remote hash/content verification next.
+
+## 2026-11-16 — owner CPU-only correction
+- Latest owner instruction supersedes prior device defaults: removed accelerator execution, selector/API controls and active instructions; fresh arithmetic now CPU FP32 only, replay remains CPU reference.
+- Renamed numerical module/working tensors neutrally; preserved CPU RNG/algebra and original checkpoint training provenance. Prior device qualification archived under support/internal/.
+- CPU-only full tests and clean-download DD/CFO/training/replay verification pending before any new push.
+
+## 2026-11-16 — CPU-only regression iteration
+- First full run129pass/1timing-assumption failure: CPU completed4channels before the10ms cap. Replaced that test's real-clock assumption with a controlled clock; experiment budgets unchanged.
+- Active runtime/notebook/current docs contain no accelerator references or selector. Legacy checkpoint validation uses exported dtype/shape while retaining original training metadata.
+- Frozen clean-clone/equivalence verification next after full suite passes.
+
+## 2026-11-16 — CPU-only full suite
+- Full130tests pass8.13s with all historical artifacts; original scientific reference/receiver/budget/split/checkpoint checks now execute CPU-only.
+- Removed retired runtime module and selector; renamed CPU numerical module/tensors. Obsolete compiled caches preserved under ignored local/cpu-only/.
+- Frozen clean-download replay/fresh DD/CFO/training and exact prior-CPU comparison remain before merge/push.

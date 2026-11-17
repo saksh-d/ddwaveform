@@ -1,6 +1,6 @@
 """Configurable fresh workflow. Archived replay remains in notebook_workflow.
 
-All fresh computation uses explicitly selected MPS or CPU FP32; arrays are exported
+All fresh computation uses CPU FP32; arrays are exported
 for the existing plotting and archival pipeline only.
 """
 from datetime import datetime
@@ -14,7 +14,7 @@ import time
 import numpy as np
 import pandas as pd
 import torch
-from . import mps_numerics as m
+from . import numerics as m
 from .artifacts import write_json,sha
 from .basis_source import SelectedBasis
 from .delay_doppler import Channels
@@ -121,8 +121,8 @@ class FreshWorkflow(NotebookWorkflow):
         self.artifacts=Path(workspace)/'local'; self.reference_views=dict(labels=record['labels'],permutation=record['permutation'],selected=np.array(config['display']['basis_columns']))
         self.record=record
         self.ws={'Learned':selected.matrix.clone()}
-        self.mps_ws={'Learned':m.pair(selected.matrix.numpy()),**{name:w for name,w in m.classical(self.n,GRIDS[self.n]).items() if name in ('OTFS','AFDM')}}
-        self.ws.update({name:torch.from_numpy(m.array(w)) for name,w in self.mps_ws.items() if name!='Learned'})
+        self.compute_ws={'Learned':m.pair(selected.matrix.numpy()),**{name:w for name,w in m.classical(self.n,GRIDS[self.n]).items() if name in ('OTFS','AFDM')}}
+        self.ws.update({name:torch.from_numpy(m.array(w)) for name,w in self.compute_ws.items() if name!='Learned'})
         self._selected=self.ws['Learned'].clone()
         self.masks={name:torch.from_numpy(value.detach().cpu().numpy().copy()) for name,value in masks.items()}
         self.bases={name:w.numpy() for name,w in self.ws.items()}; self.bases['dft']=m.array(m.dft(self.n)); self.bases['labels']=record['labels']
@@ -146,13 +146,12 @@ class FreshWorkflow(NotebookWorkflow):
                     group_count=int(len(np.unique(self.reference_views['labels']))),bank_roles=self.provenance['bank_roles'])
 
     def generate_channels(self):
-        m.require_backend(self.environment)
         if self.channels is not None: return self.channels,self.effective_channels
         e=self.config['evaluation']; ns=('configurable-dd-v1','test',e['seed'],'matrix')
         h,info=m.sample(e['matrix_channels'],self.config['model'],ns)
         export=lambda x:torch.from_numpy(x.detach().cpu().numpy().copy())
         self.channels=Channels(torch.from_numpy(m.array(h)),torch.from_numpy(m.array(info['raw'])),export(info['tau']),export(info['nu']),torch.from_numpy(m.array(info['gains'])),export(info['scale']))
-        self.effective_channels={name:torch.from_numpy(m.array(m.effective(w,h))) for name,w in self.mps_ws.items()}
+        self.effective_channels={name:torch.from_numpy(m.array(m.effective(w,h))) for name,w in self.compute_ws.items()}
         self.provenance['matrix_generation']=dict(namespace=ns,index=self.matrix_index)
         return self.channels,self.effective_channels
 
@@ -162,7 +161,7 @@ class FreshWorkflow(NotebookWorkflow):
             e=self.config['evaluation']; ns=('configurable-dd-v1','test',e['seed'],'diagnostics')
             op,_=m.sample(e['diagnostic_atoms'],self.config['model'],(*ns,'atoms'),atomic=True)
             h,_=m.sample(e['diagnostic_channels'],self.config['model'],(*ns,'multipath'))
-            w=self.mps_ws['Learned']; f=m.dft(self.n)
+            w=self.compute_ws['Learned']; f=m.dft(self.n)
             example=m.pair(self.channels.h[self.matrix_index].numpy()); a=m.effective(w,example)
             c=m.mm(f,w); hf=m.mm(m.mm(f,example),m.adj(f)); bridge=m.mm(m.mm(m.adj(c),hf),c)
             export=lambda x:x.detach().cpu().numpy().copy()
@@ -177,7 +176,6 @@ class FreshWorkflow(NotebookWorkflow):
         return self._coupling
 
     def evaluate_ber(self):
-        m.require_backend(self.environment)
         if self.ber_table is not None: return self.ber_table
         e=self.config['evaluation']; rows=[]
         for mod in e['modulations']:
@@ -199,7 +197,7 @@ class FreshWorkflow(NotebookWorkflow):
             shape=(take,e['blocks_per_channel'],self.n)
             noise=(math.sqrt(variance/2)*m.draw(shape,(*ns,'noise-real',mod,snr),normal=True),math.sqrt(variance/2)*m.draw(shape,(*ns,'noise-imag',mod,snr),normal=True))
             errors=[]; mse=[]
-            for name,w in self.mps_ws.items():
+            for name,w in self.compute_ws.items():
                 a=m.effective(w,h)
                 y=m.mm(m.mm(s,m.transpose(w)),m.transpose(h))
                 y=y[0]+noise[0],y[1]+noise[1]
@@ -223,7 +221,6 @@ class FreshWorkflow(NotebookWorkflow):
                 stop='error_target'; break
             if time.perf_counter()-started>=e['max_seconds_per_point']:
                 stop='time_budget'; break
-        m.synchronize()
         errors=np.concatenate(batches,axis=-1); analytic=np.concatenate(mses,axis=-1)
         self.counts[f'{mod}_{snr:g}dB']=dict(errors=errors,analytic_mse=analytic,bits_per_channel=np.array(bits_per),
             waveforms=np.array(list(self.ws)),receivers=np.array(['fixed','full']),
@@ -258,20 +255,19 @@ class FreshWorkflow(NotebookWorkflow):
             self.group_table().to_csv(self.run_dir/'groups.csv',index=False)
             self.example_table().to_csv(self.run_dir/'examples.csv',index=False)
             for kind in ('overlay8','half'): self.overlay_table(kind).to_csv(self.run_dir/(kind+'_mapping.csv'),index=False)
-            self.provenance['source_sha256'].update({name:sha(Path(__file__).parent/name) for name in ('configurable.py','mps_numerics.py','training.py','entry.py')})
+            self.provenance['source_sha256'].update({name:sha(Path(__file__).parent/name) for name in ('configurable.py','numerics.py','training.py','entry.py')})
             self.provenance['files_sha256']={p.name:sha(p) for p in self.run_dir.iterdir() if p.is_file() and p.name!='run.json'}
             write_json(self.run_dir/'run.json',self.provenance)
         return result
 
 
-def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k=None,support_policy='frozen',discovery=None,checkpoint=None,workspace,output_root='local/notebook_runs',save_run=True,scaling_artifacts=None,scaling_bundle=None,review=None,backend='mps'):
+def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k=None,support_policy='frozen',discovery=None,checkpoint=None,workspace,output_root='local/notebook_runs',save_run=True,scaling_artifacts=None,scaling_bundle=None,review=None):
     config,checkpoint,output_root=validate(mode=mode,evidence_mode=evidence_mode,scenario=scenario,model=model,display=display,evaluation=evaluation,training=training,k=k if k is not None else SIZES.get(model.get('n')),support_policy=support_policy,discovery=discovery,checkpoint=checkpoint,workspace=workspace,output_root=output_root,review=review)
     if type(save_run) is not bool: raise ValueError('SAVE_RUN must be boolean')
-    m.select_backend(backend)
     if evidence_mode=='saved_replay':
         from .notebook_workflow import start_workflow
         return start_workflow(mode=mode,evidence_mode=evidence_mode,model=model,display=display,fresh=None,workspace=workspace,save_run=save_run,scaling_artifacts=scaling_artifacts,scaling_bundle=scaling_bundle,review=review,output_root=output_root)
-    m.environment(); config['backend']=backend; n=model['n']; k=config['k']; basis_record=None
+    m.environment(); n=model['n']; k=config['k']; basis_record=None
     if mode=='train_new':
         selected,basis_record=train(config['training']['model'],config['training']['validation_model'],k,config['training'])
     elif checkpoint:
@@ -290,7 +286,7 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
         basis_record=dict(labels=labels,permutation=np.argsort(labels,kind='stable'),q_train=q,
             grouping='Connected components from configured discovery multipath coupling; threshold '+str(d['group_threshold']))
         selected=SelectedBasis(torch.from_numpy(m.array(bases['Learned'])),torch.from_numpy(masks['Learned'].cpu().numpy()),
-            {**selected.provenance,'source':selected.provenance['source'],'arithmetic':m.DEVICE.type.upper()+'_FP32','K':k,'support_recalibrated':d}).validate()
+            {**selected.provenance,'source':selected.provenance['source'],'arithmetic':'CPU_FP32','K':k,'support_recalibrated':d}).validate()
     elif mode=='train_new' or checkpoint:
         provenance=selected.provenance
         cfg=provenance['config']; ops,_=m.sample(cfg['batch_channels'],provenance['train_model'],tuple(provenance['train_namespace']))
@@ -300,8 +296,8 @@ def start(*,mode,evidence_mode,scenario,model,display,evaluation,training=None,k
     else:
         masks={name:m.tensor(evidence.records[name]['mask_nominal']).bool() for name in bases}
     result=FreshWorkflow(config,workspace,save_run,selected,basis_record,masks,output_root)
-    result.provenance['evaluation_matrix_content_sha256']={name:hashlib.sha256(m.array(w).tobytes()).hexdigest() for name,w in result.mps_ws.items()}
-    result.provenance['precision_conversion']=f'Archived complex128 arrays, when used, explicitly converted to {backend.upper()} FP32 real pairs for fresh computation; plotting retains source array precision'
+    result.provenance['evaluation_matrix_content_sha256']={name:hashlib.sha256(m.array(w).tobytes()).hexdigest() for name,w in result.compute_ws.items()}
+    result.provenance['precision_conversion']='Archived complex128 arrays, when used, explicitly converted to CPU FP32 real pairs for fresh computation; plotting retains source array precision'
     if mode=='load_existing' and checkpoint is None:
         result.provenance['inputs_sha256']=evidence.input_hashes()
     if mode=='train_new':

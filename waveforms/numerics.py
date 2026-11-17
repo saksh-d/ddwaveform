@@ -1,48 +1,23 @@
-"""Fresh DD/CFO FP32 real pairs: default MPS or explicitly selected CPU.
+"""CPU-only FP32 real-pair arithmetic for fresh DD/CFO evaluation and DD training.
 
-Pairs (real, imaginary) implement complex algebra; saved complex arrays are I/O.
-This avoids requiring native complex kernels on Apple's MPS backend.
+Complex arrays are exported for plotting/checkpoints; replay uses core.py reference arithmetic.
 """
 import math
-import os
 import torch
 import numpy as np
 from .core import seed
 
-DEVICE = torch.device('mps')
+DEVICE = torch.device('cpu')
 DTYPE = torch.float32
 
 
-def select_backend(backend):
-    global DEVICE
-    if backend not in ('mps','cpu'):
-        raise ValueError('BACKEND must be mps or cpu; no automatic fallback or CUDA path')
-    DEVICE = torch.device(backend)
-
-
-def synchronize():
-    if DEVICE.type == 'mps':
-        torch.mps.synchronize()
-
-
-def require_backend(environment):
-    if torch.device(environment['device']).type != DEVICE.type:
-        raise RuntimeError('Backend changed after workflow creation; restart and Run All')
-
-
 def environment():
-    if DEVICE.type == 'mps' and os.environ.get('PYTORCH_ENABLE_MPS_FALLBACK') == '1':
-        raise RuntimeError('Disable PYTORCH_ENABLE_MPS_FALLBACK; fresh runs require MPS without CPU fallback')
-    if DEVICE.type == 'mps' and not torch.backends.mps.is_available():
-        raise RuntimeError('MPS unavailable: no CPU fallback. Select BACKEND=cpu explicitly or use an MPS-capable environment.')
-    if DEVICE.type == 'cpu':
-        torch.set_num_threads(1)
+    torch.set_num_threads(1)
     probe = torch.ones(1, device=DEVICE, dtype=DTYPE)
-    result = dict(device=str(probe.device), real_dtype=str(probe.dtype),
-                  complex_representation='two real FP32 tensors', torch=torch.__version__, fallback=False)
-    if DEVICE.type == 'cpu':
-        result.update(threads=torch.get_num_threads(), random_engine='CPU torch.Generator; namespace seeds; distinct from MPS streams')
-    return result
+    return dict(device=str(probe.device), real_dtype=str(probe.dtype),
+                complex_representation='two real FP32 tensors', torch=torch.__version__,
+                fallback=False, threads=torch.get_num_threads(),
+                random_engine='CPU torch.Generator; namespace-derived seeds')
 
 
 def tensor(x):
@@ -59,16 +34,10 @@ def array(a):
 
 
 def draw(shape, namespace, normal=False, bits=False):
-    if DEVICE.type == 'cpu':
-        generator = torch.Generator(device='cpu').manual_seed(seed(*namespace) % (2**32))
-        if bits:
-            return torch.randint(0, 2, shape, device=DEVICE, dtype=torch.int32, generator=generator)
-        return (torch.randn if normal else torch.rand)(shape, device=DEVICE, dtype=DTYPE, generator=generator)
-    # Preserve the original MPS random stream exactly; CPU has a distinct generator.
-    torch.mps.manual_seed(seed(*namespace) % (2**32))
+    generator = torch.Generator(device='cpu').manual_seed(seed(*namespace) % (2**32))
     if bits:
-        return torch.randint(0, 2, shape, device=DEVICE, dtype=torch.int32)
-    return (torch.randn if normal else torch.rand)(shape, device=DEVICE, dtype=DTYPE)
+        return torch.randint(0, 2, shape, device=DEVICE, dtype=torch.int32, generator=generator)
+    return (torch.randn if normal else torch.rand)(shape, device=DEVICE, dtype=DTYPE, generator=generator)
 
 
 def mm(a, b):

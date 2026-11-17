@@ -1,10 +1,10 @@
-"""Explicit CPU FP32 qualification; same physical models, distinct backend RNG."""
+"""CPU FP32 qualification: physical models, reproducibility and fixed arithmetic."""
 from pathlib import Path
 import numpy as np
 import pandas as pd
 import pytest
 import torch
-from waveforms import mps_numerics as m
+from waveforms import numerics as m
 from waveforms.configurable import start,DEFAULT_EVALUATION
 from waveforms.training import DEFAULT_TRAINING,save_checkpoint
 from waveforms.runtime_inputs import delivered_root,RuntimeEvidence
@@ -18,20 +18,10 @@ TRAIN={**DEFAULT_TRAINING,'model':MODEL,'validation_model':MODEL,'iterations':3,
        'validate_every':1,'batch_channels':3,'validation_channels':3}
 
 
-@pytest.fixture(autouse=True)
-def explicit_cpu(monkeypatch):
-    m.select_backend('cpu')
-    monkeypatch.setattr(torch.backends.mps,'is_available',lambda:False)
-    monkeypatch.setattr(torch.mps,'manual_seed',lambda *a:pytest.fail('CPU called MPS RNG'))
-    monkeypatch.setattr(torch.mps,'synchronize',lambda *a:pytest.fail('CPU called MPS synchronization'))
-    yield
-    m.select_backend('mps')
-
-
 def settings(tmp_path,**extra):
     return dict(mode='load_existing',evidence_mode='fresh',scenario='dd_v1',model=MODEL,
                 display=DISPLAY,evaluation=EVAL,training=None,k=24,workspace=tmp_path,
-                scaling_artifacts=delivered_root(),save_run=False,backend='cpu')|extra
+                scaling_artifacts=delivered_root(),save_run=False)|extra
 
 
 @pytest.mark.parametrize('n',[64,128,256])
@@ -58,8 +48,8 @@ def test_cpu_frozen_dd_fresh_budget_and_no_saved_ber(n,tmp_path,monkeypatch):
     monkeypatch.setattr(RuntimeEvidence,'ber',lambda *a:pytest.fail('CPU fresh used saved BER'))
     args=settings(tmp_path,model={**MODEL,'n':n,'paths':2,'delay_range':(.1,.9)},k=3*n//8)
     a=start(**args);b=start(**args)
-    assert a.environment['device']=='cpu' and a.config['backend']=='cpu'
-    assert all(w[0].device.type=='cpu' and w[0].dtype==torch.float32 for w in a.mps_ws.values())
+    assert a.environment['device']=='cpu'
+    assert all(w[0].device.type=='cpu' and w[0].dtype==torch.float32 for w in a.compute_ws.values())
     np.testing.assert_array_equal(a.ws['Learned'],RuntimeEvidence(delivered_root(),n).selected.matrix)
     frame=a.evaluate_ber();pd.testing.assert_frame_equal(frame.drop(columns='seconds'),b.evaluate_ber().drop(columns='seconds'))
     assert set(frame.channels)=={2} and set(frame[frame.modulation=='QPSK'].bits)=={4*n}
@@ -83,14 +73,12 @@ def test_cpu_actual_training_update_split_and_checkpoint(tmp_path):
     changed=start(**(args|dict(model={**MODEL,'paths':1},evaluation={**EVAL,'seed':909})))
     np.testing.assert_array_equal(a.ws['Learned'],changed.ws['Learned'])
     assert not np.array_equal(a.generate_channels()[0].h,changed.generate_channels()[0].h)
-    m.select_backend('mps')
-    with pytest.raises(RuntimeError,match='Backend changed'):a.generate_channels()
 
 
 def test_cpu_cfo_distinct_rectangular_model_and_noise(tmp_path):
     evaluation={k:v for k,v in EVAL.items() if k not in ('diagnostic_atoms','diagnostic_channels')}
     args=dict(mode='load_existing',evidence_mode='fresh',model=dict(n=64,streams=45,cfo_range=(.2,.3)),
-              display=DISPLAY,evaluation=evaluation,workspace=tmp_path,artifacts=delivered_root(),bundle=None,save_run=False,backend='cpu')
+              display=DISPLAY,evaluation=evaluation,workspace=tmp_path,artifacts=delivered_root(),bundle=None,save_run=False)
     a=start_cfo(**args);b=start_cfo(**args);h,aa=a.generate_channels();w,r=m.array(a.w),m.array(a.r)
     assert w.shape==(64,45) and r.shape==(45,64) and not np.allclose(r,w.conj().T,atol=1e-3)
     expected=np.diag(np.exp(2j*np.pi*h.eps[0]*np.arange(64)/64))
@@ -103,10 +91,11 @@ def test_cpu_cfo_distinct_rectangular_model_and_noise(tmp_path):
     np.testing.assert_allclose(out.T@out.conj()/len(out),r@r.conj().T,atol=.07)
 
 
-def test_cpu_not_implicit_and_backend_validation(tmp_path):
-    with pytest.raises(RuntimeError,match='no CPU fallback'):start(**(settings(tmp_path)|dict(backend='mps')))
-    with pytest.raises(ValueError,match='BACKEND'):start(**(settings(tmp_path)|dict(backend='cuda')))
-    # Default replay remains CPU reference arithmetic even when MPS is unavailable.
-    run=start(**settings(tmp_path,evidence_mode='saved_replay',model=MODEL,evaluation=None,backend='mps'))
+def test_replay_and_fresh_have_explicit_cpu_precision(tmp_path):
+    fresh=start(**settings(tmp_path))
+    assert fresh.environment['device']=='cpu' and fresh.environment['real_dtype']=='torch.float32'
+    with pytest.raises(TypeError,match='backend'):
+        start(**(settings(tmp_path)|dict(backend='cpu')))
+    run=start(**settings(tmp_path,evidence_mode='saved_replay',model=MODEL,evaluation=None))
     assert run.environment['device']=='cpu' and run.environment['real_dtype']=='torch.float64'
     assert len(run.evaluate_ber())==96
