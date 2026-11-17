@@ -67,3 +67,8 @@ Full earlier record: [support/HISTORY.md](support/HISTORY.md).
 - Full130tests pass17.66s, retaining all120prior checks; CPU DD64/128/256 operators/receivers, explicit device rejection, actual training/splits/reload, distinct CFO/noise and CPU↔MPS checkpoint identity pass.
 - Provisional MPS notebook outputs remain83PNG bytes/572array fields exact against retained historical references; CPU fresh64/128/256, default20step training/reload and changed DD/CFO notebooks execute.
 - Final frozen clean-clone runs next, including forced-unavailable MPS for default replay/explicit CPU and unchanged real MPS verification before integration/push.
+
+## 2026-11-16 19:23 — frozen portable delivery qualified
+- Full130tests pass17.10s; clean clone95pass/35optional archive skips with original artifacts/previous packages blocked. No-MPS default replay64/128/256 succeeds39figures/41.52s.
+- Explicit CPU9supported notebook runs plus expected CFO-training rejection succeed101figures/88.25s; input-independent N128/N2562step training passes. CPU/MPS checkpoint transfer preserves W/support and records both backends.
+- Real MPS7notebooks/83figures/79.77s retain83PNG bytes/572array fields exactly; source/input/checkpoint audits pass, CPU figures inspected. Linux/Windows untested; no CUDA/CFO training or production claim.

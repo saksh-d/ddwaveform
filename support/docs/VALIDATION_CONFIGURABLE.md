@@ -1,5 +1,25 @@
 # Configurable-workflow validation
 
+## Explicit CPU backend and frozen delivery qualification — 2026-11-16
+
+- Owner instruction requires MPS by default and no silent CPU fallback; permanent
+  MPS-only behavior was an implementation choice. Latest request authorizes explicit
+  CPU FP32. BACKEND="mps" remains default; BACKEND="cpu" is an explicit selection.
+- Full130tests pass17.10s; frozen clean clone95pass/35optional archive skips.
+- With original inputs/previous packages blocked and MPS deliberately unavailable:
+  default replay at N64/128/256 succeeds,39figures/41.52s. Explicit CPU fresh DD at
+  all sizes,20step train/reload, changed DD/CFO and expected CFO-training rejection
+  execute101figures/88.25s. CPU input-independent N128/N2562step training also passes.
+- Real MPS7notebooks/83figures/79.77s; all83PNG bytes/572array fields match prior
+  references. Historical input bytes unchanged; CPU fresh results never reuse saved BER.
+- Checkpoint CPU↔MPS transfer preserves W/support and original training provenance;
+  evaluation records its selected device. Seeds repeat within a backend; streams
+  differ between backends. Budget/uncertainty rules and CFO dimensions unchanged.
+- Source/output hashes, checkpoint reload equivalence and300DPI exports pass audits;
+  CPU coupling/BER/CFO figures inspected. Exact commands/evidence: local/portability/.
+- CPU and MPS tested on macOS Apple Silicon only; Linux/Windows instructions remain
+  untested, CUDA unsupported, CFO training unsupported. No production campaign claim.
+
 ## Fresh-machine setup recheck — 2026-11-16
 
 - Actual Git clone with a new Python3.10 venv installed dependencies and optional

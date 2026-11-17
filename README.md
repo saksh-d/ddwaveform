@@ -16,6 +16,7 @@ cd ddwaveform
 For an existing download, open its repository root. Then create the environment:
 
 macOS / Linux:
+
 ```bash
 python3.10 -m venv .venv
 source .venv/bin/activate
@@ -23,6 +24,7 @@ python -m pip install -r requirements.lock.txt
 ```
 
 Windows PowerShell:
+
 ```powershell
 py -3.10 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt
@@ -56,7 +58,7 @@ complete results and metadata are saved under ignored `local/`.
 results using CPU float64/complex128 reference arithmetic. Fresh evaluation and
 DD training use FP32: keep `BACKEND="mps"` on an MPS-capable Mac, or explicitly
 set `BACKEND="cpu"`. No automatic device/precision fallback; CUDA is unsupported.
-The run summary records the actual device/dtype. Seeds reproduce within a backend;
+The run summary records the actual device/dtype. Seeded draws reproduce within a backend;
 CPU and MPS random streams/results need not match. Large CPU runs may be slower.
 
 One Learned per N/run; each N has its own W. Changed channels/supports require
